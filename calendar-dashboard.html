@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Calendar Downloads — LPA Dashboard</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0b0d;--bg2:#111315;--amber:#c8873a;--off-white:#e8e6e0;--grey:#8a8f96;--green:#2e7d52;--line:rgba(255,255,255,0.07);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--off-white);font-family:'Barlow',sans-serif;min-height:100vh;}
+/* NAV */
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--bg2);border-bottom:1px solid var(--line);}
+.nav-logo img{height:38px;width:auto;}
+.nav-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);}
+.nav-back{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-decoration:none;transition:opacity .2s;}
+.nav-back:hover{opacity:.7;}
+/* LAYOUT */
+.page{max-width:1300px;margin:0 auto;padding:40px 40px 80px;}
+/* HEADER */
+.dash-head{margin-bottom:40px;}
+.dash-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+.dash-title{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#fff;line-height:1;}
+.dash-title em{font-style:italic;color:var(--amber);}
+.dash-sub{font-size:14px;color:var(--grey);margin-top:8px;}
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.kpi{background:var(--bg2);border:1px solid var(--line);padding:24px 28px;}
+.kpi-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
+.kpi-num{font-family:'Fraunces',serif;font-size:48px;font-weight:300;color:#fff;line-height:1;}
+.kpi-num em{color:var(--amber);font-style:normal;}
+.kpi-change{font-size:12px;color:var(--grey);margin-top:6px;}
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);padding:10px 16px;flex:1;min-width:220px;}
+.search-box input{background:none;border:none;outline:none;color:var(--off-white);font-family:'Barlow',sans-serif;font-size:14px;width:100%;}
+.search-box input::placeholder{color:var(--grey);}
+.search-box svg{color:var(--grey);flex-shrink:0;}
+.export-btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#000;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:11px 22px;border:none;cursor:pointer;transition:opacity .2s;}
+.export-btn:hover{opacity:.85;}
+.refresh-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--grey);border:1px solid var(--line);font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 18px;cursor:pointer;transition:color .2s,border-color .2s;}
+.refresh-btn:hover{color:var(--amber);border-color:var(--amber);}
+.record-count{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--grey);margin-left:auto;}
+/* TABLE */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);}
+table{width:100%;border-collapse:collapse;}
+thead tr{background:rgba(200,135,58,0.08);border-bottom:1px solid var(--line);}
+th{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);padding:14px 18px;text-align:left;white-space:nowrap;}
+th.sortable{cursor:pointer;user-select:none;}
+th.sortable:hover{color:#fff;}
+th .sort-arrow{margin-left:4px;opacity:0.4;}
+th.sorted .sort-arrow{opacity:1;}
+tbody tr{border-bottom:1px solid var(--line);transition:background .15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,0.03);}
+td{padding:14px 18px;font-size:14px;color:var(--off-white);font-weight:300;}
+td.td-date{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--grey);}
+td.td-email a{color:var(--amber);text-decoration:none;}
+td.td-email a:hover{text-decoration:underline;}
+td.td-source{font-size:12px;color:var(--grey);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+/* EMPTY / LOADING */
+.state-msg{padding:60px;text-align:center;color:var(--grey);}
+.state-msg .icon{font-size:48px;margin-bottom:16px;opacity:0.4;}
+.state-msg h3{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:var(--off-white);margin-bottom:8px;}
+.state-msg p{font-size:14px;}
+.spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--line);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* PAGINATION */
+.pagination{display:flex;align-items:center;gap:8px;margin-top:20px;justify-content:flex-end;}
+.pg-btn{background:var(--bg2);border:1px solid var(--line);color:var(--off-white);font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;padding:8px 16px;cursor:pointer;transition:border-color .2s,color .2s;}
+.pg-btn:hover:not(:disabled){border-color:var(--amber);color:var(--amber);}
+.pg-btn:disabled{opacity:.35;cursor:default;}
+.pg-info{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--grey);padding:0 8px;}
+/* RESPONSIVE */
+@media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr;}.page{padding:24px 20px 60px;}nav{padding:0 20px;}}
+@media(max-width:600px){.kpi-grid{grid-template-columns:1fr 1fr;}.kpi-num{font-size:36px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
+  <span class="nav-title">Dashboard</span>
+  <a href="dashboard.html" class="nav-back">← All Dashboards</a>
+</nav>
+
+<div class="page">
+  <div class="dash-head">
+    <div class="dash-eyebrow">Lead Capture · 2026</div>
+    <h1 class="dash-title">Calendar <em>Downloads</em></h1>
+    <p class="dash-sub">Visitors who downloaded the 2026 Training Calendar</p>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Total Downloads</div>
+      <div class="kpi-num" id="kpiTotal">—</div>
+      <div class="kpi-change" id="kpiTotalSub">Loading…</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">This Week</div>
+      <div class="kpi-num" id="kpiWeek">—</div>
+      <div class="kpi-change" id="kpiWeekSub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">This Month</div>
+      <div class="kpi-num" id="kpiMonth">—</div>
+      <div class="kpi-change" id="kpiMonthSub"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Upstream vs Downstream</div>
+      <div class="kpi-num" id="kpiSplit">—</div>
+      <div class="kpi-change" id="kpiSplitSub"></div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search by name, email or source…" oninput="filterTable()">
+    </div>
+    <button class="export-btn" onclick="exportCSV()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export CSV
+    </button>
+    <button class="refresh-btn" onclick="loadData()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Refresh
+    </button>
+    <span class="record-count" id="recordCount"></span>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th class="sortable" onclick="sortBy(0)">Date & Time <span class="sort-arrow">↕</span></th>
+          <th class="sortable" onclick="sortBy(1)">First Name <span class="sort-arrow">↕</span></th>
+          <th class="sortable" onclick="sortBy(2)">Last Name <span class="sort-arrow">↕</span></th>
+          <th class="sortable" onclick="sortBy(3)">Email <span class="sort-arrow">↕</span></th>
+          <th>Phone</th>
+          <th>Source Page</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr><td colspan="6" class="state-msg"><div class="spinner"></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button class="pg-btn" id="pgPrev" onclick="prevPage()" disabled>← Prev</button>
+    <span class="pg-info" id="pgInfo"></span>
+    <button class="pg-btn" id="pgNext" onclick="nextPage()">Next →</button>
+  </div>
+</div>
+
+<script>
+const SHEET_ID  = '1kxTluQAL_HYeW5iNBnYkr9Q97tvOBV1etysYvKbpo5E';
+const SHEET_NAME= 'Calendar Downloads';
+const API_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+let allRows = [];
+let filteredRows = [];
+let sortCol = 0;
+let sortAsc = false;
+let currentPage = 1;
+const PER_PAGE = 25;
+
+function formatDate(iso){
+  if(!iso) return '—';
+  try{
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) +
+           ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){return iso;}
+}
+
+function shortSource(url){
+  if(!url) return '—';
+  try{
+    const u = new URL(url);
+    return u.pathname.replace(/\//g,'').replace('.html','') || 'homepage';
+  }catch(e){
+    return url.split('/').pop() || url;
+  }
+}
+
+function loadData(){
+  document.getElementById('tableBody').innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>';
+
+  fetch(API_URL + '&nocache=' + Date.now())
+    .then(r => r.text())
+    .then(text => {
+      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
+      const rows = json.table.rows || [];
+      allRows = rows.map(r => ({
+        timestamp:  r.c[0]?.v || '',
+        first_name: r.c[1]?.v || '',
+        last_name:  r.c[2]?.v || '',
+        email:      r.c[3]?.v || '',
+        phone:      r.c[4]?.v || '',
+        source:     r.c[5]?.v || ''
+      }));
+      computeKPIs();
+      filteredRows = [...allRows];
+      currentPage = 1;
+      renderTable();
+    })
+    .catch(err => {
+      document.getElementById('tableBody').innerHTML = `
+        <tr><td colspan="6">
+          <div class="state-msg">
+            <div class="icon">📭</div>
+            <h3>No data yet</h3>
+            <p>Submissions will appear here as visitors download the calendar.</p>
+          </div>
+        </td></tr>`;
+      document.getElementById('kpiTotal').textContent = '0';
+      document.getElementById('kpiTotalSub').textContent = 'No submissions yet';
+    });
+}
+
+function computeKPIs(){
+  const total = allRows.length;
+  document.getElementById('kpiTotal').innerHTML = total + '<em>+</em>';
+  document.getElementById('kpiTotalSub').textContent = 'All time downloads';
+
+  const now = new Date();
+  const weekAgo = new Date(now - 7*24*60*60*1000);
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  const week  = allRows.filter(r => r.timestamp && new Date(r.timestamp) >= weekAgo).length;
+  const month = allRows.filter(r => r.timestamp && new Date(r.timestamp) >= monthStart).length;
+
+  document.getElementById('kpiWeek').textContent = week;
+  document.getElementById('kpiWeekSub').textContent = 'Last 7 days';
+  document.getElementById('kpiMonth').textContent = month;
+  document.getElementById('kpiMonthSub').textContent = 'This month';
+
+  const upstream   = allRows.filter(r => r.source && r.source.includes('upstream')).length;
+  const downstream = allRows.filter(r => r.source && r.source.includes('downstream')).length;
+  document.getElementById('kpiSplit').textContent = upstream + ' / ' + downstream;
+  document.getElementById('kpiSplitSub').textContent = 'Upstream / Downstream';
+}
+
+function renderTable(){
+  const start = (currentPage-1)*PER_PAGE;
+  const page  = filteredRows.slice(start, start+PER_PAGE);
+  const tbody = document.getElementById('tableBody');
+
+  if(filteredRows.length === 0){
+    tbody.innerHTML = `<tr><td colspan="6"><div class="state-msg"><div class="icon">🔍</div><h3>No results</h3><p>Try a different search term.</p></div></td></tr>`;
+    document.getElementById('recordCount').textContent = '0 results';
+    document.getElementById('pgInfo').textContent = '';
+    document.getElementById('pgPrev').disabled = true;
+    document.getElementById('pgNext').disabled = true;
+    return;
+  }
+
+  tbody.innerHTML = page.map(r => `
+    <tr>
+      <td class="td-date">${formatDate(r.timestamp)}</td>
+      <td>${r.first_name || '—'}</td>
+      <td>${r.last_name  || '—'}</td>
+      <td class="td-email"><a href="mailto:${r.email}">${r.email || '—'}</a></td>
+      <td>${r.phone || '—'}</td>
+      <td class="td-source" title="${r.source}">${shortSource(r.source)}</td>
+    </tr>`).join('');
+
+  const total = filteredRows.length;
+  const pages = Math.ceil(total/PER_PAGE);
+  document.getElementById('recordCount').textContent = total + (total===1?' record':' records');
+  document.getElementById('pgInfo').textContent = `Page ${currentPage} of ${pages}`;
+  document.getElementById('pgPrev').disabled = currentPage <= 1;
+  document.getElementById('pgNext').disabled = currentPage >= pages;
+}
+
+function filterTable(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filteredRows = allRows.filter(r =>
+    (r.first_name+r.last_name+r.email+r.source).toLowerCase().includes(q)
+  );
+  currentPage = 1;
+  renderTable();
+}
+
+function sortBy(col){
+  if(sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  const keys = ['timestamp','first_name','last_name','email','phone','source'];
+  const key = keys[col];
+  filteredRows.sort((a,b)=>{
+    const av = (a[key]||'').toLowerCase();
+    const bv = (b[key]||'').toLowerCase();
+    return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  // Update header arrows
+  document.querySelectorAll('th .sort-arrow').forEach((el,i)=>{
+    el.textContent = i===col ? (sortAsc?'↑':'↓') : '↕';
+  });
+  renderTable();
+}
+
+function prevPage(){ if(currentPage>1){currentPage--;renderTable();} }
+function nextPage(){
+  const pages=Math.ceil(filteredRows.length/PER_PAGE);
+  if(currentPage<pages){currentPage++;renderTable();}
+}
+
+function exportCSV(){
+  const headers = ['Timestamp','First Name','Last Name','Email','Phone','Source Page'];
+  const rows = filteredRows.map(r=>[
+    r.timestamp, r.first_name, r.last_name, r.email, r.phone, r.source
+  ].map(v=>'"'+(v||'').replace(/"/g,'""')+'"').join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'lpa-calendar-downloads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+// Auto-refresh every 60s
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>
