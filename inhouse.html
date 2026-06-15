@@ -270,19 +270,17 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
 </svg>
 
 <!-- NAV -->
-<nav aria-label="Main navigation">
-  <a href="index.html"><img src="logo-white.png" alt="London Petro Academy" style="height:34px;"></a>
-  <div class="nav-links">
-    <a href="upstream.html">Upstream</a>
-    <a href="downstream.html">Downstream</a>
-    <a href="renewables.html">Renewables</a>
-    <a href="calendar-2026.html">Calendar</a>
-    <a href="inhouse.html" class="active">In-House</a>
-  </div>
-  <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House%20Training%20Enquiry" class="nav-cta">Request a Proposal</a>
-  <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.nav-links').style.display='flex'">
-    <span></span><span></span><span></span>
-  </button>
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
+  <ul class="nav-links">
+    <li><a href="upstream.html">Upstream</a></li>
+    <li><a href="downstream.html">Downstream</a></li>
+    <li><a href="renewables.html">Renewables</a></li>
+    <li><a href="inhouse.html" class="active">In-House</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="mailto:info@londonpetroacademy.co.uk" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
