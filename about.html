@@ -132,7 +132,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;height:72px;display:flex;ali
 .reach-map-title em{font-style:italic;color:var(--amber);}
 .reach-map-sub{font-size:15px;color:var(--grey);font-weight:300;}
 .reach-map-wrap{position:relative;}
-#lpa-map{width:100%;height:520px;background:#0d0f12;position:relative;overflow:hidden;}
+#lpa-map{width:100%;height:500px;background:#0d0f12;position:relative;overflow:hidden;}
 #lpa-map svg{width:100%;height:100%;}
 /* D3 map styles */
 .lpa-country{fill:#1a1e25;stroke:#252b34;stroke-width:0.4;}
@@ -856,18 +856,17 @@ window.addEventListener('scroll',function(){
 <script>
 (function(){
   const CITIES = [
-    {name:"London",      country:"United Kingdom",  lon:-0.12,  lat:51.51},
-    {name:"Paris",       country:"France",           lon:2.35,   lat:48.85},
-    {name:"Algiers",     country:"Algeria",          lon:3.06,   lat:36.74},
-    {name:"Dubai",       country:"UAE",              lon:55.30,  lat:25.20},
-    {name:"Bangkok",     country:"Thailand",         lon:100.50, lat:13.75},
-    {name:"Bali",        country:"Indonesia",        lon:115.19, lat:-8.41},
-    {name:"Houston",     country:"United States",    lon:-95.37, lat:29.76},
-    {name:"Port of Spain",country:"Trinidad & Tobago",lon:-61.52,lat:10.65},
-    {name:"Rio de Janeiro",country:"Brazil",         lon:-43.17, lat:-22.91}
+    {name:"London",        country:"United Kingdom",    lon:-0.12,  lat:51.51},
+    {name:"Paris",         country:"France",            lon:2.35,   lat:48.85},
+    {name:"Algiers",       country:"Algeria",           lon:3.06,   lat:36.74},
+    {name:"Dubai",         country:"UAE",               lon:55.30,  lat:25.20},
+    {name:"Bangkok",       country:"Thailand",          lon:100.50, lat:13.75},
+    {name:"Bali",          country:"Indonesia",         lon:115.19, lat:-8.41},
+    {name:"Houston",       country:"United States",     lon:-95.37, lat:29.76},
+    {name:"Port of Spain", country:"Trinidad & Tobago", lon:-61.52, lat:10.65},
+    {name:"Rio de Janeiro",country:"Brazil",            lon:-43.17, lat:-22.91}
   ];
 
-  // All routes radiate from London + a few inter-city
   const ROUTES = [
     ["London","Paris"],
     ["London","Algiers"],
@@ -883,20 +882,23 @@ window.addEventListener('scroll',function(){
     ["Rio de Janeiro","Port of Spain"]
   ];
 
-  const el   = document.getElementById('lpa-map');
-  const W    = el.clientWidth  || 1100;
-  const H    = el.clientHeight || 520;
+  const el    = document.getElementById('lpa-map');
+  const W     = Math.max(el.clientWidth || 0, 900);
+  const H     = Math.round(W * 0.48);
   const AMBER = '#c8873a';
+
+  el.style.height = H + 'px';
 
   const svg = d3.select('#lpa-map').append('svg')
     .attr('width','100%').attr('height','100%')
     .attr('viewBox', `0 0 ${W} ${H}`)
     .attr('preserveAspectRatio','xMidYMid meet');
 
-  // Natural Earth projection
-  const proj = d3.geoNaturalEarth1()
-    .scale(W / 6.2)
-    .translate([W / 2, H / 2]);
+  // Robinson projection — centred on 15°E so Europe & UK sit comfortably left-centre
+  const proj = d3.geoRobinson()
+    .scale(W / 5.8)
+    .center([15, 10])
+    .translate([W * 0.44, H * 0.52]);
 
   const path = d3.geoPath().projection(proj);
 
@@ -1054,15 +1056,15 @@ window.addEventListener('scroll',function(){
 
       // Label placement — smart offset per city
       const offsets = {
-        'London':       [-2, -14],
-        'Paris':        [10, -10],
-        'Algiers':      [10,  14],
-        'Dubai':        [10, -10],
-        'Bangkok':      [10, -12],
-        'Bali':         [10,  14],
-        'Houston':      [-2, -14],
-        'Port of Spain':[10, -10],
-        'Rio de Janeiro':[-2, 20]
+        'London':        [ 8, -13],
+        'Paris':         [ 8,  16],
+        'Algiers':       [ 8,  16],
+        'Dubai':         [ 8, -13],
+        'Bangkok':       [ 8, -13],
+        'Bali':          [ 8,  16],
+        'Houston':       [-2, -14],
+        'Port of Spain': [ 8, -13],
+        'Rio de Janeiro':[-2,  20]
       };
       const [ox, oy] = offsets[c.name] || [10, -10];
 
