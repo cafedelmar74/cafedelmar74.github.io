@@ -813,5 +813,13 @@ function initTimeline() {
 
 document.addEventListener('DOMContentLoaded', initTimeline);
 </script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function chk(){if(nav)nav.classList.toggle('scrolled',window.pageYOffset>80);}
+  window.addEventListener('scroll',chk,{passive:true});
+  chk();
+})();
+</script>
 </body>
 </html>
