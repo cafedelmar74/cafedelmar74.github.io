@@ -12,9 +12,9 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="London Petro Academy">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
-<link rel="canonical" href="index.html">
-<link rel="alternate" hreflang="en-gb" href="index.html">
-<link rel="alternate" hreflang="x-default" href="index.html">
+<link rel="canonical" href="https://www.londonpetroacademy.co.uk/">
+<link rel="alternate" hreflang="en-gb" href="https://www.londonpetroacademy.co.uk/">
+<link rel="alternate" hreflang="x-default" href="https://www.londonpetroacademy.co.uk/">
 
 
 <!-- ═══════════════════════════════════════════
@@ -25,7 +25,7 @@
 <meta property="og:title" content="London Petro Academy | Oil, Gas &amp; Renewable Energy Training">
 <meta property="og:description" content="Premier oil, gas and renewable energy training for professionals worldwide. Upstream, downstream, LNG, fiscal systems and energy transition courses.">
 <meta property="og:url" content="https://www.londonpetroacademy.co.uk/">
-<meta property="og:image" content="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Virtual-Meeting-3-2.jpg">
+<meta property="og:image" content="https://www.londonpetroacademy.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
@@ -37,7 +37,7 @@
 <meta name="twitter:site" content="@LondonPetroAc">
 <meta name="twitter:title" content="London Petro Academy | Oil, Gas &amp; Renewable Energy Training">
 <meta name="twitter:description" content="Premier oil, gas and renewable energy training for professionals worldwide. Upstream, downstream, LNG, fiscal systems and energy transition courses.">
-<meta name="twitter:image" content="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Virtual-Meeting-3-2.jpg">
+<meta name="twitter:image" content="https://www.londonpetroacademy.co.uk/og-image.jpg">
 
 <!-- ═══════════════════════════════════════════
      STRUCTURED DATA — Organization
@@ -728,6 +728,8 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 .trust-logos img { filter: brightness(0) invert(1) !important; opacity: 0.45 !important; }
 
 </style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -770,7 +772,7 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 <section class="hero" aria-label="Homepage hero">
   <div class="hero-bg">
     <div class="hero-video">
-      <video autoplay muted loop playsinline preload="auto">
+      <video autoplay muted loop playsinline preload="auto" poster="/hero-poster.jpg">
         <source src="hero-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -1079,12 +1081,12 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   <div class="eq-right reveal">
     <form class="eq-form" onsubmit="handleEnquiry(event)" aria-label="Enquiry form">
       <div class="eq-form-row">
-        <input type="text" placeholder="Your full name" required aria-label="Full name">
-        <input type="text" placeholder="Your organisation" aria-label="Organisation">
+        <input type="text" placeholder="Your full name" required aria-label="Full name" name="full_name">
+        <input type="text" placeholder="Your organisation" aria-label="Organisation" name="organisation">
       </div>
-      <input type="email" placeholder="Your email address" required aria-label="Email address">
-      <input type="tel" placeholder="Phone number (optional)" aria-label="Phone number">
-      <textarea placeholder="Tell us about your training requirements — topic, number of delegates, preferred dates and delivery format." aria-label="Training requirements"></textarea>
+      <input type="email" placeholder="Your email address" required aria-label="Email address" name="email">
+      <input type="tel" placeholder="Phone number (optional)" aria-label="Phone number" name="phone">
+      <textarea placeholder="Tell us about your training requirements — topic, number of delegates, preferred dates and delivery format." aria-label="Training requirements" name="requirements"></textarea>
       <button type="submit" class="eq-submit">Send Enquiry</button>
       <p class="eq-note">Your details are handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
     </form>
