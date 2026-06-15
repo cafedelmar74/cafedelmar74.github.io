@@ -32,13 +32,25 @@ body{background:var(--bg);color:#111111;font-family:var(--sans);font-size:16px;l
 a{color:inherit;text-decoration:none;}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;align-items:center;padding:0 32px;background:rgba(237,234,228,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.08);}
-.nav-logo img{height:32px;opacity:.9;}
-.nav-links{display:flex;gap:28px;margin-left:40px;}
-.nav-links a{font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#3d3d3d;transition:color .2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--amber);}
-.nav-cta{margin-left:auto;background:var(--amber);color:#000;font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:9px 20px;border-radius:var(--r);transition:opacity .2s;}
-.nav-cta:hover{opacity:.85;}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(10,11,13,0.0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s;}
+nav.scrolled{background:rgba(10,11,13,0.97);backdrop-filter:blur(20px);border-color:rgba(255,255,255,0.07);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:44px;width:auto;max-width:280px;object-fit:contain;object-position:left center;display:block;transition:opacity .2s;}
+.nav-logo:hover img{opacity:.82;}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+.nav-links a{font-family:'Barlow',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.72);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.active{color:#c8873a;}
+.nav-cta{border:1px solid #c8873a!important;color:#c8873a!important;padding:10px 24px;transition:background .2s,color .2s!important;}
+.nav-cta:hover{background:#c8873a!important;color:#0a0b0d!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#e8e6e0;}
+.mob{display:none;position:fixed;inset:0;z-index:950;background:#0a0b0d;flex-direction:column;justify-content:center;align-items:center;gap:28px;}
+.mob.open{display:flex;}
+.mob a{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#e8e6e0;text-decoration:none;transition:color .2s;}
+.mob a:hover{color:#c8873a;}
+.mob-close{position:absolute;top:24px;right:32px;background:none;border:none;cursor:pointer;color:#8a8f96;font-size:26px;}
+@media(max-width:768px){nav{padding:0 24px;height:64px;}.nav-links{display:none;}.hamburger{display:flex;}}
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:720px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding-top:64px;}
@@ -244,16 +256,27 @@ a{color:inherit;text-decoration:none;}
 </svg>
 
 <!-- NAV -->
-<nav class="nav">
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
-  <div class="nav-links">
-    <a href="upstream.html">Upstream</a>
-    <a href="downstream.html">Downstream</a>
-    <a href="renewables.html">Renewables</a>
-    <a href="calendar-2026.html" class="active">2026 Calendar</a>
-  </div>
-  <a href="mailto:info@londonpetroacademy.co.uk?subject=2026 Course Enquiry" class="nav-cta">Enquire Now</a>
+  <ul class="nav-links">
+    <li><a href="upstream.html">Upstream</a></li>
+    <li><a href="downstream.html">Downstream</a></li>
+    <li><a href="renewables.html">Renewables</a></li>
+    <li><a href="inhouse.html">In-House</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="mailto:info@londonpetroacademy.co.uk" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
 </nav>
+<div id="mob" class="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">&#x2715;</button>
+  <a href="upstream.html" onclick="toggleNav()">Upstream</a>
+  <a href="downstream.html" onclick="toggleNav()">Downstream</a>
+  <a href="renewables.html" onclick="toggleNav()">Renewables</a>
+  <a href="inhouse.html" onclick="toggleNav()">In-House</a>
+  <a href="about.html" onclick="toggleNav()">About</a>
+  <a href="mailto:info@londonpetroacademy.co.uk">Contact Us</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" aria-label="2026 Training Calendar">
@@ -728,6 +751,11 @@ window.addEventListener('scroll',()=>{
   // sticky CTA
   if(window.scrollY>500) document.getElementById('stickyCta').classList.add('visible');
 },{passive:true});
+
+// ── NAV ──
+function toggleNav(){document.getElementById('mob').classList.toggle('open');document.body.style.overflow=document.getElementById('mob').classList.contains('open')?'hidden':'';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('mob').classList.contains('open'))toggleNav();});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
