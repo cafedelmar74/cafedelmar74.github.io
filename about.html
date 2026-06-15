@@ -126,13 +126,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;height:72px;display:flex;ali
 .pillar-text{font-size:14px;color:var(--grey);font-weight:300;line-height:1.75;}
 
 /* ── GLOBAL REACH MAP ── */
-.reach-map-section{background:#e8eaef;padding:0;}
+.reach-map-section{background:#0d0f12;padding:0;}
 .reach-map-header{padding:72px 60px 36px;text-align:center;}
 .reach-map-title{font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:300;color:#fff;margin-bottom:10px;}
 .reach-map-title em{font-style:italic;color:var(--amber);}
-.reach-map-sub{font-size:15px;color:#555e72;font-weight:300;}
+.reach-map-sub{font-size:15px;color:var(--grey);font-weight:300;}
 .reach-map-wrap{position:relative;}
-#lpa-map{width:100%;background:#e8eaef;overflow:hidden;line-height:0;}
+#lpa-map{width:100%;background:#0d0f12;overflow:hidden;line-height:0;}
 #lpa-map svg{width:100%;height:auto;display:block;}
 /* D3 map styles */
 .lpa-country{fill:#1a1e25;stroke:#252b34;stroke-width:0.4;}
@@ -151,11 +151,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;height:72px;display:flex;ali
 /* Moving dot on arc */
 .lpa-traveller{fill:var(--amber);}
 /* City strip */
-.reach-city-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;background:rgba(0,0,0,0.08);border-top:1px solid rgba(0,0,0,0.1);padding:18px 40px;}
+.reach-city-strip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.06);padding:18px 40px;}
 .rcs-item{display:flex;flex-direction:column;align-items:center;padding:10px 18px;gap:3px;}
-.rcs-city{font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#1a1f2e;font-weight:600;}
-.rcs-country{font-family:var(--sans);font-size:9px;color:#555e72;font-weight:300;}
-.rcs-sep{width:1px;height:28px;background:rgba(0,0,0,0.12);}
+.rcs-city{font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--off-white);font-weight:600;}
+.rcs-country{font-family:var(--sans);font-size:9px;color:var(--grey);font-weight:300;}
+.rcs-sep{width:1px;height:28px;background:rgba(255,255,255,0.07);}
 @media(max-width:768px){
   .reach-map-header{padding:48px 24px 24px;}
   #lpa-map{height:280px;}
@@ -388,8 +388,8 @@ footer{background:#080909;border-top:1px solid var(--line);}
   0%{r:5;opacity:0.85;}
   100%{r:24;opacity:0;}
 }
-.cl{font-family:"Barlow Condensed",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.5px;fill:#1a1f2e;}
-.cs{font-family:"Barlow",sans-serif;font-size:8.5px;fill:rgba(60,70,90,0.85);}
+.cl{font-family:"Barlow Condensed",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.5px;fill:#e8e6e0;}
+.cs{font-family:"Barlow",sans-serif;font-size:8.5px;fill:rgba(138,143,150,0.9);}
 #arc0{animation:drawArc 1.2s cubic-bezier(.4,0,.2,1) 0.40s infinite alternate;}
 #arc1{animation:drawArc 1.2s cubic-bezier(.4,0,.2,1) 0.72s infinite alternate;}
 #arc2{animation:drawArc 1.2s cubic-bezier(.4,0,.2,1) 1.04s infinite alternate;}
@@ -412,15 +412,15 @@ footer{background:#080909;border-top:1px solid var(--line);}
 #p7{animation:pulse 2.4s ease-out 1.54s infinite;}
 #p8{animation:pulse 2.4s ease-out 1.76s infinite;}
 </style>
-<rect width="1100" height="560" fill="#1a1f2e"/>
-<g stroke="rgba(255,255,255,0.08)" stroke-width="0.5" fill="none">
+<rect width="1100" height="560" fill="#0d0f12"/>
+<g stroke="rgba(255,255,255,0.04)" stroke-width="0.5" fill="none">
   <line x1="0" y1="280.0" x2="1100" y2="280.0"/>
   <line x1="0" y1="198.7" x2="1100" y2="198.7" stroke-dasharray="4,5"/>
   <line x1="0" y1="361.3" x2="1100" y2="361.3" stroke-dasharray="4,5"/>
   <line x1="0" y1="55.1" x2="1100" y2="55.1" stroke-dasharray="2,7"/>
   <line x1="69.7" y1="0" x2="69.7" y2="560"/><line x1="161.3" y1="0" x2="161.3" y2="560"/><line x1="253.0" y1="0" x2="253.0" y2="560"/><line x1="344.7" y1="0" x2="344.7" y2="560"/><line x1="436.3" y1="0" x2="436.3" y2="560"/><line x1="528.0" y1="0" x2="528.0" y2="560"/><line x1="619.7" y1="0" x2="619.7" y2="560"/><line x1="711.3" y1="0" x2="711.3" y2="560"/><line x1="803.0" y1="0" x2="803.0" y2="560"/><line x1="894.7" y1="0" x2="894.7" y2="560"/><line x1="986.3" y1="0" x2="986.3" y2="560"/><line x1="1078.0" y1="0" x2="1078.0" y2="560"/>
 </g>
-<g fill="#c8cdd8" stroke="#a0a8b8" stroke-width="0.45" stroke-linejoin="round">
+<g fill="#1b2030" stroke="#2a3347" stroke-width="0.45" stroke-linejoin="round">
 <path d="M25.2,340.6L25.8,340.0L27.1,341.0L27.0,342.8L25.2,343.3L23.5,342.8L22.8,341.3L23.7,340.1L25.2,340.6Z"/>
 <path d="M26.6,338.8L25.9,337.6Z"/>
 <path d="M677.4,283.3L677.9,283.7L688.9,290.7L689.1,292.7L693.4,296.2M693.4,296.2L691.9,300.4L692.0,302.4L693.9,303.7L694.0,304.6L693.1,306.6L693.2,307.7L693.0,309.4L694.0,311.5L695.1,314.9L696.2,315.7M696.2,315.7L693.7,317.7L690.3,319.0L688.5,319.0L687.3,320.0L685.2,320.1L684.4,320.5L680.8,319.6L678.5,319.9M678.5,319.9L677.9,315.1L676.9,313.5L676.3,312.6L673.3,311.9M673.3,311.9L671.6,310.9L669.7,310.3L668.5,309.7L667.3,308.8M667.3,308.8L665.7,304.5L664.0,302.6L663.5,300.5L663.8,298.8L663.3,295.6M663.3,295.6L664.6,295.4L665.7,294.1L666.9,292.3L667.7,291.6L667.7,290.5L667.0,289.7L666.8,288.3M666.8,288.3L667.7,287.9L667.9,285.9L666.7,283.9M666.7,283.9L667.8,283.5L671.2,283.6L677.4,283.3Z"/>
