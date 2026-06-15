@@ -851,10 +851,15 @@ window.addEventListener('scroll',function(){
 </script>
 
 <!-- ══ D3 WORLD MAP SCRIPT ══ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-(function(){
+(function initMap(){
+  // Defer until DOM + scripts fully loaded
+  if(typeof d3 === 'undefined' || typeof topojson === 'undefined'){
+    return setTimeout(initMap, 100);
+  }
+
   const CITIES = [
     {name:"London",        country:"United Kingdom",    lon:-0.12,  lat:51.51},
     {name:"Paris",         country:"France",            lon:2.35,   lat:48.85},
@@ -882,210 +887,225 @@ window.addEventListener('scroll',function(){
     ["Rio de Janeiro","Port of Spain"]
   ];
 
-  const el    = document.getElementById('lpa-map');
-  const W     = Math.max(el.clientWidth || 0, 900);
-  const H     = Math.round(W * 0.48);
   const AMBER = '#c8873a';
+  const el = document.getElementById('lpa-map');
+  if(!el) return;
 
+  // Clear any existing content
+  el.innerHTML = '';
+
+  const W = el.offsetWidth || 960;
+  const H = Math.round(W * 0.50);
   el.style.height = H + 'px';
 
   const svg = d3.select('#lpa-map').append('svg')
-    .attr('width','100%').attr('height','100%')
-    .attr('viewBox', `0 0 ${W} ${H}`)
-    .attr('preserveAspectRatio','xMidYMid meet');
+    .attr('width', W).attr('height', H);
 
-  // Robinson projection — centred on 15°E so Europe & UK sit comfortably left-centre
-  const proj = d3.geoRobinson()
-    .scale(W / 5.8)
-    .center([15, 10])
-    .translate([W * 0.44, H * 0.52]);
+  // Robinson projection centred to show Europe clearly left-of-centre
+  const projection = d3.geoRobinson()
+    .scale(W / 6.0)
+    .translate([W * 0.50, H * 0.54])
+    .rotate([-10, 0, 0]);  // rotate globe -10deg so Europe/UK centred
 
-  const path = d3.geoPath().projection(proj);
+  const pathGen = d3.geoPath().projection(projection);
 
-  // Sphere + graticule
-  svg.append('path').datum({type:'Sphere'})
-    .attr('class','lpa-sphere').attr('d',path);
+  // Background sphere
+  svg.append('path')
+    .datum({type:'Sphere'})
+    .attr('fill','#0a0b0d')
+    .attr('d', pathGen);
 
+  // Graticule
   svg.append('path')
     .datum(d3.geoGraticule()())
-    .attr('class','lpa-graticule').attr('d',path);
+    .attr('fill','none')
+    .attr('stroke','rgba(255,255,255,0.04)')
+    .attr('stroke-width', 0.5)
+    .attr('d', pathGen);
 
-  // Load world topojson
-  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world){
-    svg.append('g').selectAll('path')
-      .data(topojson.feature(world, world.objects.countries).features)
-      .join('path')
-      .attr('class','lpa-country')
-      .attr('d', path);
+  // Load world data
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(function(world){
 
-    // Project cities
-    const projected = CITIES.map(function(c){
-      const p = proj([c.lon, c.lat]);
-      return {...c, x: p[0], y: p[1]};
-    });
-    const cityMap = {};
-    projected.forEach(function(c){ cityMap[c.name] = c; });
+      // Countries
+      svg.append('g')
+        .selectAll('path')
+        .data(topojson.feature(world, world.objects.countries).features)
+        .join('path')
+        .attr('fill','#1a1f28')
+        .attr('stroke','#2a3040')
+        .attr('stroke-width', 0.4)
+        .attr('d', pathGen);
 
-    // ── Draw arcs ──
-    const arcGroup = svg.append('g').attr('class','arc-group');
-    const arcPaths = [];
+      // Country borders
+      svg.append('path')
+        .datum(topojson.mesh(world, world.objects.countries, (a,b) => a !== b))
+        .attr('fill','none')
+        .attr('stroke','rgba(255,255,255,0.06)')
+        .attr('stroke-width', 0.3)
+        .attr('d', pathGen);
 
-    ROUTES.forEach(function(route, i){
-      const A = cityMap[route[0]];
-      const B = cityMap[route[1]];
-      if(!A || !B) return;
+      // Project city coords
+      const cityMap = {};
+      CITIES.forEach(function(c){
+        const pt = projection([c.lon, c.lat]);
+        cityMap[c.name] = {...c, px: pt[0], py: pt[1]};
+      });
 
-      // Great-circle arc via D3 geo path
-      const arcData = {
-        type:'Feature',
-        geometry:{
-          type:'LineString',
-          coordinates:[[A.lon,A.lat],[B.lon,B.lat]]
-        }
-      };
+      // ── ARC GROUP ──
+      const arcGroup = svg.append('g');
+      const arcMeta = [];
 
-      // Use interpolated points for smooth curved arc
-      const interp = d3.geoInterpolate([A.lon,A.lat],[B.lon,B.lat]);
-      const points = d3.range(0,1.01,0.02).map(function(t){ return proj(interp(t)); }).filter(function(p){ return p; });
-      const lineGen = d3.line().x(function(d){return d[0];}).y(function(d){return d[1];}).curve(d3.curveCatmullRom);
+      ROUTES.forEach(function(route, i){
+        const A = cityMap[route[0]];
+        const B = cityMap[route[1]];
+        if(!A || !B) return;
 
-      const arcPath = arcGroup.append('path')
-        .attr('class','lpa-arc')
-        .attr('d', lineGen(points))
-        .attr('id','arc-'+i);
+        // Great-circle interpolation → projected points
+        const interp = d3.geoInterpolate([A.lon,A.lat],[B.lon,B.lat]);
+        const pts = d3.range(0, 1.02, 0.02)
+          .map(t => projection(interp(t)))
+          .filter(p => p != null);
 
-      arcPaths.push({path: arcPath.node(), A, B, points, index: i});
-    });
+        if(pts.length < 2) return;
 
-    // ── Animate arcs sequentially ──
-    function animateArc(arcObj, delay){
-      const p = arcObj.path;
-      const totalLen = p.getTotalLength();
+        const lineGen = d3.line()
+          .x(d => d[0]).y(d => d[1])
+          .curve(d3.curveCatmullRom.alpha(0.5));
 
-      d3.select(p)
-        .attr('stroke-dasharray', totalLen + ' ' + totalLen)
-        .attr('stroke-dashoffset', totalLen)
-        .attr('opacity', 0.55)
-        .transition()
-        .delay(delay)
-        .duration(1400)
-        .ease(d3.easeCubicInOut)
-        .attr('stroke-dashoffset', 0)
-        .on('end', function(){
-          // spawn travelling dot
-          launchDot(arcObj, delay);
+        const arcPath = arcGroup.append('path')
+          .attr('fill','none')
+          .attr('stroke', AMBER)
+          .attr('stroke-width', 1.0)
+          .attr('stroke-linecap','round')
+          .attr('opacity', 0)
+          .attr('d', lineGen(pts));
+
+        arcMeta.push({node: arcPath.node(), A, B, index: i});
+      });
+
+      // ── ANIMATE ARCS ──
+      function drawArcs(baseDelay){
+        arcMeta.forEach(function(a, i){
+          const node = a.node;
+          const len  = node.getTotalLength();
+          d3.select(node)
+            .attr('stroke-dasharray', len + ' ' + len)
+            .attr('stroke-dashoffset', len)
+            .attr('opacity', 0)
+            .transition()
+              .delay(baseDelay + i * 350)
+              .duration(1200)
+              .ease(d3.easeCubicInOut)
+              .attr('stroke-dashoffset', 0)
+              .attr('opacity', 0.5)
+              .on('end', function(){
+                // Launch traveller dot
+                launchDot(node);
+                // Fade arc out after a pause
+                d3.select(node)
+                  .transition().delay(2000)
+                  .duration(600)
+                  .attr('opacity', 0.18);
+              });
         });
-    }
+      }
 
-    // Stagger arc animation
-    arcPaths.forEach(function(a, i){
-      animateArc(a, i * 320);
-    });
-
-    // Re-animate all arcs on loop
-    function reloop(){
-      arcPaths.forEach(function(a, i){
-        const p = a.path;
-        const totalLen = p.getTotalLength();
-        d3.select(p)
-          .attr('stroke-dasharray', totalLen + ' ' + totalLen)
-          .attr('stroke-dashoffset', totalLen)
-          .attr('opacity', 0.0)
-          .transition()
-          .delay(4000 + i * 280)
+      // ── TRAVELLER DOT ──
+      function launchDot(pathNode){
+        const len = pathNode.getTotalLength();
+        const dot = svg.append('circle')
+          .attr('r', 3.5)
+          .attr('fill', AMBER)
+          .attr('filter','url(#dotglow)')
+          .attr('opacity', 1);
+        const start = pathNode.getPointAtLength(0);
+        dot.attr('cx', start.x).attr('cy', start.y);
+        dot.transition()
           .duration(1200)
           .ease(d3.easeCubicInOut)
-          .attr('stroke-dashoffset', 0)
-          .attr('opacity', 0.55)
-          .on('end', function(){ launchDot(a, 0); });
-      });
-      setTimeout(reloop, 4000 + arcPaths.length * 300 + 2500);
-    }
-    setTimeout(reloop, arcPaths.length * 320 + 3000);
+          .attrTween('cx', () => t => pathNode.getPointAtLength(t * len).x)
+          .attrTween('cy', () => t => pathNode.getPointAtLength(t * len).y)
+          .on('end', () => dot.remove());
+      }
 
-    // ── Travelling dot along arc ──
-    function launchDot(arcObj, extraDelay){
-      const p = arcObj.path;
-      const totalLen = p.getTotalLength();
-      const dot = svg.append('circle')
-        .attr('class','lpa-traveller')
-        .attr('r', 3.5)
-        .attr('opacity', 0.9);
+      // Glow filter for dots
+      const defs = svg.append('defs');
+      const filter = defs.append('filter').attr('id','dotglow')
+        .attr('x','-100%').attr('y','-100%').attr('width','300%').attr('height','300%');
+      filter.append('feGaussianBlur').attr('in','SourceGraphic').attr('stdDeviation','3').attr('result','blur');
+      const merge = filter.append('feMerge');
+      merge.append('feMergeNode').attr('in','blur');
+      merge.append('feMergeNode').attr('in','SourceGraphic');
 
-      const startPt = p.getPointAtLength(0);
-      dot.attr('cx', startPt.x).attr('cy', startPt.y);
+      // First run
+      drawArcs(300);
+      // Loop every 7s
+      setInterval(() => drawArcs(0), 7000);
 
-      dot.transition()
-        .delay(extraDelay || 0)
-        .duration(1400)
-        .ease(d3.easeCubicInOut)
-        .attrTween('cx', function(){
-          return function(t){ return p.getPointAtLength(t * totalLen).x; };
-        })
-        .attrTween('cy', function(){
-          return function(t){ return p.getPointAtLength(t * totalLen).y; };
-        })
-        .on('end', function(){ dot.remove(); });
-    }
-
-    // ── City dots & labels ──
-    const cityGroup = svg.append('g').attr('class','city-group');
-
-    projected.forEach(function(c, i){
-      const g = cityGroup.append('g')
-        .attr('transform', `translate(${c.x},${c.y})`);
-
-      // Pulse ring
-      const pulse = g.append('circle')
-        .attr('r', 6)
-        .attr('fill', 'rgba(200,135,58,0.3)')
-        .attr('stroke', 'none');
-
-      // Animate pulse continuously with offset
-      (function animPulse(){
-        pulse.attr('r',5).attr('opacity',0.7)
-          .transition().delay(i * 300)
-          .duration(2000).ease(d3.easeLinear)
-          .attr('r', 20).attr('opacity', 0)
-          .on('end', animPulse);
-      })();
-
-      // Core dot
-      g.append('circle').attr('r', 5).attr('fill', AMBER);
-      g.append('circle').attr('r', 2.5).attr('fill', '#fff');
-
-      // Label placement — smart offset per city
-      const offsets = {
-        'London':        [ 8, -13],
-        'Paris':         [ 8,  16],
-        'Algiers':       [ 8,  16],
-        'Dubai':         [ 8, -13],
-        'Bangkok':       [ 8, -13],
-        'Bali':          [ 8,  16],
-        'Houston':       [-2, -14],
-        'Port of Spain': [ 8, -13],
-        'Rio de Janeiro':[-2,  20]
+      // ── CITY DOTS & LABELS ──
+      const labelOffsets = {
+        'London':        { dx: 6,  dy:-13, anchor:'start' },
+        'Paris':         { dx: 6,  dy: 16, anchor:'start' },
+        'Algiers':       { dx: 6,  dy: 16, anchor:'start' },
+        'Dubai':         { dx: 6,  dy:-13, anchor:'start' },
+        'Bangkok':       { dx: 6,  dy:-13, anchor:'start' },
+        'Bali':          { dx: 6,  dy: 16, anchor:'start' },
+        'Houston':       { dx:-6,  dy:-13, anchor:'end'   },
+        'Port of Spain': { dx: 6,  dy:-13, anchor:'start' },
+        'Rio de Janeiro':{ dx: 6,  dy: 16, anchor:'start' }
       };
-      const [ox, oy] = offsets[c.name] || [10, -10];
 
-      g.append('text')
-        .attr('class','lpa-label')
-        .attr('x', ox).attr('y', oy)
-        .attr('text-anchor', ox < 0 ? 'middle' : 'start')
-        .text(c.name);
+      const cityLayer = svg.append('g');
 
-      g.append('text')
-        .attr('class','lpa-label-sub')
-        .attr('x', ox).attr('y', oy + 11)
-        .attr('text-anchor', ox < 0 ? 'middle' : 'start')
-        .text(c.country);
+      CITIES.forEach(function(c, i){
+        const {px, py} = cityMap[c.name];
+        const off = labelOffsets[c.name] || {dx:6, dy:-13, anchor:'start'};
+        const g = cityLayer.append('g').attr('transform',`translate(${px},${py})`);
+
+        // Pulse ring
+        function pulse(){
+          g.append('circle')
+            .attr('r', 5).attr('fill','none')
+            .attr('stroke', AMBER).attr('stroke-width', 1.2)
+            .attr('opacity', 0.7)
+            .transition().delay(i * 250)
+            .duration(2200).ease(d3.easeLinear)
+            .attr('r', 20).attr('opacity', 0)
+            .remove();
+        }
+        pulse();
+        setInterval(pulse, 2200 + i * 50);
+
+        // Core dot
+        g.append('circle').attr('r', 5.5).attr('fill', AMBER).attr('filter','url(#dotglow)');
+        g.append('circle').attr('r', 2.5).attr('fill', '#ffffff');
+
+        // City name
+        g.append('text')
+          .attr('x', off.dx).attr('y', off.dy)
+          .attr('text-anchor', off.anchor)
+          .attr('font-family','"Barlow Condensed",sans-serif')
+          .attr('font-size','10.5').attr('font-weight','600')
+          .attr('letter-spacing','1.5')
+          .attr('fill','#e8e6e0')
+          .attr('text-transform','uppercase')
+          .text(c.name.toUpperCase());
+
+        // Country sub-label
+        g.append('text')
+          .attr('x', off.dx).attr('y', off.dy + 12)
+          .attr('text-anchor', off.anchor)
+          .attr('font-family','"Barlow",sans-serif')
+          .attr('font-size','8.5')
+          .attr('fill','rgba(138,143,150,0.85)')
+          .text(c.country);
+      });
+
+    }).catch(function(err){
+      console.error('World atlas load failed:', err);
+      el.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8a8f96;font-family:Barlow,sans-serif;font-size:14px;letter-spacing:1px;">MAP LOADING…</div>';
     });
-
-  }).catch(function(err){
-    console.warn('Map load error:', err);
-    document.getElementById('lpa-map').innerHTML =
-      '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#8a8f96;font-family:Barlow,sans-serif;font-size:14px;">Map unavailable</div>';
-  });
 })();
 </script>
 </body>
