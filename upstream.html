@@ -1324,7 +1324,7 @@ function submitCalDownload(){
   var btn=document.getElementById('calDlSubmit');
   btn.disabled=true;btn.textContent='Sending…';
   var src=window.location.href;
-  fetch( + WEBHOOK + ,{
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({first_name:fn,last_name:ln,email:em,phone:ph,source_page:src})
