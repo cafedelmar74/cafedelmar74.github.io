@@ -132,8 +132,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;height:72px;display:flex;ali
 .reach-map-title em{font-style:italic;color:var(--amber);}
 .reach-map-sub{font-size:15px;color:var(--grey);font-weight:300;}
 .reach-map-wrap{position:relative;}
-#lpa-map{width:100%;height:500px;background:#0d0f12;position:relative;overflow:hidden;}
-#lpa-map svg{width:100%;height:100%;}
+#lpa-map{width:100%;background:#0d0f12;overflow:hidden;line-height:0;}
+#lpa-map svg{width:100%;height:auto;display:block;}
 /* D3 map styles */
 .lpa-country{fill:#1a1e25;stroke:#252b34;stroke-width:0.4;}
 .lpa-country:hover{fill:#1f242d;}
@@ -374,7 +374,7 @@ footer{background:#080909;border-top:1px solid var(--line);}
     <p class="reach-map-sub">Expert-led programmes delivered across energy capitals on every continent</p>
   </div>
   <div class="reach-map-wrap">
-    <div id="lpa-map" style="width:100%;background:#0d0f12;overflow:hidden;line-height:0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" style="width:100%;height:auto;display:block;">
+    <div id="lpa-map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" style="width:100%;height:auto;display:block;">
 <style>
 .lpa-arc{fill:none;stroke:#c8873a;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:2000 2000;stroke-dashoffset:2000;opacity:0;}
 @keyframes drawArc{
