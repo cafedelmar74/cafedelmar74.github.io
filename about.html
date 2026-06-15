@@ -167,19 +167,24 @@ nav.scrolled{background:rgba(10,11,13,0.97);backdrop-filter:blur(20px);border-co
 
 
 
-/* ── CLIENTS ── */
-.clients-section{padding:96px 60px;}
-.client-categories{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;}
-.client-cat{border-top:1px solid var(--line2);padding-top:28px;}
-.client-cat-label{font-family:var(--cond);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.client-cat-label::after{content:'';flex:1;height:1px;background:var(--line);}
-.client-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.client-logo-block{background:var(--bg2);border:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:80px;transition:border-color .25s,background .25s;cursor:default;}
-.client-logo-block:hover{border-color:rgba(200,135,58,0.35);background:var(--bg3);}
-.client-logo-abbr{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--off-white);letter-spacing:.5px;}
-.client-logo-name{font-family:var(--cond);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);text-align:center;line-height:1.3;}
-
-
+/* ── CLIENT BANNERS ── */
+.clients-section{padding:96px 0;}
+.clients-band{margin:0 0 2px;overflow:hidden;position:relative;}
+.clients-band-alt{background:var(--bg2);}
+.clients-band-label{font-family:var(--cond);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);padding:14px 60px 8px;opacity:0.8;}
+.clients-ticker-wrap{overflow:hidden;white-space:nowrap;padding:10px 0 16px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.clients-ticker{display:inline-flex;animation:clientScroll 32s linear infinite;}
+.clients-ticker-rev{animation:clientScrollRev 28s linear infinite;}
+.ct-item{font-family:var(--cond);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--off-white);padding:0 40px;display:inline-flex;align-items:center;gap:40px;opacity:0.75;transition:opacity .2s;}
+.ct-item::after{content:'◆';font-size:6px;color:var(--amber);opacity:0.6;margin-left:40px;}
+.clients-ticker-wrap:hover .clients-ticker,.clients-ticker-wrap:hover .clients-ticker-rev{animation-play-state:paused;}
+@keyframes clientScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes clientScrollRev{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+@media(max-width:768px){
+  .clients-band-label{padding:12px 24px 6px;}
+  .ct-item{font-size:13px;padding:0 28px;}
+  .ct-item::after{margin-left:28px;}
+}
 
 /* ── TIMELINE ── */
 .timeline-bg{background:var(--bg2);}
@@ -852,60 +857,107 @@ footer{background:#080909;border-top:1px solid var(--line);}
     <span class="sec-tag">Our Clients</span>
     <h2 class="sec-title" id="clients-heading">Trusted by the <em>World's</em><br>Leading Energy Organisations</h2>
     <div class="sec-rule"></div>
-    <p class="body-text" style="max-width:640px;margin-bottom:8px;">From state-owned oil companies managing national energy assets, to global supermajors navigating the energy transition — our clients represent the full breadth of the international energy industry.</p>
+    <p class="body-text" style="max-width:640px;margin-bottom:48px;">From state-owned oil companies managing national energy assets, to global supermajors navigating the energy transition — our clients represent the full breadth of the international energy industry.</p>
+  </div>
 
-    <div class="client-categories">
-
-      <!-- NOCs -->
-      <div class="client-cat">
-        <div class="client-cat-label">National Oil Companies</div>
-        <div class="client-logos">
-          <div class="client-logo-block"><div class="client-logo-abbr">PBR</div><div class="client-logo-name">Petrobras</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">CNPC</div><div class="client-logo-name">China National Petroleum</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">ADNOC</div><div class="client-logo-name">Abu Dhabi NOC</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">NNPC</div><div class="client-logo-name">Nigerian NOC</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">QP</div><div class="client-logo-name">QatarEnergy</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">PTT</div><div class="client-logo-name">PTT Thailand</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">KPC</div><div class="client-logo-name">Kuwait Petroleum</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">SOCAR</div><div class="client-logo-name">Azerbaijan NOC</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">GAS</div><div class="client-logo-name">Gazprom</div></div>
-        </div>
+  <!-- NOCs Banner -->
+  <div class="clients-band">
+    <div class="clients-band-label">National Oil Companies</div>
+    <div class="clients-ticker-wrap" aria-hidden="true">
+      <div class="clients-ticker">
+        <span class="ct-item">Petrobras</span>
+        <span class="ct-item">CNPC</span>
+        <span class="ct-item">ADNOC</span>
+        <span class="ct-item">NNPC</span>
+        <span class="ct-item">QatarEnergy</span>
+        <span class="ct-item">PTT Thailand</span>
+        <span class="ct-item">Kuwait Petroleum</span>
+        <span class="ct-item">SOCAR</span>
+        <span class="ct-item">Gazprom</span>
+        <span class="ct-item">Saudi Aramco</span>
+        <span class="ct-item">NIOC</span>
+        <span class="ct-item">Pertamina</span>
+        <!-- duplicate for seamless loop -->
+        <span class="ct-item">Petrobras</span>
+        <span class="ct-item">CNPC</span>
+        <span class="ct-item">ADNOC</span>
+        <span class="ct-item">NNPC</span>
+        <span class="ct-item">QatarEnergy</span>
+        <span class="ct-item">PTT Thailand</span>
+        <span class="ct-item">Kuwait Petroleum</span>
+        <span class="ct-item">SOCAR</span>
+        <span class="ct-item">Gazprom</span>
+        <span class="ct-item">Saudi Aramco</span>
+        <span class="ct-item">NIOC</span>
+        <span class="ct-item">Pertamina</span>
       </div>
-
-      <!-- IOCs -->
-      <div class="client-cat">
-        <div class="client-cat-label">International Oil Companies</div>
-        <div class="client-logos">
-          <div class="client-logo-block"><div class="client-logo-abbr">CVX</div><div class="client-logo-name">Chevron</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">BP</div><div class="client-logo-name">BP</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">SHE</div><div class="client-logo-name">Shell</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">TTE</div><div class="client-logo-name">TotalEnergies</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">XOM</div><div class="client-logo-name">ExxonMobil</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">ENI</div><div class="client-logo-name">Eni</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">OXY</div><div class="client-logo-name">Occidental</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">KRN</div><div class="client-logo-name">Karoon Energy</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">AND</div><div class="client-logo-name">Oando</div></div>
-        </div>
-      </div>
-
-      <!-- Ministries & Institutions -->
-      <div class="client-cat">
-        <div class="client-cat-label">Ministries &amp; Institutions</div>
-        <div class="client-logos">
-          <div class="client-logo-block"><div class="client-logo-abbr">MoE</div><div class="client-logo-name">Energy Ministries</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">IMF</div><div class="client-logo-name">Multilateral Bodies</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">SWF</div><div class="client-logo-name">Sovereign Wealth Funds</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">REG</div><div class="client-logo-name">Petroleum Regulators</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">IB</div><div class="client-logo-name">Investment Banks</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">LAW</div><div class="client-logo-name">Int'l Law Firms</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">DFI</div><div class="client-logo-name">Dev. Finance Inst.</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">CEN</div><div class="client-logo-name">Central Banks</div></div>
-          <div class="client-logo-block"><div class="client-logo-abbr">GOV</div><div class="client-logo-name">Gov't Agencies</div></div>
-        </div>
-      </div>
-
     </div>
   </div>
+
+  <!-- IOCs Banner (reverse direction) -->
+  <div class="clients-band clients-band-alt">
+    <div class="clients-band-label">International Oil Companies</div>
+    <div class="clients-ticker-wrap" aria-hidden="true">
+      <div class="clients-ticker clients-ticker-rev">
+        <span class="ct-item">Chevron</span>
+        <span class="ct-item">BP</span>
+        <span class="ct-item">Shell</span>
+        <span class="ct-item">TotalEnergies</span>
+        <span class="ct-item">ExxonMobil</span>
+        <span class="ct-item">Eni</span>
+        <span class="ct-item">Occidental</span>
+        <span class="ct-item">Karoon Energy</span>
+        <span class="ct-item">Oando</span>
+        <span class="ct-item">Harbour Energy</span>
+        <span class="ct-item">Equinor</span>
+        <span class="ct-item">ConocoPhillips</span>
+        <!-- duplicate -->
+        <span class="ct-item">Chevron</span>
+        <span class="ct-item">BP</span>
+        <span class="ct-item">Shell</span>
+        <span class="ct-item">TotalEnergies</span>
+        <span class="ct-item">ExxonMobil</span>
+        <span class="ct-item">Eni</span>
+        <span class="ct-item">Occidental</span>
+        <span class="ct-item">Karoon Energy</span>
+        <span class="ct-item">Oando</span>
+        <span class="ct-item">Harbour Energy</span>
+        <span class="ct-item">Equinor</span>
+        <span class="ct-item">ConocoPhillips</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ministries & Institutions Banner -->
+  <div class="clients-band">
+    <div class="clients-band-label">Ministries &amp; Institutions</div>
+    <div class="clients-ticker-wrap" aria-hidden="true">
+      <div class="clients-ticker">
+        <span class="ct-item">Energy Ministries</span>
+        <span class="ct-item">Sovereign Wealth Funds</span>
+        <span class="ct-item">Petroleum Regulators</span>
+        <span class="ct-item">Investment Banks</span>
+        <span class="ct-item">Int'l Law Firms</span>
+        <span class="ct-item">Dev. Finance Institutions</span>
+        <span class="ct-item">Central Banks</span>
+        <span class="ct-item">Multilateral Bodies</span>
+        <span class="ct-item">Gov't Agencies</span>
+        <span class="ct-item">Trade Associations</span>
+        <!-- duplicate -->
+        <span class="ct-item">Energy Ministries</span>
+        <span class="ct-item">Sovereign Wealth Funds</span>
+        <span class="ct-item">Petroleum Regulators</span>
+        <span class="ct-item">Investment Banks</span>
+        <span class="ct-item">Int'l Law Firms</span>
+        <span class="ct-item">Dev. Finance Institutions</span>
+        <span class="ct-item">Central Banks</span>
+        <span class="ct-item">Multilateral Bodies</span>
+        <span class="ct-item">Gov't Agencies</span>
+        <span class="ct-item">Trade Associations</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ══ TIMELINE ══ -->
