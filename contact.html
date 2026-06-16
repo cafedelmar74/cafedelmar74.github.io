@@ -105,8 +105,8 @@ nav.scrolled .hamburger span { background: #2c2825; }
 }
 
 /* ── HERO ── */
-.contact-hero{position:relative;padding:176px 60px 80px;background:linear-gradient(165deg,#0f1012 0%,#0a0b0d 60%,#0c0d0f 100%);overflow:hidden;}
-.contact-hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(200,135,58,0.08) 0%,transparent 65%);pointer-events:none;}
+.contact-hero{position:relative;padding:176px 60px 80px;background:url('contact.jpg') center center/cover no-repeat;overflow:hidden;}
+.contact-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.3) 100%);pointer-events:none;}
 .hero-inner{max-width:1200px;margin:0 auto;}
 .hero-tag{font-family:var(--cond);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
 .hero-title{font-family:var(--serif);font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.08;color:#fff;margin-bottom:20px;}
@@ -239,7 +239,7 @@ footer{background:#080909;border-top:1px solid var(--line);}
   nav{padding:0 24px;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
-  .contact-hero{padding:120px 24px 60px;}
+  .contact-hero{padding:120px 24px 60px;background:linear-gradient(165deg,#0f1012 0%,#0a0b0d 100%) !important;}
   .contact-section{padding:56px 24px;}
   .enquiry-form-wrap{padding:32px 24px;}
   .frow.two{grid-template-columns:1fr;}
