@@ -1323,24 +1323,14 @@ function submitCalDownload(){
   if(!fn||!ln||!em){alert('Please fill in all required fields.');return;}
   var btn=document.getElementById('calDlSubmit');
   btn.disabled=true;btn.textContent='Sending…';
-  var src=window.location.href;
-  fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({first_name:fn,last_name:ln,email:em,phone:ph,source_page:src})
-  })
-  .then(function(r){return r.json();})
-  .then(function(d){
-    document.getElementById('calDlForm').style.display='none';
-    document.getElementById('calDlSuccess').style.display='block';
-    setTimeout(function(){
-      window.location.href='https://cafedelmar74.github.io/calendar-2026.html';
-    },1200);
-  })
-  .catch(function(){
-    // On error still redirect — don't block the user
+  var pg=window.location.href;
+  var img=new Image();
+  img.src='https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?fn='+encodeURIComponent(fn)+'&ln='+encodeURIComponent(ln)+'&em='+encodeURIComponent(em)+'&ph='+encodeURIComponent(ph)+'&src='+encodeURIComponent(pg);
+  document.getElementById('calDlForm').style.display='none';
+  document.getElementById('calDlSuccess').style.display='block';
+  setTimeout(function(){
     window.location.href='https://cafedelmar74.github.io/calendar-2026.html';
-  });
+  },1200);
 }
 </script>
 </body>
