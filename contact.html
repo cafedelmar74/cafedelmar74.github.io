@@ -48,23 +48,30 @@ a{color:inherit;text-decoration:none;}
 .skip-link:focus{top:0;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(10,11,13,0);transition:background .3s,backdrop-filter .3s;}
-nav.scrolled{background:rgba(10,11,13,0.97);backdrop-filter:blur(12px);}
-.nav-logo img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.92;}
-.nav-links{display:flex;list-style:none;gap:32px;align-items:center;}
-.nav-links a{font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.75);transition:color .2s;}
-.nav-links a:hover,.nav-links a.active{color:#fff;}
-.nav-links .nav-cta{background:var(--amber);color:#000;padding:9px 20px;letter-spacing:1.5px;transition:background .2s;}
-.nav-links .nav-cta:hover{background:var(--amber2);color:#000;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:2px;background:#fff;transition:all .3s;}
-.mob{position:fixed;inset:0;background:rgba(10,11,13,0.98);z-index:8999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .3s ease;}
-.mob.open{transform:translateX(0);}
-.mob a{font-family:var(--cond);font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;}
-.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:76px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(245,243,239,0.95);backdrop-filter:blur(20px);border-color:rgba(0,0,0,0.08);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:44px;width:auto;max-width:280px;object-fit:contain;object-position:left center;display:block;transition:filter .3s,opacity .2s;filter:brightness(0) invert(1);}
+nav.scrolled .nav-logo img{filter:brightness(0);}
+.nav-logo:hover img{opacity:.85;}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#ffffff;}
+nav.scrolled .nav-links a{color:#6b6560;}
+nav.scrolled .nav-links a:hover{color:#1a1814;}
+.nav-cta{border:1px solid var(--amber) !important;color:var(--amber) !important;padding:10px 24px;transition:background .2s,color .2s !important;}
+.nav-cta:hover{background:var(--amber) !important;color:var(--bg) !important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#ffffff;}
+nav.scrolled .hamburger span{background:#2c2825;}
+.mob-menu{display:none;position:fixed;inset:0;z-index:600;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:36px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--off-white);text-decoration:none;letter-spacing:2px;transition:color .2s;}
+.mob-menu a:hover{color:var(--amber);}
+.mob-close{position:absolute;top:24px;right:32px;background:none;border:none;cursor:pointer;color:var(--grey);font-size:28px;}
 
 /* ── HERO ── */
-.contact-hero{position:relative;padding:160px 60px 80px;background:linear-gradient(165deg,#0f1012 0%,#0a0b0d 60%,#0c0d0f 100%);overflow:hidden;}
+.contact-hero{position:relative;padding:176px 60px 80px;background:linear-gradient(165deg,#0f1012 0%,#0a0b0d 60%,#0c0d0f 100%);overflow:hidden;}
 .contact-hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(200,135,58,0.08) 0%,transparent 65%);pointer-events:none;}
 .hero-inner{max-width:1200px;margin:0 auto;}
 .hero-tag{font-family:var(--cond);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
@@ -225,9 +232,21 @@ footer{background:#080909;border-top:1px solid var(--line);}
   <symbol id="ico-plus" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
 </svg>
 
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
+  <img src="logo-white.png" alt="London Petro Academy" style="height:40px;opacity:.9;margin-bottom:16px">
+  <a href="upstream.html">Upstream</a>
+  <a href="downstream.html">Downstream</a>
+  <a href="renewables.html">Renewables</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-white.png" alt="London Petro Academy">
+  </a>
   <ul class="nav-links">
     <li><a href="upstream.html">Upstream</a></li>
     <li><a href="downstream.html">Downstream</a></li>
@@ -236,16 +255,10 @@ footer{background:#080909;border-top:1px solid var(--line);}
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
-<div id="mob" class="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
-  <a href="upstream.html" onclick="toggleNav()">Upstream</a>
-  <a href="downstream.html" onclick="toggleNav()">Downstream</a>
-  <a href="renewables.html" onclick="toggleNav()">Renewables</a>
-  <a href="about.html" onclick="toggleNav()">About</a>
-  <a href="contact.html" onclick="toggleNav()">Contact Us</a>
-</div>
 
 <main id="main-content">
 
@@ -560,18 +573,22 @@ footer{background:#080909;border-top:1px solid var(--line);}
 </footer>
 
 <script>
-function toggleNav(){
-  const m=document.getElementById('mob');
-  const open=m.classList.toggle('open');
-  document.querySelector('.hamburger').setAttribute('aria-expanded',open);
-}
-
 // Nav scroll
 (function(){
-  const nav=document.getElementById('nav');
-  function chk(){if(nav)nav.classList.toggle('scrolled',window.pageYOffset>80);}
-  window.addEventListener('scroll',chk,{passive:true});
-  chk();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu toggle
+  function toggleNav() {
+    const menu = document.getElementById('mobMenu');
+    const isOpen = menu.classList.toggle('open');
+    const hamburger = document.querySelector('.hamburger');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  window.toggleNav = toggleNav;
 })();
 
 // FAQ accordion
