@@ -1164,8 +1164,14 @@ function submitCalDownload(){
   var btn=document.getElementById('calDlSubmit');
   btn.disabled=true;btn.textContent='Sending…';
   var pg=window.location.href;
-  var img=new Image();
-  img.src='https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?fn='+encodeURIComponent(fn)+'&ln='+encodeURIComponent(ln)+'&em='+encodeURIComponent(em)+'&ph='+encodeURIComponent(ph)+'&src='+encodeURIComponent(pg);
+  var url='https://n8n.srv765009.hstgr.cloud/webhook/calendar-download'
+    +'?fn='+encodeURIComponent(fn)
+    +'&ln='+encodeURIComponent(ln)
+    +'&em='+encodeURIComponent(em)
+    +'&ph='+encodeURIComponent(ph)
+    +'&src='+encodeURIComponent(pg);
+  fetch(url,{method:'GET',mode:'no-cors'})
+    .catch(function(){});
   document.getElementById('calDlForm').style.display='none';
   document.getElementById('calDlSuccess').style.display='block';
   setTimeout(function(){
