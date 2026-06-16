@@ -47,13 +47,12 @@ a{color:inherit;text-decoration:none;}
 .skip-link{position:absolute;top:-40px;left:0;background:var(--amber);color:#000;padding:8px 16px;z-index:99999;font-family:var(--cond);font-weight:600;transition:top .2s;}
 .skip-link:focus{top:0;}
 
-/* ── NAV ── */
+/* ─── NAV (copied verbatim from index.html) ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 60px;
   height: 76px;
-  background: #0a0b0d;
   transition: background 0.4s, border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
@@ -76,12 +75,12 @@ nav.scrolled .nav-logo img { filter: brightness(0); }
 nav.scrolled .nav-links a { color: #6b6560; }
 nav.scrolled .nav-links a:hover { color: #1a1814; }
 .nav-cta {
-  border: 1px solid #c8873a !important;
-  color: #c8873a !important;
+  border: 1px solid #c96a1e !important;
+  color: #c96a1e !important;
   padding: 10px 24px;
   transition: background 0.2s, color 0.2s !important;
 }
-.nav-cta:hover { background: #c8873a !important; color: #fff !important; }
+.nav-cta:hover { background: #c96a1e !important; color: #f5f3ef !important; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: #ffffff; }
 nav.scrolled .hamburger span { background: #2c2825; }
@@ -89,20 +88,20 @@ nav.scrolled .hamburger span { background: #2c2825; }
 /* ─── MOBILE MENU ─── */
 .mob-menu {
   display: none; position: fixed; inset: 0; z-index: 600;
-  background: #0a0b0d; flex-direction: column;
+  background: #f5f3ef; flex-direction: column;
   justify-content: center; align-items: center; gap: 36px;
 }
 .mob-menu.open { display: flex; }
 .mob-menu a {
   font-family: 'Fraunces', serif; font-size: 42px; font-weight: 300;
-  color: #e8e6e0; text-decoration: none;
+  color: #2c2825; text-decoration: none;
   letter-spacing: 2px; transition: color 0.2s;
 }
-.mob-menu a:hover { color: #c8873a; }
+.mob-menu a:hover { color: #c96a1e; }
 .mob-close {
   position: absolute; top: 24px; right: 32px;
   background: none; border: none; cursor: pointer;
-  color: #8a8f96; font-size: 28px;
+  color: #6b6560; font-size: 28px;
 }
 
 /* ── HERO ── */
@@ -277,12 +276,11 @@ footer{background:#080909;border-top:1px solid var(--line);}
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
   <img src="logo-white.png" alt="London Petro Academy" style="height:40px;opacity:.9;margin-bottom:16px">
-  <a href="upstream.html" onclick="toggleNav()">Upstream</a>
-  <a href="downstream.html" onclick="toggleNav()">Downstream</a>
-  <a href="renewables.html" onclick="toggleNav()">Renewables</a>
-  <a href="inhouse.html" onclick="toggleNav()">In-House</a>
-  <a href="about.html" onclick="toggleNav()">About</a>
-  <a href="contact.html" onclick="toggleNav()">Contact</a>
+  <a href="upstream.html">Upstream</a>
+  <a href="downstream.html">Downstream</a>
+  <a href="renewables.html">Renewables</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <main id="main-content">
@@ -598,8 +596,7 @@ footer{background:#080909;border-top:1px solid var(--line);}
 </footer>
 
 <script>
-// Nav scroll + mobile menu — exact homepage pattern
-(function(){
+  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -613,7 +610,6 @@ footer{background:#080909;border-top:1px solid var(--line);}
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
   window.toggleNav = toggleNav;
-})();
 
 // FAQ accordion
 function toggleFaq(btn){
