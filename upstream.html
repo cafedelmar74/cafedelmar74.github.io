@@ -1326,7 +1326,7 @@ function submitCalDownload(){
   var src=window.location.href;
   fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download',{
     method:'POST',
-    headers:{'Content-Type':'text/plain'},
+    headers:{'Content-Type':'application/json'},
     body:JSON.stringify({first_name:fn,last_name:ln,email:em,phone:ph,source_page:src})
   })
   .then(function(r){return r.json();})
