@@ -1552,7 +1552,7 @@ async function submitBk(){
     if(!exists){bookings.unshift(payload);localStorage.setItem('lpa_bookings',JSON.stringify(bookings));}
   }catch(e){}
   try{
-    await fetch(LPA.webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
     if(typeof gtag==='function') gtag('event','booking_submitted',{course_name:payload.course_name});
@@ -2085,7 +2085,7 @@ async function submitBk(){
   try{var s=localStorage.getItem('lpa_bookings');var b=[];try{b=JSON.parse(s)||[];}catch(e){}
   if(!b.find(function(x){return x.submitted_at===payload.submitted_at&&x.email===payload.email;})){b.unshift(payload);localStorage.setItem('lpa_bookings',JSON.stringify(b));}}catch(e){}
   try{
-    await fetch(LPA.webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
     if(typeof gtag==='function') gtag('event','booking_submitted',{course_name:payload.course_name});
