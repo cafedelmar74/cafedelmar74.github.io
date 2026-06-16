@@ -34,3 +34,12 @@ const LPA = {
 
 // Freeze so nothing overwrites it accidentally
 Object.freeze(LPA);
+
+// ── Global form submission helper (no-cors GET to avoid CORS preflight) ──
+function lpaSubmit(payload) {
+  var base = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-leads';
+  var qs = Object.keys(payload).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k] || '');
+  }).join('&');
+  fetch(base + '?' + qs, { method: 'GET', mode: 'no-cors' }).catch(function(){});
+}
