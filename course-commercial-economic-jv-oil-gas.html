@@ -1492,7 +1492,7 @@ async function submitBk(){
     if(!exists){bookings.unshift(payload);localStorage.setItem('lpa_bookings',JSON.stringify(bookings));}
   }catch(e){}
   try{
-    await fetch(LPA.webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
     if(typeof gtag==='function') gtag('event','booking_submitted',{course_name:payload.course_name});
