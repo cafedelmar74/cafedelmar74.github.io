@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | London Petro Academy</title>
+<meta name="description" content="London Petro Academy's privacy policy. How we collect, use and protect your personal data in compliance with UK GDPR.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="London Petro Academy">
+<link rel="canonical" href="https://www.londonpetroacademy.co.uk/privacy-policy/">
+<link rel="alternate" hreflang="en-gb" href="https://www.londonpetroacademy.co.uk/privacy-policy/">
+<link rel="alternate" hreflang="x-default" href="https://www.londonpetroacademy.co.uk/privacy-policy/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="London Petro Academy">
+<meta property="og:title" content="Privacy Policy | London Petro Academy">
+<meta property="og:url" content="https://www.londonpetroacademy.co.uk/privacy-policy/">
+<meta property="og:locale" content="en_GB">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+
+<style>
+:root{
+  --bg:#0a0b0d;--bg2:#0f1012;--amber:#c8873a;--amber2:#d4944a;
+  --off-white:#e8e6e0;--grey:#8a8f96;--line:rgba(255,255,255,0.07);
+  --line2:rgba(255,255,255,0.12);
+  --serif:'Fraunces',Georgia,serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--off-white);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--amber);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ── SKIP LINK ── */
+.skip-link{position:absolute;top:-40px;left:0;background:var(--amber);color:#000;padding:8px 16px;z-index:99999;font-family:var(--cond);font-weight:600;transition:top .2s;}
+.skip-link:focus{top:0;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(10,11,13,0.97);backdrop-filter:blur(12px);}
+.nav-logo img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.92;}
+.nav-links{display:flex;list-style:none;gap:32px;align-items:center;}
+.nav-links a{font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.75);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links .nav-cta{background:var(--amber);color:#000;padding:9px 20px;letter-spacing:1.5px;transition:background .2s;}
+.nav-links .nav-cta:hover{background:var(--amber2);color:#000;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;}
+.mob{position:fixed;inset:0;background:rgba(10,11,13,0.98);z-index:8999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .3s ease;}
+.mob.open{transform:translateX(0);}
+.mob a{font-family:var(--cond);font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
+
+/* ── HERO ── */
+.pp-hero{padding:120px 60px 64px;background:var(--bg2);border-bottom:1px solid var(--line);}
+.pp-hero-inner{max-width:860px;margin:0 auto;}
+.hero-tag{font-family:var(--cond);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:16px;}
+.hero-title{font-family:var(--serif);font-size:clamp(36px,4vw,58px);font-weight:300;color:#fff;margin-bottom:20px;}
+.hero-title em{font-style:italic;color:var(--amber);}
+.hero-meta{font-size:13px;color:var(--grey);}
+
+/* ── CONTENT ── */
+.pp-content{max-width:860px;margin:0 auto;padding:72px 60px 96px;}
+
+.pp-toc{background:var(--bg2);border:1px solid var(--line);padding:28px 32px;margin-bottom:56px;}
+.pp-toc h2{font-family:var(--cond);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;}
+.pp-toc ol{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pp-toc ol li{counter-increment:toc;}
+.pp-toc ol a{font-size:14px;color:var(--grey);display:flex;gap:10px;transition:color .2s;}
+.pp-toc ol a:hover{color:var(--amber);text-decoration:none;}
+.pp-toc ol a::before{content:counter(toc, decimal-leading-zero);font-family:var(--cond);font-size:11px;color:var(--amber);min-width:24px;}
+
+.pp-section{margin-bottom:56px;}
+.pp-section:last-child{margin-bottom:0;}
+.pp-h2{font-family:var(--serif);font-size:26px;font-weight:300;color:#fff;margin-bottom:20px;padding-top:20px;}
+.pp-h2 em{font-style:italic;color:var(--amber);}
+.pp-rule{width:30px;height:2px;background:var(--amber);margin-bottom:24px;}
+.pp-p{font-size:15px;color:var(--grey);line-height:1.85;margin-bottom:16px;}
+.pp-p:last-child{margin-bottom:0;}
+.pp-p strong{color:rgba(255,255,255,.8);font-weight:400;}
+.pp-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.pp-ul li{font-size:15px;color:var(--grey);line-height:1.7;padding-left:20px;position:relative;}
+.pp-ul li::before{content:'–';position:absolute;left:0;color:var(--amber);}
+
+.pp-table{width:100%;border-collapse:collapse;margin:24px 0;}
+.pp-table th{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:left;padding:12px 16px;border-bottom:1px solid var(--line2);background:rgba(255,255,255,0.03);}
+.pp-table td{font-size:13px;color:var(--grey);padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;}
+.pp-table td strong{color:rgba(255,255,255,.7);font-weight:400;}
+.pp-table tr:last-child td{border-bottom:none;}
+
+.pp-notice{background:rgba(200,135,58,0.07);border:1px solid rgba(200,135,58,0.2);border-left:3px solid var(--amber);padding:20px 24px;margin:24px 0;}
+.pp-notice p{font-size:14px;color:var(--grey);line-height:1.7;}
+.pp-notice p strong{color:rgba(255,255,255,.8);font-weight:400;}
+
+/* ── FOOTER ── */
+footer{background:#080909;border-top:1px solid var(--line);}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:64px 60px 48px;max-width:1400px;margin:0 auto;}
+.fl{display:block;margin-bottom:18px;}
+.fl img{height:40px;width:auto;filter:brightness(0) invert(1);opacity:.9;}
+.ft{font-size:13px;color:var(--grey);font-weight:300;line-height:1.7;margin-bottom:20px;max-width:280px;}
+.fc{display:flex;flex-direction:column;gap:10px;}
+.fc a,.fc span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;}
+.fc a:hover{color:var(--amber);}
+.fc svg{width:14px;height:14px;stroke:var(--amber);fill:none;flex-shrink:0;}
+.fcol h4{font-family:var(--cond);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.flinks a{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;font-weight:300;}
+.flinks a:hover{color:var(--amber);}
+.fbot{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;border-top:1px solid var(--line);max-width:1400px;margin:0 auto;}
+.fcopy{font-size:12px;color:rgba(138,143,150,.6);}
+.fsoc{display:flex;gap:16px;}
+.fsoc a{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;}
+.fsoc a:hover{color:var(--amber);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:768px){
+  nav{padding:0 24px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .pp-hero{padding:100px 24px 48px;}
+  .pp-content{padding:48px 24px 72px;}
+  .fg{grid-template-columns:1fr;padding:48px 24px 32px;}
+  .fbot{flex-direction:column;gap:12px;text-align:center;padding:20px 24px;}
+  .pp-table{font-size:12px;}
+  .pp-table th,.pp-table td{padding:10px 12px;}
+}
+</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- SVG ICONS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ico-phone" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></symbol>
+  <symbol id="ico-mail" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="ico-pin" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+</svg>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
+  <ul class="nav-links">
+    <li><a href="upstream.html">Upstream</a></li>
+    <li><a href="downstream.html">Downstream</a></li>
+    <li><a href="renewables.html">Renewables</a></li>
+    <li><a href="inhouse.html">In-House</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+<div id="mob" class="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">✕</button>
+  <a href="upstream.html" onclick="toggleNav()">Upstream</a>
+  <a href="downstream.html" onclick="toggleNav()">Downstream</a>
+  <a href="renewables.html" onclick="toggleNav()">Renewables</a>
+  <a href="about.html" onclick="toggleNav()">About</a>
+  <a href="contact.html" onclick="toggleNav()">Contact Us</a>
+</div>
+
+<main id="main-content">
+
+<!-- ══ HERO ══ -->
+<section class="pp-hero" aria-label="Privacy Policy">
+  <div class="pp-hero-inner">
+    <nav aria-label="Breadcrumb" style="margin-bottom:20px;">
+      <a href="index.html" style="font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);text-decoration:none;">Home</a>
+      <span style="color:rgba(255,255,255,.2);margin:0 10px;">›</span>
+      <span style="font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);">Privacy Policy</span>
+    </nav>
+    <div class="hero-tag">Legal &amp; Compliance</div>
+    <h1 class="hero-title"><em>Privacy</em> Policy</h1>
+    <p class="hero-meta">Last updated: <strong style="color:rgba(255,255,255,.7);">1 June 2026</strong> &nbsp;·&nbsp; Effective from: <strong style="color:rgba(255,255,255,.7);">1 June 2026</strong></p>
+  </div>
+</section>
+
+<!-- ══ CONTENT ══ -->
+<article class="pp-content" aria-label="Privacy Policy content">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="pp-toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Who We Are</a></li>
+      <li><a href="#s2">What Data We Collect</a></li>
+      <li><a href="#s3">How We Collect Your Data</a></li>
+      <li><a href="#s4">Why We Use Your Data (Legal Bases)</a></li>
+      <li><a href="#s5">How Long We Keep Your Data</a></li>
+      <li><a href="#s6">Who We Share Your Data With</a></li>
+      <li><a href="#s7">International Transfers</a></li>
+      <li><a href="#s8">Cookies &amp; Analytics</a></li>
+      <li><a href="#s9">Your Rights</a></li>
+      <li><a href="#s10">Children's Privacy</a></li>
+      <li><a href="#s11">Changes to This Policy</a></li>
+      <li><a href="#s12">Contact &amp; Complaints</a></li>
+    </ol>
+  </nav>
+
+  <div class="pp-notice">
+    <p><strong>Summary:</strong> We are London Petro Academy Limited, a specialist energy training provider based in London. We collect your data only to process course bookings, respond to enquiries, and send relevant training information where you've asked us to. We do not sell your data to third parties.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="pp-section" id="s1">
+    <h2 class="pp-h2">1. Who <em>We Are</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p"><strong>London Petro Academy Limited</strong> (company number 09875694, VAT 267 3190 90) is a specialist energy training provider registered in England and Wales. Our registered office is at 3rd Floor, 207 Regent Street, London W1B 3HH, United Kingdom.</p>
+    <p class="pp-p">London Petro Academy is the <strong>data controller</strong> for the personal data we collect through this website and our training services. This means we are responsible for deciding how and why your personal data is used.</p>
+    <p class="pp-p">For any data protection matters, please contact us at: <a href="mailto:info@londonpetroacademy.co.uk">info@londonpetroacademy.co.uk</a></p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="pp-section" id="s2">
+    <h2 class="pp-h2">2. What Data <em>We Collect</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">We may collect the following categories of personal data:</p>
+    <table class="pp-table">
+      <thead>
+        <tr><th>Category</th><th>Examples</th><th>When Collected</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Identity data</strong></td><td>First name, last name, job title</td><td>Booking forms, enquiry forms</td></tr>
+        <tr><td><strong>Contact data</strong></td><td>Email address, phone number</td><td>Booking forms, enquiry forms, brochure requests</td></tr>
+        <tr><td><strong>Professional data</strong></td><td>Organisation name, department, country</td><td>Booking forms, course registrations</td></tr>
+        <tr><td><strong>Transaction data</strong></td><td>Course booked, session dates, fee paid, invoice details</td><td>Course bookings</td></tr>
+        <tr><td><strong>Technical data</strong></td><td>IP address, browser type, pages visited, time on site</td><td>Automatically via cookies and analytics (see §8)</td></tr>
+        <tr><td><strong>Communication data</strong></td><td>Enquiry content, email correspondence</td><td>Contact forms, email exchanges</td></tr>
+        <tr><td><strong>Marketing preferences</strong></td><td>Whether you have opted in to receive course news</td><td>Forms where a marketing consent checkbox is offered</td></tr>
+      </tbody>
+    </table>
+    <p class="pp-p">We do not collect any <strong>special category data</strong> (such as health data, racial or ethnic origin, political opinions, religious beliefs, or biometric data) unless you voluntarily provide it in correspondence and it is relevant to your training needs (e.g. dietary requirements for a course venue).</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="pp-section" id="s3">
+    <h2 class="pp-h2">3. How We <em>Collect Your Data</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">We collect data through:</p>
+    <ul class="pp-ul">
+      <li><strong>Website forms</strong> — course booking forms, enquiry forms, brochure download requests and calendar download forms on londonpetroacademy.co.uk</li>
+      <li><strong>Direct correspondence</strong> — emails, phone calls or written communications you send to us</li>
+      <li><strong>Third-party sources</strong> — publicly available professional information (e.g. LinkedIn profiles) when we contact you about relevant training programmes</li>
+      <li><strong>Cookies and analytics</strong> — automatically when you visit our website (see §8)</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="pp-section" id="s4">
+    <h2 class="pp-h2">4. Why We Use Your Data <em>(Legal Bases)</em></h2>
+    <div class="pp-rule"></div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>Purpose</th><th>Legal Basis (UK GDPR)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Processing course bookings and sending joining instructions</td><td>Performance of a contract (Art. 6(1)(b))</td></tr>
+        <tr><td>Responding to course enquiries and brochure requests</td><td>Legitimate interests (Art. 6(1)(f)) — responding to a commercial enquiry</td></tr>
+        <tr><td>Sending administrative communications (booking confirmations, changes, cancellations)</td><td>Performance of a contract (Art. 6(1)(b))</td></tr>
+        <tr><td>Sending marketing emails about upcoming courses, new programmes and training news</td><td>Consent (Art. 6(1)(a)) where obtained; or Legitimate interests (Art. 6(1)(f)) for existing clients in similar services</td></tr>
+        <tr><td>Improving our website and understanding how delegates find us</td><td>Legitimate interests (Art. 6(1)(f))</td></tr>
+        <tr><td>Complying with legal and financial obligations (e.g. invoicing, VAT)</td><td>Legal obligation (Art. 6(1)(c))</td></tr>
+      </tbody>
+    </table>
+    <p class="pp-p">You may withdraw consent for marketing at any time by clicking the unsubscribe link in any email or by contacting us at <a href="mailto:info@londonpetroacademy.co.uk">info@londonpetroacademy.co.uk</a>.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="pp-section" id="s5">
+    <h2 class="pp-h2">5. How Long We <em>Keep Your Data</em></h2>
+    <div class="pp-rule"></div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>Data Type</th><th>Retention Period</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Course booking and delegate records</td><td>7 years from the date of the course (for accounting and legal compliance)</td></tr>
+        <tr><td>Enquiries that did not result in a booking</td><td>2 years from the date of enquiry</td></tr>
+        <tr><td>Marketing consent records</td><td>Until consent is withdrawn, plus 1 year</td></tr>
+        <tr><td>Email correspondence</td><td>3 years, unless related to a booking (see above)</td></tr>
+        <tr><td>Website analytics data (Google Analytics)</td><td>14 months (Google's default data retention setting)</td></tr>
+      </tbody>
+    </table>
+    <p class="pp-p">After the applicable retention period, we securely delete or anonymise your personal data.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="pp-section" id="s6">
+    <h2 class="pp-h2">6. Who We Share <em>Your Data With</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">We do not sell your personal data. We may share it with:</p>
+    <ul class="pp-ul">
+      <li><strong>Course instructors and facilitators</strong> — limited delegate information (name, organisation, job title) is shared with the course trainer before each session to assist with course preparation.</li>
+      <li><strong>Venue partners</strong> — hotel and conference venues receive delegate names to facilitate course logistics (room lists, catering) where applicable.</li>
+      <li><strong>Email and CRM service providers</strong> — we use third-party platforms to send booking confirmations and course communications. These providers process data on our behalf as data processors under GDPR-compliant agreements.</li>
+      <li><strong>Accounting and invoicing software</strong> — financial data is processed by our accountancy tools to generate invoices and comply with UK financial regulations.</li>
+      <li><strong>Google Analytics</strong> — anonymised website usage data is shared with Google for analytics purposes (see §8).</li>
+      <li><strong>Legal or regulatory authorities</strong> — we may disclose data where required by law, court order, or regulatory obligation.</li>
+    </ul>
+    <p class="pp-p">All third-party data processors are required to handle your data securely and in accordance with our instructions and applicable data protection law.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="pp-section" id="s7">
+    <h2 class="pp-h2">7. <em>International</em> Transfers</h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">London Petro Academy delivers training globally, and some of our service providers may process data outside the UK or European Economic Area (EEA). Where this occurs, we ensure appropriate safeguards are in place, such as:</p>
+    <ul class="pp-ul">
+      <li>Reliance on the UK Government's adequacy decisions for certain countries</li>
+      <li>Standard Contractual Clauses (SCCs) approved by the UK ICO</li>
+      <li>Providers that are certified under recognised data protection frameworks</li>
+    </ul>
+    <p class="pp-p">You may request further information about international transfer safeguards by contacting us at <a href="mailto:info@londonpetroacademy.co.uk">info@londonpetroacademy.co.uk</a>.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="pp-section" id="s8">
+    <h2 class="pp-h2">8. Cookies <em>&amp; Analytics</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">Our website uses cookies — small text files placed on your device — to help the site function and to understand how it is used. We use:</p>
+    <ul class="pp-ul">
+      <li><strong>Essential cookies</strong> — strictly necessary for the website to operate (e.g. session management, form security). These cannot be disabled.</li>
+      <li><strong>Analytics cookies (Google Analytics 4)</strong> — we use GA4 to collect anonymised information about how visitors use our site (pages viewed, time on site, referral source). IP addresses are anonymised. This helps us improve our website and content.</li>
+    </ul>
+    <p class="pp-p">You may opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+    <p class="pp-p">We do not use advertising cookies, social media tracking pixels, or any form of behavioural profiling cookies on this website.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="pp-section" id="s9">
+    <h2 class="pp-h2">9. <em>Your Rights</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">Under UK GDPR, you have the following rights in relation to your personal data:</p>
+    <ul class="pp-ul">
+      <li><strong>Right of access</strong> — to obtain a copy of the personal data we hold about you.</li>
+      <li><strong>Right to rectification</strong> — to ask us to correct inaccurate or incomplete data.</li>
+      <li><strong>Right to erasure</strong> — to ask us to delete your data where there is no legitimate reason for us to continue processing it.</li>
+      <li><strong>Right to restrict processing</strong> — to ask us to pause the processing of your data in certain circumstances.</li>
+      <li><strong>Right to data portability</strong> — to receive your data in a structured, machine-readable format where processing is based on consent or contract.</li>
+      <li><strong>Right to object</strong> — to object to processing based on legitimate interests, including direct marketing.</li>
+      <li><strong>Rights relating to automated decision-making</strong> — we do not use automated decision-making or profiling that produces legal or similarly significant effects.</li>
+    </ul>
+    <p class="pp-p">To exercise any of these rights, please email <a href="mailto:info@londonpetroacademy.co.uk">info@londonpetroacademy.co.uk</a> with the subject line <strong>"Data Subject Request"</strong>. We will respond within <strong>30 days</strong>. We may need to verify your identity before processing your request.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="pp-section" id="s10">
+    <h2 class="pp-h2">10. <em>Children's</em> Privacy</h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">Our training programmes and website are intended for professional adults. We do not knowingly collect personal data from individuals under the age of 18. If you believe we have inadvertently collected data from a minor, please contact us immediately and we will delete it promptly.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="pp-section" id="s11">
+    <h2 class="pp-h2">11. Changes to <em>This Policy</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last updated" date at the top. We encourage you to review this page periodically.</p>
+    <p class="pp-p">If we make significant changes that materially affect how we use your data, we will notify you by email where we hold your contact details.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="pp-section" id="s12">
+    <h2 class="pp-h2">12. Contact <em>&amp; Complaints</em></h2>
+    <div class="pp-rule"></div>
+    <p class="pp-p">If you have any questions or concerns about how we handle your personal data, please contact us:</p>
+    <ul class="pp-ul">
+      <li>By email: <a href="mailto:info@londonpetroacademy.co.uk">info@londonpetroacademy.co.uk</a></li>
+      <li>By post: London Petro Academy Limited, 3rd Floor, 207 Regent Street, London W1B 3HH</li>
+      <li>By phone: <a href="tel:+441582516247">+44 (0) 1582 516247</a></li>
+    </ul>
+    <div class="pp-notice" style="margin-top:24px;">
+      <p>You also have the right to lodge a complaint with the UK Information Commissioner's Office (ICO) if you believe we have not handled your data appropriately. The ICO can be contacted at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a> or by calling 0303 123 1113.</p>
+    </div>
+  </div>
+
+</article>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="fg">
+    <div>
+      <a href="index.html" class="fl"><img src="logo-white.png" alt="London Petro Academy" loading="lazy"></a>
+      <p class="ft">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide since 2015.</p>
+      <div class="fc">
+        <a href="tel:+441582516247"><svg><use href="#ico-phone"/></svg>+44 (0) 1582 516247</a>
+        <a href="mailto:info@londonpetroacademy.co.uk"><svg><use href="#ico-mail"/></svg>info@londonpetroacademy.co.uk</a>
+        <span><svg><use href="#ico-pin"/></svg>207 Regent Street, London W1B 3HH</span>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Upstream Courses</h4>
+      <ul class="flinks">
+        <li><a href="upstream.html">All Upstream Courses</a></li>
+        <li><a href="course-gas-lng-contracts-negotiations.html">Gas &amp; LNG Contracts</a></li>
+        <li><a href="course-legal-aspects-production-sharing-contracts.html">Legal Aspects of PSCs</a></li>
+        <li><a href="course-brazil-jv.html">JVs in Brazil</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Training Portfolios</h4>
+      <ul class="flinks">
+        <li><a href="upstream.html">Upstream &amp; Midstream</a></li>
+        <li><a href="downstream.html">Downstream &amp; Trading</a></li>
+        <li><a href="renewables.html">Renewable Energy</a></li>
+        <li><a href="about.html">About LPA</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul class="flinks">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener">Book a Consultation</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span class="fcopy">© 2026 London Petro Academy Ltd · Registered in England &amp; Wales No. 09875694 · VAT 267 3190 90</span>
+    <div class="fsoc">
+      <a href="https://www.linkedin.com/company/london-petro-academy-limited/" title="LinkedIn" aria-label="LinkedIn">in</a>
+      <a href="https://twitter.com/London_Petro_Ac" title="X" aria-label="X">𝕏</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const m=document.getElementById('mob');
+  const open=m.classList.toggle('open');
+  document.querySelector('.hamburger').setAttribute('aria-expanded',open);
+}
+(function(){
+  const nav=document.getElementById('nav');
+  function chk(){if(nav)nav.classList.toggle('scrolled',window.pageYOffset>80);}
+  window.addEventListener('scroll',chk,{passive:true});
+  chk();
+})();
+</script>
+</body>
+</html>

@@ -56,4 +56,22 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://www.londonpetroacademy.co.uk/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.londonpetroacademy.co.uk/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.londonpetroacademy.co.uk/contact/"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.londonpetroacademy.co.uk/privacy-policy/</loc>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.londonpetroacademy.co.uk/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.londonpetroacademy.co.uk/privacy-policy/"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
