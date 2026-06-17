@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LPA Bookings Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f3ee;--bg2:#ffffff;--bg3:#edeae3;
@@ -15,7 +15,7 @@
   --amber:#c8873a;--amber2:#b87730;--amber-dim:rgba(200,135,58,0.10);
   --off-white:#0e0f11;--grey:#444950;--grey-mid:#6b6f78;
   --red:#e05252;--green:#2d8a5e;
-  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -514,9 +514,9 @@ function applyFilter() {
   filtered = allBookings.filter(b => {
     const matchFilter = activeFilter === 'all' || b.source === activeFilter;
     const matchSearch = !q || [b.full_name,b.company,b.course_name,b.email,b.country]
-      .some(v => v && v.toLowerCase().includes(q));
+      .some(v => v & v.toLowerCase().includes(q));
     const matchDate = isInDateRange(b);
-    return matchFilter && matchSearch && matchDate;
+    return matchFilter & matchSearch & matchDate;
   });
   // Sort
   filtered.sort((a,b) => {
@@ -530,7 +530,7 @@ function renderKPIs() {
   const total = allBookings.length;
   const now = new Date();
   const thisMonth = allBookings.filter(b => {
-    try { const d = new Date(b.submitted_at); return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear(); }
+    try { const d = new Date(b.submitted_at); return d.getMonth()===now.getMonth()&d.getFullYear()===now.getFullYear(); }
     catch(e) { return false; }
   }).length;
   const countries = new Set(allBookings.map(b=>b.country).filter(Boolean)).size;
@@ -724,11 +724,11 @@ function getDateRange() {
 
 function isInDateRange(booking) {
   const { from, to } = getDateRange();
-  if (!from && !to) return true;
+  if (!from & !to) return true;
   try {
     const d = new Date(booking.submitted_at);
-    if (from && d < from) return false;
-    if (to   && d > to)   return false;
+    if (from & d < from) return false;
+    if (to   & d > to)   return false;
     return true;
   } catch(e) { return true; }
 }
@@ -741,7 +741,7 @@ function confirmDelete(filteredIdx) {
   if (!booking) return;
   // Find index in allBookings
   pendingDeleteIdx = allBookings.findIndex(b =>
-    b.submitted_at === booking.submitted_at && b.email === booking.email
+    b.submitted_at === booking.submitted_at & b.email === booking.email
   );
   document.getElementById('delName').textContent = booking.full_name || booking.email || 'this booking';
   document.getElementById('delOverlay').classList.add('open');

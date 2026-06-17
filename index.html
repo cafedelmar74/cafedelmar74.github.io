@@ -157,8 +157,8 @@
 ════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -178,7 +178,7 @@
   --grey-mid: #9a9590;
   --font-serif: 'Fraunces', serif;
   --font-sans: 'Barlow', sans-serif;
-  --font-cond: 'Barlow Condensed', sans-serif;
+  --font-cond: 'Barlow', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -277,7 +277,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   margin-top: 32px;
   background: #c96a1e;
   color: #fff;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -328,7 +328,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
   color: var(--orange); font-weight: 500; margin-bottom: 20px;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
 }
 .hero-tag::before, .hero-tag::after { content: ''; width: 28px; height: 1px; background: var(--orange); }
 .hero-h1 {
@@ -365,7 +365,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .hero-panel:hover { background: rgba(224,124,53,0.07); }
 .hero-panel:hover::before { transform: scaleX(1); }
 .panel-num {
-  font-family: var(--font-cond); font-size: 15px;
+  font-family: var(--font-sans); font-size: 15px;
   letter-spacing: 3px; text-transform: uppercase;
   color: rgba(255,255,255,0.5); margin-bottom: 20px;
   font-weight: 600;
@@ -379,7 +379,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .panel-desc { font-size: 13px; color: var(--grey); font-weight: 300; line-height: 1.65; margin-bottom: 28px; max-width: 280px; }
 .panel-cta {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-cond); font-size: 12px;
+  font-family: var(--font-sans); font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--orange); font-weight: 600; transition: gap 0.25s;
 }
@@ -392,7 +392,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   padding: 15px 36px; font-size: 12px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
   text-decoration: none; display: inline-block;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   transition: opacity 0.2s, transform 0.2s;
 }
 .btn-fill:hover { opacity: 0.88; transform: translateY(-1px); }
@@ -401,18 +401,18 @@ nav.scrolled .hamburger span { background: #2c2825; }
   padding: 14px 36px; font-size: 12px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
   text-decoration: none; display: inline-block;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
 .btn-line:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
 .stat-n { font-family: var(--font-serif); font-size: 48px; font-weight: 300; color: var(--orange); line-height: 1; }
-.stat-l { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 6px; font-family: var(--font-cond); }
+.stat-l { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 6px; font-family: var(--font-sans); }
 
 
 /* ─── TICKER LABEL ─── */
 .ticker-label {
   text-align: center;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   font-size: 16px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -426,7 +426,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .ticker { background: var(--orange); padding: 14px 0; overflow: hidden; white-space: nowrap; position: relative; }
 .ticker-inner { display: inline-flex; gap: 0; animation: ticker 35s linear infinite; }
 .ticker-item {
-  font-family: var(--font-cond); font-size: 13px; font-weight: 600;
+  font-family: var(--font-sans); font-size: 13px; font-weight: 600;
   letter-spacing: 3px; text-transform: uppercase;
   color: var(--bg); padding: 0 48px;
   display: inline-flex; align-items: center; gap: 48px;
@@ -450,7 +450,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 }
 .trust-header {
   text-align: center;
-  font-family: var(--font-cond); font-size: 18px;
+  font-family: var(--font-sans); font-size: 18px;
   letter-spacing: 4px; text-transform: uppercase;
   color: rgba(255,255,255,0.85);
   margin-bottom: 24px;
@@ -559,7 +559,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   top: 32px; left: 40px;
 }
 .del-card-tag {
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   font-size: 13px; letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--orange);
@@ -586,7 +586,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   margin-bottom: 28px;
 }
 .del-card-link {
-  font-family: var(--font-cond); font-size: 12px; letter-spacing: 2px;
+  font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px;
   text-transform: uppercase; color: #fff;
   text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
@@ -605,7 +605,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .testi-card:hover { background: var(--bg3); }
 .testi-stars { color: var(--orange); font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; display: block; }
 .testi-quote { font-family: var(--font-serif); font-size: 16px; font-weight: 300; font-style: italic; color: var(--off-white); line-height: 1.7; margin-bottom: 28px; }
-.testi-author { font-family: var(--font-cond); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; }
+.testi-author { font-family: var(--font-sans); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; }
 .testi-logo img { height: 48px; opacity: 0.75; object-fit: contain; filter: brightness(0); max-width: 140px; }
 
 
@@ -691,7 +691,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 }
 .impact-l {
   display: block;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -749,7 +749,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   background: radial-gradient(circle, rgba(224,124,53,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
-.about-label { font-family: var(--font-cond); font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: block; font-weight: 600; }
+.about-label { font-family: var(--font-sans); font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: block; font-weight: 600; }
 .about-h2 { font-family: var(--font-serif); font-size: clamp(42px, 4vw, 68px); font-weight: 300; line-height: 1; color: var(--white); margin-bottom: 0; }
 .about-h2 em { font-style: italic; color: var(--orange); }
 .about-right p { font-size: 16px; color: var(--grey); font-weight: 300; line-height: 1.8; margin-bottom: 20px; }
@@ -789,16 +789,16 @@ nav.scrolled .hamburger span { background: #2c2825; }
   color: rgba(255,255,255,0.5);
   margin-top: 16px;
   display: block;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   line-height: 1.5;
 }
 
 /* ─── SECTION HEADER ─── */
 .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 24px; }
-.sec-eyebrow { font-family: var(--font-cond); font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block; font-weight: 600; }
+.sec-eyebrow { font-family: var(--font-sans); font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block; font-weight: 600; }
 .sec-title { font-family: var(--font-serif); font-size: clamp(36px, 3.5vw, 58px); font-weight: 300; line-height: 1; color: var(--white); }
 .sec-title em { font-style: italic; color: var(--orange); }
-.sec-head a { font-family: var(--font-cond); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; align-self: flex-end; }
+.sec-head a { font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; align-self: flex-end; }
 .sec-head a:hover { color: var(--orange); border-color: var(--orange); }
 
 /* ─── IN-HOUSE CTA BANNER ─── */
@@ -862,7 +862,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .cta-banner-btn {
   display: inline-flex; align-items: center; gap: 12px;
   background: var(--orange); color: #fff;
-  font-family: var(--font-cond); font-size: 13px;
+  font-family: var(--font-sans); font-size: 13px;
   letter-spacing: 2px; text-transform: uppercase;
   font-weight: 700; padding: 18px 36px;
   text-decoration: none; transition: background 0.2s;
@@ -904,7 +904,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .cbs-num em { font-style: italic; color: var(--orange); }
 .cbs-label {
   display: block;
-  font-family: var(--font-cond); font-size: 10px;
+  font-family: var(--font-sans); font-size: 10px;
   letter-spacing: 2px; text-transform: uppercase;
   color: rgba(255,255,255,0.45);
 }
@@ -978,7 +978,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   line-height: 1.6; margin-bottom: 8px;
 }
 .form-social-proof span {
-  font-family: var(--font-cond); font-size: 11px;
+  font-family: var(--font-sans); font-size: 11px;
   letter-spacing: 1.5px; text-transform: uppercase;
   color: rgba(255,255,255,0.3);
 }
@@ -991,7 +991,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   justify-content: center;
 }
 .eq-right-label {
-  font-family: var(--font-cond); font-size: 11px;
+  font-family: var(--font-sans); font-size: 11px;
   letter-spacing: 3px; text-transform: uppercase;
   color: var(--orange); margin-bottom: 8px; display: block;
 }
@@ -1040,7 +1040,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   border: none; cursor: pointer; width: 100%;
   padding: 18px 32px; font-size: 13px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   transition: background 0.2s;
   margin-top: 4px;
 }
@@ -1092,7 +1092,7 @@ footer::before {
 }
 .foot-col {}
 .foot-col h4 {
-  font-family: var(--font-cond);
+  font-family: var(--font-sans);
   font-size: 11px; letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.25);
@@ -1129,7 +1129,7 @@ footer::before {
   flex-wrap: wrap;
 }
 .foot-mid-label {
-  font-family: var(--font-cond); font-size: 10px;
+  font-family: var(--font-sans); font-size: 10px;
   letter-spacing: 3px; text-transform: uppercase;
   color: rgba(255,255,255,0.2);
 }
@@ -1138,7 +1138,7 @@ footer::before {
 }
 .foot-mid-item {
   display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-cond); font-size: 11px;
+  font-family: var(--font-sans); font-size: 11px;
   letter-spacing: 1.5px; text-transform: uppercase;
   color: rgba(255,255,255,0.35);
 }

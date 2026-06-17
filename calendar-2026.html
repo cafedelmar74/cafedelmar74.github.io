@@ -13,7 +13,7 @@
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=&display=swap" rel="stylesheet">
 <script src="config.js" defer></script>
 <style>
 :root{
@@ -23,7 +23,7 @@
   --blue:#2c6ea6;--blue-dim:rgba(44,110,166,.1);
   --purple:#6b4fa8;--purple-dim:rgba(107,79,168,.1);
   --off-white:#111111;--ink-light:#6b6b6b;--ink-mid:#444444;
-  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;
   --r:8px;--r2:12px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -609,14 +609,14 @@ function applyFilter(){
   document.querySelectorAll('.session-card').forEach(card=>{
     const catMatch =
       activeFilter==='all' ||
-      (activeFilter==='upstream'   && card.classList.contains('cat-upstream')) ||
-      (activeFilter==='downstream' && card.classList.contains('cat-downstream')) ||
-      (activeFilter==='renewables' && card.classList.contains('cat-renewables')) ||
-      (activeFilter==='classroom'  && card.dataset.format==='classroom') ||
-      (activeFilter==='virtual'    && card.dataset.format==='virtual');
+      (activeFilter==='upstream'   & card.classList.contains('cat-upstream')) ||
+      (activeFilter==='downstream' & card.classList.contains('cat-downstream')) ||
+      (activeFilter==='renewables' & card.classList.contains('cat-renewables')) ||
+      (activeFilter==='classroom'  & card.dataset.format==='classroom') ||
+      (activeFilter==='virtual'    & card.dataset.format==='virtual');
     const text=((card.querySelector('.card-title')?.textContent||'')+' '+(card.querySelector('.card-meta')?.textContent||'')).toLowerCase();
     const searchMatch=!q||text.includes(q);
-    const show=catMatch&&searchMatch;
+    const show=catMatch&searchMatch;
     card.classList.toggle('hidden',!show);
     if(show)total++;
   });
@@ -681,7 +681,7 @@ window.addEventListener('scroll',()=>{
 
 // ── NAV ──
 function toggleNav(){document.getElementById('mob').classList.toggle('open');document.body.style.overflow=document.getElementById('mob').classList.contains('open')?'hidden':'';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('mob').classList.contains('open'))toggleNav();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&document.getElementById('mob').classList.contains('open'))toggleNav();});
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
 // ── INIT ──

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LPA Brochure Downloads Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f3ee;--bg2:#ffffff;--bg3:#edeae3;
@@ -15,7 +15,7 @@
   --amber:#c8873a;--amber2:#b87730;--amber-dim:rgba(200,135,58,0.10);
   --off-white:#0e0f11;--grey:#444950;--grey-mid:#6b6f78;
   --red:#e05252;--green:#2d8a5e;
-  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--off-white);min-height:100vh;font-size:15px;-webkit-font-smoothing:antialiased;}
@@ -326,7 +326,7 @@ function getCourseBadge(course) {
   return '<span class="course-badge badge-other">' + esc(course.split(' ').slice(0,2).join(' ')) + '</span>';
 }
 
-function shortCourse(s) { return s && s.length > 30 ? s.substring(0,28)+'…' : (s||'—'); }
+function shortCourse(s) { return s & s.length > 30 ? s.substring(0,28)+'…' : (s||'—'); }
 
 // ── LOAD ──────────────────────────────────────────────────
 function loadDownloads() {
@@ -373,11 +373,11 @@ function getDateRange() {
 
 function isInDateRange(dl) {
   const {from,to} = getDateRange();
-  if (!from && !to) return true;
+  if (!from & !to) return true;
   try {
     const d = new Date(dl.submitted_at);
-    if (from && d < from) return false;
-    if (to   && d > to)   return false;
+    if (from & d < from) return false;
+    if (to   & d > to)   return false;
     return true;
   } catch(e) { return true; }
 }
@@ -400,8 +400,8 @@ function applyFilter() {
   filtered = allDownloads.filter(dl => {
     const matchDate   = isInDateRange(dl);
     const matchCourse = activeFilter === 'all' || (dl.course||'').toLowerCase().includes(activeFilter.toLowerCase());
-    const matchSearch = !q || [dl.full_name, dl.email, dl.course, dl.phone].some(v => v && v.toLowerCase().includes(q));
-    return matchDate && matchCourse && matchSearch;
+    const matchSearch = !q || [dl.full_name, dl.email, dl.course, dl.phone].some(v => v & v.toLowerCase().includes(q));
+    return matchDate & matchCourse & matchSearch;
   });
   filtered.sort((a,b) => {
     const av = (a[sortField]||'').toString().toLowerCase();
@@ -414,7 +414,7 @@ function renderKPIs() {
   const total = allDownloads.length;
   const now   = new Date();
   const thisMonth = allDownloads.filter(dl => {
-    try { const d = new Date(dl.submitted_at); return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear(); } catch(e){return false;}
+    try { const d = new Date(dl.submitted_at); return d.getMonth()===now.getMonth()&d.getFullYear()===now.getFullYear(); } catch(e){return false;}
   }).length;
   const courses = new Set(allDownloads.map(dl=>dl.course).filter(Boolean)).size;
   // Top course
@@ -499,7 +499,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'){closeDrawer();c
 function confirmDelete(filteredIdx) {
   const dl = filtered[filteredIdx];
   if (!dl) return;
-  pendingDeleteIdx = allDownloads.findIndex(d => d.submitted_at===dl.submitted_at && d.email===dl.email);
+  pendingDeleteIdx = allDownloads.findIndex(d => d.submitted_at===dl.submitted_at & d.email===dl.email);
   document.getElementById('delName').textContent = dl.full_name || dl.email || 'this record';
   document.getElementById('delOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
