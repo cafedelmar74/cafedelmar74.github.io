@@ -68,7 +68,7 @@
   ]
 }
 
-// ── Hero stats counter animation ──
+// ── Hero stats counter animation — fires on page load ──
 (function(){
   function animateHeroStats(){
     document.querySelectorAll('.hstat-n[data-target]').forEach(function(el){
@@ -86,15 +86,7 @@
       }, interval);
     });
   }
-  const statsEl = document.querySelector('.hero-stats');
-  if(statsEl){
-    const obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ animateHeroStats(); obs.disconnect(); }
-      });
-    }, {threshold: 0.6});
-    obs.observe(statsEl);
-  }
+  window.addEventListener('DOMContentLoaded', animateHeroStats);
 })();
 
 </script>
