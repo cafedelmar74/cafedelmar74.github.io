@@ -314,10 +314,7 @@ function bulkDelete() {
   updateBulkBar();
 }
 
-const SHEET_ID  = '1qaIj6HkP5qx4FeEW9m2v5uAwLnCOVuUU2LhSzgcKlig';
-const SHEET_NAME= 'Calendar Downloads';
-const API_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-
+// Data via n8n webhook: lpa-calendar-read
 let allRows = [];
 let filteredRows = [];
 let sortCol = 0;
@@ -412,18 +409,17 @@ function bulkDelete() {
 function loadData(){
   document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>';
 
-  fetch(API_URL + '&nocache=' + Date.now())
-    .then(r => r.text())
-    .then(text => {
-      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
-      const rows = json.table.rows || [];
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-read?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const rows = data.rows || [];
       allRows = rows.map(r => ({
-        timestamp:  r.c[0]?.v || '',
-        first_name: r.c[1]?.v || '',
-        last_name:  r.c[2]?.v || '',
-        email:      r.c[3]?.v || '',
-        phone:      r.c[4]?.v || '',
-        source:     r.c[5]?.v || ''
+        timestamp:  r['Timestamp']   || '',
+        first_name: r['First Name']  || '',
+        last_name:  r['Last Name']   || '',
+        email:      r['Email']       || '',
+        phone:      r['Phone']       || '',
+        source:     r['Source Page'] || ''
       }));
       computeKPIs();
       filteredRows = [...allRows];
