@@ -802,27 +802,112 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .sec-head a:hover { color: var(--orange); border-color: var(--orange); }
 
 /* ─── IN-HOUSE CTA BANNER ─── */
+/* ─── IN-HOUSE CTA BANNER ─── */
 .cta-banner {
-  position: relative; overflow: hidden; padding: 120px 60px;
-  background: var(--bg3);
-  display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1814 0%, #0f0d0b 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
 }
-.cta-banner::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--orange); }
-.cta-banner::after {
-  content: 'IN-HOUSE';
-  position: absolute; right: -20px; top: 50%; transform: translateY(-50%) rotate(90deg) translateX(50%);
-  font-family: var(--font-serif); font-size: 140px; font-weight: 700;
-  color: rgba(255,255,255,0.02); letter-spacing: 12px; pointer-events: none; white-space: nowrap; line-height: 1;
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(201,106,30,0.13) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
 }
+.cta-banner-left {
+  padding: 80px 64px;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  position: relative; z-index: 1;
+}
+.cta-banner-left .sec-eyebrow { color: var(--orange); margin-bottom: 20px; }
 .cta-banner-title {
-  font-family: var(--font-serif); font-size: clamp(36px, 4vw, 64px);
-  font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 3.5vw, 58px);
+  font-weight: 300; color: #fff;
+  line-height: 1.05; margin-bottom: 24px;
 }
 .cta-banner-title em { font-style: italic; color: var(--orange); }
-.cta-banner-desc { font-size: 16px; color: var(--grey); font-weight: 300; max-width: 560px; line-height: 1.75; }
-.cta-banner-right { display: flex; flex-direction: column; gap: 14px; min-width: 240px; }
-.cta-info { font-size: 13px; color: var(--grey); display: flex; align-items: center; gap: 10px; }
-.cta-info-icon { color: var(--orange); font-size: 16px; }
+.cta-banner-desc {
+  font-size: 16px; color: rgba(255,255,255,0.55);
+  font-weight: 300; line-height: 1.8;
+  max-width: 480px; margin-bottom: 40px;
+}
+.cta-banner-features {
+  display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px;
+}
+.cta-banner-feature {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.cbf-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 1px solid rgba(201,106,30,0.4);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--orange); font-size: 14px; margin-top: 2px;
+}
+.cbf-text strong {
+  display: block;
+  font-family: var(--font-cond); font-size: 12px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: #fff; margin-bottom: 3px;
+}
+.cbf-text span {
+  font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5;
+}
+.cta-banner-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--orange); color: #fff;
+  font-family: var(--font-cond); font-size: 13px;
+  letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 700; padding: 18px 36px;
+  text-decoration: none; transition: background 0.2s;
+  align-self: flex-start;
+}
+.cta-banner-btn:hover { background: #b05c18; }
+.cta-banner-btn::after { content: '→'; font-size: 16px; }
+/* Right side — image with overlay grid */
+.cta-banner-right {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+  background: url('https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/large-stol-dlya-peregovorov-han-7-2.jpg') center center / cover no-repeat;
+  min-width: unset; gap: 0;
+}
+.cta-banner-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+}
+.cta-banner-stat-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.cta-banner-stat {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  padding: 28px 24px;
+}
+.cbs-num {
+  display: block;
+  font-family: var(--font-serif); font-size: 36px;
+  font-weight: 300; color: #fff; line-height: 1;
+  margin-bottom: 6px;
+}
+.cbs-num em { font-style: italic; color: var(--orange); }
+.cbs-label {
+  display: block;
+  font-family: var(--font-cond); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.cta-info { display: none; }
+.cta-info-icon { display: none; }
 
 /* ─── ENQUIRY CTA (replaces newsletter as page closing section) ─── */
 /* ─── ENQUIRY / CONTACT SECTION ─── */
@@ -1007,6 +1092,8 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   .testi-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .cta-banner { grid-template-columns: 1fr; }
+  .cta-banner-right { min-height: 320px; }
+  .cta-banner-left { padding: 64px 28px; }
   .enquiry-cta { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
@@ -1498,24 +1585,63 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   SECTION 7: IN-HOUSE CTA BANNER
   Targeted conversion section for team buyers
 ════════════════════════════════════════════ -->
-<div class="cta-banner">
-  <div class="cta-banner-left">
+<div class="cta-banner" aria-label="In-House Training">
+
+  <!-- Left — dark content panel -->
+  <div class="cta-banner-left reveal">
     <span class="sec-eyebrow">In-House Training</span>
     <h2 class="cta-banner-title">Bring Our <em>Experts</em><br>to Your Organisation</h2>
     <p class="cta-banner-desc">We design and deliver fully tailored training programmes for your team — at your office, any external venue, or live online. No commitments until you're ready.</p>
+
+    <div class="cta-banner-features">
+      <div class="cta-banner-feature">
+        <div class="cbf-icon" aria-hidden="true">📋</div>
+        <div class="cbf-text">
+          <strong>Fully Customised Content</strong>
+          <span>Adapted to your assets, contracts, technical level and team objectives.</span>
+        </div>
+      </div>
+      <div class="cta-banner-feature">
+        <div class="cbf-icon" aria-hidden="true">🌍</div>
+        <div class="cbf-text">
+          <strong>Delivered Anywhere</strong>
+          <span>Your premises, any venue worldwide, or live online across time zones.</span>
+        </div>
+      </div>
+      <div class="cta-banner-feature">
+        <div class="cbf-icon" aria-hidden="true">👥</div>
+        <div class="cbf-text">
+          <strong>Any Team Size</strong>
+          <span>From 5 to 500 delegates — we scale to your organisation's needs.</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="inhouse.html" class="cta-banner-btn">Explore In-House Training</a>
   </div>
+
+  <!-- Right — photo with stat overlay -->
   <div class="cta-banner-right">
-    <div class="cta-info">
-      <span class="cta-info-icon" aria-hidden="true">📞</span>
-      <a href="tel:+441582516247" style="color:inherit;text-decoration:none">+44 (0) 1582 516247</a>
+    <div class="cta-banner-stat-grid">
+      <div class="cta-banner-stat">
+        <span class="cbs-num">40<em>+</em></span>
+        <span class="cbs-label">Countries delivered</span>
+      </div>
+      <div class="cta-banner-stat">
+        <span class="cbs-num">100<em>%</em></span>
+        <span class="cbs-label">Customisable</span>
+      </div>
+      <div class="cta-banner-stat">
+        <span class="cbs-num">20<em>+</em></span>
+        <span class="cbs-label">Yrs trainer experience</span>
+      </div>
+      <div class="cta-banner-stat">
+        <span class="cbs-num">50<em>+</em></span>
+        <span class="cbs-label">Client organisations</span>
+      </div>
     </div>
-    <div class="cta-info">
-      <span class="cta-info-icon" aria-hidden="true">✉️</span>
-      <a href="mailto:info@londonpetroacademy.co.uk" style="color:inherit;text-decoration:none">info@londonpetroacademy.co.uk</a>
-    </div>
-    <br>
-    <a href="mailto:info@londonpetroacademy.co.uk" class="btn-fill">Start the Conversation</a>
   </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════════
