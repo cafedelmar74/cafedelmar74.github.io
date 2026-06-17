@@ -244,10 +244,36 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
   </div>
 </div>
 
+
+<div class="del-overlay" id="delOverlay">
+  <div class="del-modal">
+    <div class="del-icon">🗑️</div>
+    <div class="del-title">Delete this lead?</div>
+    <div class="del-msg">You are about to remove <span class="del-name" id="delName"></span> from the dashboard.<br>This cannot be undone.</div>
+    <div class="del-actions">
+      <button class="del-cancel" onclick="closeDelModal()">Cancel</button>
+      <button class="del-confirm" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+</html>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="del-overlay" id="delOverlay">
+  <div class="del-modal">
+    <div class="del-icon">🗑️</div>
+    <div class="del-title">Delete this lead?</div>
+    <div class="del-msg">You are about to remove <span class="del-name" id="delName"></span> from the dashboard.<br>This cannot be undone.</div>
+    <div class="del-actions">
+      <button class="del-cancel" onclick="closeDelModal()">Cancel</button>
+      <button class="del-confirm" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-
-
 
 // ── Checkbox / bulk select ──
 let selectedIndices = new Set();
@@ -590,19 +616,4 @@ document.getElementById('delOverlay').addEventListener('click', function(e){
 
 });
 </script>
-
-<!-- DELETE CONFIRM MODAL -->
-<div class="del-overlay" id="delOverlay">
-  <div class="del-modal">
-    <div class="del-icon">🗑️</div>
-    <div class="del-title">Delete this lead?</div>
-    <div class="del-msg">You are about to remove <span class="del-name" id="delName"></span> from the dashboard.<br>This cannot be undone.</div>
-    <div class="del-actions">
-      <button class="del-cancel" onclick="closeDelModal()">Cancel</button>
-      <button class="del-confirm" onclick="confirmDelete()">Delete</button>
-    </div>
-  </div>
-</div>
-
 </body>
-</html>
