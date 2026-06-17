@@ -67,6 +67,36 @@
     "https://twitter.com/London_Petro_Ac"
   ]
 }
+
+// ── Hero stats counter animation ──
+(function(){
+  function animateHeroStats(){
+    document.querySelectorAll('.hstat-n[data-target]').forEach(function(el){
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      if(isNaN(target)) return;
+      let current = 0;
+      const steps = Math.min(target, 40);
+      const increment = Math.ceil(target / steps);
+      const interval = 1600 / steps;
+      const timer = setInterval(function(){
+        current = Math.min(current + increment, target);
+        el.textContent = current + suffix;
+        if(current >= target) clearInterval(timer);
+      }, interval);
+    });
+  }
+  const statsEl = document.querySelector('.hero-stats');
+  if(statsEl){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateHeroStats(); obs.disconnect(); }
+      });
+    }, {threshold: 0.6});
+    obs.observe(statsEl);
+  }
+})();
+
 </script>
 
 <!-- ═══════════════════════════════════════════
@@ -897,9 +927,9 @@ footer{
     <h1 class="hero-title">Upstream &amp; Midstream<br><em>Training Courses</em></h1>
     <p class="hero-desc">Expert-led courses covering the entire upstream exploration and production value chain — from legal and fiscal frameworks to drilling, reservoir and production engineering.</p>
     <div class="hero-stats">
-      <div class="hstat"><span class="hstat-n">9</span><span class="hstat-l">Course Categories</span></div>
-      <div class="hstat"><span class="hstat-n">30+</span><span class="hstat-l">Individual Courses</span></div>
-      <div class="hstat"><span class="hstat-n">3</span><span class="hstat-l">Delivery Formats</span></div>
+      <div class="hstat"><span class="hstat-n" data-target="9" data-suffix="">9</span><span class="hstat-l">Course Categories</span></div>
+      <div class="hstat"><span class="hstat-n" data-target="30" data-suffix="+">30+</span><span class="hstat-l">Individual Courses</span></div>
+      <div class="hstat"><span class="hstat-n" data-target="3" data-suffix="">3</span><span class="hstat-l">Delivery Formats</span></div>
     </div>
     <a href="#inhouse" class="btn-fill-amber" style="margin-top:28px;">Enquire About Upstream Training →</a>
     <p style="margin-top:8px;font-size:12px;color:var(--d-muted);font-family:var(--cond);letter-spacing:1px;text-transform:uppercase;">No obligation · Response within 1 business day</p>
