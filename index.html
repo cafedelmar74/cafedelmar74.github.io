@@ -552,13 +552,41 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .impact-n { display: block; font-family: var(--font-serif); font-size: 52px; font-weight: 300; color: #fff; line-height: 1; margin-bottom: 12px; }
 .impact-l { display: block; font-family: var(--font-cond); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 
-.why-lpa { padding: 100px 60px; background: var(--bg2); }
-.why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 64px; }
-.why-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; transition: box-shadow 0.3s, transform 0.3s; }
-.why-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-4px); }
-.why-icon { font-size: 32px; margin-bottom: 20px; }
-.why-title { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
-.why-desc { font-size: 14px; color: var(--grey); line-height: 1.7; }
+.why-lpa { padding: 100px 60px; background: var(--bg); }
+.why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 64px; border: 1px solid var(--border); }
+.why-card {
+  padding: 48px 36px;
+  border-right: 1px solid var(--border);
+  position: relative;
+  transition: background 0.3s;
+  overflow: hidden;
+}
+.why-card:last-child { border-right: none; }
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.why-card:hover { background: var(--bg2); }
+.why-card:hover::before { transform: scaleX(1); }
+.why-num {
+  font-family: var(--font-serif);
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--border2);
+  line-height: 1;
+  margin-bottom: 28px;
+  display: block;
+  letter-spacing: -2px;
+}
+.why-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--off-white); margin-bottom: 16px; line-height: 1.2; }
+.why-desc { font-size: 14px; color: var(--grey); line-height: 1.8; }
+.why-rule { width: 32px; height: 2px; background: var(--orange); margin-bottom: 20px; }
 
 /* ─── ABOUT STRIP (moved down — after delivery + testimonials) ─── */
 .about-strip {
@@ -792,7 +820,9 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 @media (max-width: 768px) {
   .hero-cta-btn { width: 100%; text-align: center; padding: 18px 20px; display: block; }
   .stats-bar .stats-row { grid-template-columns: 1fr 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; border: none; }
+  .why-card { border-right: none; border-bottom: 1px solid var(--border); }
+  .why-card:last-child { border-bottom: none; }
   .impact-grid { grid-template-columns: 1fr 1fr; }
   .impact-n { font-size: 36px; }
   .stats-bar { padding: 48px 24px; }
@@ -1106,22 +1136,26 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   </div>
   <div class="why-grid">
     <div class="why-card reveal">
-      <div class="why-icon" aria-hidden="true">🏭</div>
+      <span class="why-num" aria-hidden="true">01</span>
+      <div class="why-rule"></div>
       <h3 class="why-title">Industry Practitioners</h3>
       <p class="why-desc">All courses taught by active industry professionals — not academics. Average trainer experience: 20+ years in oil, gas, and energy.</p>
     </div>
     <div class="why-card reveal">
-      <div class="why-icon" aria-hidden="true">🌍</div>
+      <span class="why-num" aria-hidden="true">02</span>
+      <div class="why-rule"></div>
       <h3 class="why-title">Truly Global Delivery</h3>
-      <p class="why-desc">In-person training in 40+ countries and in 4 languages (English, Spanish, French, German). Remote options available across all time zones.</p>
+      <p class="why-desc">In-person training in 40+ countries and in 3 languages (English, Spanish, French). Remote options available across all time zones.</p>
     </div>
     <div class="why-card reveal">
-      <div class="why-icon" aria-hidden="true">📋</div>
+      <span class="why-num" aria-hidden="true">03</span>
+      <div class="why-rule"></div>
       <h3 class="why-title">Fully Customisable</h3>
       <p class="why-desc">Every programme tailored to your organisation's specific assets, operations, contracts, and technical level. No off-the-shelf solutions.</p>
     </div>
     <div class="why-card reveal">
-      <div class="why-icon" aria-hidden="true">🏆</div>
+      <span class="why-num" aria-hidden="true">04</span>
+      <div class="why-rule"></div>
       <h3 class="why-title">Trusted by Industry Leaders</h3>
       <p class="why-desc">From NOCs and IOCs to Energy Ministries — clients include Chevron, Shell, Petrobras, CNPC, and 50+ major energy organisations.</p>
     </div>
