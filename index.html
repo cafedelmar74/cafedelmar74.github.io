@@ -413,12 +413,13 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .ticker-label {
   text-align: center;
   font-family: var(--font-cond);
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--orange);
-  padding: 28px 0 8px;
+  padding: 32px 0 12px;
   background: var(--bg);
+  font-weight: 600;
 }
 
 /* ─── TICKER ─── */
@@ -449,11 +450,11 @@ nav.scrolled .hamburger span { background: #2c2825; }
 }
 .trust-header {
   text-align: center;
-  font-family: var(--font-cond); font-size: 13px;
+  font-family: var(--font-cond); font-size: 18px;
   letter-spacing: 4px; text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.85);
   margin-bottom: 24px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .trust-track {
   display: flex;
@@ -534,7 +535,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .testi-stars { color: var(--orange); font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; display: block; }
 .testi-quote { font-family: var(--font-serif); font-size: 16px; font-weight: 300; font-style: italic; color: var(--off-white); line-height: 1.7; margin-bottom: 28px; }
 .testi-author { font-family: var(--font-cond); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; }
-.testi-logo img { height: 20px; opacity: 0.5; object-fit: contain; filter: brightness(0); }
+.testi-logo img { height: 48px; opacity: 0.75; object-fit: contain; filter: brightness(0); max-width: 140px; }
 
 
 /* ─── STATS BAR ─── */
@@ -581,12 +582,12 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); margin-top: 48px; }
 .stat-box { padding: 28px 24px; border-right: 1px solid var(--border); text-align: center; }
 .stat-box:last-child { border-right: none; }
-.stats-row .stat-n { font-family: var(--font-serif); font-size: 42px; font-weight: 300; color: var(--white); line-height: 1; display: block; }
-.stats-row .stat-l { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-mid); margin-top: 8px; display: block; font-family: var(--font-cond); line-height: 1.4; }
+.stats-row .stat-n { font-family: var(--font-serif); font-size: 52px; font-weight: 300; color: var(--white); line-height: 1; display: block; }
+.stats-row .stat-l { font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-mid); margin-top: 8px; display: block; font-family: var(--font-cond); line-height: 1.4; }
 
 /* ─── SECTION HEADER ─── */
 .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 24px; }
-.sec-eyebrow { font-family: var(--font-cond); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block; }
+.sec-eyebrow { font-family: var(--font-cond); font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block; font-weight: 600; }
 .sec-title { font-family: var(--font-serif); font-size: clamp(36px, 3.5vw, 58px); font-weight: 300; line-height: 1; color: var(--white); }
 .sec-title em { font-style: italic; color: var(--orange); }
 .sec-head a { font-family: var(--font-cond); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; align-self: flex-end; }
@@ -923,9 +924,9 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
     <a href="upstream.html" class="hero-panel">
       <div class="panel-num">01 — Portfolio</div>
       <svg class="panel-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" stroke="#e07c35" stroke-width="1"/>
-        <path d="M20 8 L20 32 M13 15 L20 8 L27 15" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <rect x="15" y="24" width="10" height="8" stroke="#e07c35" stroke-width="1"/>
+        <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1"/>
+        <path d="M20 8 L20 32 M13 15 L20 8 L27 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="15" y="24" width="10" height="8" stroke="currentColor" stroke-width="1"/>
       </svg>
       <h2 class="panel-title">Upstream<br><em>Petroleum</em></h2>
       <p class="panel-desc">Exploration, drilling, reservoir engineering and production. Every stage of the upstream value chain.</p>
@@ -934,11 +935,11 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
     <a href="downstream.html" class="hero-panel">
       <div class="panel-num">02 — Portfolio</div>
       <svg class="panel-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" stroke="#e07c35" stroke-width="1"/>
-        <rect x="10" y="16" width="8" height="12" stroke="#e07c35" stroke-width="1"/>
-        <rect x="22" y="19" width="8" height="9" stroke="#e07c35" stroke-width="1"/>
-        <line x1="14" y1="16" x2="14" y2="11" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="26" y1="19" x2="26" y2="14" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1"/>
+        <rect x="10" y="16" width="8" height="12" stroke="currentColor" stroke-width="1"/>
+        <rect x="22" y="19" width="8" height="9" stroke="currentColor" stroke-width="1"/>
+        <line x1="14" y1="16" x2="14" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="26" y1="19" x2="26" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <h2 class="panel-title">Downstream<br><em>Operations</em></h2>
       <p class="panel-desc">Refining, petrochemicals, LNG and trading. In-depth training across the full downstream landscape.</p>
@@ -947,16 +948,16 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
     <a href="renewables.html" class="hero-panel">
       <div class="panel-num">03 — Portfolio</div>
       <svg class="panel-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" stroke="#e07c35" stroke-width="1"/>
-        <circle cx="20" cy="20" r="5" stroke="#e07c35" stroke-width="1"/>
-        <line x1="20" y1="7" x2="20" y2="12" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="20" y1="28" x2="20" y2="33" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="7" y1="20" x2="12" y2="20" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="28" y1="20" x2="33" y2="20" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="10.9" y1="10.9" x2="14.5" y2="14.5" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="25.5" y1="25.5" x2="29.1" y2="29.1" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="29.1" y1="10.9" x2="25.5" y2="14.5" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="14.5" y1="25.5" x2="10.9" y2="29.1" stroke="#e07c35" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1"/>
+        <circle cx="20" cy="20" r="5" stroke="currentColor" stroke-width="1"/>
+        <line x1="20" y1="7" x2="20" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="28" x2="20" y2="33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="7" y1="20" x2="12" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="28" y1="20" x2="33" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="10.9" y1="10.9" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="25.5" y1="25.5" x2="29.1" y2="29.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="29.1" y1="10.9" x2="25.5" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14.5" y1="25.5" x2="10.9" y2="29.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <h2 class="panel-title">Renewable<br><em>Energy</em></h2>
       <p class="panel-desc">Solar, wind, hydrogen and energy transition. Available in English, Spanish, French and German.</p>
@@ -992,8 +993,8 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 <section class="stats-bar" aria-label="Key statistics">
   <div class="stats-row">
     <div class="stat-box">
-      <span class="stat-n">500+</span>
-      <span class="stat-l">Energy professionals trained since 2020</span>
+      <span class="stat-n">5,000+</span>
+      <span class="stat-l">Energy professionals trained since 2015</span>
     </div>
     <div class="stat-box">
       <span class="stat-n">50+</span>
@@ -1005,7 +1006,7 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
     </div>
     <div class="stat-box">
       <span class="stat-n">4</span>
-      <span class="stat-l">Languages: EN · ES · FR · DE</span>
+      <span class="stat-l">Languages: EN · ES · FR</span>
     </div>
   </div>
 </section>
@@ -1069,25 +1070,25 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
       <span class="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
       <p class="testi-quote">"The fiscal systems course gave our team the exact framework we needed for PSC negotiations. London Petro Academy stands out for its applied, industry-specific approach."</p>
       <div class="testi-author">Vanessa Fernandes</div>
-      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Chevron_logo01.png" alt="Chevron" loading="lazy" height="20"></div>
+      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Chevron_logo01.png" alt="Chevron" loading="lazy" height="48"></div>
     </div>
     <div class="testi-card reveal">
       <span class="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
       <p class="testi-quote">"Very organised, efficient, and well co-ordinated. From first contact to certificate delivery — a seamless process that made it easy to enrol our entire team."</p>
       <div class="testi-author">Aarinola Bode-Omoleye</div>
-      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/07/1200px-Oando_logo.svg_.png" alt="Oando" loading="lazy" height="20"></div>
+      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/07/1200px-Oando_logo.svg_.png" alt="Oando" loading="lazy" height="48"></div>
     </div>
     <div class="testi-card reveal">
       <span class="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
       <p class="testi-quote">"After attending the Petroleum Economics course I can confidently say this is the most relevant training available for Latin American energy professionals."</p>
       <div class="testi-author">Rodrigo Augusto Da Silva</div>
-      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Logo_petrobras-2.gif" alt="Petrobras" loading="lazy" height="20"></div>
+      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/Logo_petrobras-2.gif" alt="Petrobras" loading="lazy" height="48"></div>
     </div>
     <div class="testi-card reveal">
       <span class="testi-stars" aria-label="5 out of 5 stars">★★★★★</span>
       <p class="testi-quote">"Dedicated, professional, and patient. The trainer ensured every participant was fully engaged throughout — highly recommended for technical teams."</p>
       <div class="testi-author">Lim Ling</div>
-      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/CNPC_logo01.png" alt="CNPC" loading="lazy" height="20"></div>
+      <div class="testi-logo"><img src="https://www.londonpetroacademy.co.uk/wp-content/uploads/2021/03/CNPC_logo01.png" alt="CNPC" loading="lazy" height="48"></div>
     </div>
   </div>
 </section>
