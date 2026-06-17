@@ -242,6 +242,75 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
 </div>
 
 <script>
+
+// ── Checkbox / bulk select ──
+let selectedIndices = new Set();
+
+function onRowCheck() {
+  selectedIndices = new Set(
+    [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx))
+  );
+  updateBulkBar();
+  // Update select-all state
+  const total = document.querySelectorAll('.row-cb').length;
+  const checked = document.querySelectorAll('.row-cb:checked').length;
+  const sa = document.getElementById('selectAll');
+  if(sa) {
+    sa.checked = checked > 0 && checked === total;
+    sa.indeterminate = checked > 0 && checked < total;
+  }
+}
+
+function toggleSelectAll() {
+  const sa = document.getElementById('selectAll');
+  const checked = sa.checked;
+  document.querySelectorAll('.row-cb').forEach(cb => {
+    cb.checked = checked;
+    const idx = parseInt(cb.dataset.idx);
+    if(checked) selectedIndices.add(idx);
+    else selectedIndices.delete(idx);
+  });
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  const count = document.getElementById('bulkCount');
+  if(selectedIndices.size > 0) {
+    bar.classList.add('visible');
+    count.textContent = selectedIndices.size + ' selected';
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function clearSelection() {
+  selectedIndices.clear();
+  document.querySelectorAll('.row-cb').forEach(cb => cb.checked = false);
+  const sa = document.getElementById('selectAll');
+  if(sa) { sa.checked = false; sa.indeterminate = false; }
+  updateBulkBar();
+}
+
+function bulkDelete() {
+  if(selectedIndices.size === 0) return;
+  const count = selectedIndices.size;
+  if(!confirm('Delete ' + count + ' selected lead' + (count > 1 ? 's' : '') + '? This cannot be undone.')) return;
+  // Remove from allRows (descending order to preserve indices)
+  const toDelete = [...selectedIndices].sort((a,b) => b-a);
+  toDelete.forEach(idx => allRows.splice(idx, 1));
+  selectedIndices.clear();
+  // Re-apply filter
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filteredRows = allRows.filter(r =>
+    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
+  );
+  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE) || currentPage < 1) currentPage = 1;
+  computeKPIs();
+  renderTable();
+  updateBulkBar();
+}
+
 const SHEET_ID  = '1qaIj6HkP5qx4FeEW9m2v5uAwLnCOVuUU2LhSzgcKlig';
 const SHEET_NAME= 'Calendar Downloads';
 const API_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
@@ -272,6 +341,71 @@ function shortSource(url){
   }
 }
 
+// ── Checkbox / bulk select ──
+let selectedIndices = new Set();
+
+function onRowCheck() {
+  selectedIndices = new Set(
+    [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx))
+  );
+  updateBulkBar();
+  const total = document.querySelectorAll('.row-cb').length;
+  const checked = document.querySelectorAll('.row-cb:checked').length;
+  const sa = document.getElementById('selectAll');
+  if(sa) {
+    sa.checked = checked > 0 && checked === total;
+    sa.indeterminate = checked > 0 && checked < total;
+  }
+}
+
+function toggleSelectAll() {
+  const sa = document.getElementById('selectAll');
+  const checked = sa.checked;
+  document.querySelectorAll('.row-cb').forEach(cb => {
+    cb.checked = checked;
+    const idx = parseInt(cb.dataset.idx);
+    if(checked) selectedIndices.add(idx);
+    else selectedIndices.delete(idx);
+  });
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  const count = document.getElementById('bulkCount');
+  if(selectedIndices.size > 0) {
+    bar.classList.add('visible');
+    count.textContent = selectedIndices.size + ' selected';
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function clearSelection() {
+  selectedIndices.clear();
+  document.querySelectorAll('.row-cb').forEach(cb => cb.checked = false);
+  const sa = document.getElementById('selectAll');
+  if(sa) { sa.checked = false; sa.indeterminate = false; }
+  updateBulkBar();
+}
+
+function bulkDelete() {
+  if(selectedIndices.size === 0) return;
+  const count = selectedIndices.size;
+  if(!confirm('Delete ' + count + ' selected lead' + (count > 1 ? 's' : '') + '? This cannot be undone.')) return;
+  const toDelete = [...selectedIndices].sort((a,b) => b-a);
+  toDelete.forEach(idx => allRows.splice(idx, 1));
+  selectedIndices.clear();
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filteredRows = allRows.filter(r =>
+    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
+  );
+  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE) || currentPage < 1) currentPage = 1;
+  computeKPIs();
+  renderTable();
+  updateBulkBar();
+}
+
 function loadData(){
   document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>';
 
@@ -295,7 +429,7 @@ function loadData(){
     })
     .catch(err => {
       document.getElementById('tableBody').innerHTML = `
-        <tr><td colspan="6">
+        <tr><td colspan="8">
           <div class="state-msg">
             <div class="icon">📭</div>
             <h3>No data yet</h3>
@@ -450,74 +584,6 @@ document.getElementById('delOverlay').addEventListener('click', function(e){
   if(e.target === this) closeDelModal();
 });
 
-
-// ── Checkbox / bulk select ──
-let selectedIndices = new Set();
-
-function onRowCheck() {
-  selectedIndices = new Set(
-    [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx))
-  );
-  updateBulkBar();
-  // Update select-all state
-  const total = document.querySelectorAll('.row-cb').length;
-  const checked = document.querySelectorAll('.row-cb:checked').length;
-  const sa = document.getElementById('selectAll');
-  if(sa) {
-    sa.checked = checked > 0 && checked === total;
-    sa.indeterminate = checked > 0 && checked < total;
-  }
-}
-
-function toggleSelectAll() {
-  const sa = document.getElementById('selectAll');
-  const checked = sa.checked;
-  document.querySelectorAll('.row-cb').forEach(cb => {
-    cb.checked = checked;
-    const idx = parseInt(cb.dataset.idx);
-    if(checked) selectedIndices.add(idx);
-    else selectedIndices.delete(idx);
-  });
-  updateBulkBar();
-}
-
-function updateBulkBar() {
-  const bar = document.getElementById('bulkBar');
-  const count = document.getElementById('bulkCount');
-  if(selectedIndices.size > 0) {
-    bar.classList.add('visible');
-    count.textContent = selectedIndices.size + ' selected';
-  } else {
-    bar.classList.remove('visible');
-  }
-}
-
-function clearSelection() {
-  selectedIndices.clear();
-  document.querySelectorAll('.row-cb').forEach(cb => cb.checked = false);
-  const sa = document.getElementById('selectAll');
-  if(sa) { sa.checked = false; sa.indeterminate = false; }
-  updateBulkBar();
-}
-
-function bulkDelete() {
-  if(selectedIndices.size === 0) return;
-  const count = selectedIndices.size;
-  if(!confirm('Delete ' + count + ' selected lead' + (count > 1 ? 's' : '') + '? This cannot be undone.')) return;
-  // Remove from allRows (descending order to preserve indices)
-  const toDelete = [...selectedIndices].sort((a,b) => b-a);
-  toDelete.forEach(idx => allRows.splice(idx, 1));
-  selectedIndices.clear();
-  // Re-apply filter
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredRows = allRows.filter(r =>
-    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
-  );
-  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE) || currentPage < 1) currentPage = 1;
-  computeKPIs();
-  renderTable();
-  updateBulkBar();
-}
 
 </script>
 
