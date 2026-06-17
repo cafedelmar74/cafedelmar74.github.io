@@ -764,6 +764,80 @@ footer{
 .cr-tag{font-family:var(--cond);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;border:1px solid var(--line2);color:var(--ink-light);background:var(--page3);}
 .cat-examples{margin-top:18px;margin-bottom:24px;padding-left:18px;font-size:14px;color:var(--ink-light);line-height:1.7;}
 .cat-examples li{margin-bottom:4px;}
+
+/* ── UPSTREAM TESTIMONIAL ── */
+.up-testi {
+  background: var(--dark);
+  padding: 56px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.up-testi::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 0% 50%, rgba(200,135,58,0.10) 0%, transparent 60%);
+  pointer-events: none;
+}
+.up-testi-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.up-testi-quote-mark {
+  font-family: var(--serif);
+  font-size: 96px;
+  font-weight: 300;
+  color: var(--amber);
+  line-height: 0.7;
+  opacity: 0.6;
+  align-self: flex-start;
+  margin-top: 16px;
+}
+.up-testi-text {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.up-testi-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.up-testi-name {
+  font-family: var(--cond);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.up-testi-org {
+  font-size: 12px;
+  color: var(--d-muted);
+  letter-spacing: 0.5px;
+}
+.up-testi-stars {
+  font-size: 18px;
+  color: var(--amber);
+  letter-spacing: 3px;
+  align-self: center;
+  opacity: 0.85;
+}
+@media(max-width:768px) {
+  .up-testi { padding: 48px 24px; }
+  .up-testi-inner { grid-template-columns: 1fr; gap: 16px; }
+  .up-testi-quote-mark { font-size: 64px; margin-top: 0; }
+  .up-testi-stars { display: none; }
+}
 </style>
 </head>
 <body>
@@ -1096,7 +1170,19 @@ footer{
   </main>
 </div><!-- end body-wrap -->
 
-<section style="padding:40px 60px 0;background:var(--page);"><blockquote style="border-left:3px solid var(--amber);padding-left:18px;margin:0;max-width:640px;"><p style="font-size:14px;color:var(--ink-light);line-height:1.7;">“The Upstream Oil &amp; Gas Project Management programme gave our team a step-change in project governance and delivery discipline.”</p><span style="display:block;margin-top:6px;font-size:12px;color:var(--ink-light);">— Senior Project Manager, National Oil Company</span></blockquote></section>
+<section class="up-testi">
+  <div class="up-testi-inner">
+    <div class="up-testi-quote-mark" aria-hidden="true">&ldquo;</div>
+    <div class="up-testi-body">
+      <p class="up-testi-text">The Upstream Oil &amp; Gas Project Management programme gave our team a step-change in project governance and delivery discipline.</p>
+      <div class="up-testi-author">
+        <span class="up-testi-name">Senior Project Manager</span>
+        <span class="up-testi-org">National Oil Company</span>
+      </div>
+    </div>
+    <div class="up-testi-stars" aria-label="5 stars">★★★★★</div>
+  </div>
+</section>
 
 <!-- IN-HOUSE BANNER -->
 <div class="inhouse">
