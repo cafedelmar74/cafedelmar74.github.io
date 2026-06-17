@@ -549,72 +549,55 @@ nav.scrolled .hamburger span { background: #2c2825; }
   justify-content: flex-end;
 }
 .del-card-num {
-  font-family: var(--font-serif);
-  font-size: 80px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.07);
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
   line-height: 1;
   position: absolute;
-  top: 32px; right: 32px;
-  transition: color 0.4s;
+  top: 36px; left: 40px;
 }
-.del-card:hover .del-card-num { color: rgba(201,106,30,0.2); }
 .del-card-tag {
   font-family: var(--font-cond);
-  font-size: 10px; letter-spacing: 3px;
+  font-size: 13px; letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--orange);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: block;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.4s 0.05s, transform 0.4s 0.05s;
+  opacity: 1;
 }
-.del-card:hover .del-card-tag { opacity: 1; transform: translateY(0); }
 .del-card-title {
   font-family: var(--font-serif);
-  font-size: 28px; font-weight: 300;
+  font-size: 36px; font-weight: 300;
   color: #fff;
   margin-bottom: 16px;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 .del-card-title em { font-style: italic; color: var(--orange); }
 .del-card-rule {
-  width: 0; height: 2px;
+  width: 40px; height: 2px;
   background: var(--orange);
-  margin-bottom: 16px;
-  transition: width 0.5s ease;
+  margin-bottom: 20px;
 }
-.del-card:hover .del-card-rule { width: 40px; }
 .del-card-desc {
-  font-size: 14px; color: rgba(255,255,255,0.65);
+  font-size: 15px; color: rgba(255,255,255,0.75);
   line-height: 1.75; font-weight: 300;
   margin-bottom: 28px;
-  max-height: 0; overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.4s 0.1s;
 }
-.del-card:hover .del-card-desc { max-height: 120px; opacity: 1; }
 .del-card-link {
   font-family: var(--font-cond); font-size: 12px; letter-spacing: 2px;
   text-transform: uppercase; color: #fff;
   text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 0.4s 0.15s, transform 0.4s 0.15s, color 0.2s;
+  transition: color 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 3px;
 }
-.del-card:hover .del-card-link { opacity: 1; transform: translateY(0); }
-.del-card-link:hover { color: var(--orange); }
-.del-card-link::after { content: '→'; transition: transform 0.2s; }
-.del-card-link:hover::after { transform: translateX(4px); }
-.urgency-badge {
-  display: inline-block; margin-bottom: 16px;
-  background: rgba(201,106,30,0.2);
-  color: var(--orange); font-size: 11px;
-  padding: 4px 12px; border-radius: 20px;
-  opacity: 0; transition: opacity 0.4s 0.1s;
-}
-.del-card:hover .urgency-badge { opacity: 1; }
+.del-card-link:hover { color: var(--orange); border-color: var(--orange); }
+.del-card-link::after { content: ' →'; }
+
 
 /* ─── TESTIMONIALS (moved up before About) ─── */
 .testimonials { padding: 100px 60px; background: var(--bg2); }
@@ -928,8 +911,7 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   .about-strip { grid-template-columns: 1fr; gap: 40px; }
   .delivery-grid { grid-template-columns: 1fr; min-height: auto; }
   .del-card { min-height: 420px; }
-  .del-card-tag, .del-card-desc, .del-card-link { opacity: 1; transform: none; max-height: none; }
-  .del-card-rule { width: 32px; }
+  .del-card-title { font-size: 28px; }
   .testi-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .cta-banner { grid-template-columns: 1fr; }
@@ -1278,7 +1260,6 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
         <h3 class="del-card-title">Classroom <em>Courses</em></h3>
         <div class="del-card-rule"></div>
         <p class="del-card-desc">In-person sessions in London, Singapore, Dubai, Paris, Amsterdam, Rio de Janeiro, Istanbul and more.</p>
-        <span class="urgency-badge">📅 2026 calendar now live — limited seats</span>
         <a href="upstream.html" class="del-card-link">2026 Calendar</a>
       </div>
     </div>
