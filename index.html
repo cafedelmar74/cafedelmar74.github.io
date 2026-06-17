@@ -539,8 +539,28 @@ nav.scrolled .hamburger span { background: #2c2825; }
 
 
 /* ─── STATS BAR ─── */
-.stats-bar { background: var(--bg2); padding: 60px; }
-.stats-bar .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); margin-top: 0; max-width: 1200px; margin: 0 auto; }
+.stats-bar {
+  background: linear-gradient(135deg, #1a1814 0%, #0f0d0b 100%);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,106,30,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.stats-bar .stats-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
 
 
 /* ─── WHY LPA ─── */
@@ -664,10 +684,43 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .about-right p { font-size: 16px; color: var(--grey); font-weight: 300; line-height: 1.8; margin-bottom: 20px; }
 .about-right p:last-of-type { margin-bottom: 40px; }
 .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); margin-top: 48px; }
-.stat-box { padding: 28px 24px; border-right: 1px solid var(--border); text-align: center; }
+.stat-box {
+  padding: 40px 24px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  position: relative;
+}
 .stat-box:last-child { border-right: none; }
-.stats-row .stat-n { font-family: var(--font-serif); font-size: 52px; font-weight: 300; color: var(--white); line-height: 1; display: block; }
-.stats-row .stat-l { font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-mid); margin-top: 8px; display: block; font-family: var(--font-cond); line-height: 1.4; }
+.stat-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 2px;
+  background: var(--orange);
+  transition: width 0.6s ease;
+}
+.stat-box:hover::after { width: 40px; }
+.stats-row .stat-n {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  display: block;
+  letter-spacing: -1px;
+}
+.stats-row .stat-n em { font-style: italic; color: var(--orange); }
+.stats-row .stat-l {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 16px;
+  display: block;
+  font-family: var(--font-cond);
+  line-height: 1.5;
+}
 
 /* ─── SECTION HEADER ─── */
 .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 24px; }
@@ -876,6 +929,8 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 @media (max-width: 768px) {
   .hero-cta-btn { width: 100%; text-align: center; padding: 18px 20px; display: block; }
   .stats-bar .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat-box { padding: 32px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .stat-box:last-child { border-bottom: none; }
   .why-grid { grid-template-columns: 1fr; border: none; }
   .why-card { border-right: none; border-bottom: 1px solid var(--border); }
   .why-card:last-child { border-bottom: none; }
@@ -1080,19 +1135,19 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 <section class="stats-bar" aria-label="Key statistics">
   <div class="stats-row">
     <div class="stat-box">
-      <span class="stat-n">5,000+</span>
+      <span class="stat-n" data-target="5000" data-suffix="+">5,000<em>+</em></span>
       <span class="stat-l">Energy professionals trained since 2015</span>
     </div>
     <div class="stat-box">
-      <span class="stat-n">50+</span>
+      <span class="stat-n" data-target="50" data-suffix="+">50<em>+</em></span>
       <span class="stat-l">Major NOCs, IOCs &amp; service companies</span>
     </div>
     <div class="stat-box">
-      <span class="stat-n">30+</span>
+      <span class="stat-n" data-target="30" data-suffix="+">30<em>+</em></span>
       <span class="stat-l">Countries reached</span>
     </div>
     <div class="stat-box">
-      <span class="stat-n">4</span>
+      <span class="stat-n" data-target="4" data-suffix="">4<em></em></span>
       <span class="stat-l">Languages: EN · ES · FR</span>
     </div>
   </div>
@@ -1429,6 +1484,37 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
       btn.disabled = false;
     }, 4000);
   }
+
+
+// ── Stats bar counter animation ──
+(function(){
+  function animateStats(){
+    document.querySelectorAll('.stat-box .stat-n[data-target]').forEach(function(el){
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      if(isNaN(target)) return;
+      let current = 0;
+      const duration = 1800;
+      const steps = Math.min(target, 60);
+      const increment = Math.ceil(target / steps);
+      const interval = duration / steps;
+      const timer = setInterval(function(){
+        current = Math.min(current + increment, target);
+        el.innerHTML = (target >= 1000 ? current.toLocaleString() : current) + '<em>' + suffix + '</em>';
+        if(current >= target) clearInterval(timer);
+      }, interval);
+    });
+  }
+  const bar = document.querySelector('.stats-bar');
+  if(bar){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateStats(); obs.disconnect(); }
+      });
+    }, {threshold: 0.4});
+    obs.observe(bar);
+  }
+})();
 
 // ── Impact band counter animation ──
 (function(){
