@@ -343,7 +343,10 @@ function bulkDelete(){
   if(!confirm('Delete '+selectedIndices.size+' selected lead(s)? This cannot be undone.')) return;
   var toDelete = [...selectedIndices].sort(function(a,b){return b-a;});
   toDelete.forEach(function(idx){
-    if(allRows[idx] && allRows[idx].row_number) deletedRowNumbers.add(allRows[idx].row_number);
+    if(allRows[idx] && allRows[idx].row_number){
+      deletedRowNumbers.add(allRows[idx].row_number);
+      fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-delete?row_number='+allRows[idx].row_number,{method:'GET',mode:'no-cors'}).catch(function(){});
+    }
     allRows.splice(idx,1);
   });
   selectedIndices.clear();
@@ -366,7 +369,10 @@ function closeDelModal(){
 function confirmDelete(){
   if(pendingDelIdx===null) return;
   var r = allRows[pendingDelIdx];
-  if(r.row_number) deletedRowNumbers.add(r.row_number);
+  if(r.row_number){
+    deletedRowNumbers.add(r.row_number);
+    fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-delete?row_number='+r.row_number,{method:'GET',mode:'no-cors'}).catch(function(){});
+  }
   allRows.splice(pendingDelIdx,1);
   closeDelModal();
   filterTable();
