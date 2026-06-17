@@ -180,6 +180,7 @@ var currentPage = 1;
 var PER_PAGE = 25;
 var selectedIndices = new Set();
 var pendingDelIdx = null;
+var deletedRowNumbers = new Set(); // persists across reloads
 
 function formatDate(iso){
   if(!iso) return '—';
@@ -198,6 +199,7 @@ function loadData(){
       var rows = data.rows || [];
       allRows = rows.map(function(r){
         return {
+          row_number: r['row_number'],
           timestamp:  r['Timestamp']   || '',
           first_name: r['First Name']  || '',
           last_name:  r['Last Name']   || '',
@@ -205,7 +207,7 @@ function loadData(){
           phone:      r['Phone']       || '',
           source:     r['Source Page'] || ''
         };
-      });
+      }).filter(function(r){ return !deletedRowNumbers.has(r.row_number); });
       computeKPIs();
       filteredRows = allRows.slice();
       currentPage = 1;
@@ -340,7 +342,10 @@ function bulkDelete(){
   if(!selectedIndices.size) return;
   if(!confirm('Delete '+selectedIndices.size+' selected lead(s)? This cannot be undone.')) return;
   var toDelete = [...selectedIndices].sort(function(a,b){return b-a;});
-  toDelete.forEach(function(idx){ allRows.splice(idx,1); });
+  toDelete.forEach(function(idx){
+    if(allRows[idx] && allRows[idx].row_number) deletedRowNumbers.add(allRows[idx].row_number);
+    allRows.splice(idx,1);
+  });
   selectedIndices.clear();
   filterTable();
   computeKPIs();
@@ -360,6 +365,8 @@ function closeDelModal(){
 }
 function confirmDelete(){
   if(pendingDelIdx===null) return;
+  var r = allRows[pendingDelIdx];
+  if(r.row_number) deletedRowNumbers.add(r.row_number);
   allRows.splice(pendingDelIdx,1);
   closeDelModal();
   filterTable();
