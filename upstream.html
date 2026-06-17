@@ -1412,16 +1412,15 @@ document.addEventListener('DOMContentLoaded', function(){
     var btn = document.getElementById('calDlSubmit');
     btn.disabled = true;
     btn.textContent = 'One moment…';
-    // GET + no-cors to n8n — no CORS preflight
+    // GET + no-cors to n8n — exact param names the workflow expects: fn, ln, em, ph, src
     var qs = [
-      'fn='    + encodeURIComponent(fn),
-      'ln='    + encodeURIComponent(ln),
-      'email=' + encodeURIComponent(em),
-      'org='   + encodeURIComponent(org),
-      'phone=' + encodeURIComponent(ph),
-      'source=upstream'
+      'fn='  + encodeURIComponent(fn),
+      'ln='  + encodeURIComponent(ln),
+      'em='  + encodeURIComponent(em),
+      'ph='  + encodeURIComponent(ph),
+      'src=' + encodeURIComponent(window.location.href)
     ].join('&');
-    fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-download?' + qs,{
+    fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
       method:'GET', mode:'no-cors'
     }).catch(function(){});
     // Redirect immediately — never block the user waiting for n8n
