@@ -5,153 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 Calendar Downloads — LPA Dashboard</title>
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0b0d;--bg2:#111315;--amber:#c8873a;--off-white:#e8e6e0;--grey:#8a8f96;--green:#2e7d52;--line:rgba(255,255,255,0.07);}
+:root{--bg:#0a0b0d;--bg2:#111315;--amber:#c8873a;--off-white:#e8e6e0;--grey:#8a8f96;--line:rgba(255,255,255,0.07);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--off-white);font-family:'Barlow',sans-serif;min-height:100vh;}
-/* NAV */
 nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:var(--bg2);border-bottom:1px solid var(--line);}
 .nav-logo img{height:38px;width:auto;}
-.nav-title{font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);}
-.nav-back{font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-decoration:none;transition:opacity .2s;}
+.nav-title{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-decoration:none;}
 .nav-back:hover{opacity:.7;}
-/* LAYOUT */
 .page{max-width:1300px;margin:0 auto;padding:40px 40px 80px;}
-/* HEADER */
-.dash-head{margin-bottom:40px;}
-.dash-eyebrow{font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
-.dash-title{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#fff;line-height:1;}
+.dash-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+.dash-title{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#fff;line-height:1;margin-bottom:8px;}
 .dash-title em{font-style:italic;color:var(--amber);}
-.dash-sub{font-size:14px;color:var(--grey);margin-top:8px;}
-/* KPI CARDS */
+.dash-sub{font-size:14px;color:var(--grey);margin-bottom:40px;}
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
 .kpi{background:var(--bg2);border:1px solid var(--line);padding:24px 28px;}
-.kpi-label{font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
+.kpi-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
 .kpi-num{font-family:'Fraunces',serif;font-size:48px;font-weight:300;color:#fff;line-height:1;}
 .kpi-num em{color:var(--amber);font-style:normal;}
 .kpi-change{font-size:12px;color:var(--grey);margin-top:6px;}
-/* TOOLBAR */
-.toolbar{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.toolbar{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
 .search-box{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);padding:10px 16px;flex:1;min-width:220px;}
 .search-box input{background:none;border:none;outline:none;color:var(--off-white);font-family:'Barlow',sans-serif;font-size:14px;width:100%;}
 .search-box input::placeholder{color:var(--grey);}
 .search-box svg{color:var(--grey);flex-shrink:0;}
-.export-btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#000;font-family:'Barlow',sans-serif;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;padding:11px 22px;border:none;cursor:pointer;transition:opacity .2s;}
+.export-btn{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#000;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 22px;border:none;cursor:pointer;transition:opacity .2s;}
 .export-btn:hover{opacity:.85;}
-.refresh-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--grey);border:1px solid var(--line);font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 18px;cursor:pointer;transition:color .2s,border-color .2s;}
+.refresh-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--grey);border:1px solid var(--line);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px 18px;cursor:pointer;transition:color .2s,border-color .2s;}
 .refresh-btn:hover{color:var(--amber);border-color:var(--amber);}
-.record-count{font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:1px;color:var(--grey);margin-left:auto;}
-/* TABLE */
+.record-count{font-size:12px;letter-spacing:1px;color:var(--grey);margin-left:auto;}
+.bulk-bar{display:none;align-items:center;gap:16px;background:#1a1814;border:1px solid rgba(200,135,58,0.4);padding:12px 20px;margin-bottom:12px;}
+.bulk-bar.visible{display:flex;}
+.bulk-count{font-size:13px;color:var(--amber);font-weight:600;}
+.bulk-del-btn{display:inline-flex;align-items:center;gap:8px;background:#e53935;color:#fff;border:none;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:9px 20px;transition:background .2s;}
+.bulk-del-btn:hover{background:#c62828;}
+.bulk-cancel-btn{background:none;border:1px solid rgba(255,255,255,0.2);color:var(--grey);font-size:12px;cursor:pointer;padding:9px 16px;transition:border-color .2s;}
+.bulk-cancel-btn:hover{border-color:rgba(255,255,255,0.5);color:#fff;}
 .table-wrap{overflow-x:auto;border:1px solid var(--line);}
 table{width:100%;border-collapse:collapse;}
 thead tr{background:rgba(200,135,58,0.08);border-bottom:1px solid var(--line);}
-th{font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);padding:14px 18px;text-align:left;white-space:nowrap;}
+th{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);padding:14px 18px;text-align:left;white-space:nowrap;}
 th.sortable{cursor:pointer;user-select:none;}
 th.sortable:hover{color:#fff;}
 th .sort-arrow{margin-left:4px;opacity:0.4;}
-th.sorted .sort-arrow{opacity:1;}
+.cb-col{width:40px;}
+input[type="checkbox"]{accent-color:var(--amber);width:15px;height:15px;cursor:pointer;}
 tbody tr{border-bottom:1px solid var(--line);transition:background .15s;}
 tbody tr:last-child{border-bottom:none;}
 tbody tr:hover{background:rgba(255,255,255,0.03);}
 td{padding:14px 18px;font-size:14px;color:var(--off-white);font-weight:300;}
-td.td-date{font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:1px;color:var(--grey);}
+td.td-date{font-size:12px;letter-spacing:1px;color:var(--grey);}
 td.td-email a{color:var(--amber);text-decoration:none;}
 td.td-email a:hover{text-decoration:underline;}
 td.td-source{font-size:12px;color:var(--grey);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-/* EMPTY / LOADING */
+.btn-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:15px;padding:4px 8px;border-radius:4px;transition:color .2s,background .2s;line-height:1;}
+.btn-del:hover{color:#e53935;background:rgba(229,57,53,.08);}
 .state-msg{padding:60px;text-align:center;color:var(--grey);}
 .state-msg .icon{font-size:48px;margin-bottom:16px;opacity:0.4;}
 .state-msg h3{font-family:'Fraunces',serif;font-size:24px;font-weight:300;color:var(--off-white);margin-bottom:8px;}
 .state-msg p{font-size:14px;}
 .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--line);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-/* PAGINATION */
 .pagination{display:flex;align-items:center;gap:8px;margin-top:20px;justify-content:flex-end;}
-.pg-btn{background:var(--bg2);border:1px solid var(--line);color:var(--off-white);font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:1px;padding:8px 16px;cursor:pointer;transition:border-color .2s,color .2s;}
+.pg-btn{background:var(--bg2);border:1px solid var(--line);color:var(--off-white);font-size:12px;letter-spacing:1px;padding:8px 16px;cursor:pointer;transition:border-color .2s,color .2s;}
 .pg-btn:hover:not(:disabled){border-color:var(--amber);color:var(--amber);}
 .pg-btn:disabled{opacity:.35;cursor:default;}
-.pg-info{font-family:'Barlow',sans-serif;font-size:12px;color:var(--grey);padding:0 8px;}
-/* RESPONSIVE */
+.pg-info{font-size:12px;color:var(--grey);padding:0 8px;}
+.del-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.del-overlay.open{display:flex;}
+.del-modal{background:#fff;max-width:400px;width:90%;border-radius:8px;padding:32px;box-shadow:0 24px 80px rgba(0,0,0,0.25);text-align:center;}
+.del-icon{font-size:40px;margin-bottom:16px;}
+.del-title{font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:8px;}
+.del-msg{font-size:14px;color:#666;margin-bottom:24px;line-height:1.5;}
+.del-name{font-weight:600;color:#1a1a1a;}
+.del-actions{display:flex;gap:12px;justify-content:center;}
+.del-cancel{padding:11px 28px;border:1.5px solid #ddd;background:#fff;border-radius:6px;font-size:14px;cursor:pointer;color:#444;}
+.del-cancel:hover{border-color:#aaa;}
+.del-confirm{padding:11px 28px;border:none;background:#e53935;border-radius:6px;font-size:14px;cursor:pointer;color:#fff;font-weight:600;}
+.del-confirm:hover{background:#c62828;}
 @media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr;}.page{padding:24px 20px 60px;}nav{padding:0 20px;}}
-@media(max-width:600px){.kpi-grid{grid-template-columns:1fr 1fr;}.kpi-num{font-size:36px;}}
-
-/* ── DELETE ── */
-.btn-del {
-  background: none; border: none; cursor: pointer;
-  color: #ccc; font-size: 15px; padding: 4px 8px;
-  border-radius: 4px; transition: color .2s, background .2s;
-  line-height: 1;
-}
-.btn-del:hover { color: #e53935; background: rgba(229,57,53,.08); }
-
-/* ── CONFIRM MODAL ── */
-.del-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
-  align-items: center; justify-content: center;
-}
-.del-overlay.open { display: flex; }
-.del-modal {
-  background: #fff; max-width: 400px; width: 90%;
-  border-radius: 8px; padding: 32px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.25);
-  text-align: center;
-}
-.del-icon { font-size: 40px; margin-bottom: 16px; }
-.del-title { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
-.del-msg { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.5; }
-.del-name { font-weight: 600; color: #1a1a1a; }
-.del-actions { display: flex; gap: 12px; justify-content: center; }
-.del-cancel {
-  padding: 11px 28px; border: 1.5px solid #ddd; background: #fff;
-  border-radius: 6px; font-size: 14px; cursor: pointer; color: #444;
-  transition: border-color .2s;
-}
-.del-cancel:hover { border-color: #aaa; }
-.del-confirm {
-  padding: 11px 28px; border: none; background: #e53935;
-  border-radius: 6px; font-size: 14px; cursor: pointer;
-  color: #fff; font-weight: 600; transition: background .2s;
-}
-.del-confirm:hover { background: #c62828; }
-
-
-/* ── CHECKBOX + BULK BAR ── */
-.cb-col { width: 40px; }
-input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; cursor: pointer; }
-.bulk-bar {
-  display: none; align-items: center; gap: 16px;
-  background: #1a1814; border: 1px solid rgba(200,135,58,0.4);
-  padding: 12px 20px; margin-bottom: 16px;
-  animation: slideDown .2s ease;
-}
-@keyframes slideDown { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
-.bulk-bar.visible { display: flex; }
-.bulk-count {
-  font-size: 13px; color: var(--amber); font-weight: 600;
-  font-family: 'Barlow', sans-serif;
-}
-.bulk-del-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #e53935; color: #fff; border: none; cursor: pointer;
-  font-family: 'Barlow', sans-serif; font-size: 12px;
-  font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-  padding: 9px 20px; transition: background .2s;
-}
-.bulk-del-btn:hover { background: #c62828; }
-.bulk-cancel-btn {
-  background: none; border: 1px solid rgba(255,255,255,0.2);
-  color: var(--grey); font-family: 'Barlow', sans-serif;
-  font-size: 12px; cursor: pointer; padding: 9px 16px;
-  transition: border-color .2s;
-}
-.bulk-cancel-btn:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-
 </style>
 </head>
 <body>
@@ -163,37 +98,17 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
 </nav>
 
 <div class="page">
-  <div class="dash-head">
-    <div class="dash-eyebrow">Lead Capture · 2026</div>
-    <h1 class="dash-title">Calendar <em>Downloads</em></h1>
-    <p class="dash-sub">Visitors who downloaded the 2026 Training Calendar</p>
-  </div>
+  <div class="dash-eyebrow">Lead Capture · 2026</div>
+  <h1 class="dash-title">Calendar <em>Downloads</em></h1>
+  <p class="dash-sub">Visitors who downloaded the 2026 Training Calendar</p>
 
-  <!-- KPI CARDS -->
   <div class="kpi-grid">
-    <div class="kpi">
-      <div class="kpi-label">Total Downloads</div>
-      <div class="kpi-num" id="kpiTotal">—</div>
-      <div class="kpi-change" id="kpiTotalSub">Loading…</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">This Week</div>
-      <div class="kpi-num" id="kpiWeek">—</div>
-      <div class="kpi-change" id="kpiWeekSub"></div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">This Month</div>
-      <div class="kpi-num" id="kpiMonth">—</div>
-      <div class="kpi-change" id="kpiMonthSub"></div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-label">Upstream vs Downstream</div>
-      <div class="kpi-num" id="kpiSplit">—</div>
-      <div class="kpi-change" id="kpiSplitSub"></div>
-    </div>
+    <div class="kpi"><div class="kpi-label">Total Downloads</div><div class="kpi-num" id="kpiTotal">—</div><div class="kpi-change" id="kpiTotalSub">Loading…</div></div>
+    <div class="kpi"><div class="kpi-label">This Week</div><div class="kpi-num" id="kpiWeek">—</div><div class="kpi-change" id="kpiWeekSub"></div></div>
+    <div class="kpi"><div class="kpi-label">This Month</div><div class="kpi-num" id="kpiMonth">—</div><div class="kpi-change" id="kpiMonthSub"></div></div>
+    <div class="kpi"><div class="kpi-label">Upstream vs Downstream</div><div class="kpi-num" id="kpiSplit">—</div><div class="kpi-change" id="kpiSplitSub"></div></div>
   </div>
 
-  <!-- TOOLBAR -->
   <div class="toolbar">
     <div class="search-box">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -210,8 +125,6 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
     <span class="record-count" id="recordCount"></span>
   </div>
 
-  <!-- TABLE -->
-  <!-- Bulk action bar -->
   <div class="bulk-bar" id="bulkBar">
     <span class="bulk-count" id="bulkCount">0 selected</span>
     <button class="bulk-del-btn" onclick="bulkDelete()">🗑 Delete Selected</button>
@@ -219,20 +132,21 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
   </div>
 
   <div class="table-wrap">
-    <table id="dataTable">
+    <table>
       <thead>
         <tr>
           <th class="cb-col"><input type="checkbox" id="selectAll" onclick="toggleSelectAll()" title="Select all"></th>
-          <th class="sortable" onclick="sortBy(0)">Date & Time <span class="sort-arrow">↕</span></th>
+          <th class="sortable" onclick="sortBy(0)">Date &amp; Time <span class="sort-arrow">↕</span></th>
           <th class="sortable" onclick="sortBy(1)">First Name <span class="sort-arrow">↕</span></th>
           <th class="sortable" onclick="sortBy(2)">Last Name <span class="sort-arrow">↕</span></th>
           <th class="sortable" onclick="sortBy(3)">Email <span class="sort-arrow">↕</span></th>
           <th>Phone</th>
           <th>Source Page</th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="tableBody">
-        <tr><td colspan="8" class="state-msg"><div class="spinner"></div></td></tr>
+        <tr><td colspan="8" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>
       </tbody>
     </table>
   </div>
@@ -244,23 +158,7 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
   </div>
 </div>
 
-
-<div class="del-overlay" id="delOverlay">
-  <div class="del-modal">
-    <div class="del-icon">🗑️</div>
-    <div class="del-title">Delete this lead?</div>
-    <div class="del-msg">You are about to remove <span class="del-name" id="delName"></span> from the dashboard.<br>This cannot be undone.</div>
-    <div class="del-actions">
-      <button class="del-cancel" onclick="closeDelModal()">Cancel</button>
-      <button class="del-confirm" onclick="confirmDelete()">Delete</button>
-    </div>
-  </div>
-</div>
-
-
-</html>
-
-<!-- DELETE CONFIRM MODAL -->
+<!-- DELETE MODAL -->
 <div class="del-overlay" id="delOverlay">
   <div class="del-modal">
     <div class="del-icon">🗑️</div>
@@ -274,346 +172,204 @@ input[type="checkbox"] { accent-color: var(--amber); width: 15px; height: 15px; 
 </div>
 
 <script>
-
-// ── Checkbox / bulk select ──
-let selectedIndices = new Set();
-
-function onRowCheck() {
-  selectedIndices = new Set(
-    [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx))
-  );
-  updateBulkBar();
-  // Update select-all state
-  const total = document.querySelectorAll('.row-cb').length;
-  const checked = document.querySelectorAll('.row-cb:checked').length;
-  const sa = document.getElementById('selectAll');
-  if(sa) {
-    sa.checked = checked > 0 && checked === total;
-    sa.indeterminate = checked > 0 && checked < total;
-  }
-}
-
-function toggleSelectAll() {
-  const sa = document.getElementById('selectAll');
-  const checked = sa.checked;
-  document.querySelectorAll('.row-cb').forEach(cb => {
-    cb.checked = checked;
-    const idx = parseInt(cb.dataset.idx);
-    if(checked) selectedIndices.add(idx);
-    else selectedIndices.delete(idx);
-  });
-  updateBulkBar();
-}
-
-function updateBulkBar() {
-  const bar = document.getElementById('bulkBar');
-  const count = document.getElementById('bulkCount');
-  if(selectedIndices.size > 0) {
-    bar.classList.add('visible');
-    count.textContent = selectedIndices.size + ' selected';
-  } else {
-    bar.classList.remove('visible');
-  }
-}
-
-function clearSelection() {
-  selectedIndices.clear();
-  document.querySelectorAll('.row-cb').forEach(cb => cb.checked = false);
-  const sa = document.getElementById('selectAll');
-  if(sa) { sa.checked = false; sa.indeterminate = false; }
-  updateBulkBar();
-}
-
-function bulkDelete() {
-  if(selectedIndices.size === 0) return;
-  const count = selectedIndices.size;
-  if(!confirm('Delete ' + count + ' selected lead' + (count > 1 ? 's' : '') + '? This cannot be undone.')) return;
-  // Remove from allRows (descending order to preserve indices)
-  const toDelete = [...selectedIndices].sort((a,b) => b-a);
-  toDelete.forEach(idx => allRows.splice(idx, 1));
-  selectedIndices.clear();
-  // Re-apply filter
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredRows = allRows.filter(r =>
-    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
-  );
-  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE) || currentPage < 1) currentPage = 1;
-  computeKPIs();
-  renderTable();
-  updateBulkBar();
-}
-
-// Data via n8n webhook: lpa-calendar-read
-let allRows = [];
-let filteredRows = [];
-let sortCol = 0;
-let sortAsc = false;
-let currentPage = 1;
-const PER_PAGE = 25;
+var allRows = [];
+var filteredRows = [];
+var sortCol = 0;
+var sortAsc = false;
+var currentPage = 1;
+var PER_PAGE = 25;
+var selectedIndices = new Set();
+var pendingDelIdx = null;
 
 function formatDate(iso){
   if(!iso) return '—';
-  try{
-    const d = new Date(iso);
-    return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) +
-           ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-  }catch(e){return iso;}
+  try{ var d=new Date(iso); return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }catch(e){return iso;}
 }
-
 function shortSource(url){
   if(!url) return '—';
-  try{
-    const u = new URL(url);
-    return u.pathname.replace(/\//g,'').replace('.html','') || 'homepage';
-  }catch(e){
-    return url.split('/').pop() || url;
-  }
-}
-
-// ── Checkbox / bulk select ──
-let selectedIndices = new Set();
-
-function onRowCheck() {
-  selectedIndices = new Set(
-    [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx))
-  );
-  updateBulkBar();
-  const total = document.querySelectorAll('.row-cb').length;
-  const checked = document.querySelectorAll('.row-cb:checked').length;
-  const sa = document.getElementById('selectAll');
-  if(sa) {
-    sa.checked = checked > 0 && checked === total;
-    sa.indeterminate = checked > 0 && checked < total;
-  }
-}
-
-function toggleSelectAll() {
-  const sa = document.getElementById('selectAll');
-  const checked = sa.checked;
-  document.querySelectorAll('.row-cb').forEach(cb => {
-    cb.checked = checked;
-    const idx = parseInt(cb.dataset.idx);
-    if(checked) selectedIndices.add(idx);
-    else selectedIndices.delete(idx);
-  });
-  updateBulkBar();
-}
-
-function updateBulkBar() {
-  const bar = document.getElementById('bulkBar');
-  const count = document.getElementById('bulkCount');
-  if(selectedIndices.size > 0) {
-    bar.classList.add('visible');
-    count.textContent = selectedIndices.size + ' selected';
-  } else {
-    bar.classList.remove('visible');
-  }
-}
-
-function clearSelection() {
-  selectedIndices.clear();
-  document.querySelectorAll('.row-cb').forEach(cb => cb.checked = false);
-  const sa = document.getElementById('selectAll');
-  if(sa) { sa.checked = false; sa.indeterminate = false; }
-  updateBulkBar();
-}
-
-function bulkDelete() {
-  if(selectedIndices.size === 0) return;
-  const count = selectedIndices.size;
-  if(!confirm('Delete ' + count + ' selected lead' + (count > 1 ? 's' : '') + '? This cannot be undone.')) return;
-  const toDelete = [...selectedIndices].sort((a,b) => b-a);
-  toDelete.forEach(idx => allRows.splice(idx, 1));
-  selectedIndices.clear();
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredRows = allRows.filter(r =>
-    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
-  );
-  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE) || currentPage < 1) currentPage = 1;
-  computeKPIs();
-  renderTable();
-  updateBulkBar();
+  try{ var u=new URL(url); return u.pathname.replace(/\//g,'').replace('.html','')||'homepage'; }catch(e){ return url.split('/').pop()||url; }
 }
 
 function loadData(){
   document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>';
-
-  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-read?t=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
-      const rows = data.rows || [];
-      allRows = rows.map(r => ({
-        timestamp:  r['Timestamp']   || '',
-        first_name: r['First Name']  || '',
-        last_name:  r['Last Name']   || '',
-        email:      r['Email']       || '',
-        phone:      r['Phone']       || '',
-        source:     r['Source Page'] || ''
-      }));
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-read?t='+Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var rows = data.rows || [];
+      allRows = rows.map(function(r){
+        return {
+          timestamp:  r['Timestamp']   || '',
+          first_name: r['First Name']  || '',
+          last_name:  r['Last Name']   || '',
+          email:      r['Email']       || '',
+          phone:      r['Phone']       || '',
+          source:     r['Source Page'] || ''
+        };
+      });
       computeKPIs();
-      filteredRows = [...allRows];
+      filteredRows = allRows.slice();
       currentPage = 1;
       renderTable();
     })
-    .catch(err => {
-      document.getElementById('tableBody').innerHTML = `
-        <tr><td colspan="8">
-          <div class="state-msg">
-            <div class="icon">📭</div>
-            <h3>No data yet</h3>
-            <p>Submissions will appear here as visitors download the calendar.</p>
-          </div>
-        </td></tr>`;
-      document.getElementById('kpiTotal').textContent = '0';
-      document.getElementById('kpiTotalSub').textContent = 'No submissions yet';
+    .catch(function(){
+      document.getElementById('tableBody').innerHTML = '<tr><td colspan="8"><div class="state-msg"><div class="icon">📭</div><h3>Unable to load data</h3><p>Check your connection or try refreshing.</p></div></td></tr>';
+      document.getElementById('kpiTotal').textContent = '—';
+      document.getElementById('kpiTotalSub').textContent = 'Error loading data';
     });
 }
 
 function computeKPIs(){
-  const total = allRows.length;
+  var total = allRows.length;
   document.getElementById('kpiTotal').innerHTML = total + '<em>+</em>';
   document.getElementById('kpiTotalSub').textContent = 'All time downloads';
-
-  const now = new Date();
-  const weekAgo = new Date(now - 7*24*60*60*1000);
-  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-
-  const week  = allRows.filter(r => r.timestamp & new Date(r.timestamp) >= weekAgo).length;
-  const month = allRows.filter(r => r.timestamp & new Date(r.timestamp) >= monthStart).length;
-
+  var now = new Date();
+  var weekAgo = new Date(now - 7*24*60*60*1000);
+  var monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  var week  = allRows.filter(function(r){ return r.timestamp && new Date(r.timestamp) >= weekAgo; }).length;
+  var month = allRows.filter(function(r){ return r.timestamp && new Date(r.timestamp) >= monthStart; }).length;
   document.getElementById('kpiWeek').textContent = week;
   document.getElementById('kpiWeekSub').textContent = 'Last 7 days';
   document.getElementById('kpiMonth').textContent = month;
   document.getElementById('kpiMonthSub').textContent = 'This month';
-
-  const upstream   = allRows.filter(r => r.source & r.source.includes('upstream')).length;
-  const downstream = allRows.filter(r => r.source & r.source.includes('downstream')).length;
-  document.getElementById('kpiSplit').textContent = upstream + ' / ' + downstream;
+  var up   = allRows.filter(function(r){ return r.source && r.source.includes('upstream'); }).length;
+  var down = allRows.filter(function(r){ return r.source && r.source.includes('downstream'); }).length;
+  document.getElementById('kpiSplit').textContent = up + ' / ' + down;
   document.getElementById('kpiSplitSub').textContent = 'Upstream / Downstream';
 }
 
 function renderTable(){
   selectedIndices.clear();
   updateBulkBar();
-  const start = (currentPage-1)*PER_PAGE;
-  const page  = filteredRows.slice(start, start+PER_PAGE);
-  const tbody = document.getElementById('tableBody');
-
+  var start = (currentPage-1)*PER_PAGE;
+  var page  = filteredRows.slice(start, start+PER_PAGE);
+  var tbody = document.getElementById('tableBody');
   if(filteredRows.length === 0){
-    tbody.innerHTML = `<tr><td colspan="8"><div class="state-msg"><div class="icon">🔍</div><h3>No results</h3><p>Try a different search term.</p></div></td></tr>`;
+    tbody.innerHTML = '<tr><td colspan="8"><div class="state-msg"><div class="icon">🔍</div><h3>No results</h3><p>Try a different search term.</p></div></td></tr>';
     document.getElementById('recordCount').textContent = '0 results';
     document.getElementById('pgInfo').textContent = '';
     document.getElementById('pgPrev').disabled = true;
     document.getElementById('pgNext').disabled = true;
     return;
   }
-
-  tbody.innerHTML = page.map((r, i) => {
-    const globalIdx = allRows.indexOf(r);
-    return `
-    <tr data-idx="${globalIdx}">
-      <td class="cb-col"><input type="checkbox" class="row-cb" data-idx="${globalIdx}" onchange="onRowCheck()"></td>
-      <td class="td-date">${formatDate(r.timestamp)}</td>
-      <td>${r.first_name || '—'}</td>
-      <td>${r.last_name  || '—'}</td>
-      <td class="td-email"><a href="mailto:${r.email}">${r.email || '—'}</a></td>
-      <td>${r.phone || '—'}</td>
-      <td class="td-source" title="${r.source}">${shortSource(r.source)}</td>
-      <td><button class="btn-del" onclick="openDelModal(${globalIdx})" title="Delete lead">✕</button></td>
-    </tr>`;
+  tbody.innerHTML = page.map(function(r){
+    var gi = allRows.indexOf(r);
+    return '<tr data-idx="'+gi+'">'
+      +'<td class="cb-col"><input type="checkbox" class="row-cb" data-idx="'+gi+'" onchange="onRowCheck()"></td>'
+      +'<td class="td-date">'+formatDate(r.timestamp)+'</td>'
+      +'<td>'+(r.first_name||'—')+'</td>'
+      +'<td>'+(r.last_name||'—')+'</td>'
+      +'<td class="td-email"><a href="mailto:'+r.email+'">'+(r.email||'—')+'</a></td>'
+      +'<td>'+(r.phone||'—')+'</td>'
+      +'<td class="td-source" title="'+r.source+'">'+shortSource(r.source)+'</td>'
+      +'<td><button class="btn-del" onclick="openDelModal('+gi+')" title="Delete">✕</button></td>'
+      +'</tr>';
   }).join('');
-
-  const total = filteredRows.length;
-  const pages = Math.ceil(total/PER_PAGE);
-  document.getElementById('recordCount').textContent = total + (total===1?' record':' records');
-  document.getElementById('pgInfo').textContent = `Page ${currentPage} of ${pages}`;
+  var total = filteredRows.length;
+  var pages = Math.ceil(total/PER_PAGE);
+  document.getElementById('recordCount').textContent = total+(total===1?' record':' records');
+  document.getElementById('pgInfo').textContent = 'Page '+currentPage+' of '+pages;
   document.getElementById('pgPrev').disabled = currentPage <= 1;
   document.getElementById('pgNext').disabled = currentPage >= pages;
 }
 
 function filterTable(){
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredRows = allRows.filter(r =>
-    (r.first_name+r.last_name+r.email+r.source).toLowerCase().includes(q)
-  );
+  var q = document.getElementById('searchInput').value.toLowerCase();
+  filteredRows = allRows.filter(function(r){
+    return (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().indexOf(q) > -1;
+  });
   currentPage = 1;
   renderTable();
 }
 
 function sortBy(col){
-  if(sortCol === col) sortAsc = !sortAsc;
-  else { sortCol = col; sortAsc = true; }
-  const keys = ['timestamp','first_name','last_name','email','phone','source'];
-  const key = keys[col];
-  filteredRows.sort((a,b)=>{
-    const av = (a[key]||'').toLowerCase();
-    const bv = (b[key]||'').toLowerCase();
+  if(sortCol===col){ sortAsc=!sortAsc; } else { sortCol=col; sortAsc=true; }
+  var keys = ['timestamp','first_name','last_name','email','phone','source'];
+  var k = keys[col];
+  filteredRows.sort(function(a,b){
+    var av=a[k]||'', bv=b[k]||'';
     return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
-  });
-  // Update header arrows
-  document.querySelectorAll('th .sort-arrow').forEach((el,i)=>{
-    el.textContent = i===col ? (sortAsc?'↑':'↓') : '↕';
   });
   renderTable();
 }
 
 function prevPage(){ if(currentPage>1){currentPage--;renderTable();} }
-function nextPage(){
-  const pages=Math.ceil(filteredRows.length/PER_PAGE);
-  if(currentPage<pages){currentPage++;renderTable();}
-}
+function nextPage(){ var pages=Math.ceil(filteredRows.length/PER_PAGE); if(currentPage<pages){currentPage++;renderTable();} }
 
 function exportCSV(){
-  const headers = ['Timestamp','First Name','Last Name','Email','Phone','Source Page'];
-  const rows = filteredRows.map(r=>[
-    r.timestamp, r.first_name, r.last_name, r.email, r.phone, r.source
-  ].map(v=>'"'+(v||'').replace(/"/g,'""')+'"').join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
-  const blob = new Blob([csv], {type:'text/csv'});
-  const a = document.createElement('a');
+  var rows = [['Timestamp','First Name','Last Name','Email','Phone','Source Page']];
+  filteredRows.forEach(function(r){ rows.push([r.timestamp,r.first_name,r.last_name,r.email,r.phone,r.source]); });
+  var csv = rows.map(function(r){ return r.map(function(c){ return '"'+(c||'').replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+  var blob = new Blob([csv],{type:'text/csv'});
+  var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'lpa-calendar-downloads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.download = 'lpa-calendar-downloads-'+new Date().toISOString().slice(0,10)+'.csv';
   a.click();
 }
 
-// Auto-refresh every 60s
-loadData();
-setInterval(loadData, 60000);
+// ── Checkboxes ──
+function onRowCheck(){
+  selectedIndices = new Set([...document.querySelectorAll('.row-cb:checked')].map(function(cb){ return parseInt(cb.dataset.idx); }));
+  updateBulkBar();
+  var total = document.querySelectorAll('.row-cb').length;
+  var checked = document.querySelectorAll('.row-cb:checked').length;
+  var sa = document.getElementById('selectAll');
+  if(sa){ sa.checked = checked>0 && checked===total; sa.indeterminate = checked>0 && checked<total; }
+}
+function toggleSelectAll(){
+  var sa = document.getElementById('selectAll');
+  document.querySelectorAll('.row-cb').forEach(function(cb){
+    cb.checked = sa.checked;
+    var idx = parseInt(cb.dataset.idx);
+    if(sa.checked) selectedIndices.add(idx); else selectedIndices.delete(idx);
+  });
+  updateBulkBar();
+}
+function updateBulkBar(){
+  var bar = document.getElementById('bulkBar');
+  document.getElementById('bulkCount').textContent = selectedIndices.size+' selected';
+  if(selectedIndices.size > 0) bar.classList.add('visible'); else bar.classList.remove('visible');
+}
+function clearSelection(){
+  selectedIndices.clear();
+  document.querySelectorAll('.row-cb').forEach(function(cb){ cb.checked=false; });
+  var sa=document.getElementById('selectAll');
+  if(sa){sa.checked=false;sa.indeterminate=false;}
+  updateBulkBar();
+}
+function bulkDelete(){
+  if(!selectedIndices.size) return;
+  if(!confirm('Delete '+selectedIndices.size+' selected lead(s)? This cannot be undone.')) return;
+  var toDelete = [...selectedIndices].sort(function(a,b){return b-a;});
+  toDelete.forEach(function(idx){ allRows.splice(idx,1); });
+  selectedIndices.clear();
+  filterTable();
+  computeKPIs();
+}
 
-// ── Delete lead ──
-let pendingDelIdx = null;
-
-function openDelModal(idx) {
+// ── Single delete ──
+function openDelModal(idx){
   pendingDelIdx = idx;
-  const r = allRows[idx];
-  const name = [r.first_name, r.last_name].filter(Boolean).join(' ') || r.email || 'this lead';
+  var r = allRows[idx];
+  var name = [r.first_name,r.last_name].filter(Boolean).join(' ') || r.email || 'this lead';
   document.getElementById('delName').textContent = name;
   document.getElementById('delOverlay').classList.add('open');
 }
-function closeDelModal() {
+function closeDelModal(){
   pendingDelIdx = null;
   document.getElementById('delOverlay').classList.remove('open');
 }
-function confirmDelete() {
-  if(pendingDelIdx === null) return;
-  allRows.splice(pendingDelIdx, 1);
-  filteredRows = filteredRows.filter((_, i) => allRows.indexOf(filteredRows[i]) !== -1);
-  // Re-apply current filter
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredRows = allRows.filter(r =>
-    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
-  );
-  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE)) currentPage = 1;
-  computeKPIs();
-  renderTable();
+function confirmDelete(){
+  if(pendingDelIdx===null) return;
+  allRows.splice(pendingDelIdx,1);
   closeDelModal();
+  filterTable();
+  computeKPIs();
 }
-document.getElementById('delOverlay').addEventListener('click', function(e){
-  if(e.target === this) closeDelModal();
-});
+document.getElementById('delOverlay').addEventListener('click',function(e){ if(e.target===this) closeDelModal(); });
 
-
-
-});
+// ── Init ──
+loadData();
+setInterval(loadData, 60000);
 </script>
 </body>
+</html>
