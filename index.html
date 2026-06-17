@@ -810,7 +810,9 @@ nav.scrolled .hamburger span { background: #2c2825; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 560px;
+  direction: rtl;
 }
+.cta-banner > * { direction: ltr; }
 .cta-banner::before {
   content: '';
   position: absolute; inset: 0;
@@ -844,9 +846,9 @@ nav.scrolled .hamburger span { background: #2c2825; }
 }
 .cbf-icon {
   width: 36px; height: 36px; flex-shrink: 0;
-  border: 1px solid rgba(201,106,30,0.4);
+  border: 1px solid rgba(255,255,255,0.25);
   display: flex; align-items: center; justify-content: center;
-  color: var(--orange); font-size: 14px; margin-top: 2px;
+  color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 2px;
 }
 .cbf-text strong {
   display: block;
@@ -1595,21 +1597,27 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
 
     <div class="cta-banner-features">
       <div class="cta-banner-feature">
-        <div class="cbf-icon" aria-hidden="true">📋</div>
+        <div class="cbf-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+        </div>
         <div class="cbf-text">
           <strong>Fully Customised Content</strong>
           <span>Adapted to your assets, contracts, technical level and team objectives.</span>
         </div>
       </div>
       <div class="cta-banner-feature">
-        <div class="cbf-icon" aria-hidden="true">🌍</div>
+        <div class="cbf-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
         <div class="cbf-text">
           <strong>Delivered Anywhere</strong>
           <span>Your premises, any venue worldwide, or live online across time zones.</span>
         </div>
       </div>
       <div class="cta-banner-feature">
-        <div class="cbf-icon" aria-hidden="true">👥</div>
+        <div class="cbf-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="cbf-text">
           <strong>Any Team Size</strong>
           <span>From 5 to 500 delegates — we scale to your organisation's needs.</span>
@@ -1624,19 +1632,19 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   <div class="cta-banner-right">
     <div class="cta-banner-stat-grid">
       <div class="cta-banner-stat">
-        <span class="cbs-num">40<em>+</em></span>
+        <span class="cbs-num" data-target="40" data-suffix="+">40<em>+</em></span>
         <span class="cbs-label">Countries delivered</span>
       </div>
       <div class="cta-banner-stat">
-        <span class="cbs-num">100<em>%</em></span>
+        <span class="cbs-num" data-target="100" data-suffix="%">100<em>%</em></span>
         <span class="cbs-label">Customisable</span>
       </div>
       <div class="cta-banner-stat">
-        <span class="cbs-num">20<em>+</em></span>
+        <span class="cbs-num" data-target="20" data-suffix="+">20<em>+</em></span>
         <span class="cbs-label">Yrs trainer experience</span>
       </div>
       <div class="cta-banner-stat">
-        <span class="cbs-num">50<em>+</em></span>
+        <span class="cbs-num" data-target="50" data-suffix="+">50<em>+</em></span>
         <span class="cbs-label">Client organisations</span>
       </div>
     </div>
@@ -1797,6 +1805,36 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
     }, 4000);
   }
 
+
+
+// ── In-house banner stat counter ──
+(function(){
+  function animateBannerStats(){
+    document.querySelectorAll('.cbs-num[data-target]').forEach(function(el){
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      if(isNaN(target)) return;
+      let current = 0;
+      const steps = Math.min(target, 60);
+      const increment = Math.ceil(target / steps);
+      const interval = 1800 / steps;
+      const timer = setInterval(function(){
+        current = Math.min(current + increment, target);
+        el.innerHTML = current + '<em>' + suffix + '</em>';
+        if(current >= target) clearInterval(timer);
+      }, interval);
+    });
+  }
+  const banner = document.querySelector('.cta-banner-stat-grid');
+  if(banner){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateBannerStats(); obs.disconnect(); }
+      });
+    }, {threshold: 0.4});
+    obs.observe(banner);
+  }
+})();
 
 // ── Stats bar counter animation ──
 (function(){
