@@ -76,6 +76,47 @@ td.td-source{font-size:12px;color:var(--grey);max-width:200px;overflow:hidden;te
 /* RESPONSIVE */
 @media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr;}.page{padding:24px 20px 60px;}nav{padding:0 20px;}}
 @media(max-width:600px){.kpi-grid{grid-template-columns:1fr 1fr;}.kpi-num{font-size:36px;}}
+
+/* ── DELETE ── */
+.btn-del {
+  background: none; border: none; cursor: pointer;
+  color: #ccc; font-size: 15px; padding: 4px 8px;
+  border-radius: 4px; transition: color .2s, background .2s;
+  line-height: 1;
+}
+.btn-del:hover { color: #e53935; background: rgba(229,57,53,.08); }
+
+/* ── CONFIRM MODAL ── */
+.del-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+.del-overlay.open { display: flex; }
+.del-modal {
+  background: #fff; max-width: 400px; width: 90%;
+  border-radius: 8px; padding: 32px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+  text-align: center;
+}
+.del-icon { font-size: 40px; margin-bottom: 16px; }
+.del-title { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+.del-msg { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.5; }
+.del-name { font-weight: 600; color: #1a1a1a; }
+.del-actions { display: flex; gap: 12px; justify-content: center; }
+.del-cancel {
+  padding: 11px 28px; border: 1.5px solid #ddd; background: #fff;
+  border-radius: 6px; font-size: 14px; cursor: pointer; color: #444;
+  transition: border-color .2s;
+}
+.del-cancel:hover { border-color: #aaa; }
+.del-confirm {
+  padding: 11px 28px; border: none; background: #e53935;
+  border-radius: 6px; font-size: 14px; cursor: pointer;
+  color: #fff; font-weight: 600; transition: background .2s;
+}
+.del-confirm:hover { background: #c62828; }
+
 </style>
 </head>
 <body>
@@ -255,7 +296,7 @@ function renderTable(){
   const tbody = document.getElementById('tableBody');
 
   if(filteredRows.length === 0){
-    tbody.innerHTML = `<tr><td colspan="6"><div class="state-msg"><div class="icon">🔍</div><h3>No results</h3><p>Try a different search term.</p></div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7"><div class="state-msg"><div class="icon">🔍</div><h3>No results</h3><p>Try a different search term.</p></div></td></tr>`;
     document.getElementById('recordCount').textContent = '0 results';
     document.getElementById('pgInfo').textContent = '';
     document.getElementById('pgPrev').disabled = true;
@@ -263,7 +304,9 @@ function renderTable(){
     return;
   }
 
-  tbody.innerHTML = page.map(r => `
+  tbody.innerHTML = page.map((r, i) => {
+    const globalIdx = allRows.indexOf(r);
+    return `
     <tr>
       <td class="td-date">${formatDate(r.timestamp)}</td>
       <td>${r.first_name || '—'}</td>
@@ -271,7 +314,9 @@ function renderTable(){
       <td class="td-email"><a href="mailto:${r.email}">${r.email || '—'}</a></td>
       <td>${r.phone || '—'}</td>
       <td class="td-source" title="${r.source}">${shortSource(r.source)}</td>
-    </tr>`).join('');
+      <td><button class="btn-del" onclick="openDelModal(${globalIdx})" title="Delete lead">✕</button></td>
+    </tr>`;
+  }).join('');
 
   const total = filteredRows.length;
   const pages = Math.ceil(total/PER_PAGE);
@@ -329,6 +374,53 @@ function exportCSV(){
 // Auto-refresh every 60s
 loadData();
 setInterval(loadData, 60000);
+
+// ── Delete lead ──
+let pendingDelIdx = null;
+
+function openDelModal(idx) {
+  pendingDelIdx = idx;
+  const r = allRows[idx];
+  const name = [r.first_name, r.last_name].filter(Boolean).join(' ') || r.email || 'this lead';
+  document.getElementById('delName').textContent = name;
+  document.getElementById('delOverlay').classList.add('open');
+}
+function closeDelModal() {
+  pendingDelIdx = null;
+  document.getElementById('delOverlay').classList.remove('open');
+}
+function confirmDelete() {
+  if(pendingDelIdx === null) return;
+  allRows.splice(pendingDelIdx, 1);
+  filteredRows = filteredRows.filter((_, i) => allRows.indexOf(filteredRows[i]) !== -1);
+  // Re-apply current filter
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filteredRows = allRows.filter(r =>
+    (r.first_name+r.last_name+r.email+r.phone+r.source).toLowerCase().includes(q)
+  );
+  if(currentPage > Math.ceil(filteredRows.length/PER_PAGE)) currentPage = 1;
+  computeKPIs();
+  renderTable();
+  closeDelModal();
+}
+document.getElementById('delOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeDelModal();
+});
+
 </script>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="del-overlay" id="delOverlay">
+  <div class="del-modal">
+    <div class="del-icon">🗑️</div>
+    <div class="del-title">Delete this lead?</div>
+    <div class="del-msg">You are about to remove <span class="del-name" id="delName"></span> from the dashboard.<br>This cannot be undone.</div>
+    <div class="del-actions">
+      <button class="del-cancel" onclick="closeDelModal()">Cancel</button>
+      <button class="del-confirm" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
