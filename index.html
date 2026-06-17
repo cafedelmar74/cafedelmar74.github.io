@@ -825,48 +825,141 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .cta-info-icon { color: var(--orange); font-size: 16px; }
 
 /* ─── ENQUIRY CTA (replaces newsletter as page closing section) ─── */
+/* ─── ENQUIRY / CONTACT SECTION ─── */
 .enquiry-cta {
-  padding: 100px 60px;
-  background: var(--bg2);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 680px;
 }
-.eq-left .sec-eyebrow { margin-bottom: 16px; }
+/* Left panel — dark */
+.eq-left {
+  background: linear-gradient(150deg, #1a1814 0%, #0f0d0b 100%);
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.eq-left::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(201,106,30,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eq-left .sec-eyebrow { margin-bottom: 16px; color: var(--orange); }
 .eq-title {
-  font-family: var(--font-serif); font-size: clamp(36px, 3.5vw, 56px);
-  font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 3.5vw, 56px);
+  font-weight: 300; color: #fff;
+  line-height: 1.05; margin-bottom: 24px;
 }
 .eq-title em { font-style: italic; color: var(--orange); }
-.eq-desc { font-size: 15px; color: var(--grey); font-weight: 300; line-height: 1.75; margin-bottom: 32px; max-width: 480px; }
-.eq-contact-row { display: flex; flex-direction: column; gap: 12px; }
-.eq-contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--grey); }
-.eq-contact-icon { color: var(--orange); font-size: 16px; width: 20px; }
-.eq-contact-item a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
+.eq-desc {
+  font-size: 15px; color: rgba(255,255,255,0.55);
+  font-weight: 300; line-height: 1.8; margin-bottom: 40px;
+  max-width: 420px;
+}
+.eq-contact-row { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+.eq-contact-item {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 14px; color: rgba(255,255,255,0.6);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.eq-contact-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.eq-contact-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border: 1px solid rgba(201,106,30,0.35);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--orange); font-size: 14px;
+}
+.eq-contact-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
 .eq-contact-item a:hover { color: var(--orange); }
-.eq-form { display: flex; flex-direction: column; gap: 16px; }
+/* Social proof */
+.form-social-proof {
+  border-left: 3px solid var(--orange);
+  padding-left: 20px;
+  margin-top: 8px;
+}
+.form-social-proof p {
+  font-family: var(--font-serif);
+  font-size: 15px; font-style: italic;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6; margin-bottom: 8px;
+}
+.form-social-proof span {
+  font-family: var(--font-cond); font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+/* Right panel — white form */
+.eq-right {
+  background: #fff;
+  padding: 72px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.eq-right-label {
+  font-family: var(--font-cond); font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 8px; display: block;
+}
+.eq-right-title {
+  font-family: var(--font-serif); font-size: 28px;
+  font-weight: 300; color: var(--off-white);
+  margin-bottom: 8px; line-height: 1.2;
+}
+.eq-right-sub {
+  font-size: 13px; color: var(--grey-mid);
+  margin-bottom: 32px; line-height: 1.6;
+}
+.eq-form { display: flex; flex-direction: column; gap: 14px; }
 .eq-form input,
 .eq-form textarea {
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--off-white); padding: 18px 24px;
+  background: #f8f7f5;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: var(--off-white); padding: 16px 20px;
   font-size: 14px; font-family: var(--font-sans);
-  outline: none; transition: border-color 0.2s; resize: none;
-  width: 100%;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+  resize: none; width: 100%;
 }
 .eq-form input::placeholder,
-.eq-form textarea::placeholder { color: var(--grey-mid); }
+.eq-form textarea::placeholder { color: #b0aba5; }
 .eq-form input:focus,
-.eq-form textarea:focus { border-color: var(--orange); }
-.eq-form textarea { min-height: 120px; }
-.eq-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.eq-submit {
-  background: var(--orange); color: var(--bg);
-  border: none; cursor: pointer;
-  padding: 18px 32px; font-size: 12px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  font-family: var(--font-cond); transition: opacity 0.2s;
-  align-self: flex-start;
+.eq-form textarea:focus { border-color: var(--orange); background: #fff; }
+.eq-form textarea { min-height: 110px; }
+.eq-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.trust-bullets {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 4px;
 }
-.eq-submit:hover { opacity: 0.85; }
-.eq-note { font-size: 12px; color: var(--grey-mid); margin-top: 4px; }
+.trust-bullets li {
+  font-size: 12px; color: var(--grey);
+  display: flex; align-items: center; gap: 8px;
+}
+.trust-bullets li::before {
+  content: '✓';
+  color: var(--orange);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.eq-submit {
+  background: var(--orange); color: #fff;
+  border: none; cursor: pointer; width: 100%;
+  padding: 18px 32px; font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  font-family: var(--font-cond);
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+.eq-submit:hover { background: #b05c18; }
+.eq-note { font-size: 11px; color: var(--grey-mid); margin-top: 10px; text-align: center; }
+.form-urgency { display: none; }
 
 /* ─── FOOTER ─── */
 footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 80px 60px 40px; }
@@ -914,7 +1007,7 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   .testi-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .cta-banner { grid-template-columns: 1fr; }
-  .enquiry-cta { grid-template-columns: 1fr; gap: 48px; }
+  .enquiry-cta { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   nav { padding: 0 24px; }
@@ -927,7 +1020,8 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   .testimonials,
   .trust,
   .cta-banner,
-  .enquiry-cta { padding: 72px 24px; }
+  .eq-left { padding: 64px 28px; }
+  .eq-right { padding: 56px 28px; }
   footer { padding: 60px 24px 32px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .testi-grid { grid-template-columns: 1fr; }
@@ -1430,10 +1524,13 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
   NOTE: Connect form action to your HubSpot form endpoint
 ════════════════════════════════════════════ -->
 <section class="enquiry-cta" id="contact-form" aria-label="Enquiry form">
+
+  <!-- LEFT — dark info panel -->
   <div class="eq-left reveal">
     <span class="sec-eyebrow">Get In Touch</span>
     <h2 class="eq-title">Enquire About<br><em>Training</em></h2>
-    <p class="eq-desc">Tell us what you need and we'll come back to you within one business day with options, availability and pricing.</p>
+    <p class="eq-desc">Tell us what you need and we'll come back within one business day with options, availability and pricing.</p>
+
     <div class="eq-contact-row">
       <div class="eq-contact-item">
         <span class="eq-contact-icon" aria-hidden="true">📞</span>
@@ -1448,30 +1545,38 @@ footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 8
         <span>207 Regent Street, London W1B 4ND</span>
       </div>
     </div>
-  <div class="form-social-proof">
+
+    <div class="form-social-proof">
       <p>"London Petro Academy is our first-choice training partner for technical programmes."</p>
       <span>— Senior L&amp;D Manager, Major NOC</span>
     </div>
   </div>
+
+  <!-- RIGHT — white form card -->
   <div class="eq-right reveal">
-    <span class="form-urgency">📅 Next scheduled intakes: July &amp; September 2026 — Enquire now to confirm availability</span>
+    <span class="eq-right-label">Send an Enquiry</span>
+    <h3 class="eq-right-title">We'll respond within<br>one business day</h3>
+    <p class="eq-right-sub">No obligation — tell us your training needs and we'll prepare a tailored proposal.</p>
     <form class="eq-form" onsubmit="handleEnquiry(event)" aria-label="Enquiry form">
       <div class="eq-form-row">
-        <input type="text" placeholder="Your full name" required aria-label="Full name" name="full_name">
-        <input type="text" placeholder="Your organisation" aria-label="Organisation" name="organisation">
+        <input type="text" placeholder="Full name" required aria-label="Full name" name="full_name">
+        <input type="text" placeholder="Organisation" aria-label="Organisation" name="organisation">
       </div>
-      <input type="email" placeholder="Your email address" required aria-label="Email address" name="email">
-      <input type="tel" placeholder="Phone number (optional)" aria-label="Phone number" name="phone">
-      <textarea placeholder="Tell us about your training requirements — topic, number of delegates, preferred dates and delivery format." aria-label="Training requirements" name="requirements"></textarea>
+      <div class="eq-form-row">
+        <input type="email" placeholder="Work email" required aria-label="Email address" name="email">
+        <input type="tel" placeholder="Phone (optional)" aria-label="Phone number" name="phone">
+      </div>
+      <textarea placeholder="Tell us about your training requirements — topic, delegates, dates, format…" aria-label="Training requirements" name="requirements"></textarea>
       <ul class="trust-bullets">
-        <li>✓ &nbsp;No obligation — just tell us what you need</li>
-        <li>✓ &nbsp;Custom proposal prepared within 1 business day</li>
-        <li>✓ &nbsp;Free training needs consultation available</li>
+        <li>No obligation — just tell us what you need</li>
+        <li>Custom proposal prepared within 1 business day</li>
+        <li>Free training needs consultation available</li>
       </ul>
-      <button type="submit" class="eq-submit">Send Enquiry</button>
-      <p class="eq-note">Your details are handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
+      <button type="submit" class="eq-submit">Send Enquiry →</button>
+      <p class="eq-note">Handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey-mid);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
     </form>
   </div>
+
 </section>
 
 </main>
