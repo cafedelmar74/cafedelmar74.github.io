@@ -90,10 +90,20 @@
 })();
 
 
-function openCalModal(){document.getElementById('calDlOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeCalModal(){document.getElementById('calDlOverlay').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('calDlOverlay').addEventListener('click',function(e){if(e.target===this)closeCalModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCalModal();});
+function openCalModal(){
+  document.getElementById('calDlOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCalModal(){
+  document.getElementById('calDlOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('calDlOverlay').addEventListener('click',function(e){
+  if(e.target===this)closeCalModal();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeCalModal();
+});
 function submitCalDownload(){
   var fn=document.getElementById('calFirstName').value.trim();
   var ln=document.getElementById('calLastName').value.trim();
@@ -102,19 +112,26 @@ function submitCalDownload(){
   var ph=document.getElementById('calPhone').value.trim();
   if(!fn||!ln||!em){alert('Please fill in your name and email.');return;}
   var btn=document.getElementById('calDlSubmit');
-  btn.disabled=true;btn.textContent='Sending…';
-  var params=new URLSearchParams({
-    form_type:'calendar_download',
-    first_name:fn,last_name:ln,email:em,
-    organisation:org,phone:ph,
-    source_page:window.location.href
-  });
-  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-download?'+params.toString(),{
+  btn.disabled=true;
+  btn.textContent='One moment…';
+  // Fire to n8n via GET/no-cors — avoids CORS preflight
+  var qs=[
+    'fn='+encodeURIComponent(fn),
+    'ln='+encodeURIComponent(ln),
+    'email='+encodeURIComponent(em),
+    'org='+encodeURIComponent(org),
+    'phone='+encodeURIComponent(ph),
+    'source=upstream'
+  ].join('&');
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-calendar-download?'+qs,{
     method:'GET',mode:'no-cors'
   }).catch(function(){});
+  // Show success and redirect immediately — don't wait for n8n response
   document.getElementById('calDlForm').style.display='none';
   document.getElementById('calDlSuccess').style.display='block';
-  setTimeout(function(){window.location.href='https://cafedelmar74.github.io/calendar-2026.html';},1200);
+  setTimeout(function(){
+    window.location.href='calendar-2026.html';
+  },1200);
 }
 
 </script>
