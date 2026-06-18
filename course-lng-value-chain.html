@@ -1755,7 +1755,7 @@ async function submitBrochure(){
   [name,email,phone].forEach(function(el){el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
   if(!ok) return;
   var btn=document.getElementById('brSB');btn.textContent='Sending…';btn.disabled=true;
-  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'Gas & LNG Contract Negotiations',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/lng-value-chain.pdf',page_url:window.location.href,submitted_at:new Date().toISOString()};
+  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'LNG Value Chain: Markets, Trading, Operations & Energy Transition',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/lng-value-chain.pdf',page_url:window.location.href,submitted_at:new Date().toISOString()};
   try{
     await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     document.getElementById('brFormArea').style.display='none';
