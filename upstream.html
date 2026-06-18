@@ -173,8 +173,8 @@
 ════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   /* ── Light page palette ── */
@@ -205,7 +205,7 @@
 
   --serif: 'Fraunces', serif;
   --sans:  'Barlow', sans-serif;
-  --cond:  'Barlow Condensed', sans-serif;
+  --cond:  'Barlow', sans-serif;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -863,7 +863,7 @@ footer{
 }
 
 /* ── CALENDAR DOWNLOAD MODAL ── */
-.cal-dl-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1.5px solid rgba(255,255,255,0.55);color:#fff;font-family:var(--cond,'Barlow Condensed',sans-serif);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:border-color .2s,background .2s,color .2s;}
+.cal-dl-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1.5px solid rgba(255,255,255,0.55);color:#fff;font-family:var(--cond,'Barlow',sans-serif);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:border-color .2s,background .2s,color .2s;}
 .cal-dl-btn:hover{border-color:#c8873a;color:#c8873a;}
 .cal-dl-btn svg{width:16px;height:16px;flex-shrink:0;}
 .cal-modal-overlay{display:none;position:fixed;inset:0;z-index:99000;background:rgba(10,11,13,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
@@ -882,7 +882,7 @@ footer{
 .cal-field input{width:100%;padding:12px 14px;border:1.5px solid #e0ddd8;font-family:'Barlow',sans-serif;font-size:14px;color:#111;outline:none;transition:border-color .2s;background:#fafaf8;}
 .cal-field input:focus{border-color:#c8873a;background:#fff;}
 .cal-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.cal-modal-submit{width:100%;padding:15px;background:#c8873a;color:#fff;border:none;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px;}
+.cal-modal-submit{width:100%;padding:15px;background:#c8873a;color:#fff;border:none;font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px;}
 .cal-modal-submit:hover{background:#b8772a;}
 .cal-modal-submit:disabled{background:#ccc;cursor:not-allowed;}
 .cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}
