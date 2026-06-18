@@ -2,639 +2,791 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0"><!-- v3 -->
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>LPA Executive Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LPA Bookings Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f5f2ec;
-  --card:#ffffff;
-  --card2:#f0ece4;
-  --dark:#1a1a1a;
-  --amber:#c8873a;
-  --amber-lt:rgba(200,135,58,0.12);
-  --green:#2d8a5e;
-  --green-lt:rgba(45,138,94,0.12);
-  --red:#e05252;
-  --ink:#111;
-  --grey:#7a7f87;
-  --border:rgba(0,0,0,0.07);
-  --radius:20px;
-  --radius-sm:12px;
-  --serif:'Fraunces',serif;
-  --sans:'Barlow',sans-serif;
-  --cond:'Barlow Condensed',sans-serif;
+  --bg:#f6f3ee;--bg2:#ffffff;--bg3:#edeae3;
+  --surface:#ffffff;--surface2:#f6f3ee;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.18);
+  --amber:#c8873a;--amber2:#b87730;--amber-dim:rgba(200,135,58,0.10);
+  --off-white:#0e0f11;--grey:#444950;--grey-mid:#6b6f78;
+  --red:#e05252;--green:#2d8a5e;
+  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);background:var(--bg);color:var(--off-white);
+  min-height:100vh;font-size:15px;-webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
 /* ── HEADER ── */
-.hdr{
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:0 36px;height:68px;
+.dash-header{
+  background:#ffffff;border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(0,0,0,0.06);
+  padding:0 40px;height:68px;
   display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:200;
+  position:sticky;top:0;z-index:100;
 }
-.hdr-logo{display:flex;align-items:center;gap:14px;}
-.hdr-logo img{height:36px;}
-.hdr-logo-tag{font-size:13px;color:var(--grey);border-left:1px solid var(--border);padding-left:14px;}
-.hdr-r{display:flex;align-items:center;gap:14px;}
-.hdr-upd{font-size:13px;color:var(--grey);}
-.sdot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-.btn-ref{
+.dash-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.dash-logo img{height:36px;opacity:.9;}
+.dash-logo-title{font-family:var(--cond);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#111;font-weight:600;}
+.dash-logo-title span{color:var(--amber);}
+.dash-header-right{display:flex;align-items:center;gap:20px;}
+.dash-refresh{
+  background:none;border:1px solid var(--border2);color:var(--grey);
+  font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;
+}
+.dash-refresh:hover{border-color:var(--amber);color:var(--amber);}
+.dash-refresh svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+.dash-status{display:flex;align-items:center;gap:8px;font-size:14px;color:#444;font-weight:500;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#2d8a5e;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ── LAYOUT ── */
+.dash-body{padding:32px 40px;max-width:1400px;margin:0 auto;}
+
+/* ── KPI CARDS ── */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.kpi-card{
+  background:var(--surface);border:1px solid var(--border);
+  padding:24px;position:relative;overflow:hidden;
+}
+.kpi-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--amber);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.kpi-card:hover::before{transform:scaleX(1);}
+.kpi-label{font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#444;margin-bottom:12px;font-weight:600;}
+.kpi-value{font-family:var(--serif);font-size:46px;font-weight:400;color:#0e0f11;line-height:1;}
+.kpi-value span{font-size:20px;color:var(--grey);}
+.kpi-sub{font-size:13px;color:#666;margin-top:8px;font-weight:400;}
+.kpi-icon{position:absolute;right:20px;top:20px;opacity:.12;font-size:48px;}
+
+/* ── CONTROLS ── */
+.dash-controls{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-bottom:20px;flex-wrap:wrap;
+}
+.dash-search-wrap{position:relative;flex:1;max-width:360px;}
+.dash-search{
+  width:100%;background:var(--surface);border:1.5px solid var(--border2);
+  color:#0e0f11;font-family:var(--sans);font-size:15px;font-weight:400;
+  padding:11px 16px 11px 40px;outline:none;transition:border-color .2s;
+}
+.dash-search:focus{border-color:var(--amber);}
+.dash-search::placeholder{color:var(--grey-mid);}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;stroke:var(--grey-mid);fill:none;pointer-events:none;
+}
+.dash-filters{display:flex;gap:8px;flex-wrap:wrap;}
+.filter-btn{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--grey);font-family:var(--cond);font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;
+  cursor:pointer;transition:all .2s;
+}
+.filter-btn:hover{border-color:var(--border2);color:var(--off-white);}
+.filter-btn.active{background:var(--amber-dim);border-color:var(--amber);color:var(--amber);}
+.dash-export{
+  background:var(--amber);color:var(--bg);border:none;
+  font-family:var(--cond);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;padding:10px 20px;cursor:pointer;transition:background .2s;
   display:flex;align-items:center;gap:8px;
-  background:var(--dark);color:#fff;
-  font-size:13px;font-weight:500;
-  padding:10px 20px;border-radius:100px;border:none;cursor:pointer;
-  transition:opacity .2s;
 }
-.btn-ref:hover{opacity:.85;}
-.btn-ref svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+.dash-export:hover{background:#b87730;}
+.dash-export svg{width:14px;height:14px;stroke:currentColor;fill:none;}
 
-/* ── BODY ── */
-.body{padding:28px 36px 60px;max-width:1600px;margin:0 auto;}
-
-/* ── WELCOME ── */
-.welcome{margin-bottom:28px;}
-.welcome-title{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--ink);line-height:1.1;}
-.welcome-sub{font-size:15px;color:var(--grey);margin-top:6px;}
-
-/* ── TOP STATS ROW ── */
-.top-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:24px;}
-.stat-card{
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:22px 24px;
-  position:relative;overflow:hidden;
-  transition:transform .2s,box-shadow .2s;
-  cursor:default;
+/* ── TABLE ── */
+.table-wrap{
+  background:var(--surface);border:1px solid var(--border);
+  overflow:hidden;
 }
-.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-.stat-card.dark{background:var(--dark);}
-.stat-card.amber{background:var(--amber);}
-.stat-ico{font-size:20px;margin-bottom:10px;opacity:.7;}
-.stat-lbl{font-size:12px;color:var(--grey);margin-bottom:6px;font-weight:500;letter-spacing:.3px;}
-.stat-card.dark .stat-lbl,.stat-card.amber .stat-lbl{color:rgba(255,255,255,0.65);}
-.stat-val{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--ink);line-height:1;}
-.stat-card.dark .stat-val{color:#fff;}
-.stat-card.amber .stat-val{color:#fff;}
-.stat-sub{font-size:12px;color:var(--grey);margin-top:5px;}
-.stat-card.dark .stat-sub,.stat-card.amber .stat-sub{color:rgba(255,255,255,0.55);}
-
-/* ── MAIN GRID ── */
-.main-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
-.card{background:var(--card);border-radius:var(--radius);padding:24px;overflow:hidden;}
-.card.span2{grid-column:span 2;}
-.card.span3{grid-column:span 3;}
-.card.dark{background:var(--dark);}
-.card-label{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--grey);margin-bottom:14px;text-transform:uppercase;}
-.card.dark .card-label{color:rgba(255,255,255,0.45);}
-.card-title{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--ink);margin-bottom:16px;}
-.card.dark .card-title{color:#fff;}
-
-/* ── CHART CARDS ── */
-.chart-wrap{position:relative;height:180px;}
-
-/* ── FUNNEL ── */
-.funnel-row{display:flex;gap:0;align-items:stretch;}
-.fstage{flex:1;position:relative;}
-.fstage-bar-w{height:52px;background:rgba(0,0,0,0.05);border-radius:8px;overflow:hidden;margin-bottom:12px;}
-.fstage-fill{height:100%;background:var(--amber);border-radius:8px;transition:width .8s ease;}
-.fstage:nth-child(3) .fstage-fill{background:var(--green);}
-.fstage-arrow{position:absolute;right:-10px;top:12px;font-size:24px;color:#ccc;z-index:2;}
-.fstage-lbl{font-size:12px;color:var(--grey);font-weight:500;margin-bottom:4px;}
-.fstage-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--ink);line-height:1;}
-.fstage-pct{font-size:12px;color:var(--grey);margin-top:3px;}
-
-/* ── AI INSIGHTS ── */
-.ai-card{background:var(--dark);border-radius:var(--radius);padding:24px;margin-bottom:14px;}
-.ai-top{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-.ai-pill{background:rgba(200,135,58,.18);color:var(--amber);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
-.ai-head{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8);font-weight:300;}
-.ai-items{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
-.ai-item{background:rgba(255,255,255,.05);border-radius:var(--radius-sm);padding:18px;}
-.ai-num{font-family:var(--serif);font-size:32px;color:rgba(200,135,58,.35);line-height:1;margin-bottom:10px;}
-.ai-txt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;}
-.ai-txt strong{color:var(--amber);font-weight:500;}
-.ai-loading{color:rgba(255,255,255,.4);font-size:14px;text-align:center;padding:24px;}
-
-/* ── PERF TABLES ── */
-.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.pc{background:var(--card);border-radius:var(--radius);padding:24px;}
-.pc-lbl{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--grey);margin-bottom:16px;text-transform:uppercase;}
-.ptbl{width:100%;border-collapse:collapse;}
-.ptbl th{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#bbb;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
-.ptbl td{padding:11px 10px;font-size:14px;border-bottom:1px solid rgba(0,0,0,0.04);color:var(--ink);}
-.ptbl tr:last-child td{border-bottom:none;}
-.ptbl tr:hover td{background:var(--bg);}
-.pb-w{background:#eee;height:4px;border-radius:2px;margin-top:4px;}
-.pb{height:4px;background:var(--amber);border-radius:2px;}
-.rnk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--amber-lt);color:var(--amber);font-size:11px;font-weight:700;}
-
-/* ── FORECAST ── */
-.fc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
-.fc-item{text-align:center;padding:24px 20px;border-right:1px solid var(--border);}
-.fc-item:last-child{border-right:none;}
-.fc-lbl{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
-.fc-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--ink);}
-.fc-val.green{color:var(--green);}
-.fc-val.amber{color:var(--amber);}
-.fc-sub{font-size:12px;color:#bbb;margin-top:5px;}
-
-/* ── BOOKING TABLE ── */
-.bk-card{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
-.bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px;}
-.bk-hdr-l{display:flex;align-items:center;gap:16px;}
-.bk-ttl{font-size:15px;font-weight:600;color:var(--ink);}
-.bk-cnt{font-size:13px;color:var(--grey);}
-.srch-w{display:flex;align-items:center;gap:10px;background:var(--bg);padding:10px 16px;border-radius:100px;border:1px solid var(--border);}
-.srch-w input{background:none;border:none;outline:none;font-size:14px;color:var(--ink);width:240px;font-family:var(--sans);}
-.srch-w input::placeholder{color:#bbb;}
-.srch-w svg{width:14px;height:14px;stroke:var(--grey);fill:none;flex-shrink:0;}
-.t-head{display:grid;grid-template-columns:1.4fr 1fr 1.9fr .9fr 1fr 110px 70px 56px;padding:10px 24px;background:rgba(0,0,0,0.02);border-bottom:1px solid var(--border);}
-.th{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#bbb;cursor:pointer;user-select:none;}
+.table-head{
+  display:grid;
+  grid-template-columns:180px 140px 160px 140px 120px 120px 100px 80px;
+  border-bottom:1px solid var(--border2);
+  padding:0 20px;
+  background:var(--bg3);
+}
+.th{
+  font-family:var(--cond);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:#555;padding:15px 12px;cursor:pointer;
+  display:flex;align-items:center;gap:6px;transition:color .2s;user-select:none;font-weight:700;
+}
 .th:hover{color:var(--amber);}
-.t-body{max-height:420px;overflow-y:auto;}
-.t-body::-webkit-scrollbar{width:4px;}
-.t-body::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
-.t-row{display:grid;grid-template-columns:1.4fr 1fr 1.9fr .9fr 1fr 110px 70px 56px;padding:13px 24px;border-bottom:1px solid rgba(0,0,0,0.04);cursor:pointer;transition:background .12s;align-items:center;}
-.t-row:hover{background:var(--bg);}
-.t-row:last-child{border-bottom:none;}
-.td{font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:flex;align-items:center;color:var(--ink);}
-.td-co{color:var(--amber);cursor:pointer;font-weight:600;}
-.td-co:hover{text-decoration:underline;}
-.bdg{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;}
-.bdg-website{background:var(--amber-lt);color:var(--amber);}
-.bdg-direct{background:var(--green-lt);color:var(--green);}
-.act{background:none;border:none;cursor:pointer;color:#ccc;padding:4px;display:flex;align-items:center;transition:color .2s;border-radius:6px;}
-.act:hover{color:var(--amber);background:var(--amber-lt);}
-.act svg{width:14px;height:14px;stroke:currentColor;fill:none;}
-.act-del:hover{color:var(--red);background:rgba(224,82,82,.1);}
-.empty-s{padding:56px;text-align:center;color:var(--grey);font-size:15px;}
-.spin{display:inline-block;width:22px;height:22px;border:2px solid #eee;border-top-color:var(--amber);border-radius:50%;animation:sp .6s linear infinite;}
-@keyframes sp{to{transform:rotate(360deg);}}
+.th svg{width:12px;height:12px;stroke:currentColor;fill:none;opacity:.5;}
 
-/* ── COMPANY PANEL ── */
-.co-ov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);}
-.co-ov.open{display:block;}
-.co-panel{position:fixed;right:0;top:0;bottom:0;width:420px;background:var(--card);z-index:401;box-shadow:-12px 0 60px rgba(0,0,0,.1);overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;border-radius:var(--radius) 0 0 var(--radius);}
-.co-panel.open{transform:translateX(0);}
-.co-phdr{padding:28px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
-.co-eyebrow{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:6px;}
-.co-name{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ink);}
-.co-close{background:rgba(0,0,0,.06);border:none;cursor:pointer;font-size:16px;color:var(--grey);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-.co-close:hover{background:rgba(0,0,0,.12);}
-.co-body{padding:24px 28px;}
-.co-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
-.co-kpi{background:var(--bg);border-radius:var(--radius-sm);padding:16px;}
-.co-kpi-lbl{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:6px;}
-.co-kpi-val{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);}
-.co-sec{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin:20px 0 10px;}
-.co-item{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink);}
-.co-item:last-child{border-bottom:none;}
-.co-rep{display:inline-flex;align-items:center;gap:6px;background:var(--green-lt);color:var(--green);font-size:12px;font-weight:600;letter-spacing:.5px;padding:5px 12px;border-radius:100px;margin-bottom:16px;}
-.co-cta{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:#fff;padding:12px 22px;text-decoration:none;font-size:13px;font-weight:600;border-radius:100px;margin-top:22px;}
-.co-cta:hover{opacity:.85;}
+.table-body{max-height:600px;overflow-y:auto;}
+.table-body::-webkit-scrollbar{width:4px;}
+.table-body::-webkit-scrollbar-track{background:var(--bg3);}
+.table-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 
-/* ── DELETE MODAL ── */
-.del-ov{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.4);align-items:center;justify-content:center;}
-.del-ov.open{display:flex;}
-.del-modal{background:var(--card);padding:36px;max-width:380px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.15);border-radius:var(--radius);}
-.del-ico{font-size:40px;margin-bottom:14px;}
-.del-ttl{font-family:var(--serif);font-size:22px;font-weight:300;margin-bottom:8px;color:var(--ink);}
-.del-sub{font-size:14px;color:var(--grey);margin-bottom:26px;line-height:1.6;}
-.del-acts{display:flex;gap:12px;justify-content:center;}
-.btn-can{padding:12px 26px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-size:14px;color:var(--grey);border-radius:100px;font-weight:500;}
-.btn-can:hover{border-color:#999;}
-.btn-del-c{padding:12px 26px;border:none;background:var(--red);color:#fff;cursor:pointer;font-size:14px;font-weight:600;border-radius:100px;}
-.btn-del-c:hover{opacity:.85;}
+.table-row{
+  display:grid;
+  grid-template-columns:180px 140px 160px 140px 120px 120px 100px 80px;
+  border-bottom:1px solid var(--border);padding:0 20px;
+  transition:background .15s;cursor:pointer;
+}
+.table-row:hover{background:var(--surface2);}
+.table-row:last-child{border-bottom:none;}
+.td{
+  padding:17px 12px;font-size:15px;color:#0e0f11;
+  font-weight:400;display:flex;align-items:center;
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.td-name{font-weight:700;}
+.td-course{font-size:14px;color:#333;font-weight:500;}
+.td-session{font-size:13px;color:var(--amber);font-family:var(--cond);letter-spacing:.5px;font-weight:700;}
+.td-company{font-size:14px;color:#333;}
+.td-date{font-size:13px;color:#555;font-family:var(--cond);font-weight:500;}
+.badge{
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 10px;border:1px solid;font-weight:600;
+}
+.badge-source-booking_form{color:var(--amber);border-color:rgba(200,135,58,.3);background:rgba(200,135,58,.08);}
+.badge-source-enquiry_form{color:var(--green);border-color:rgba(82,183,136,.3);background:rgba(82,183,136,.08);}
+.badge-source-website{color:var(--grey);border-color:var(--border);background:transparent;}
+
+.action-btn{
+  background:none;border:1px solid var(--border);color:var(--grey);
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;flex-shrink:0;
+}
+.action-btn:hover{border-color:var(--amber);color:var(--amber);}
+.action-btn-del:hover{border-color:var(--red) !important;color:var(--red) !important;}
+.action-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  text-align:center;padding:80px 40px;
+}
+.empty-icon{font-size:48px;opacity:.2;margin-bottom:16px;}
+.empty-title{font-family:var(--serif);font-size:24px;font-weight:400;color:#333;margin-bottom:8px;}
+.empty-sub{font-size:15px;color:#666;font-weight:400;}
+
+/* ── LOADING ── */
+.loading-state{text-align:center;padding:60px 40px;}
+.spinner{
+  width:32px;height:32px;border:2px solid var(--border);
+  border-top-color:var(--amber);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto 16px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-size:15px;color:#555;font-weight:400;}
+
+/* ── DETAIL DRAWER ── */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;transition:all .3s;
+}
+.drawer-overlay.open{opacity:1;visibility:visible;}
+.drawer{
+  position:fixed;right:0;top:0;bottom:0;width:480px;max-width:95vw;
+  background:#ffffff;border-left:1px solid var(--border);box-shadow:-8px 0 32px rgba(0,0,0,0.08);
+  z-index:501;transform:translateX(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1);
+  overflow-y:auto;
+}
+.drawer-overlay.open .drawer{transform:translateX(0);}
+.drawer-head{
+  padding:28px 32px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;
+  position:sticky;top:0;background:#ffffff;z-index:2;
+}
+.drawer-title{font-family:var(--serif);font-size:24px;font-weight:400;color:#0e0f11;}
+.drawer-sub{font-size:14px;color:#555;margin-top:4px;}
+.drawer-close{
+  background:none;border:1px solid var(--border);color:var(--grey);
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;font-size:16px;flex-shrink:0;
+}
+.drawer-close:hover{border-color:var(--amber);color:var(--amber);}
+.drawer-body{padding:28px 32px;}
+.drawer-section{margin-bottom:28px;}
+.drawer-section-title{
+  font-family:var(--cond);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--amber);margin-bottom:14px;display:block;
+}
+.drawer-field{display:flex;flex-direction:column;gap:4px;margin-bottom:14px;}
+.drawer-field-label{font-size:11px;color:#888;font-family:var(--cond);letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+.drawer-field-value{font-size:16px;color:#0e0f11;font-weight:500;word-break:break-word;}
+.drawer-field-value a{color:var(--amber);text-decoration:none;}
+.drawer-field-value a:hover{text-decoration:underline;}
+.drawer-actions{display:flex;gap:10px;margin-top:24px;}
+.btn-reply{
+  flex:1;background:var(--amber);color:var(--bg);border:none;
+  font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;padding:13px;cursor:pointer;transition:background .2s;text-decoration:none;
+  text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-reply:hover{background:var(--amber2);}
+.btn-reply svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+
+/* ── TABLE FOOTER ── */
+.table-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-top:1px solid var(--border);
+  font-size:14px;color:#444;font-weight:500;
+}
+
+
+/* ── DATE FILTER ── */
+.date-filter-wrap{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:14px 20px;background:var(--bg3);
+  border-bottom:1px solid var(--border);
+}
+.date-filter-label{
+  font-family:var(--cond);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:#555;font-weight:700;margin-right:4px;
+}
+.date-pill{
+  background:#fff;border:1.5px solid var(--border2);color:#444;
+  font-family:var(--cond);font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  font-weight:600;padding:7px 14px;cursor:pointer;transition:all .2s;
+}
+.date-pill:hover{border-color:var(--amber);color:var(--amber);}
+.date-pill.active{background:var(--amber);border-color:var(--amber);color:#fff;}
+.date-custom{display:flex;align-items:center;gap:8px;margin-left:8px;}
+.date-custom input{
+  background:#fff;border:1.5px solid var(--border2);
+  color:#0e0f11;font-family:var(--sans);font-size:13px;
+  padding:7px 10px;outline:none;transition:border-color .2s;
+  cursor:pointer;
+}
+.date-custom input:focus{border-color:var(--amber);}
+.date-custom-sep{font-size:13px;color:#888;}
+
+/* ── DELETE CONFIRM MODAL ── */
+.del-overlay{
+  position:fixed;inset:0;z-index:600;
+  background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.del-overlay.open{display:flex;}
+.del-modal{
+  background:#fff;border-top:3px solid var(--red);
+  max-width:420px;width:100%;
+  box-shadow:0 24px 60px rgba(0,0,0,0.15);
+  animation:delZoom .25s cubic-bezier(.34,1.4,.64,1) forwards;
+}
+@keyframes delZoom{from{transform:scale(.94);opacity:0;}to{transform:scale(1);opacity:1;}}
+.del-modal-head{padding:24px 28px 0;}
+.del-modal-icon{font-size:32px;margin-bottom:12px;}
+.del-modal-title{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--off-white);margin-bottom:8px;}
+.del-modal-sub{font-size:14px;color:var(--grey);font-weight:300;line-height:1.6;}
+.del-modal-name{font-weight:600;color:var(--off-white);}
+.del-modal-actions{display:flex;gap:10px;padding:24px 28px;}
+.del-cancel{
+  flex:1;background:none;border:1px solid var(--border2);color:var(--grey);
+  font-family:var(--cond);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  font-weight:600;padding:13px;cursor:pointer;transition:all .2s;
+}
+.del-cancel:hover{border-color:var(--off-white);color:var(--off-white);}
+.del-confirm{
+  flex:1;background:var(--red);color:#fff;border:none;
+  font-family:var(--cond);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  font-weight:700;padding:13px;cursor:pointer;transition:background .2s;
+}
+.del-confirm:hover{background:#c94040;}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1280px){
-  .top-stats{grid-template-columns:repeat(3,1fr);}
-  .main-grid{grid-template-columns:1fr 1fr;}
-  .card.span3{grid-column:span 2;}
-  .ai-items{grid-template-columns:1fr 1fr;}
-  .perf-grid{grid-template-columns:1fr;}
+@media(max-width:1200px){
+  .table-head,.table-row{grid-template-columns:160px 130px 150px 130px 110px 110px 90px 60px;}
 }
-@media(max-width:768px){
-  .top-stats{grid-template-columns:1fr 1fr;}
-  .main-grid{grid-template-columns:1fr;}
-  .card.span2,.card.span3{grid-column:span 1;}
-  .ai-items{grid-template-columns:1fr;}
-  .fc-row{grid-template-columns:1fr;}
-  .fc-item{border-right:none;border-bottom:1px solid var(--border);}
-  .fc-item:last-child{border-bottom:none;}
-  .body{padding:16px 16px 40px;}
-  .hdr{padding:0 16px;}
-  .co-panel{width:100%;border-radius:0;}
-  .t-head{display:none;}
-  .t-row{grid-template-columns:1fr;gap:4px;}
-  .srch-w input{width:160px;}
+@media(max-width:900px){
+  .dash-header{padding:0 20px;}
+  .dash-body{padding:20px;}
+  .kpi-row{grid-template-columns:1fr 1fr;gap:12px;}
+  .table-head{display:none;}
+  .table-row{
+    grid-template-columns:1fr;padding:16px 20px;gap:4px;
+    border-bottom:1px solid var(--border);
+  }
+  .td{padding:2px 0;font-size:13px;}
+  .td:nth-child(3),.td:nth-child(5),.td:nth-child(7){display:none;}
+}
+@media(max-width:600px){
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  .kpi-value{font-size:32px;}
+  .drawer{width:100%;}
 }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="hdr">
-  <div class="hdr-logo">
-    <a href="index.html"><img src="logo-dark.png" alt="LPA"></a>
-    <span class="hdr-logo-tag">Executive Dashboard</span>
-  </div>
-  <div class="hdr-r">
-    <span class="sdot"></span>
-    <span class="hdr-upd" id="lastUpd">Loading…</span>
-    <button class="btn-ref" onclick="loadAll()">
-      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+<header class="dash-header">
+  <a href="index.html" class="dash-logo">
+    <img src="logo-dark.png" alt="London Petro Academy">
+    <span class="dash-logo-title">Bookings <span>Dashboard</span></span>
+  </a>
+  <div class="dash-header-right">
+    <div class="dash-status">
+      <div class="status-dot"></div>
+      <span id="lastUpdated">Loading…</span>
+    </div>
+    <button class="dash-refresh" onclick="loadBookings()">
+      <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       Refresh
     </button>
   </div>
 </header>
 
-<div class="body">
+<!-- BODY -->
+<main class="dash-body">
 
-  <!-- WELCOME -->
-  <div class="welcome">
-    <div class="welcome-title">Good to see you, Tarik</div>
-    <div class="welcome-sub">Here's your LPA business overview — updated live from Google Sheets.</div>
-  </div>
-
-  <!-- TOP STATS -->
-  <div class="top-stats">
-    <div class="stat-card dark">
-      <div class="stat-ico">💰</div>
-      <div class="stat-lbl">Total Revenue</div>
-      <div class="stat-val" id="kpiRev">—</div>
-      <div class="stat-sub">Est. at avg booking value</div>
+  <!-- KPI CARDS -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-icon">📋</div>
+      <div class="kpi-label">Total Bookings</div>
+      <div class="kpi-value" id="kpiTotal">—</div>
+      <div class="kpi-sub" id="kpiTotalSub">All time</div>
     </div>
-    <div class="stat-card amber">
-      <div class="stat-ico">📅</div>
-      <div class="stat-lbl">Revenue This Month</div>
-      <div class="stat-val" id="kpiRevMo">—</div>
-      <div class="stat-sub" id="kpiRevMoSub"></div>
+    <div class="kpi-card">
+      <div class="kpi-icon">📅</div>
+      <div class="kpi-label">This Month</div>
+      <div class="kpi-value" id="kpiMonth">—</div>
+      <div class="kpi-sub" id="kpiMonthSub">June 2026</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-ico">📊</div>
-      <div class="stat-lbl">Avg Booking Value</div>
-      <div class="stat-val" id="kpiAvg">£3,300</div>
-      <div class="stat-sub">Per course booking</div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🌍</div>
+      <div class="kpi-label">Countries</div>
+      <div class="kpi-value" id="kpiCountries">—</div>
+      <div class="kpi-sub">Unique nationalities</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-ico">🎯</div>
-      <div class="stat-lbl">Total Bookings</div>
-      <div class="stat-val" id="kpiTotal">—</div>
-      <div class="stat-sub" id="kpiTotalSub"></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-ico">🌍</div>
-      <div class="stat-lbl">Countries</div>
-      <div class="stat-val" id="kpiCo">—</div>
-      <div class="stat-sub">Unique markets</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-ico">📚</div>
-      <div class="stat-lbl">Courses Booked</div>
-      <div class="stat-val" id="kpiCrs">—</div>
-      <div class="stat-sub">Unique programmes</div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🎓</div>
+      <div class="kpi-label">Courses Booked</div>
+      <div class="kpi-value" id="kpiCourses">—</div>
+      <div class="kpi-sub">Unique courses</div>
     </div>
   </div>
 
-  <!-- CHARTS ROW 1 -->
-  <div class="main-grid">
-    <div class="card span2">
-      <div class="card-label">Monthly Booking Trend</div>
-      <div class="chart-wrap"><canvas id="cMo"></canvas></div>
-    </div>
-    <div class="card span2">
-      <div class="card-label">Monthly Revenue Trend (Est.)</div>
-      <div class="chart-wrap"><canvas id="cRev"></canvas></div>
-    </div>
-    <div class="card span2">
-      <div class="card-label">Top Countries</div>
-      <div class="chart-wrap"><canvas id="cCo"></canvas></div>
-    </div>
-    <div class="card span2">
-      <div class="card-label">Top Courses</div>
-      <div class="chart-wrap"><canvas id="cCrs"></canvas></div>
+
+  <!-- DATE FILTER -->
+  <div class="date-filter-wrap" id="dateFilterWrap">
+    <span class="date-filter-label">Period:</span>
+    <button class="date-pill active" onclick="setDateFilter('all',this)">All Time</button>
+    <button class="date-pill" onclick="setDateFilter('this_week',this)">This Week</button>
+    <button class="date-pill" onclick="setDateFilter('last_week',this)">Last Week</button>
+    <button class="date-pill" onclick="setDateFilter('this_month',this)">This Month</button>
+    <button class="date-pill" onclick="setDateFilter('last_month',this)">Last Month</button>
+    <button class="date-pill" onclick="setDateFilter('last_3months',this)">Last 3 Months</button>
+    <div class="date-custom">
+      <span class="date-custom-sep">or</span>
+      <input type="date" id="dateFrom" onchange="setDateFilter('custom',null)" title="From date">
+      <span class="date-custom-sep">→</span>
+      <input type="date" id="dateTo" onchange="setDateFilter('custom',null)" title="To date">
     </div>
   </div>
 
-  <!-- FUNNEL -->
-  <div class="card" style="margin-bottom:14px;">
-    <div class="card-label">Sales Funnel</div>
-    <div class="funnel-row">
-      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB1" style="width:100%"></div></div><div class="fstage-lbl">Enquiries Received</div><div class="fstage-num" id="fN1">—</div><div class="fstage-pct" id="fP1">100%</div><span class="fstage-arrow">›</span></div>
-      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB2" style="width:70%"></div></div><div class="fstage-lbl">Proposals Sent</div><div class="fstage-num" id="fN2">—</div><div class="fstage-pct" id="fP2">—</div><span class="fstage-arrow">›</span></div>
-      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB3" style="width:40%"></div></div><div class="fstage-lbl">Confirmed Bookings</div><div class="fstage-num" id="fN3">—</div><div class="fstage-pct" id="fP3">—</div></div>
+  <!-- CONTROLS -->
+  <div class="dash-controls">
+    <div class="dash-search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="dash-search" id="searchInput" type="text" placeholder="Search by name, company, course…" oninput="filterBookings()">
     </div>
+    <div class="dash-filters">
+      <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('booking_form',this)">Bookings</button>
+      <button class="filter-btn" onclick="setFilter('enquiry_form',this)">Enquiries</button>
+    </div>
+    <button class="dash-export" onclick="exportCSV()">
+      <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export CSV
+    </button>
   </div>
 
-  <!-- AI INSIGHTS -->
-  <div class="ai-card">
-    <div class="ai-top">
-      <span class="ai-pill">AI Analysis</span>
-      <span class="ai-head">Automated intelligence — refreshed on each data load</span>
-    </div>
-    <div class="ai-items" id="aiItems"><div class="ai-loading">Generating insights…</div></div>
-  </div>
-
-  <!-- PERFORMANCE TABLES -->
-  <div class="perf-grid">
-    <div class="pc">
-      <div class="pc-lbl">Course Performance</div>
-      <table class="ptbl"><thead><tr><th>#</th><th>Course</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="ctbl"></tbody></table>
-    </div>
-    <div class="pc">
-      <div class="pc-lbl">Country Performance</div>
-      <table class="ptbl"><thead><tr><th>#</th><th>Country</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="cttbl"></tbody></table>
-    </div>
-  </div>
-
-  <!-- FORECAST -->
-  <div class="card" style="margin-bottom:14px;">
-    <div class="card-label">Revenue Forecast</div>
-    <div class="fc-row">
-      <div class="fc-item"><div class="fc-lbl">Confirmed Revenue</div><div class="fc-val green" id="fcC">—</div><div class="fc-sub">From bookings received</div></div>
-      <div class="fc-item"><div class="fc-lbl">Pipeline Revenue</div><div class="fc-val amber" id="fcP">—</div><div class="fc-sub">Est. 40% conversion</div></div>
-      <div class="fc-item"><div class="fc-lbl">Total Forecast</div><div class="fc-val" id="fcT">—</div><div class="fc-sub">Confirmed + pipeline</div></div>
-    </div>
-  </div>
-
-  <!-- BOOKING TABLE -->
-  <div class="bk-card">
-    <div class="bk-hdr">
-      <div class="bk-hdr-l">
-        <span class="bk-ttl">Booking Register</span>
-        <span class="bk-cnt" id="tCnt"></span>
-      </div>
-      <div class="srch-w">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="srch" placeholder="Search name, company, course, country…" oninput="doFilter();renderTable()">
-      </div>
-    </div>
-    <div class="t-head">
-      <div class="th" onclick="setSort('full_name')">Name</div>
-      <div class="th" onclick="setSort('company')">Company</div>
-      <div class="th" onclick="setSort('course_name')">Course</div>
-      <div class="th" onclick="setSort('course_session')">Session</div>
-      <div class="th" onclick="setSort('country')">Country</div>
-      <div class="th" onclick="setSort('submitted_at')">Date</div>
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <div class="table-head">
+      <div class="th" onclick="sortBy('full_name')">Name <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="th" onclick="sortBy('company')">Company <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="th" onclick="sortBy('course_name')">Course <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="th" onclick="sortBy('course_session')">Session <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="th" onclick="sortBy('country')">Country <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="th" onclick="sortBy('submitted_at')">Date <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="th">Source</div>
       <div class="th"></div>
     </div>
-    <div class="t-body" id="tBody"><div class="empty-s"><div class="spin"></div></div></div>
+    <div class="table-body" id="tableBody">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading bookings…</div>
+      </div>
+    </div>
+    <div class="table-footer">
+      <span id="tableCount">—</span>
+      <span id="tablePage"></span>
+    </div>
   </div>
 
-</div>
+</main>
 
-<!-- COMPANY PANEL -->
-<div class="co-ov" id="coOv" onclick="closeCo()"></div>
-<div class="co-panel" id="coPanel">
-  <div class="co-phdr">
-    <div>
-      <div class="co-eyebrow">Client Profile</div>
-      <div class="co-name" id="coName">—</div>
+<!-- DETAIL DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="if(event.target===this)closeDrawer()">
+  <div class="drawer" id="drawer">
+    <div class="drawer-head">
+      <div>
+        <div class="drawer-title" id="drawerName">—</div>
+        <div class="drawer-sub" id="drawerCompany">—</div>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
     </div>
-    <button class="co-close" onclick="closeCo()">✕</button>
-  </div>
-  <div class="co-body" id="coBody"></div>
-</div>
-
-<!-- DELETE MODAL -->
-<div class="del-ov" id="delOv">
-  <div class="del-modal">
-    <div class="del-ico">🗑️</div>
-    <div class="del-ttl">Delete Booking?</div>
-    <div class="del-sub" id="delSub">This cannot be undone.</div>
-    <div class="del-acts">
-      <button class="btn-can" onclick="closeDel()">Cancel</button>
-      <button class="btn-del-c" onclick="doDel()">Delete</button>
-    </div>
+    <div class="drawer-body" id="drawerBody"></div>
   </div>
 </div>
 
 <script>
+const COUNTRY_FLAGS = {"Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Andorra": "🇦🇩", "Angola": "🇦🇴", "Antigua and Barbuda": "🇦🇬", "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹", "Azerbaijan": "🇦🇿", "Bahamas": "🇧🇸", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Barbados": "🇧🇧", "Belarus": "🇧🇾", "Belgium": "🇧🇪", "Belize": "🇧🇿", "Benin": "🇧🇯", "Bhutan": "🇧🇹", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Botswana": "🇧🇼", "Brazil": "🇧🇷", "Brunei": "🇧🇳", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Burma": "🇲🇲", "Burundi": "🇧🇮", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Cape Verde": "🇨🇻", "Central African Republic": "🇨🇫", "Chad": "🇹🇩", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Comoros": "🇰🇲", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Cyprus": "🇨🇾", "Czech Republic": "🇨🇿", "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴", "East Timor": "🇹🇱", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Ethiopia": "🇪🇹", "Fiji": "🇫🇯", "Finland": "🇫🇮", "France": "🇫🇷", "Gabon": "🇬🇦", "Gambia": "🇬🇲", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Grenada": "🇬🇩", "Guatemala": "🇬🇹", "Guinea": "🇬🇳", "Guinea-Bissau": "🇬🇼", "Guyana": "🇬🇾", "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺", "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮", "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴", "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Kiribati": "🇰🇮", "Kuwait": "🇰🇼", "Kyrgyzstan": "🇰🇬", "Laos": "🇱🇦", "Latvia": "🇱🇻", "Lebanon": "🇱🇧", "Lesotho": "🇱🇸", "Liberia": "🇱🇷", "Libya": "🇱🇾", "Liechtenstein": "🇱🇮", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺", "Madagascar": "🇲🇬", "Malawi": "🇲🇼", "Malaysia": "🇲🇾", "Maldives": "🇲🇻", "Mali": "🇲🇱", "Malta": "🇲🇹", "Marshall Islands": "🇲🇭", "Mauritania": "🇲🇷", "Mauritius": "🇲🇺", "Mexico": "🇲🇽", "Micronesia": "🇫🇲", "Moldova": "🇲🇩", "Monaco": "🇲🇨", "Mongolia": "🇲🇳", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰", "Norway": "🇳🇴", "Oman": "🇴🇲", "Pakistan": "🇵🇰", "Palau": "🇵🇼", "Palestine": "🇵🇸", "Panama": "🇵🇦", "Papua New Guinea": "🇵🇬", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Republic of the Congo": "🇨🇬", "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼", "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Swaziland": "🇸🇿", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻", "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿", "Vanuatu": "🇻🇺", "Vatican City": "🇻🇦", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳", "Yemen": "🇾🇪", "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼"};
+function getFlag(country) {
+  return COUNTRY_FLAGS[country] || '🌍';
+}
+// ── CONFIG ──────────────────────────────────────────────────
+let allBookings = [];
+let filtered    = [];
+let sortField   = 'submitted_at';
+let sortDir     = -1;
+let activeFilter = 'all';
 
-const WEBHOOK = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-bookings-read';
-const AVG = 3300;
-var all=[], fil=[], sortF='submitted_at', sortD=-1, pendIdx=null, CHS={};
+// ── CONFIG ───────────────────────────────────────────────────
+const BOOKINGS_WEBHOOK = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-bookings-read';
 
-// ── LOAD ─────────────────────────────────────────────────────
-async function loadAll(){
-  document.getElementById('tBody').innerHTML='<div class="empty-s"><div class="spin"></div></div>';
-  document.getElementById('lastUpd').textContent='Loading…';
-  try{
-    var res = await fetch(WEBHOOK);
-    var raw = await res.json();
-    // n8n returns [{json:{...}}, {json:{...}}] — unwrap each item
-    var rows = Array.isArray(raw) ? raw : [];
-    all = rows.map(function(item){
-      var r = (item && item.json) ? item.json : item;
-      return {
-        submitted_at:    r['Submitted At']     || '',
-        full_name:       r['Full Name']        || '',
-        email:           r['Email']            || '',
-        phone:           r['Phone']            || '',
-        company:         r['Company']          || '',
-        job_title:       r['Job Title ']       || r['Job Title'] || '',
-        country:         r['Country']          || '',
-        billing_address: r['Billing Address '] || r['Billing Address'] || '',
-        course_name:     r['Course Name ']     || r['Course Name'] || '',
-        course_session:  r['Course Session']   || '',
-        course_category: r['Course Category']  || '',
-        course_duration: r['Course Duration']  || '',
-        source:          r['Source']           || 'website',
-        page_url:        r['Page URL']         || ''
-      };
-    });
-    all.sort(function(a,b){ return new Date(b.submitted_at) - new Date(a.submitted_at); });
-  } catch(e){
-    console.error('loadAll error:', e);
-    all = [];
+// ── LOAD DATA FROM GOOGLE SHEETS VIA N8N ─────────────────────
+async function loadBookings() {
+  document.getElementById('tableBody').innerHTML = `
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <div class="loading-text">Refreshing…</div>
+    </div>`;
+
+  try {
+    const res = await fetch(BOOKINGS_WEBHOOK);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allBookings = (Array.isArray(data) ? data : []).map(row => ({
+      submitted_at:    row['Submitted At']      || '',
+      full_name:       row['Full Name']         || '',
+      first_name:      (row['Full Name']||'').split(' ')[0] || '',
+      email:           row['Email']             || '',
+      phone:           row['Phone']             || '',
+      company:         row['Company']           || '',
+      job_title:       row['Job Title ']        || row['Job Title'] || '',
+      country:         row['Country']           || '',
+      billing_address: row['Billing Address ']  || row['Billing Address'] || '',
+      course_name:     row['Course Name ']      || row['Course Name'] || '',
+      course_session:  row['Course Session']    || '',
+      course_category: row['Course Category']   || '',
+      course_duration: row['Course Duration']   || '',
+      source:          row['Source']            || 'website',
+      page_url:        row['Page URL']          || '',
+    }));
+    allBookings.sort((a,b) => new Date(b.submitted_at) - new Date(a.submitted_at));
+  } catch(err) {
+    console.error('Failed to load bookings:', err);
+    allBookings = [];
   }
-  document.getElementById('lastUpd').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-  doFilter();
+
+  renderAll();
+  document.getElementById('lastUpdated').textContent =
+    'Updated ' + new Date().toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'});
+}
+
+// ── RENDER ──────────────────────────────────────────────────
+function renderAll() {
+  applyFilter();
+  renderKPIs();
+  renderTable();
+}
+
+function applyFilter() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filtered = allBookings.filter(b => {
+    const matchFilter = activeFilter === 'all' || b.source === activeFilter;
+    const matchSearch = !q || [b.full_name,b.company,b.course_name,b.email,b.country]
+      .some(v => v && v.toLowerCase().includes(q));
+    const matchDate = isInDateRange(b);
+    return matchFilter && matchSearch && matchDate;
+  });
+  // Sort
+  filtered.sort((a,b) => {
+    const av = (a[sortField]||'').toString().toLowerCase();
+    const bv = (b[sortField]||'').toString().toLowerCase();
+    return av < bv ? sortDir : av > bv ? -sortDir : 0;
+  });
+}
+
+function renderKPIs() {
+  const total = allBookings.length;
+  const now = new Date();
+  const thisMonth = allBookings.filter(b => {
+    try { const d = new Date(b.submitted_at); return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear(); }
+    catch(e) { return false; }
+  }).length;
+  const countries = new Set(allBookings.map(b=>b.country).filter(Boolean)).size;
+  const courses   = new Set(allBookings.map(b=>b.course_name).filter(Boolean)).size;
+
+  document.getElementById('kpiTotal').textContent     = total;
+  document.getElementById('kpiMonth').textContent     = thisMonth;
+  document.getElementById('kpiCountries').textContent = countries;
+  document.getElementById('kpiCourses').textContent   = courses;
+  document.getElementById('kpiMonthSub').textContent  =
+    now.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
+}
+
+function renderTable() {
+  const body = document.getElementById('tableBody');
+  document.getElementById('tableCount').textContent =
+    `${filtered.length} booking${filtered.length!==1?'s':''}`;
+
+  if (!filtered.length) {
+    body.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">${allBookings.length ? 'No results found' : 'No bookings yet'}</div>
+        <div class="empty-sub">${allBookings.length ? 'Try adjusting your search or filters' : 'Bookings will appear here once the form is submitted'}</div>
+      </div>`;
+    return;
+  }
+
+  body.innerHTML = filtered.map((b,i) => `
+    <div class="table-row" onclick="openDrawer(${i})">
+      <div class="td td-name">${esc(b.full_name||'—')}</div>
+      <div class="td td-company">${esc(b.company||'—')}</div>
+      <div class="td td-course">${esc(shortCourse(b.course_name||'—'))}</div>
+      <div class="td td-session">${esc(b.course_session||'—')}</div>
+      <div class="td">${getFlag(b.country||'')} ${esc(b.country||'—')}</div>
+      <div class="td td-date">${formatDate(b.submitted_at)}</div>
+      <div class="td"><span class="badge badge-source-${(b.source||'website').replace(/\s/g,'_')}">${esc(b.source||'website')}</span></div>
+      <div class="td">
+  <div style="display:flex;gap:6px;align-items:center;">
+        <button class="action-btn" onclick="event.stopPropagation();replyTo('${esc(b.email||'')}','${esc(b.course_name||'')}')" title="Reply by email">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </button>
+        <button class="action-btn action-btn-del" onclick="event.stopPropagation();confirmDelete(${i})" title="Delete booking">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </button>
+      </div>
+      </div>
+    </div>`).join('');
+}
+
+// ── DRAWER ──────────────────────────────────────────────────
+function openDrawer(idx) {
+  const b = filtered[idx];
+  if (!b) return;
+  document.getElementById('drawerName').textContent    = b.full_name || '—';
+  document.getElementById('drawerCompany').textContent = b.company || '—';
+  document.getElementById('drawerBody').innerHTML = `
+    <div class="drawer-section">
+      <span class="drawer-section-title">📋 Course Details</span>
+      <div class="drawer-field"><span class="drawer-field-label">Course</span><span class="drawer-field-value">${esc(b.course_name||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Session</span><span class="drawer-field-value" style="color:var(--amber)">${esc(b.course_session||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Category</span><span class="drawer-field-value">${esc(b.course_category||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Duration</span><span class="drawer-field-value">${esc(b.course_duration||'—')}</span></div>
+    </div>
+    <div class="drawer-section">
+      <span class="drawer-section-title">👤 Delegate Details</span>
+      <div class="drawer-field"><span class="drawer-field-label">Full Name</span><span class="drawer-field-value">${esc(b.full_name||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Email</span><span class="drawer-field-value"><a href="mailto:${esc(b.email||'')}">${esc(b.email||'—')}</a></span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Phone</span><span class="drawer-field-value"><a href="tel:${esc(b.phone||'')}">${esc(b.phone||'—')}</a></span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Job Title</span><span class="drawer-field-value">${esc(b.job_title||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Company</span><span class="drawer-field-value">${esc(b.company||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Country</span><span class="drawer-field-value" style="display:flex;align-items:center;gap:8px;"><span style="font-size:24px;">${getFlag(b.country||'')}</span>${esc(b.country||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Billing Address</span><span class="drawer-field-value">${esc(b.billing_address||'—')}</span></div>
+    </div>
+    <div class="drawer-section">
+      <span class="drawer-section-title">🔍 Submission Info</span>
+      <div class="drawer-field"><span class="drawer-field-label">Source</span><span class="drawer-field-value">${esc(b.source||'—')}</span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Page</span><span class="drawer-field-value"><a href="${esc(b.page_url||'#')}" target="_blank">${esc(b.page_url||'—')}</a></span></div>
+      <div class="drawer-field"><span class="drawer-field-label">Submitted</span><span class="drawer-field-value">${formatDateFull(b.submitted_at)}</span></div>
+    </div>
+    <div class="drawer-actions">
+      <a class="btn-reply" href="mailto:${esc(b.email||'')}?subject=Re: ${esc(b.course_name||'')} Booking">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Reply to ${esc((b.full_name||'').split(' ')[0]||'Delegate')}
+      </a>
+      <button onclick="confirmDelete(${idx})" style="background:none;border:1px solid rgba(224,82,82,0.3);color:var(--red);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:13px 18px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;" onmouseover="this.style.background='rgba(224,82,82,0.08)'" onmouseout="this.style.background='none'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        Delete
+      </button>
+    </div>
+  `;
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer(){
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
+
+// ── HELPERS ─────────────────────────────────────────────────
+function esc(s){ const d=document.createElement('div'); d.textContent=String(s); return d.innerHTML; }
+function shortCourse(s){ return s.length>35 ? s.substring(0,33)+'…' : s; }
+function formatDate(s){
+  try{ return new Date(s).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'2-digit'}); }
+  catch(e){ return s||'—'; }
+}
+function formatDateFull(s){
+  try{ return new Date(s).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+  catch(e){ return s||'—'; }
+}
+function sortBy(field){
+  if(sortField===field) sortDir*=-1; else { sortField=field; sortDir=-1; }
+  renderAll();
+}
+function setFilter(f, btn){
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterBookings();
+}
+function filterBookings(){ renderAll(); }
+function replyTo(email, course){
+  window.location.href = `mailto:${email}?subject=Re: ${encodeURIComponent(course)} Booking`;
+}
+
+// ── EXPORT CSV ──────────────────────────────────────────────
+function exportCSV(){
+  const cols = ['submitted_at','full_name','email','phone','company','job_title','country','billing_address','course_name','course_session','course_category','source','page_url'];
+  const header = cols.join(',');
+  const rows = filtered.map(b => cols.map(c => `"${(b[c]||'').toString().replace(/"/g,'""')}"`).join(','));
+  const csv = [header,...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = `lpa-bookings-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+
+// ── DATE FILTER ─────────────────────────────────────────────
+let activeDateFilter = 'all';
+
+function setDateFilter(period, btn) {
+  activeDateFilter = period;
+  // Update pill active state
+  if (btn) {
+    document.querySelectorAll('.date-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    // Clear custom date inputs
+    document.getElementById('dateFrom').value = '';
+    document.getElementById('dateTo').value = '';
+  } else {
+    // Custom date — deactivate all pills
+    document.querySelectorAll('.date-pill').forEach(p => p.classList.remove('active'));
+  }
   renderAll();
 }
 
-// ── RENDER ALL ───────────────────────────────────────────────
-function renderAll(){ renderKPIs(); renderCharts(); renderFunnel(); renderAI(); renderPerf(); renderForecast(); renderTable(); }
+function getDateRange() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-// ── KPIs ─────────────────────────────────────────────────────
-function renderKPIs(){
-  var n=all.length, now=new Date();
-  var mo=all.filter(function(b){try{var d=new Date(b.submitted_at);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}catch(e){return false;}});
-  document.getElementById('kpiRev').textContent='£'+fmt(n*AVG);
-  document.getElementById('kpiRevMo').textContent='£'+fmt(mo.length*AVG);
-  document.getElementById('kpiRevMoSub').textContent=now.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
-  document.getElementById('kpiTotal').textContent=n;
-  document.getElementById('kpiTotalSub').textContent=mo.length+' this month';
-  document.getElementById('kpiCo').textContent=new Set(all.map(function(b){return b.country;}).filter(Boolean)).size;
-  document.getElementById('kpiCrs').textContent=new Set(all.map(function(b){return b.course_name;}).filter(Boolean)).size;
-}
-function fmt(n){return n>=1000?(n/1000).toFixed(0)+'k':n.toLocaleString();}
-function fmtF(n){return'£'+n.toLocaleString('en-GB',{minimumFractionDigits:0});}
+  if (activeDateFilter === 'custom') {
+    const from = document.getElementById('dateFrom').value;
+    const to   = document.getElementById('dateTo').value;
+    return {
+      from: from ? new Date(from) : null,
+      to:   to   ? new Date(to + 'T23:59:59') : null,
+    };
+  }
 
-// ── CHARTS ───────────────────────────────────────────────────
-function renderCharts(){
-  var mo={}, moRev={};
-  all.forEach(function(b){
-    try{var d=new Date(b.submitted_at);var k=d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});mo[k]=(mo[k]||0)+1;moRev[k]=(moRev[k]||0)+AVG;}catch(e){}
-  });
-  var ml=Object.keys(mo).slice(-12);
-  var amber='rgba(200,135,58,0.75)',amberB='#c8873a';
+  const day = today.getDay(); // 0=Sun
+  const monday = new Date(today); monday.setDate(today.getDate() - (day===0?6:day-1));
+  const lastMonday = new Date(monday); lastMonday.setDate(monday.getDate()-7);
+  const lastSunday = new Date(monday); lastSunday.setDate(monday.getDate()-1); lastSunday.setHours(23,59,59);
+  const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const firstOfLastMonth = new Date(now.getFullYear(), now.getMonth()-1, 1);
+  const lastOfLastMonth = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59);
+  const threeMonthsAgo = new Date(now.getFullYear(), now.getMonth()-3, now.getDate());
 
-  if(CHS.m)CHS.m.destroy();
-  CHS.m=new Chart(document.getElementById('cMo'),{type:'bar',data:{labels:ml,datasets:[{data:ml.map(function(k){return mo[k];}),backgroundColor:amber,borderColor:amberB,borderWidth:1,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#aaa'}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#aaa',precision:0}}}}});
-
-  if(CHS.r)CHS.r.destroy();
-  CHS.r=new Chart(document.getElementById('cRev'),{type:'line',data:{labels:ml,datasets:[{data:ml.map(function(k){return moRev[k]||0;}),backgroundColor:'rgba(200,135,58,.1)',borderColor:amberB,borderWidth:2,fill:true,tension:.3,pointBackgroundColor:amberB,pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#aaa'}},y:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#aaa',callback:function(v){return'£'+(v>=1000?(v/1000).toFixed(0)+'k':v);}}}}}});
-
-  var cc={};all.forEach(function(b){if(b.country)cc[b.country]=(cc[b.country]||0)+1;});
-  var cs=Object.entries(cc).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
-  var cols=['#c8873a','#d4944a','#e0a05a','#b87730','#a86720','#c89060','#d8a070','#e8b080'];
-  if(CHS.co)CHS.co.destroy();
-  CHS.co=new Chart(document.getElementById('cCo'),{type:'doughnut',data:{labels:cs.map(function(s){return s[0];}),datasets:[{data:cs.map(function(s){return s[1];}),backgroundColor:cols,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:10},color:'#666',boxWidth:10}}}}});
-
-  var cr={};all.forEach(function(b){var n=(b.course_name||'').trim();var s=n.length>33?n.slice(0,33)+'…':n;if(s)cr[s]=(cr[s]||0)+1;});
-  var crs=Object.entries(cr).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
-  if(CHS.cr)CHS.cr.destroy();
-  CHS.cr=new Chart(document.getElementById('cCrs'),{type:'bar',data:{labels:crs.map(function(s){return s[0];}),datasets:[{data:crs.map(function(s){return s[1];}),backgroundColor:amber,borderColor:amberB,borderWidth:1,borderRadius:2}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,.05)'},ticks:{font:{size:10},color:'#aaa',precision:0}},y:{grid:{display:false},ticks:{font:{size:9},color:'#555'}}}}});
+  const ranges = {
+    all:          { from: null, to: null },
+    this_week:    { from: monday, to: null },
+    last_week:    { from: lastMonday, to: lastSunday },
+    this_month:   { from: firstOfMonth, to: null },
+    last_month:   { from: firstOfLastMonth, to: lastOfLastMonth },
+    last_3months: { from: threeMonthsAgo, to: null },
+  };
+  return ranges[activeDateFilter] || { from: null, to: null };
 }
 
-// ── FUNNEL ───────────────────────────────────────────────────
-function renderFunnel(){
-  var n=all.length, p=Math.round(n*.7), c=Math.round(n*.45);
-  document.getElementById('fN1').textContent=n; document.getElementById('fP1').textContent='100%';
-  document.getElementById('fN2').textContent=p; document.getElementById('fP2').textContent=n?Math.round(p/n*100)+'%':'—';
-  document.getElementById('fN3').textContent=c; document.getElementById('fP3').textContent=n?Math.round(c/n*100)+'%':'—';
-  document.getElementById('fB2').style.width=n?(p/n*100)+'%':'0%';
-  document.getElementById('fB3').style.width=n?(c/n*100)+'%':'0%';
+function isInDateRange(booking) {
+  const { from, to } = getDateRange();
+  if (!from && !to) return true;
+  try {
+    const d = new Date(booking.submitted_at);
+    if (from && d < from) return false;
+    if (to   && d > to)   return false;
+    return true;
+  } catch(e) { return true; }
 }
 
-// ── AI INSIGHTS ──────────────────────────────────────────────
-function renderAI(){
-  if(!all.length){document.getElementById('aiItems').innerHTML='<div class="ai-load">No booking data available yet.</div>';return;}
-  var n=all.length, now=new Date();
-  var mos={};all.forEach(function(b){try{var d=new Date(b.submitted_at);var k=d.getFullYear()+'-'+(d.getMonth()+1);mos[k]=(mos[k]||0)+1;}catch(e){}});
-  var ma=Object.entries(mos).sort(function(a,b){return a[0].localeCompare(b[0]);});
-  var gr=ma.length>=2?Math.round(((ma[ma.length-1][1]-ma[ma.length-2][1])/(ma[ma.length-2][1]||1))*100):0;
-  var cc={};all.forEach(function(b){if(b.country)cc[b.country]=(cc[b.country]||0)+1;});
-  var topCo=Object.entries(cc).sort(function(a,b){return b[1]-a[1];})[0];
-  var cr={};all.forEach(function(b){var c=(b.course_name||'').trim();if(c)cr[c]=(cr[c]||0)+1;});
-  var topCr=Object.entries(cr).sort(function(a,b){return b[1]-a[1];})[0];
-  var co={};all.forEach(function(b){var c=(b.company||'').trim();if(c)co[c]=(co[c]||0)+1;});
-  var rep=Object.values(co).filter(function(v){return v>1;}).length;
-  var mo=all.filter(function(b){try{var d=new Date(b.submitted_at);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}catch(e){return false;}}).length;
-  var ins=[
-    {n:'01',t:gr>0?'Month-on-month bookings grew by <strong>'+gr+'%</strong>. Maintain momentum with targeted outreach to active markets.':gr<0?'Month-on-month bookings declined by <strong>'+Math.abs(gr)+'%</strong>. Consider a targeted re-engagement campaign.':'Booking volume is <strong>holding steady</strong> month-on-month. Explore upsell opportunities with existing clients.'},
-    {n:'02',t:topCo?'<strong>'+esc(topCo[0])+'</strong> is the top market with <strong>'+topCo[1]+' bookings</strong> ('+Math.round(topCo[1]/n*100)+'% of total). Prioritise in-country marketing here.':'Insufficient country data to identify top market.'},
-    {n:'03',t:topCr?'<strong>'+esc((topCr[0]||'').slice(0,40))+'</strong> is the most booked programme with <strong>'+topCr[1]+' bookings</strong>. Consider adding dates to meet demand.':'Insufficient course data.'},
-    {n:'04',t:'<strong>'+rep+' companies</strong> have made repeat bookings — a '+Math.round(rep/Math.max(Object.keys(co).length,1)*100)+'% repeat client rate. These represent your highest-LTV segment.'},
-    {n:'05',t:'This month: <strong>'+mo+' bookings</strong> = <strong>£'+(mo*AVG).toLocaleString()+'</strong> in revenue. YTD total: <strong>£'+(n*AVG).toLocaleString()+'</strong> at avg booking value.'}
-  ];
-  document.getElementById('aiItems').innerHTML=ins.map(function(i){return'<div class="ai-item"><div class="ai-n">'+i.n+'</div><div class="ai-txt">'+i.t+'</div></div>';}).join('');
+// ── DELETE ──────────────────────────────────────────────────
+let pendingDeleteIdx = null;
+
+function confirmDelete(filteredIdx) {
+  const booking = filtered[filteredIdx];
+  if (!booking) return;
+  // Find index in allBookings
+  pendingDeleteIdx = allBookings.findIndex(b =>
+    b.submitted_at === booking.submitted_at && b.email === booking.email
+  );
+  document.getElementById('delName').textContent = booking.full_name || booking.email || 'this booking';
+  document.getElementById('delOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
-// ── PERFORMANCE ──────────────────────────────────────────────
-function renderPerf(){
-  var cr={},ct={};
-  all.forEach(function(b){var k=(b.course_name||'Unknown').trim();cr[k]=(cr[k]||0)+1;});
-  all.forEach(function(b){var k=(b.country||'Unknown').trim();ct[k]=(ct[k]||0)+1;});
-  var crs=Object.entries(cr).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
-  var cts=Object.entries(ct).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
-  var mc=crs[0]?crs[0][1]:1, mct=cts[0]?cts[0][1]:1;
-  document.getElementById('ctbl').innerHTML=crs.map(function(c,i){return'<tr><td><span class="rnk">'+(i+1)+'</span></td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="'+esc(c[0])+'">'+esc(c[0].length>36?c[0].slice(0,36)+'…':c[0])+'</td><td><strong>'+c[1]+'</strong><div class="pb-w"><div class="pb" style="width:'+Math.round(c[1]/mc*100)+'%"></div></div></td><td>'+fmtF(c[1]*AVG)+'</td></tr>';}).join('')||'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:16px;">No data</td></tr>';
-  document.getElementById('cttbl').innerHTML=cts.map(function(c,i){return'<tr><td><span class="rnk">'+(i+1)+'</span></td><td>'+esc(c[0])+'</td><td><strong>'+c[1]+'</strong><div class="pb-w"><div class="pb" style="width:'+Math.round(c[1]/mct*100)+'%"></div></div></td><td>'+fmtF(c[1]*AVG)+'</td></tr>';}).join('')||'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:16px;">No data</td></tr>';
+function cancelDelete() {
+  pendingDeleteIdx = null;
+  document.getElementById('delOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-// ── FORECAST ─────────────────────────────────────────────────
-function renderForecast(){
-  var c=all.length*AVG, p=Math.round(all.length*.4)*AVG;
-  document.getElementById('fcC').textContent=fmtF(c);
-  document.getElementById('fcP').textContent=fmtF(p);
-  document.getElementById('fcT').textContent=fmtF(c+p);
+function executeDelete() {
+  if (pendingDeleteIdx === null || pendingDeleteIdx < 0) return;
+  allBookings.splice(pendingDeleteIdx, 1);
+  pendingDeleteIdx = null;
+  document.getElementById('delOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  closeDrawer();
+  renderAll();
 }
 
-// ── FILTER / SORT ─────────────────────────────────────────────
-function doFilter(){
-  var q=(document.getElementById('srch')?document.getElementById('srch').value:'').toLowerCase();
-  fil=all.filter(function(b){return!q||[b.full_name,b.company,b.course_name,b.email,b.country].some(function(v){return v&&v.toLowerCase().indexOf(q)>-1;});});
-  fil.sort(function(a,b){var av=(a[sortF]||'').toString().toLowerCase(),bv=(b[sortF]||'').toString().toLowerCase();return av<bv?sortD:av>bv?-sortD:0;});
-}
-function setSort(f){if(sortF===f)sortD*=-1;else{sortF=f;sortD=-1;}doFilter();renderTable();}
+// Close delete modal on overlay click
+document.getElementById('delOverlay').addEventListener('click', function(e) {
+  if (e.target === this) cancelDelete();
+});
 
-// ── BOOKING TABLE ─────────────────────────────────────────────
-function renderTable(){
-  var body=document.getElementById('tBody');
-  document.getElementById('tCnt').textContent=fil.length+' booking'+(fil.length!==1?'s':'');
-  if(!fil.length){body.innerHTML='<div class="empty-s">'+(all.length?'No results found.':'No bookings yet.')+'</div>';return;}
-  body.innerHTML=fil.map(function(b,i){
-    return'<div class="t-row" onclick="openCo(''+esc(b.company||'')+'')">'+
-      '<div class="td">'+esc(b.full_name||'—')+'</div>'+
-      '<div class="td td-co" onclick="event.stopPropagation();openCo(''+esc(b.company||'')+'')" >'+esc(b.company||'—')+'</div>'+
-      '<div class="td">'+esc(sc(b.course_name||'—'))+'</div>'+
-      '<div class="td">'+esc(b.course_session||'—')+'</div>'+
-      '<div class="td">'+gf(b.country)+' '+esc(b.country||'—')+'</div>'+
-      '<div class="td">'+fd(b.submitted_at)+'</div>'+
-      '<div class="td"><span class="bdg bdg-'+(b.source||'website').replace(/\s/g,'_')+'">'+esc(b.source||'website')+'</span></div>'+
-      '<div class="td" style="gap:4px;">'+
-        '<button class="act" onclick="event.stopPropagation();window.open('mailto:'+esc(b.email||'')+'?subject=Re: '+esc(b.course_name||'')+' Booking')" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button>'+
-        '<button class="act act-del" onclick="event.stopPropagation();askDel('+i+')" title="Delete"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>'+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-
-// ── COMPANY PANEL ─────────────────────────────────────────────
-function openCo(company){
-  if(!company)return;
-  var bks=all.filter(function(b){return b.company===company;});
-  var crs=[...new Set(bks.map(function(b){return b.course_name;}).filter(Boolean))];
-  var rev=bks.length*AVG;
-  var last=bks.slice().sort(function(a,b){return new Date(b.submitted_at)-new Date(a.submitted_at);})[0];
-  var rep=bks.length>1;
-  document.getElementById('coName').textContent=company||'—';
-  document.getElementById('coBody').innerHTML=
-    (rep?'<div class="co-rep">⭐ Repeat Client</div>':'')+
-    '<div class="co-kpis">'+
-      '<div class="co-kpi"><div class="co-kpi-lbl">Total Bookings</div><div class="co-kpi-val">'+bks.length+'</div></div>'+
-      '<div class="co-kpi"><div class="co-kpi-lbl">Est. Total Spend</div><div class="co-kpi-val">£'+fmt(rev)+'</div></div>'+
-      '<div class="co-kpi"><div class="co-kpi-lbl">Countries</div><div class="co-kpi-val">'+new Set(bks.map(function(b){return b.country;}).filter(Boolean)).size+'</div></div>'+
-      '<div class="co-kpi"><div class="co-kpi-lbl">Last Booking</div><div class="co-kpi-val" style="font-size:15px;">'+fd(last?last.submitted_at:'')+'</div></div>'+
-    '</div>'+
-    '<div class="co-sec">Delegates</div>'+
-    bks.map(function(b){return'<div class="co-item"><strong>'+esc(b.full_name||'—')+'</strong> — '+esc(b.job_title||'—')+'<br><span style="color:var(--grey);font-size:11px;">'+esc(b.email||'')+'</span></div>';}).join('')+
-    '<div class="co-sec">Courses Taken</div>'+
-    (crs.length?crs.map(function(c){return'<div class="co-item">'+esc(c)+'</div>';}).join(''):'<div class="co-item" style="color:#aaa">None recorded</div>')+
-    '<div style="margin-top:20px;"><a href="mailto:'+esc(last?last.email||'':'')+'" style="display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#fff;padding:11px 18px;text-decoration:none;font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">&#9993; Contact This Company</a></div>';
-  document.getElementById('coPanel').classList.add('open');
-  document.getElementById('coOv').classList.add('open');
-}
-function closeCo(){document.getElementById('coPanel').classList.remove('open');document.getElementById('coOv').classList.remove('open');}
-
-// ── DELETE ───────────────────────────────────────────────────
-function askDel(i){pendIdx=i;var b=fil[i];document.getElementById('delSub').textContent='Remove '+esc(b?b.full_name||'this booking':'this booking')+'? This cannot be undone.';document.getElementById('delOv').classList.add('open');}
-function closeDel(){document.getElementById('delOv').classList.remove('open');pendIdx=null;}
-function doDel(){if(pendIdx===null)return;var b=fil[pendIdx];all=all.filter(function(x){return x!==b;});closeDel();doFilter();renderAll();}
-document.getElementById('delOv').addEventListener('click',function(e){if(e.target===this)closeDel();});
-
-// ── HELPERS ──────────────────────────────────────────────────
-function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function sc(s){return s&&s.length>44?s.slice(0,44)+'…':s;}
-function fd(s){if(!s)return'—';try{return new Date(s).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}}
-function gf(c){var f={'United Kingdom':'\u{1F1EC}\u{1F1E7}','UK':'\u{1F1EC}\u{1F1E7}','Nigeria':'\u{1F1F3}\u{1F1EC}','Brazil':'\u{1F1E7}\u{1F1F7}','Algeria':'\u{1F1E9}\u{1F1FF}','Saudi Arabia':'\u{1F1F8}\u{1F1E6}','UAE':'\u{1F1E6}\u{1F1EA}','United Arab Emirates':'\u{1F1E6}\u{1F1EA}','USA':'\u{1F1FA}\u{1F1F8}','United States':'\u{1F1FA}\u{1F1F8}','France':'\u{1F1EB}\u{1F1F7}','Ghana':'\u{1F1EC}\u{1F1ED}','Angola':'\u{1F1E6}\u{1F1F4}','Iraq':'\u{1F1EE}\u{1F1F6}','Kuwait':'\u{1F1F0}\u{1F1FC}','Qatar':'\u{1F1F6}\u{1F1E6}','Oman':'\u{1F1F4}\u{1F1F2}','Libya':'\u{1F1F1}\u{1F1FE}','Indonesia':'\u{1F1EE}\u{1F1E9}','Malaysia':'\u{1F1F2}\u{1F1FE}','India':'\u{1F1EE}\u{1F1F3}','Trinidad and Tobago':'\u{1F1F9}\u{1F1F9}','Cameroon':'\u{1F1E8}\u{1F1F2}','Kenya':'\u{1F1F0}\u{1F1EA}','South Africa':'\u{1F1FF}\u{1F1E6}','Egypt':'\u{1F1EA}\u{1F1EC}','Congo':'\u{1F1E8}\u{1F1EC}'};return f[c]||'\u{1F310}';}
-
-loadAll();
+// ── INIT ────────────────────────────────────────────────────
+loadBookings();
 </script>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="del-overlay" id="delOverlay">
+  <div class="del-modal">
+    <div class="del-modal-head">
+      <div class="del-modal-icon">🗑️</div>
+      <div class="del-modal-title">Delete Booking</div>
+      <div class="del-modal-sub">Are you sure you want to delete the booking for <span class="del-modal-name" id="delName">—</span>? This cannot be undone.</div>
+    </div>
+    <div class="del-modal-actions">
+      <button class="del-cancel" onclick="cancelDelete()">Cancel</button>
+      <button class="del-confirm" onclick="executeDelete()">Delete Booking</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
