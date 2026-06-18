@@ -567,11 +567,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
           <div class="bc-session-date-lg">2-4 Nov 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Houston, USA</div>
         </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
-          <div class="bc-session-date-lg">Virtual</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Contact us for dates</div>
-        </div>
       </div>
 
       <div class="bc-price-large">£3,300</div>
@@ -716,12 +711,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
             <td><span class="session-date">2–4 Nov 2026</span></td>
             <td><span class="session-loc">Houston, USA</span></td>
             <td><span class="session-tag" style="color:var(--amber);background:var(--amber-dim);border-color:rgba(200,135,58,.3);">Classroom</span></td>
-            <td>£3,300</td>
-          </tr>
-          <tr>
-            <td><span class="session-date">Virtual Sessions</span></td>
-            <td><span class="session-loc">Contact us for dates</span></td>
-            <td><span class="session-tag" style="color:var(--amber);background:var(--amber-dim);border-color:rgba(200,135,58,.3);">Virtual</span></td>
             <td>£3,300</td>
           </tr>
         </tbody>
@@ -1479,7 +1468,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Drilling Engineering',course_duration:'3 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">2-4 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Houston, USA</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Virtual</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. Aberdeen sessions subject to 20% UK VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">2-4 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Houston, USA</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. Aberdeen sessions subject to 20% UK VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
