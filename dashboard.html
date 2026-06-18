@@ -6,257 +6,401 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LPA Executive Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#f6f3ee;--bg2:#fff;--bg3:#edeae3;--border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.15);--amber:#c8873a;--amber-dim:rgba(200,135,58,.10);--ink:#0e0f11;--grey:#6b6f78;--green:#2d8a5e;--red:#e05252;--serif:'Fraunces',serif;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;}
+:root{
+  --bg:#f5f2ec;
+  --card:#ffffff;
+  --card2:#f0ece4;
+  --dark:#1a1a1a;
+  --amber:#c8873a;
+  --amber-lt:rgba(200,135,58,0.12);
+  --green:#2d8a5e;
+  --green-lt:rgba(45,138,94,0.12);
+  --red:#e05252;
+  --ink:#111;
+  --grey:#7a7f87;
+  --border:rgba(0,0,0,0.07);
+  --radius:20px;
+  --radius-sm:12px;
+  --serif:'Fraunces',serif;
+  --sans:'Barlow',sans-serif;
+  --cond:'Barlow Condensed',sans-serif;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;}
-/* HEADER */
-.hdr{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.06);}
-.hdr-l{display:flex;align-items:center;gap:20px;}
-.hdr img{height:34px;}
-.hdr-tag{font-family:var(--cond);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#aaa;border-left:1px solid var(--border);padding-left:20px;}
-.hdr-r{display:flex;align-items:center;gap:12px;}
-.btn-ref{background:none;border:1px solid var(--border2);color:var(--grey);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;}
-.btn-ref:hover{border-color:var(--amber);color:var(--amber);}
-.btn-ref svg{width:13px;height:13px;stroke:currentColor;fill:none;}
-.hdr-upd{font-size:12px;color:#aaa;}
-.sdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-/* BODY */
-.body{padding:24px 32px 60px;max-width:1520px;margin:0 auto;}
-/* SECTION HEADER */
-.sh{display:flex;align-items:center;gap:10px;margin:28px 0 14px;}
-.sh:first-child{margin-top:0;}
-.sh-t{font-family:var(--cond);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#bbb;white-space:nowrap;}
-.sh-l{flex:1;height:1px;background:var(--border);}
-/* KPI */
-.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
-.kpi{background:#fff;border:1px solid var(--border);padding:18px 20px;position:relative;overflow:hidden;transition:box-shadow .2s;}
-.kpi:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
-.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
-.kpi:hover::after{transform:scaleX(1);}
-.kpi-ico{position:absolute;right:14px;top:14px;font-size:22px;opacity:.1;}
-.kpi-lbl{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
-.kpi-val{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--ink);line-height:1;}
-.kpi-sub{font-size:11px;color:#aaa;margin-top:5px;}
-/* CHARTS */
-.chart-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.cc{background:#fff;border:1px solid var(--border);padding:18px;}
-.cc.w2{grid-column:span 2;}
-.cc-t{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:14px;}
-.cc-wrap{position:relative;height:185px;}
-/* FUNNEL */
-.funnel-card{background:#fff;border:1px solid var(--border);padding:22px 28px;}
-.funnel-stages{display:flex;gap:0;margin-top:14px;}
-.fs{flex:1;position:relative;padding-right:28px;}
-.fs:last-child{padding-right:0;}
-.fs-bar-w{background:var(--bg3);height:44px;overflow:hidden;margin-bottom:10px;}
-.fs-fill{height:100%;background:var(--amber);opacity:.8;transition:width .8s ease;}
-.fs:nth-child(3) .fs-fill{background:var(--green);}
-.fs-arr{position:absolute;right:6px;top:10px;font-size:22px;color:#ccc;}
-.fs-lbl{font-family:var(--cond);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);}
-.fs-num{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);}
-.fs-pct{font-size:11px;color:var(--grey);margin-top:2px;}
-/* AI */
-.ai-card{background:linear-gradient(135deg,#0e0f11 0%,#1a1410 100%);border:1px solid rgba(200,135,58,.2);padding:22px;}
-.ai-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
-.ai-badge{background:rgba(200,135,58,.15);color:var(--amber);font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(200,135,58,.3);}
-.ai-ttl{font-family:var(--serif);font-size:15px;font-weight:300;color:#fff;}
-.ai-items{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
-.ai-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:14px;}
-.ai-n{font-family:var(--serif);font-size:26px;font-weight:300;color:rgba(200,135,58,.3);line-height:1;margin-bottom:8px;}
-.ai-txt{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6;}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:0 36px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+}
+.hdr-logo{display:flex;align-items:center;gap:14px;}
+.hdr-logo img{height:36px;}
+.hdr-logo-tag{font-size:13px;color:var(--grey);border-left:1px solid var(--border);padding-left:14px;}
+.hdr-r{display:flex;align-items:center;gap:14px;}
+.hdr-upd{font-size:13px;color:var(--grey);}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.btn-ref{
+  display:flex;align-items:center;gap:8px;
+  background:var(--dark);color:#fff;
+  font-size:13px;font-weight:500;
+  padding:10px 20px;border-radius:100px;border:none;cursor:pointer;
+  transition:opacity .2s;
+}
+.btn-ref:hover{opacity:.85;}
+.btn-ref svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+
+/* ── BODY ── */
+.body{padding:28px 36px 60px;max-width:1600px;margin:0 auto;}
+
+/* ── WELCOME ── */
+.welcome{margin-bottom:28px;}
+.welcome-title{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--ink);line-height:1.1;}
+.welcome-sub{font-size:15px;color:var(--grey);margin-top:6px;}
+
+/* ── TOP STATS ROW ── */
+.top-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:24px;}
+.stat-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  cursor:default;
+}
+.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+.stat-card.dark{background:var(--dark);}
+.stat-card.amber{background:var(--amber);}
+.stat-ico{font-size:20px;margin-bottom:10px;opacity:.7;}
+.stat-lbl{font-size:12px;color:var(--grey);margin-bottom:6px;font-weight:500;letter-spacing:.3px;}
+.stat-card.dark .stat-lbl,.stat-card.amber .stat-lbl{color:rgba(255,255,255,0.65);}
+.stat-val{font-family:var(--serif);font-size:38px;font-weight:300;color:var(--ink);line-height:1;}
+.stat-card.dark .stat-val{color:#fff;}
+.stat-card.amber .stat-val{color:#fff;}
+.stat-sub{font-size:12px;color:var(--grey);margin-top:5px;}
+.stat-card.dark .stat-sub,.stat-card.amber .stat-sub{color:rgba(255,255,255,0.55);}
+
+/* ── MAIN GRID ── */
+.main-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+.card{background:var(--card);border-radius:var(--radius);padding:24px;overflow:hidden;}
+.card.span2{grid-column:span 2;}
+.card.span3{grid-column:span 3;}
+.card.dark{background:var(--dark);}
+.card-label{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--grey);margin-bottom:14px;text-transform:uppercase;}
+.card.dark .card-label{color:rgba(255,255,255,0.45);}
+.card-title{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--ink);margin-bottom:16px;}
+.card.dark .card-title{color:#fff;}
+
+/* ── CHART CARDS ── */
+.chart-wrap{position:relative;height:180px;}
+
+/* ── FUNNEL ── */
+.funnel-row{display:flex;gap:0;align-items:stretch;}
+.fstage{flex:1;position:relative;}
+.fstage-bar-w{height:52px;background:rgba(0,0,0,0.05);border-radius:8px;overflow:hidden;margin-bottom:12px;}
+.fstage-fill{height:100%;background:var(--amber);border-radius:8px;transition:width .8s ease;}
+.fstage:nth-child(3) .fstage-fill{background:var(--green);}
+.fstage-arrow{position:absolute;right:-10px;top:12px;font-size:24px;color:#ccc;z-index:2;}
+.fstage-lbl{font-size:12px;color:var(--grey);font-weight:500;margin-bottom:4px;}
+.fstage-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--ink);line-height:1;}
+.fstage-pct{font-size:12px;color:var(--grey);margin-top:3px;}
+
+/* ── AI INSIGHTS ── */
+.ai-card{background:var(--dark);border-radius:var(--radius);padding:24px;margin-bottom:14px;}
+.ai-top{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.ai-pill{background:rgba(200,135,58,.18);color:var(--amber);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+.ai-head{font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.8);font-weight:300;}
+.ai-items{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.ai-item{background:rgba(255,255,255,.05);border-radius:var(--radius-sm);padding:18px;}
+.ai-num{font-family:var(--serif);font-size:32px;color:rgba(200,135,58,.35);line-height:1;margin-bottom:10px;}
+.ai-txt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;}
 .ai-txt strong{color:var(--amber);font-weight:500;}
-.ai-load{color:rgba(255,255,255,.35);font-size:13px;text-align:center;padding:20px;}
-/* PERF TABLES */
-.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.pc{background:#fff;border:1px solid var(--border);padding:18px;}
-.pc-t{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:12px;}
+.ai-loading{color:rgba(255,255,255,.4);font-size:14px;text-align:center;padding:24px;}
+
+/* ── PERF TABLES ── */
+.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.pc{background:var(--card);border-radius:var(--radius);padding:24px;}
+.pc-lbl{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--grey);margin-bottom:16px;text-transform:uppercase;}
 .ptbl{width:100%;border-collapse:collapse;}
-.ptbl th{font-family:var(--cond);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;padding:7px 8px;text-align:left;border-bottom:1px solid var(--border);}
-.ptbl td{padding:9px 8px;font-size:13px;border-bottom:1px solid rgba(0,0,0,.04);}
+.ptbl th{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#bbb;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.ptbl td{padding:11px 10px;font-size:14px;border-bottom:1px solid rgba(0,0,0,0.04);color:var(--ink);}
 .ptbl tr:last-child td{border-bottom:none;}
-.ptbl tr:hover td{background:var(--bg3);}
-.pb-w{background:var(--bg3);height:3px;border-radius:2px;margin-top:3px;}
-.pb{height:3px;background:var(--amber);border-radius:2px;}
-.rnk{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--amber-dim);color:var(--amber);font-size:9px;font-weight:600;text-align:center;line-height:18px;}
-/* FORECAST */
-.fc-card{background:#fff;border:1px solid var(--border);padding:22px;}
-.fc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
-.fc-item{text-align:center;padding:20px;background:var(--bg3);}
-.fc-lbl{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
-.fc-val{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--ink);}
+.ptbl tr:hover td{background:var(--bg);}
+.pb-w{background:#eee;height:4px;border-radius:2px;margin-top:4px;}
+.pb{height:4px;background:var(--amber);border-radius:2px;}
+.rnk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--amber-lt);color:var(--amber);font-size:11px;font-weight:700;}
+
+/* ── FORECAST ── */
+.fc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.fc-item{text-align:center;padding:24px 20px;border-right:1px solid var(--border);}
+.fc-item:last-child{border-right:none;}
+.fc-lbl{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
+.fc-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--ink);}
 .fc-val.green{color:var(--green);}
 .fc-val.amber{color:var(--amber);}
-.fc-sub{font-size:11px;color:#aaa;margin-top:5px;}
-/* BOOKING TABLE */
-.bk-card{background:#fff;border:1px solid var(--border);}
-.bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;}
-.bk-hdr-l{display:flex;align-items:center;gap:14px;}
-.bk-ttl{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);}
-.bk-cnt{font-size:12px;color:#aaa;}
-.srch-w{display:flex;align-items:center;gap:8px;background:var(--bg3);padding:8px 12px;border:1px solid var(--border);}
-.srch-w input{background:none;border:none;outline:none;font-size:13px;color:var(--ink);width:220px;}
-.srch-w input::placeholder{color:#aaa;}
-.srch-w svg{width:13px;height:13px;stroke:var(--grey);fill:none;flex-shrink:0;}
-.t-head{display:grid;grid-template-columns:1.4fr 1fr 1.8fr 1fr 1fr 110px 70px 56px;padding:9px 18px;background:rgba(200,135,58,.06);border-bottom:1px solid var(--border);}
-.th{font-family:var(--cond);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;cursor:pointer;user-select:none;}
+.fc-sub{font-size:12px;color:#bbb;margin-top:5px;}
+
+/* ── BOOKING TABLE ── */
+.bk-card{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+.bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px;}
+.bk-hdr-l{display:flex;align-items:center;gap:16px;}
+.bk-ttl{font-size:15px;font-weight:600;color:var(--ink);}
+.bk-cnt{font-size:13px;color:var(--grey);}
+.srch-w{display:flex;align-items:center;gap:10px;background:var(--bg);padding:10px 16px;border-radius:100px;border:1px solid var(--border);}
+.srch-w input{background:none;border:none;outline:none;font-size:14px;color:var(--ink);width:240px;font-family:var(--sans);}
+.srch-w input::placeholder{color:#bbb;}
+.srch-w svg{width:14px;height:14px;stroke:var(--grey);fill:none;flex-shrink:0;}
+.t-head{display:grid;grid-template-columns:1.4fr 1fr 1.9fr .9fr 1fr 110px 70px 56px;padding:10px 24px;background:rgba(0,0,0,0.02);border-bottom:1px solid var(--border);}
+.th{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#bbb;cursor:pointer;user-select:none;}
 .th:hover{color:var(--amber);}
-.t-body{max-height:400px;overflow-y:auto;}
+.t-body{max-height:420px;overflow-y:auto;}
 .t-body::-webkit-scrollbar{width:4px;}
-.t-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
-.t-row{display:grid;grid-template-columns:1.4fr 1fr 1.8fr 1fr 1fr 110px 70px 56px;padding:11px 18px;border-bottom:1px solid rgba(0,0,0,.04);cursor:pointer;transition:background .12s;align-items:center;}
-.t-row:hover{background:var(--bg3);}
+.t-body::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px;}
+.t-row{display:grid;grid-template-columns:1.4fr 1fr 1.9fr .9fr 1fr 110px 70px 56px;padding:13px 24px;border-bottom:1px solid rgba(0,0,0,0.04);cursor:pointer;transition:background .12s;align-items:center;}
+.t-row:hover{background:var(--bg);}
 .t-row:last-child{border-bottom:none;}
-.td{font-size:13px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:flex;align-items:center;}
-.td-co{color:var(--amber);cursor:pointer;font-weight:500;}
+.td{font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:flex;align-items:center;color:var(--ink);}
+.td-co{color:var(--amber);cursor:pointer;font-weight:600;}
 .td-co:hover{text-decoration:underline;}
-.bdg{font-family:var(--cond);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
-.bdg-website{background:rgba(200,135,58,.12);color:var(--amber);}
-.bdg-direct{background:rgba(45,138,94,.12);color:var(--green);}
-.act{background:none;border:none;cursor:pointer;color:#ccc;padding:3px;display:flex;align-items:center;transition:color .2s;}
-.act:hover{color:var(--amber);}
-.act svg{width:13px;height:13px;stroke:currentColor;fill:none;}
-.act-del:hover{color:var(--red);}
-.empty-s{padding:48px;text-align:center;color:var(--grey);font-size:13px;}
-.spin{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:sp .6s linear infinite;}
+.bdg{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:100px;}
+.bdg-website{background:var(--amber-lt);color:var(--amber);}
+.bdg-direct{background:var(--green-lt);color:var(--green);}
+.act{background:none;border:none;cursor:pointer;color:#ccc;padding:4px;display:flex;align-items:center;transition:color .2s;border-radius:6px;}
+.act:hover{color:var(--amber);background:var(--amber-lt);}
+.act svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+.act-del:hover{color:var(--red);background:rgba(224,82,82,.1);}
+.empty-s{padding:56px;text-align:center;color:var(--grey);font-size:15px;}
+.spin{display:inline-block;width:22px;height:22px;border:2px solid #eee;border-top-color:var(--amber);border-radius:50%;animation:sp .6s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg);}}
-/* COMPANY PANEL */
-.co-ov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.4);}
+
+/* ── COMPANY PANEL ── */
+.co-ov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);}
 .co-ov.open{display:block;}
-.co-panel{position:fixed;right:0;top:0;bottom:0;width:400px;background:#fff;z-index:401;border-left:1px solid var(--border);box-shadow:-8px 0 40px rgba(0,0,0,.12);overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;}
+.co-panel{position:fixed;right:0;top:0;bottom:0;width:420px;background:var(--card);z-index:401;box-shadow:-12px 0 60px rgba(0,0,0,.1);overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;border-radius:var(--radius) 0 0 var(--radius);}
 .co-panel.open{transform:translateX(0);}
-.co-phdr{padding:20px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
-.co-name{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--ink);}
-.co-close{background:none;border:none;cursor:pointer;font-size:20px;color:#aaa;line-height:1;}
-.co-body{padding:22px;}
-.co-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
-.co-kpi{background:var(--bg3);padding:14px;}
-.co-kpi-lbl{font-family:var(--cond);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);margin-bottom:5px;}
-.co-kpi-val{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ink);}
-.co-sec{font-family:var(--cond);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin:16px 0 8px;}
-.co-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.co-phdr{padding:28px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
+.co-eyebrow{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:6px;}
+.co-name{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ink);}
+.co-close{background:rgba(0,0,0,.06);border:none;cursor:pointer;font-size:16px;color:var(--grey);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.co-close:hover{background:rgba(0,0,0,.12);}
+.co-body{padding:24px 28px;}
+.co-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.co-kpi{background:var(--bg);border-radius:var(--radius-sm);padding:16px;}
+.co-kpi-lbl{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin-bottom:6px;}
+.co-kpi-val{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);}
+.co-sec{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);margin:20px 0 10px;}
+.co-item{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink);}
 .co-item:last-child{border-bottom:none;}
-.co-rep{display:inline-flex;align-items:center;gap:6px;background:rgba(45,138,94,.1);color:var(--green);font-family:var(--cond);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;margin-bottom:14px;}
-/* DELETE MODAL */
-.del-ov{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.45);align-items:center;justify-content:center;}
+.co-rep{display:inline-flex;align-items:center;gap:6px;background:var(--green-lt);color:var(--green);font-size:12px;font-weight:600;letter-spacing:.5px;padding:5px 12px;border-radius:100px;margin-bottom:16px;}
+.co-cta{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:#fff;padding:12px 22px;text-decoration:none;font-size:13px;font-weight:600;border-radius:100px;margin-top:22px;}
+.co-cta:hover{opacity:.85;}
+
+/* ── DELETE MODAL ── */
+.del-ov{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.4);align-items:center;justify-content:center;}
 .del-ov.open{display:flex;}
-.del-modal{background:#fff;padding:30px;max-width:360px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2);}
-.del-ico{font-size:32px;margin-bottom:10px;}
-.del-ttl{font-family:var(--serif);font-size:18px;font-weight:300;margin-bottom:7px;}
-.del-sub{font-size:13px;color:var(--grey);margin-bottom:22px;line-height:1.6;}
-.del-acts{display:flex;gap:10px;justify-content:center;}
-.btn-can{padding:10px 22px;border:1px solid var(--border2);background:#fff;cursor:pointer;font-size:13px;color:var(--grey);}
+.del-modal{background:var(--card);padding:36px;max-width:380px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.15);border-radius:var(--radius);}
+.del-ico{font-size:40px;margin-bottom:14px;}
+.del-ttl{font-family:var(--serif);font-size:22px;font-weight:300;margin-bottom:8px;color:var(--ink);}
+.del-sub{font-size:14px;color:var(--grey);margin-bottom:26px;line-height:1.6;}
+.del-acts{display:flex;gap:12px;justify-content:center;}
+.btn-can{padding:12px 26px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-size:14px;color:var(--grey);border-radius:100px;font-weight:500;}
 .btn-can:hover{border-color:#999;}
-.btn-del{padding:10px 22px;border:none;background:var(--red);color:#fff;cursor:pointer;font-size:13px;font-weight:600;}
-.btn-del:hover{background:#c94040;}
-/* RESPONSIVE */
-@media(max-width:1200px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.chart-grid{grid-template-columns:1fr 1fr;}.cc.w2{grid-column:span 2;}.ai-items{grid-template-columns:1fr 1fr;}.perf-grid{grid-template-columns:1fr;}}
-@media(max-width:768px){.kpi-grid{grid-template-columns:1fr 1fr;}.chart-grid{grid-template-columns:1fr;}.cc.w2{grid-column:span 1;}.fc-grid{grid-template-columns:1fr;}.ai-items{grid-template-columns:1fr;}.body{padding:14px 16px 40px;}.hdr{padding:0 16px;}.co-panel{width:100%;}.t-head{display:none;}.t-row{grid-template-columns:1fr;gap:3px;}.funnel-stages{flex-direction:column;}.srch-w input{width:140px;}}
+.btn-del-c{padding:12px 26px;border:none;background:var(--red);color:#fff;cursor:pointer;font-size:14px;font-weight:600;border-radius:100px;}
+.btn-del-c:hover{opacity:.85;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1280px){
+  .top-stats{grid-template-columns:repeat(3,1fr);}
+  .main-grid{grid-template-columns:1fr 1fr;}
+  .card.span3{grid-column:span 2;}
+  .ai-items{grid-template-columns:1fr 1fr;}
+  .perf-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .top-stats{grid-template-columns:1fr 1fr;}
+  .main-grid{grid-template-columns:1fr;}
+  .card.span2,.card.span3{grid-column:span 1;}
+  .ai-items{grid-template-columns:1fr;}
+  .fc-row{grid-template-columns:1fr;}
+  .fc-item{border-right:none;border-bottom:1px solid var(--border);}
+  .fc-item:last-child{border-bottom:none;}
+  .body{padding:16px 16px 40px;}
+  .hdr{padding:0 16px;}
+  .co-panel{width:100%;border-radius:0;}
+  .t-head{display:none;}
+  .t-row{grid-template-columns:1fr;gap:4px;}
+  .srch-w input{width:160px;}
+}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <header class="hdr">
-  <div class="hdr-l">
+  <div class="hdr-logo">
     <a href="index.html"><img src="logo-dark.png" alt="LPA"></a>
-    <span class="hdr-tag">Executive Dashboard</span>
+    <span class="hdr-logo-tag">Executive Dashboard</span>
   </div>
   <div class="hdr-r">
     <span class="sdot"></span>
     <span class="hdr-upd" id="lastUpd">Loading…</span>
     <button class="btn-ref" onclick="loadAll()">
-      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Refresh
     </button>
   </div>
 </header>
 
 <div class="body">
 
-<!-- KPIs -->
-<div class="sh"><span class="sh-t">Key Performance Indicators</span><div class="sh-l"></div></div>
-<div class="kpi-grid">
-  <div class="kpi"><div class="kpi-ico">💰</div><div class="kpi-lbl">Total Revenue</div><div class="kpi-val" id="kpiRev">—</div><div class="kpi-sub">Est. at avg booking value</div></div>
-  <div class="kpi"><div class="kpi-ico">📅</div><div class="kpi-lbl">Revenue This Month</div><div class="kpi-val" id="kpiRevMo">—</div><div class="kpi-sub" id="kpiRevMoSub"></div></div>
-  <div class="kpi"><div class="kpi-ico">📊</div><div class="kpi-lbl">Avg Booking Value</div><div class="kpi-val" id="kpiAvg">£3,300</div><div class="kpi-sub">Per course booking</div></div>
-  <div class="kpi"><div class="kpi-ico">🎯</div><div class="kpi-lbl">Total Bookings</div><div class="kpi-val" id="kpiTotal">—</div><div class="kpi-sub" id="kpiTotalSub"></div></div>
-  <div class="kpi"><div class="kpi-ico">🌍</div><div class="kpi-lbl">Countries</div><div class="kpi-val" id="kpiCo">—</div><div class="kpi-sub">Unique markets</div></div>
-  <div class="kpi"><div class="kpi-ico">📚</div><div class="kpi-lbl">Courses Booked</div><div class="kpi-val" id="kpiCrs">—</div><div class="kpi-sub">Unique programmes</div></div>
-</div>
-
-<!-- CHARTS -->
-<div class="sh"><span class="sh-t">Trends &amp; Distribution</span><div class="sh-l"></div></div>
-<div class="chart-grid">
-  <div class="cc w2"><div class="cc-t">Monthly Booking Trend</div><div class="cc-wrap"><canvas id="cMo"></canvas></div></div>
-  <div class="cc w2"><div class="cc-t">Monthly Revenue Trend (Est.)</div><div class="cc-wrap"><canvas id="cRev"></canvas></div></div>
-  <div class="cc"><div class="cc-t">Top Countries</div><div class="cc-wrap"><canvas id="cCo"></canvas></div></div>
-  <div class="cc"><div class="cc-t">Top Courses</div><div class="cc-wrap"><canvas id="cCrs"></canvas></div></div>
-</div>
-
-<!-- FUNNEL -->
-<div class="sh"><span class="sh-t">Sales Funnel</span><div class="sh-l"></div></div>
-<div class="funnel-card">
-  <div class="funnel-stages">
-    <div class="fs"><div class="fs-bar-w"><div class="fs-fill" id="fB1" style="width:100%"></div></div><div class="fs-lbl">Enquiries Received</div><div class="fs-num" id="fN1">—</div><div class="fs-pct" id="fP1">100%</div><span class="fs-arr">›</span></div>
-    <div class="fs"><div class="fs-bar-w"><div class="fs-fill" id="fB2" style="width:70%"></div></div><div class="fs-lbl">Proposals Sent</div><div class="fs-num" id="fN2">—</div><div class="fs-pct" id="fP2">—</div><span class="fs-arr">›</span></div>
-    <div class="fs"><div class="fs-bar-w"><div class="fs-fill" id="fB3" style="width:40%"></div></div><div class="fs-lbl">Confirmed Bookings</div><div class="fs-num" id="fN3">—</div><div class="fs-pct" id="fP3">—</div></div>
+  <!-- WELCOME -->
+  <div class="welcome">
+    <div class="welcome-title">Good to see you, Tarik</div>
+    <div class="welcome-sub">Here's your LPA business overview — updated live from Google Sheets.</div>
   </div>
-</div>
 
-<!-- AI INSIGHTS -->
-<div class="sh"><span class="sh-t">AI Business Insights</span><div class="sh-l"></div></div>
-<div class="ai-card">
-  <div class="ai-hdr"><span class="ai-badge">AI Analysis</span><span class="ai-ttl">Automated intelligence — refreshed on each data load</span></div>
-  <div class="ai-items" id="aiItems"><div class="ai-load">Generating insights…</div></div>
-</div>
-
-<!-- PERFORMANCE -->
-<div class="sh"><span class="sh-t">Performance Analysis</span><div class="sh-l"></div></div>
-<div class="perf-grid">
-  <div class="pc"><div class="pc-t">Course Performance</div><table class="ptbl"><thead><tr><th>#</th><th>Course</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="ctbl"></tbody></table></div>
-  <div class="pc"><div class="pc-t">Country Performance</div><table class="ptbl"><thead><tr><th>#</th><th>Country</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="cttbl"></tbody></table></div>
-</div>
-
-<!-- FORECAST -->
-<div class="sh"><span class="sh-t">Revenue Forecast</span><div class="sh-l"></div></div>
-<div class="fc-card">
-  <div class="fc-grid">
-    <div class="fc-item"><div class="fc-lbl">Confirmed Revenue</div><div class="fc-val green" id="fcC">—</div><div class="fc-sub">From bookings received</div></div>
-    <div class="fc-item"><div class="fc-lbl">Pipeline Revenue</div><div class="fc-val amber" id="fcP">—</div><div class="fc-sub">40% est. conversion of proposals</div></div>
-    <div class="fc-item"><div class="fc-lbl">Total Forecast</div><div class="fc-val" id="fcT">—</div><div class="fc-sub">Confirmed + pipeline</div></div>
+  <!-- TOP STATS -->
+  <div class="top-stats">
+    <div class="stat-card dark">
+      <div class="stat-ico">💰</div>
+      <div class="stat-lbl">Total Revenue</div>
+      <div class="stat-val" id="kpiRev">—</div>
+      <div class="stat-sub">Est. at avg booking value</div>
+    </div>
+    <div class="stat-card amber">
+      <div class="stat-ico">📅</div>
+      <div class="stat-lbl">Revenue This Month</div>
+      <div class="stat-val" id="kpiRevMo">—</div>
+      <div class="stat-sub" id="kpiRevMoSub"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ico">📊</div>
+      <div class="stat-lbl">Avg Booking Value</div>
+      <div class="stat-val" id="kpiAvg">£3,300</div>
+      <div class="stat-sub">Per course booking</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ico">🎯</div>
+      <div class="stat-lbl">Total Bookings</div>
+      <div class="stat-val" id="kpiTotal">—</div>
+      <div class="stat-sub" id="kpiTotalSub"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ico">🌍</div>
+      <div class="stat-lbl">Countries</div>
+      <div class="stat-val" id="kpiCo">—</div>
+      <div class="stat-sub">Unique markets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ico">📚</div>
+      <div class="stat-lbl">Courses Booked</div>
+      <div class="stat-val" id="kpiCrs">—</div>
+      <div class="stat-sub">Unique programmes</div>
+    </div>
   </div>
-</div>
 
-<!-- BOOKING TABLE -->
-<div class="sh"><span class="sh-t">All Bookings</span><div class="sh-l"></div></div>
-<div class="bk-card">
-  <div class="bk-hdr">
-    <div class="bk-hdr-l"><span class="bk-ttl">Booking Register</span><span class="bk-cnt" id="tCnt"></span></div>
-    <div class="srch-w"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="srch" placeholder="Search name, company, course, country…" oninput="doFilter();renderTable()"></div>
+  <!-- CHARTS ROW 1 -->
+  <div class="main-grid">
+    <div class="card span2">
+      <div class="card-label">Monthly Booking Trend</div>
+      <div class="chart-wrap"><canvas id="cMo"></canvas></div>
+    </div>
+    <div class="card span2">
+      <div class="card-label">Monthly Revenue Trend (Est.)</div>
+      <div class="chart-wrap"><canvas id="cRev"></canvas></div>
+    </div>
+    <div class="card span2">
+      <div class="card-label">Top Countries</div>
+      <div class="chart-wrap"><canvas id="cCo"></canvas></div>
+    </div>
+    <div class="card span2">
+      <div class="card-label">Top Courses</div>
+      <div class="chart-wrap"><canvas id="cCrs"></canvas></div>
+    </div>
   </div>
-  <div class="t-head">
-    <div class="th" onclick="setSort('full_name')">Name</div>
-    <div class="th" onclick="setSort('company')">Company</div>
-    <div class="th" onclick="setSort('course_name')">Course</div>
-    <div class="th" onclick="setSort('course_session')">Session</div>
-    <div class="th" onclick="setSort('country')">Country</div>
-    <div class="th" onclick="setSort('submitted_at')">Date</div>
-    <div class="th">Source</div>
-    <div class="th"></div>
-  </div>
-  <div class="t-body" id="tBody"><div class="empty-s"><div class="spin"></div></div></div>
-</div>
 
-</div><!-- /body -->
+  <!-- FUNNEL -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-label">Sales Funnel</div>
+    <div class="funnel-row">
+      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB1" style="width:100%"></div></div><div class="fstage-lbl">Enquiries Received</div><div class="fstage-num" id="fN1">—</div><div class="fstage-pct" id="fP1">100%</div><span class="fstage-arrow">›</span></div>
+      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB2" style="width:70%"></div></div><div class="fstage-lbl">Proposals Sent</div><div class="fstage-num" id="fN2">—</div><div class="fstage-pct" id="fP2">—</div><span class="fstage-arrow">›</span></div>
+      <div class="fstage"><div class="fstage-bar-w"><div class="fstage-fill" id="fB3" style="width:40%"></div></div><div class="fstage-lbl">Confirmed Bookings</div><div class="fstage-num" id="fN3">—</div><div class="fstage-pct" id="fP3">—</div></div>
+    </div>
+  </div>
+
+  <!-- AI INSIGHTS -->
+  <div class="ai-card">
+    <div class="ai-top">
+      <span class="ai-pill">AI Analysis</span>
+      <span class="ai-head">Automated intelligence — refreshed on each data load</span>
+    </div>
+    <div class="ai-items" id="aiItems"><div class="ai-loading">Generating insights…</div></div>
+  </div>
+
+  <!-- PERFORMANCE TABLES -->
+  <div class="perf-grid">
+    <div class="pc">
+      <div class="pc-lbl">Course Performance</div>
+      <table class="ptbl"><thead><tr><th>#</th><th>Course</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="ctbl"></tbody></table>
+    </div>
+    <div class="pc">
+      <div class="pc-lbl">Country Performance</div>
+      <table class="ptbl"><thead><tr><th>#</th><th>Country</th><th>Bookings</th><th>Est. Revenue</th></tr></thead><tbody id="cttbl"></tbody></table>
+    </div>
+  </div>
+
+  <!-- FORECAST -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-label">Revenue Forecast</div>
+    <div class="fc-row">
+      <div class="fc-item"><div class="fc-lbl">Confirmed Revenue</div><div class="fc-val green" id="fcC">—</div><div class="fc-sub">From bookings received</div></div>
+      <div class="fc-item"><div class="fc-lbl">Pipeline Revenue</div><div class="fc-val amber" id="fcP">—</div><div class="fc-sub">Est. 40% conversion</div></div>
+      <div class="fc-item"><div class="fc-lbl">Total Forecast</div><div class="fc-val" id="fcT">—</div><div class="fc-sub">Confirmed + pipeline</div></div>
+    </div>
+  </div>
+
+  <!-- BOOKING TABLE -->
+  <div class="bk-card">
+    <div class="bk-hdr">
+      <div class="bk-hdr-l">
+        <span class="bk-ttl">Booking Register</span>
+        <span class="bk-cnt" id="tCnt"></span>
+      </div>
+      <div class="srch-w">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="srch" placeholder="Search name, company, course, country…" oninput="doFilter();renderTable()">
+      </div>
+    </div>
+    <div class="t-head">
+      <div class="th" onclick="setSort('full_name')">Name</div>
+      <div class="th" onclick="setSort('company')">Company</div>
+      <div class="th" onclick="setSort('course_name')">Course</div>
+      <div class="th" onclick="setSort('course_session')">Session</div>
+      <div class="th" onclick="setSort('country')">Country</div>
+      <div class="th" onclick="setSort('submitted_at')">Date</div>
+      <div class="th">Source</div>
+      <div class="th"></div>
+    </div>
+    <div class="t-body" id="tBody"><div class="empty-s"><div class="spin"></div></div></div>
+  </div>
+
+</div>
 
 <!-- COMPANY PANEL -->
 <div class="co-ov" id="coOv" onclick="closeCo()"></div>
 <div class="co-panel" id="coPanel">
   <div class="co-phdr">
-    <div><div style="font-family:var(--cond);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:5px;">Client Profile</div><div class="co-name" id="coName">—</div></div>
+    <div>
+      <div class="co-eyebrow">Client Profile</div>
+      <div class="co-name" id="coName">—</div>
+    </div>
     <button class="co-close" onclick="closeCo()">✕</button>
   </div>
   <div class="co-body" id="coBody"></div>
@@ -268,11 +412,15 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
     <div class="del-ico">🗑️</div>
     <div class="del-ttl">Delete Booking?</div>
     <div class="del-sub" id="delSub">This cannot be undone.</div>
-    <div class="del-acts"><button class="btn-can" onclick="closeDel()">Cancel</button><button class="btn-del" onclick="doDel()">Delete</button></div>
+    <div class="del-acts">
+      <button class="btn-can" onclick="closeDel()">Cancel</button>
+      <button class="btn-del-c" onclick="doDel()">Delete</button>
+    </div>
   </div>
 </div>
 
 <script>
+
 const WEBHOOK = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-bookings-read';
 const AVG = 3300;
 var all=[], fil=[], sortF='submitted_at', sortD=-1, pendIdx=null, CHS={};
