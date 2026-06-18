@@ -533,7 +533,7 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <h1 class="course-title">IPPs &amp; Power <em>Project Contracts</em></h1>
       <p class="course-subtitle" style="font-family:'Fraunces',serif;font-size:22px;font-style:italic;color:var(--amber);font-weight:300;">4-Day Programme — Virtual · Dubai · London · Johannesburg 2026</p>
       <div class="course-pills" role="list" aria-label="Course at a glance">
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 11–14 May · Dubai</span>
+        
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 20–23 Jul · London</span>
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 2–5 Nov · Johannesburg</span>
         <span class="pill" role="listitem"><svg><use href="#ico-clock"/></svg> 4 Days</span>
@@ -546,11 +546,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="bc-sessions-wrap">
         <div class="bc-session-block">
           <div class="bc-session-label">NEXT CLASSROOM SESSION</div>
-          <div class="bc-session-date-lg">11-14 May 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Dubai GST)</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
           <div class="bc-session-date-lg">20-23 Jul 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (London GMT)</div>
         </div>
@@ -987,7 +982,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a date and time zone —</option>
-            <option value="11-14 May 2026 | Virtual (Dubai GST)">11–14 May 2026 — Virtual (Dubai GST)</option>
             <option value="20-23 Jul 2026 | Virtual (London GMT)">20–23 July 2026 — Virtual (London GMT)</option>
             <option value="2-5 Nov 2026 | Virtual (Johannesburg SAST)">2–5 November 2026 — Virtual (Johannesburg SAST)</option>
             <option value="Classroom | Contact us for dates">Classroom Session — Contact us for dates</option>
@@ -1485,7 +1479,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'IPPs & Power',course_duration:'4 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">11-14 May 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Dubai GST)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">20-23 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (London GMT)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">2-5 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Johannesburg SAST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,990 per delegate. London virtual sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">20-23 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (London GMT)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">2-5 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Johannesburg SAST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,990 per delegate. London virtual sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
