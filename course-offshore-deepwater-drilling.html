@@ -552,8 +552,8 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <h1 class="course-title">Offshore &amp; Deepwater <em>Drilling</em></h1>
       <p class="course-subtitle" style="font-family:'Fraunces',serif;font-size:22px;font-style:italic;color:var(--amber);font-weight:300;">3-Day Programme — Virtual · Rio · Houston · Stavanger 2026</p>
       <div class="course-pills" role="list" aria-label="Course at a glance">
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 6–8 Mar · Rio</span>
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 11–13 May · Houston</span>
+        
+        
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 14–16 Sep · Stavanger</span>
         <span class="pill" role="listitem"><svg><use href="#ico-clock"/></svg> 3 Days</span>
         <span class="pill" role="listitem"><svg><use href="#ico-grad"/></svg> Virtual / Classroom</span>
@@ -565,16 +565,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="bc-sessions-wrap">
         <div class="bc-session-block">
           <div class="bc-session-label">NEXT CLASSROOM SESSION</div>
-          <div class="bc-session-date-lg">6-8 Mar 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Rio de Janeiro)</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
-          <div class="bc-session-date-lg">11-13 May 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Houston)</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
           <div class="bc-session-date-lg">14-16 Sep 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Stavanger)</div>
         </div>
@@ -1007,8 +997,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a session —</option>
-            <option value="6-8 Mar 2026 | Virtual (Rio de Janeiro)">6–8 March 2026 — Virtual (Rio de Janeiro time)</option>
-            <option value="11-13 May 2026 | Virtual (Houston)">11–13 May 2026 — Virtual (Houston time)</option>
             <option value="14-16 Sep 2026 | Virtual (Stavanger)">14–16 September 2026 — Virtual (Stavanger time)</option>
             <option value="Classroom | Contact us for dates">Classroom Session — Contact us for dates</option>
           </select>
@@ -1505,7 +1493,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Drilling Engineering',course_duration:'3 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">6-8 Mar 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Rio de Janeiro)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">11-13 May 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Houston)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">14-16 Sep 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Stavanger)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. No VAT on international sessions. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">14-16 Sep 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Stavanger)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. No VAT on international sessions. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
