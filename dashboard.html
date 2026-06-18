@@ -434,7 +434,8 @@ async function loadAll(){
   document.getElementById('lastUpd').textContent='Loading…';
   try{
     const d=await(await fetch(WEBHOOK)).json();
-    all=(Array.isArray(d)?d:[]).map(function(r){return{
+    all=(Array.isArray(d)?d:[]).map(function(item){
+      var r=item.json||item;return{
       submitted_at: r['Submitted At']||'',
       full_name:    r['Full Name']||'',
       email:        r['Email']||'',
