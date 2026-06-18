@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0"><!-- v2 -->
+<meta http-equiv="Expires" content="0"><!-- v3 -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LPA Executive Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,28 +433,37 @@ async function loadAll(){
   document.getElementById('tBody').innerHTML='<div class="empty-s"><div class="spin"></div></div>';
   document.getElementById('lastUpd').textContent='Loading…';
   try{
-    const d=await(await fetch(WEBHOOK)).json();
-    all=(Array.isArray(d)?d:[]).map(function(item){
-      var r=item.json||item;return{
-      submitted_at: r['Submitted At']||'',
-      full_name:    r['Full Name']||'',
-      email:        r['Email']||'',
-      phone:        r['Phone']||'',
-      company:      r['Company']||'',
-      job_title:    r['Job Title ']||r['Job Title']||'',
-      country:      r['Country']||'',
-      billing_address: r['Billing Address ']||r['Billing Address']||'',
-      course_name:  r['Course Name ']||r['Course Name']||'',
-      course_session: r['Course Session']||'',
-      course_category: r['Course Category']||'',
-      course_duration: r['Course Duration']||'',
-      source:       r['Source']||'website',
-      page_url:     r['Page URL']||''
-    };});
-    all.sort(function(a,b){return new Date(b.submitted_at)-new Date(a.submitted_at);});
-  }catch(e){all=[];}
-  document.getElementById('lastUpd').textContent='Updated '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-  doFilter(); renderAll();
+    var res = await fetch(WEBHOOK);
+    var raw = await res.json();
+    // n8n returns [{json:{...}}, {json:{...}}] — unwrap each item
+    var rows = Array.isArray(raw) ? raw : [];
+    all = rows.map(function(item){
+      var r = (item && item.json) ? item.json : item;
+      return {
+        submitted_at:    r['Submitted At']     || '',
+        full_name:       r['Full Name']        || '',
+        email:           r['Email']            || '',
+        phone:           r['Phone']            || '',
+        company:         r['Company']          || '',
+        job_title:       r['Job Title ']       || r['Job Title'] || '',
+        country:         r['Country']          || '',
+        billing_address: r['Billing Address '] || r['Billing Address'] || '',
+        course_name:     r['Course Name ']     || r['Course Name'] || '',
+        course_session:  r['Course Session']   || '',
+        course_category: r['Course Category']  || '',
+        course_duration: r['Course Duration']  || '',
+        source:          r['Source']           || 'website',
+        page_url:        r['Page URL']         || ''
+      };
+    });
+    all.sort(function(a,b){ return new Date(b.submitted_at) - new Date(a.submitted_at); });
+  } catch(e){
+    console.error('loadAll error:', e);
+    all = [];
+  }
+  document.getElementById('lastUpd').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  doFilter();
+  renderAll();
 }
 
 // ── RENDER ALL ───────────────────────────────────────────────
