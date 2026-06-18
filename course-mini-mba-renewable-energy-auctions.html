@@ -534,8 +534,8 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <h1 class="course-title">Mini MBA — <em>Renewable Energy Auctions</em></h1>
       <p class="course-subtitle" style="font-family:'Fraunces',serif;font-size:22px;font-style:italic;color:var(--amber);font-weight:300;">5-Day Programme — Virtual · Sydney · Berlin · London 2026</p>
       <div class="course-pills" role="list" aria-label="Course at a glance">
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 18–22 May · Sydney</span>
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 1–5 Jun · Berlin</span>
+        
+        
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 29 Jun–3 Jul · London</span>
         <span class="pill" role="listitem"><svg><use href="#ico-clock"/></svg> 5 Days</span>
         <span class="pill" role="listitem"><svg><use href="#ico-grad"/></svg> Virtual / Classroom</span>
@@ -547,16 +547,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="bc-sessions-wrap">
         <div class="bc-session-block">
           <div class="bc-session-label">NEXT CLASSROOM SESSION</div>
-          <div class="bc-session-date-lg">18-22 May 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Sydney AEST)</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
-          <div class="bc-session-date-lg">1-5 Jun 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (Berlin CET)</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
           <div class="bc-session-date-lg">29 Jun-3 Jul 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Virtual (London BST)</div>
         </div>
@@ -989,8 +979,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a date and time zone —</option>
-            <option value="18-22 May 2026 | Virtual (Sydney AEST)">18–22 May 2026 — Virtual (Sydney AEST)</option>
-            <option value="1-5 Jun 2026 | Virtual (Berlin CET)">1–5 June 2026 — Virtual (Berlin CET)</option>
             <option value="29 Jun-3 Jul 2026 | Virtual (London BST)">29 June–3 July 2026 — Virtual (London BST)</option>
             <option value="Classroom | Contact us for dates">Classroom Session — Contact us for dates</option>
           </select>
@@ -1487,7 +1475,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Renewable Energy',course_duration:'5 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">18-22 May 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Sydney AEST)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">1-5 Jun 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Berlin CET)</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">29 Jun-3 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (London BST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£2,100 per delegate. London virtual sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">29 Jun-3 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (London BST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£2,100 per delegate. London virtual sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
