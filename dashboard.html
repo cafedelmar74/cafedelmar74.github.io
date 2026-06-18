@@ -474,7 +474,7 @@ async function loadBookings() {
     const res = await fetch(BOOKINGS_WEBHOOK);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    allBookings = (Array.isArray(data) ? data : []).map(row => ({
+    allBookings = (Array.isArray(data) ? data : []).map(item => { const row = (item && item.json) ? item.json : item; return ({
       submitted_at:    row['Submitted At']      || '',
       full_name:       row['Full Name']         || '',
       first_name:      (row['Full Name']||'').split(' ')[0] || '',
@@ -490,7 +490,7 @@ async function loadBookings() {
       course_duration: row['Course Duration']   || '',
       source:          row['Source']            || 'website',
       page_url:        row['Page URL']          || '',
-    }));
+    })});
     allBookings.sort((a,b) => new Date(b.submitted_at) - new Date(a.submitted_at));
   } catch(err) {
     console.error('Failed to load bookings:', err);
