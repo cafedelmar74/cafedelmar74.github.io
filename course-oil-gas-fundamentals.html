@@ -534,8 +534,8 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <h1 class="course-title">Oil &amp; Gas <em>Fundamentals</em></h1>
       <p class="course-subtitle" style="font-family:'Fraunces',serif;font-size:22px;font-style:italic;color:var(--amber);font-weight:300;">London · Dubai · Calgary · Kuala Lumpur — 2026</p>
       <div class="course-pills" role="list" aria-label="Course at a glance">
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 2–4 Mar · London</span>
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 11–13 May · Dubai</span>
+        
+        
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 13–15 Jul · Calgary</span>
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 19–21 Oct · Kuala Lumpur</span>
         <span class="pill" role="listitem"><svg><use href="#ico-clock"/></svg> 3 Days</span>
@@ -548,16 +548,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="bc-sessions-wrap">
         <div class="bc-session-block">
           <div class="bc-session-label">NEXT CLASSROOM SESSION</div>
-          <div class="bc-session-date-lg">2–4 Mar 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> London, UK</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
-          <div class="bc-session-date-lg">11–13 May 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Dubai, UAE</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
           <div class="bc-session-date-lg">13–15 Jul 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Calgary, Canada</div>
         </div>
@@ -980,8 +970,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a date and location —</option>
-            <option value="2–4 Mar 2026 | London, UK">2–4 Mar 2026 — London, UK (+VAT)</option>
-            <option value="11–13 May 2026 | Dubai, UAE">11–13 May 2026 — Dubai, UAE</option>
             <option value="13–15 Jul 2026 | Calgary, Canada">13–15 Jul 2026 — Calgary, Canada</option>
             <option value="19–21 Oct 2026 | Kuala Lumpur, Malaysia">19–21 Oct 2026 — Kuala Lumpur, Malaysia</option>
           </select>
@@ -1478,7 +1466,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Upstream',course_duration:'3 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">2–4 Mar 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">London, UK</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">11–13 May 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Dubai, UAE</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">13–15 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Calgary, Canada</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">19–21 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Kuala Lumpur, Malaysia</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. London sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">13–15 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Calgary, Canada</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">19–21 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Kuala Lumpur, Malaysia</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. London sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
