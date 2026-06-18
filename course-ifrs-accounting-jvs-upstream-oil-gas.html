@@ -534,8 +534,8 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <h1 class="course-title">IFRS Accounting for JVs in <em>Upstream Oil &amp; Gas</em></h1>
       <p class="course-subtitle" style="font-family:'Fraunces',serif;font-size:22px;font-style:italic;color:var(--amber);font-weight:300;">Masterclass — Bali · Rio · Bangkok · Singapore 2026</p>
       <div class="course-pills" role="list" aria-label="Course at a glance">
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 19–22 Jan · London</span>
-        <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 15–18 Jun · Houston</span>
+        
+        
         <span class="pill pill-highlight" role="listitem"><svg><use href="#ico-cal"/></svg> 5–8 Oct · Calgary</span>
         <span class="pill" role="listitem"><svg><use href="#ico-clock"/></svg> 4 Days</span>
         <span class="pill" role="listitem"><svg><use href="#ico-hotel"/></svg> 5-Star Hotel</span>
@@ -547,16 +547,6 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <div class="bc-sessions-wrap">
         <div class="bc-session-block">
           <div class="bc-session-label">NEXT CLASSROOM SESSION</div>
-          <div class="bc-session-date-lg">19-22 Jan 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> London, UK</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
-          <div class="bc-session-date-lg">15-18 Jun 2026</div>
-          <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Houston, USA</div>
-        </div>
-        <div class="bc-session-block">
-          <div class="bc-session-label">ALSO AVAILABLE</div>
           <div class="bc-session-date-lg">5-8 Oct 2026</div>
           <div class="bc-session-loc-row"><svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> Calgary, Canada</div>
         </div>
@@ -984,8 +974,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a date and location —</option>
-            <option value="19-22 Jan 2026 | London, UK">19–22 Jan 2026 — London, UK (+VAT)</option>
-            <option value="15-18 Jun 2026 | Houston, USA">15–18 Jun 2026 — Houston, USA</option>
             <option value="5-8 Oct 2026 | Calgary, Canada">5–8 Oct 2026 — Calgary, Canada</option>
           </select>
         </div>
@@ -1481,7 +1469,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Finance & Accounting · Upstream',course_duration:'4 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">19-22 Jan 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">London, UK</td></tr><tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">15-18 Jun 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Houston, USA</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">5-8 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Calgary, Canada</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,500 per delegate. London sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">5-8 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Calgary, Canada</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,500 per delegate. London sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
