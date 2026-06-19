@@ -326,15 +326,36 @@ function getCourseBadge(course) {
   return '<span class="course-badge badge-other">' + esc(course.split(' ').slice(0,2).join(' ')) + '</span>';
 }
 
-function shortCourse(s) { return s & s.length > 30 ? s.substring(0,28)+'…' : (s||'—'); }
+function shortCourse(s) { return (s && s.length > 30) ? s.substring(0,28)+'…' : (s||'—'); }
+
+// ── DELETED ROWS TRACKING (avoids reappearing during auto-refresh race) ──
+const deletedRowNumbers = new Set();
 
 // ── LOAD ──────────────────────────────────────────────────
 function loadDownloads() {
   document.getElementById('tableBody').innerHTML = `<div class="loading-state"><div class="spinner"></div><div class="loading-text">Refreshing…</div></div>`;
-  const stored = localStorage.getItem('lpa_downloads');
-  try { allDownloads = JSON.parse(stored) || []; } catch(e) { allDownloads = []; }
-  renderAll();
-  document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-read?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const rows = data.rows || [];
+      allDownloads = rows
+        .map(r => ({
+          row_number:   r.row_number,
+          course:       r.course || '',
+          full_name:    r.full_name || '',
+          email:        r.email || '',
+          phone:        r.phone || '',
+          page_url:     r.page_url || '',
+          submitted_at: r.submitted_at || ''
+        }))
+        .filter(dl => !deletedRowNumbers.has(dl.row_number));
+      renderAll();
+      document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    })
+    .catch(() => {
+      document.getElementById('tableBody').innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">Unable to load data</div><div class="empty-sub">Check your connection or try refreshing.</div></div>`;
+      document.getElementById('lastUpdated').textContent = 'Error loading data';
+    });
 }
 
 // ── DATE FILTER ───────────────────────────────────────────
@@ -373,11 +394,11 @@ function getDateRange() {
 
 function isInDateRange(dl) {
   const {from,to} = getDateRange();
-  if (!from & !to) return true;
+  if (!from && !to) return true;
   try {
     const d = new Date(dl.submitted_at);
-    if (from & d < from) return false;
-    if (to   & d > to)   return false;
+    if (from && d < from) return false;
+    if (to   && d > to)   return false;
     return true;
   } catch(e) { return true; }
 }
@@ -400,8 +421,8 @@ function applyFilter() {
   filtered = allDownloads.filter(dl => {
     const matchDate   = isInDateRange(dl);
     const matchCourse = activeFilter === 'all' || (dl.course||'').toLowerCase().includes(activeFilter.toLowerCase());
-    const matchSearch = !q || [dl.full_name, dl.email, dl.course, dl.phone].some(v => v & v.toLowerCase().includes(q));
-    return matchDate & matchCourse & matchSearch;
+    const matchSearch = !q || [dl.full_name, dl.email, dl.course, dl.phone].some(v => v && v.toLowerCase().includes(q));
+    return matchDate && matchCourse && matchSearch;
   });
   filtered.sort((a,b) => {
     const av = (a[sortField]||'').toString().toLowerCase();
@@ -414,7 +435,7 @@ function renderKPIs() {
   const total = allDownloads.length;
   const now   = new Date();
   const thisMonth = allDownloads.filter(dl => {
-    try { const d = new Date(dl.submitted_at); return d.getMonth()===now.getMonth()&d.getFullYear()===now.getFullYear(); } catch(e){return false;}
+    try { const d = new Date(dl.submitted_at); return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear(); } catch(e){return false;}
   }).length;
   const courses = new Set(allDownloads.map(dl=>dl.course).filter(Boolean)).size;
   // Top course
@@ -499,7 +520,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'){closeDrawer();c
 function confirmDelete(filteredIdx) {
   const dl = filtered[filteredIdx];
   if (!dl) return;
-  pendingDeleteIdx = allDownloads.findIndex(d => d.submitted_at===dl.submitted_at & d.email===dl.email);
+  pendingDeleteIdx = allDownloads.findIndex(d => d.row_number === dl.row_number);
   document.getElementById('delName').textContent = dl.full_name || dl.email || 'this record';
   document.getElementById('delOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -507,8 +528,12 @@ function confirmDelete(filteredIdx) {
 function cancelDelete() { pendingDeleteIdx = null; document.getElementById('delOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 function executeDelete() {
   if (pendingDeleteIdx === null || pendingDeleteIdx < 0) return;
+  const dl = allDownloads[pendingDeleteIdx];
+  if (dl && dl.row_number) {
+    deletedRowNumbers.add(dl.row_number);
+    fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-delete?row_number=' + dl.row_number, {method:'GET', mode:'no-cors'}).catch(()=>{});
+  }
   allDownloads.splice(pendingDeleteIdx, 1);
-  localStorage.setItem('lpa_downloads', JSON.stringify(allDownloads));
   pendingDeleteIdx = null;
   document.getElementById('delOverlay').classList.remove('open');
   document.body.style.overflow = '';
@@ -539,6 +564,7 @@ function exportCSV() {
 
 // ── INIT ──────────────────────────────────────────────────
 loadDownloads();
+setInterval(loadDownloads, 60000);
 </script>
 </body>
 </html>
