@@ -301,7 +301,7 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
 
 /* Mobile bottom CTA */
 @media(max-width:1100px){
-  .mobile-book-bar{position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(--page3);border-top:2px solid var(--amber);padding:12px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,.12);}
+  .mobile-book-bar{position:static;z-index:800;background:var(--page3);border-top:2px solid var(--amber);padding:12px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,.12);}
   .mobile-book-bar .mb-price{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ink);}
   .mobile-book-bar .mb-label{font-size:11px;color:var(--ink-light);font-family:var(--cond);letter-spacing:1px;text-transform:uppercase;}
   .mobile-book-bar a.btn-book{padding:12px 20px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;}
@@ -453,12 +453,15 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 .br-ok p{font-size:14px;color:#888;line-height:1.6;}
 @media(max-width:540px){#brOverlay{padding:0;align-items:flex-end;}#brModal{max-width:100%;}.brh,.brb{padding-left:20px;padding-right:20px;}.phone-wrap-br{flex-direction:column;}.dial-sel-br{width:100% !important;border-right:1.5px solid #e0ddd8 !important;}.phone-num-br{border-left:1.5px solid #e0ddd8 !important;border-top:none !important;}}
 
-.mobile-brochure-bar{position:fixed;bottom:64px;left:0;right:0;z-index:799;background:var(--page2,#fff);border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.mobile-brochure-bar{position:static;border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--page2,#fff);}
 .mobile-brochure-bar a{display:flex;align-items:center;gap:8px;color:var(--ink-mid,#555);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:8px;}
 .mobile-brochure-bar svg{width:14px;height:14px;stroke:currentColor;fill:none;}
 @media(min-width:1101px){.mobile-brochure-bar{display:none;}}
 @media(max-width:768px){.mobile-brochure-bar{display:flex;}}
 
+.mobile-cta-stack{position:fixed;bottom:0;left:0;right:0;z-index:800;box-shadow:0 -4px 24px rgba(0,0,0,.12);display:none;}
+@media(max-width:1100px){.mobile-cta-stack{display:block;}}
+@media(min-width:1101px){.mobile-cta-stack{display:none;}}
 </style>
 <script src="config.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -978,15 +981,16 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
   </div>
 </footer>
 
+<div class="mobile-cta-stack">
 <!-- MOBILE BROCHURE BAR -->
 <div class="mobile-brochure-bar" aria-label="Download brochure">
   <a href="javascript:void(0)" onclick="openBrModal()"><svg><use href="#ico-download"/></svg> Download Brochure</a>
 </div>
-
 <!-- MOBILE BOOK BAR -->
 <div class="mobile-book-bar" aria-label="Quick booking">
   <div>
     <div class="mb-price">£3,300</div>
+</div>
     <div class="mb-label">Classroom · 3 Locations</div>
   </div>
   <button onclick="openBkModal()" class="btn-book" style="padding:12px 20px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;">Book Now →</button>
