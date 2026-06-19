@@ -566,12 +566,15 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 .br-ok p{font-size:14px;color:#888;line-height:1.6;}
 @media(max-width:540px){#brOverlay{padding:0;align-items:flex-end;}
 
-.mobile-brochure-bar{position:fixed;bottom:64px;left:0;right:0;z-index:799;background:var(--page2,#fff);border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.mobile-brochure-bar{position:static;border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--page2,#fff);}
 .mobile-brochure-bar a{display:flex;align-items:center;gap:8px;color:var(--ink-mid,#555);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:8px;}
 .mobile-brochure-bar svg{width:14px;height:14px;stroke:currentColor;fill:none;}
 @media(min-width:1101px){.mobile-brochure-bar{display:none;}}
 @media(max-width:768px){.mobile-brochure-bar{display:flex;}}
 
+.mobile-cta-stack{position:fixed;bottom:0;left:0;right:0;z-index:800;box-shadow:0 -4px 24px rgba(0,0,0,.12);display:none;}
+@media(max-width:1100px){.mobile-cta-stack{display:block;}}
+@media(min-width:1101px){.mobile-cta-stack{display:none;}}
 </style>
 
 <!-- LPA shared config + form -->
@@ -1053,15 +1056,16 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
   </div>
 </footer>
 
+<div class="mobile-cta-stack">
 <!-- MOBILE BROCHURE BAR -->
 <div class="mobile-brochure-bar" aria-label="Download brochure">
   <a href="javascript:void(0)" onclick="openBrModal()"><svg><use href="#ico-download"/></svg> Download Brochure</a>
 </div>
-
 <!-- MOBILE BOOK BAR -->
 <div class="mobile-book-bar" aria-label="Quick booking">
   <div>
     <div class="mb-price">£3,500</div>
+</div>
     <div class="mb-label">per delegate · Oct 2026</div>
   </div>
   <button type="button" class="btn-book" onclick="openBkModal()" style="padding:12px 24px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;" aria-label="Book now">Book Now →</button>
