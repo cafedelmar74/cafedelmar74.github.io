@@ -539,9 +539,9 @@ select.bkfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <a href="mailto:info@londonpetroacademy.co.uk?subject=Enquiry%20%E2%80%94%20Financial%20%26amp%20Fiscal%20Aspects%20of%20Oil%20%26amp%20Gas%20Brazil" class="btn-secondary">
         <svg><use href="#ico-send"/></svg> Send an Enquiry
       </a>
-      <a href="contact.html" class="btn-secondary">
+      <button type="button" class="btn-secondary" onclick="openBrModal()">
         <svg><use href="#ico-download"/></svg> Download Brochure
-       — Contact Us</a>
+      </button>
 
       <div class="bc-divider"></div>
       <ul class="bc-includes" aria-label="Included in the fee">
@@ -1572,6 +1572,133 @@ async function submitBk(){
   window.addEventListener('scroll',chk,{passive:true});
   chk();
 })();
+</script>
+<div id="brOverlay" onclick="if(event.target===this)closeBrModal()">
+  <div id="brModal">
+    <div class="brh">
+      <div class="brh-left">
+        <img src="logo-dark.png" alt="London Petro Academy">
+        <div class="brh-t">Download <em>Brochure</em></div>
+        <div class="brh-s">Financial &amp; Fiscal Aspects of Oil &amp; Gas Projects in Brazil · 2026</div>
+      </div>
+      <button class="br-x" onclick="closeBrModal()">&#x2715;</button>
+    </div>
+    <div class="brb">
+      <div id="brFormArea">
+        <div class="br-field">
+          <label class="brfl">Full Name <span class="r">*</span></label>
+          <input class="brfi" id="brName" type="text" placeholder="Jane Smith" autocomplete="name">
+        </div>
+        <div class="br-field">
+          <label class="brfl">Work Email <span class="r">*</span></label>
+          <input class="brfi" id="brEmail" type="email" placeholder="jane@company.com" autocomplete="email">
+        </div>
+        <div class="br-field">
+          <label class="brfl">Phone Number <span class="r">*</span></label>
+          <div class="phone-wrap-br">
+            <select class="brfi dial-sel-br" id="brDial">
+              <option value="+93">🇦🇫 Afghanistan (+93)</option>
+              <option value="+213">🇩🇿 Algeria (+213)</option>
+              <option value="+244">🇦🇴 Angola (+244)</option>
+              <option value="+54">🇦🇷 Argentina (+54)</option>
+              <option value="+61">🇦🇺 Australia (+61)</option>
+              <option value="+43">🇦🇹 Austria (+43)</option>
+              <option value="+994">🇦🇿 Azerbaijan (+994)</option>
+              <option value="+973">🇧🇭 Bahrain (+973)</option>
+              <option value="+880">🇧🇩 Bangladesh (+880)</option>
+              <option value="+32">🇧🇪 Belgium (+32)</option>
+              <option value="+55">🇧🇷 Brazil (+55)</option>
+              <option value="+1">🇨🇦 Canada (+1)</option>
+              <option value="+56">🇨🇱 Chile (+56)</option>
+              <option value="+86">🇨🇳 China (+86)</option>
+              <option value="+57">🇨🇴 Colombia (+57)</option>
+              <option value="+45">🇩🇰 Denmark (+45)</option>
+              <option value="+20">🇪🇬 Egypt (+20)</option>
+              <option value="+358">🇫🇮 Finland (+358)</option>
+              <option value="+33">🇫🇷 France (+33)</option>
+              <option value="+49">🇩🇪 Germany (+49)</option>
+              <option value="+233">🇬🇭 Ghana (+233)</option>
+              <option value="+30">🇬🇷 Greece (+30)</option>
+              <option value="+91">🇮🇳 India (+91)</option>
+              <option value="+62">🇮🇩 Indonesia (+62)</option>
+              <option value="+98">🇮🇷 Iran (+98)</option>
+              <option value="+964">🇮🇶 Iraq (+964)</option>
+              <option value="+353">🇮🇪 Ireland (+353)</option>
+              <option value="+39">🇮🇹 Italy (+39)</option>
+              <option value="+81">🇯🇵 Japan (+81)</option>
+              <option value="+962">🇯🇴 Jordan (+962)</option>
+              <option value="+7">🇰🇿 Kazakhstan (+7)</option>
+              <option value="+254">🇰🇪 Kenya (+254)</option>
+              <option value="+965">🇰🇼 Kuwait (+965)</option>
+              <option value="+961">🇱🇧 Lebanon (+961)</option>
+              <option value="+218">🇱🇾 Libya (+218)</option>
+              <option value="+60">🇲🇾 Malaysia (+60)</option>
+              <option value="+52">🇲🇽 Mexico (+52)</option>
+              <option value="+212">🇲🇦 Morocco (+212)</option>
+              <option value="+31">🇳🇱 Netherlands (+31)</option>
+              <option value="+64">🇳🇿 New Zealand (+64)</option>
+              <option value="+234">🇳🇬 Nigeria (+234)</option>
+              <option value="+47">🇳🇴 Norway (+47)</option>
+              <option value="+968">🇴🇲 Oman (+968)</option>
+              <option value="+92">🇵🇰 Pakistan (+92)</option>
+              <option value="+970">🇵🇸 Palestine (+970)</option>
+              <option value="+63">🇵🇭 Philippines (+63)</option>
+              <option value="+48">🇵🇱 Poland (+48)</option>
+              <option value="+351">🇵🇹 Portugal (+351)</option>
+              <option value="+974">🇶🇦 Qatar (+974)</option>
+              <option value="+40">🇷🇴 Romania (+40)</option>
+              <option value="+7">🇷🇺 Russia (+7)</option>
+              <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+              <option value="+65">🇸🇬 Singapore (+65)</option>
+              <option value="+27">🇿🇦 South Africa (+27)</option>
+              <option value="+82">🇰🇷 South Korea (+82)</option>
+              <option value="+34">🇪🇸 Spain (+34)</option>
+              <option value="+46">🇸🇪 Sweden (+46)</option>
+              <option value="+41">🇨🇭 Switzerland (+41)</option>
+              <option value="+66">🇹🇭 Thailand (+66)</option>
+              <option value="+90">🇹🇷 Turkey (+90)</option>
+              <option value="+380">🇺🇦 Ukraine (+380)</option>
+              <option value="+971">🇦🇪 United Arab Emirates (+971)</option>
+              <option value="+44" selected>🇬🇧 United Kingdom (+44)</option>
+              <option value="+1">🇺🇸 United States (+1)</option>
+              <option value="+84">🇻🇳 Vietnam (+84)</option>
+            </select>
+            <input class="brfi phone-num-br" id="brPhone" type="tel" placeholder="7700 900000">
+          </div>
+        </div>
+        <p style="font-size:12px;color:#aaa;margin-top:12px;line-height:1.6;">By submitting you agree to our <a href="privacy-policy.html" target="_blank" style="color:#c8873a;">Privacy Policy</a>. We will email the brochure immediately.</p>
+        <button class="br-sub" id="brSB" onclick="submitBrochure()">Send Me the Brochure →</button>
+      </div>
+      <div class="br-ok" id="brOK">
+        <div class="br-ok-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Brochure on Its Way!</h3>
+        <p>Check your inbox — the course brochure has been sent to your email address.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
+async function submitBrochure(){
+  var name=document.getElementById('brName'),email=document.getElementById('brEmail'),phone=document.getElementById('brPhone');
+  var ok=true;
+  [name,email,phone].forEach(function(el){el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
+  if(!ok) return;
+  var btn=document.getElementById('brSB');btn.textContent='Sending…';btn.disabled=true;
+  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/financial-fiscal-aspects-brazil.pdf',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">21-23 Jul 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Rio de Janeiro, Brazil</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">6-8 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Rio de Janeiro, Brazil</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">GBP3,500 per delegate. No VAT on international sessions. Group discounts available.</td></tr>',page_url:window.location.href,submitted_at:new Date().toISOString()};
+  try{
+    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
+    document.getElementById('brFormArea').style.display='none';
+    document.getElementById('brOK').style.display='block';
+    // Save to downloads dashboard
+    try{var s=localStorage.getItem('lpa_downloads');var b=[];try{b=JSON.parse(s)||[];}catch(e){}
+    if(!b.find(function(x){return x.submitted_at===payload.submitted_at&x.email===payload.email;})){b.unshift(payload);localStorage.setItem('lpa_downloads',JSON.stringify(b));}}catch(e){}
+    if(typeof gtag==='function') gtag('event','brochure_download',{course_name:payload.course});
+  }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');}
+}
 </script>
 </body>
 </html>
