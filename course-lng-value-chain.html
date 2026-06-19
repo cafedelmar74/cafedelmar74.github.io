@@ -454,6 +454,13 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 .br-ok h3{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#111;margin-bottom:8px;}
 .br-ok p{font-size:14px;color:#888;line-height:1.6;}
 @media(max-width:540px){#brOverlay{padding:0;align-items:flex-end;}#brModal{max-width:100%;}.brh,.brb{padding-left:20px;padding-right:20px;}.phone-wrap-br{flex-direction:column;}.dial-sel-br{width:100% !important;border-right:1.5px solid #e0ddd8 !important;}.phone-num-br{border-left:1.5px solid #e0ddd8 !important;border-top:none !important;}}
+
+.mobile-brochure-bar{position:fixed;bottom:64px;left:0;right:0;z-index:799;background:var(--page2,#fff);border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.mobile-brochure-bar a{display:flex;align-items:center;gap:8px;color:var(--ink-mid,#555);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:8px;}
+.mobile-brochure-bar svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+@media(min-width:1101px){.mobile-brochure-bar{display:none;}}
+@media(max-width:768px){.mobile-brochure-bar{display:flex;}}
+
 </style>
 <script src="config.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -1083,6 +1090,11 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
     </div>
   </div>
 </footer>
+
+<!-- MOBILE BROCHURE BAR -->
+<div class="mobile-brochure-bar" aria-label="Download brochure">
+  <a href="javascript:void(0)" onclick="openBrModal()"><svg><use href="#ico-download"/></svg> Download Brochure</a>
+</div>
 
 <!-- MOBILE BOOK BAR -->
 <div class="mobile-book-bar" aria-label="Quick booking">
