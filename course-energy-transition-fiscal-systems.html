@@ -1030,7 +1030,7 @@ select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
     <div class="mb-price">£3,900</div>
     <div class="mb-label">Classroom · Istanbul / Rio</div>
   </div>
-  <button type="button" class="btn-book" id="btnOpenBooking">Book This Course →</button>
+  <button type="button" class="btn-book" onclick="openBkModal()" style="padding:12px 20px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;">Book Now →</button>
 </div>
 </div>
 
@@ -1547,7 +1547,7 @@ async function submitBk(){
   if(!ok){var fe=document.querySelector('.bkfi.er');if(fe)fe.scrollIntoView({behavior:'smooth',block:'center'});return;}
   var btn=document.getElementById('bkSB');btn.textContent='Sending…';btn.disabled=true;
   var payload={
-    course_name:'Energy Transition & International Petroleum Fiscal Systems',
+    course_name:'Energy Transition & Petroleum Fiscal Systems',
     course_session:document.getElementById('bkSes').value,
     first_name:document.getElementById('bkFN').value,
     last_name:document.getElementById('bkLN').value,
