@@ -306,7 +306,7 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
 
 /* Mobile bottom CTA */
 @media(max-width:1100px){
-  .mobile-book-bar{position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(--page3);border-top:2px solid var(--amber);padding:12px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,.12);}
+  .mobile-book-bar{position:static;left:0;right:0;z-index:800;background:var(--page3);border-top:2px solid var(--amber);padding:12px 24px;display:flex;align-items:center;gap:12px;}
   .mobile-book-bar .mb-price{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--ink);}
   .mobile-book-bar .mb-label{font-size:11px;color:var(--ink-light);font-family:var(--cond);letter-spacing:1px;text-transform:uppercase;}
   .mobile-book-bar a.btn-book{padding:12px 20px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;}
@@ -423,17 +423,55 @@ select.bkfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 .bc-price-label{font-family:var(--cond);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-light);}
 .bc-price-note{font-size:12px;color:var(--ink-light);margin-bottom:18px;line-height:1.5;}
 
-.mobile-brochure-bar{position:fixed;bottom:64px;left:0;right:0;z-index:799;background:var(--page2,#fff);border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;}
+/* ── BROCHURE MODAL ── */
+#brOverlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;background:rgba(10,11,13,0.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;}
+#brOverlay.open{display:flex;}
+#brModal{background:#fff;width:100%;max-width:480px;border-top:4px solid #c8873a;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:brIn .3s cubic-bezier(.34,1.4,.64,1) forwards;}
+@keyframes brIn{from{transform:scale(.94) translateY(12px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.brh{padding:28px 36px 20px;background:#fff;border-bottom:1px solid #f0ede8;display:flex;align-items:flex-start;justify-content:space-between;}
+.brh-left img{height:32px;display:block;margin-bottom:14px;}
+.brh-t{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#111;line-height:1.1;}
+.brh-t em{font-style:italic;color:#c8873a;}
+.brh-s{font-size:13px;color:#888;margin-top:5px;line-height:1.5;}
+.br-x{background:none;border:1.5px solid #e0ddd8;font-size:16px;cursor:pointer;color:#999;padding:5px 10px;line-height:1;transition:all .2s;flex-shrink:0;}
+.br-x:hover{color:#111;border-color:#bbb;}
+.brb{padding:24px 36px 32px;}
+.brfl{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#777;font-family:'Barlow',sans-serif;font-weight:400;margin-bottom:6px;}
+.brfl .r{color:#c8873a;}
+.brfi{width:100%;padding:12px 14px;border:1.5px solid #e0ddd8;background:#faf9f7;color:#111;font-family:'Barlow',sans-serif;font-size:15px;outline:none;box-sizing:border-box;transition:border-color .2s;border-radius:0;-webkit-appearance:none;}
+.brfi:focus{border-color:#c8873a;background:#fff;box-shadow:0 0 0 3px rgba(200,135,58,0.08);}
+.brfi.er{border-color:#e74c3c;background:#fff8f8;}
+.br-field{margin-bottom:16px;}
+.phone-wrap-br{display:flex;}
+.dial-sel-br{width:52% !important;border-right:none !important;font-size:13px !important;flex-shrink:0;padding-right:24px !important;}
+.dial-sel-br:focus{border-color:#c8873a !important;background:#fff !important;}
+.phone-num-br{flex:1;min-width:0;border-left:none !important;}
+.phone-num-br:focus{border-color:#c8873a !important;background:#fff !important;}
+select.brfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8873a' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
+.br-sub{display:block;width:100%;background:#c8873a;color:#fff;border:none;cursor:pointer;font-family:'Barlow',sans-serif;font-size:13px;font-weight:400;letter-spacing:2px;text-transform:uppercase;padding:16px;margin-top:20px;transition:background .2s;}
+.br-sub:hover{background:#b87730;}
+.br-sub:disabled{opacity:.6;cursor:not-allowed;}
+.br-ok{display:none;text-align:center;padding:40px 36px;}
+.br-ok-icon{width:56px;height:56px;background:rgba(200,135,58,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.br-ok-icon svg{width:24px;height:24px;stroke:#c8873a;fill:none;}
+.br-ok h3{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#111;margin-bottom:8px;}
+.br-ok p{font-size:14px;color:#888;line-height:1.6;}
+@media(max-width:540px){#brOverlay{padding:0;align-items:flex-end;}#brModal{max-width:100%;}.brh,.brb{padding-left:20px;padding-right:20px;}.phone-wrap-br{flex-direction:column;}.dial-sel-br{width:100% !important;border-right:1.5px solid #e0ddd8 !important;}.phone-num-br{border-left:1.5px solid #e0ddd8 !important;border-top:none !important;}}
+
+.mobile-brochure-bar{position:static;border-top:1px solid var(--line,#e0ddd8);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--page2,#fff);}
 .mobile-brochure-bar a{display:flex;align-items:center;gap:8px;color:var(--ink-mid,#555);font-family:var(--cond);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:8px;}
 .mobile-brochure-bar svg{width:14px;height:14px;stroke:currentColor;fill:none;}
 @media(min-width:1101px){.mobile-brochure-bar{display:none;}}
 @media(max-width:768px){.mobile-brochure-bar{display:flex;}}
 
+.mobile-cta-stack{position:fixed;bottom:0;left:0;right:0;z-index:800;box-shadow:0 -4px 24px rgba(0,0,0,.12);display:none;}
+@media(max-width:1100px){.mobile-cta-stack{display:block;}}
+@media(min-width:1101px){.mobile-cta-stack{display:none;}}
+
 </style>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!-- LPA config -->
 <script src="config.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -541,9 +579,9 @@ select.bkfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
       <a href="mailto:info@londonpetroacademy.co.uk?subject=Enquiry%20%E2%80%94%20Legal%20Aspects%20of%20Production%20Sharing%20Contracts" class="btn-secondary">
         <svg><use href="#ico-send"/></svg> Send an Enquiry
       </a>
-      <a href="contact.html" class="btn-secondary">
+      <button type="button" class="btn-secondary" onclick="openBrModal()">
         <svg><use href="#ico-download"/></svg> Download Brochure
-       — Contact Us</a>
+      </button>
 
       <div class="bc-divider"></div>
       <ul class="bc-includes" aria-label="Included in the fee">
@@ -916,6 +954,11 @@ select.bkfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
   </div>
 </footer>
 
+<div class="mobile-cta-stack">
+<!-- MOBILE BROCHURE BAR -->
+<div class="mobile-brochure-bar" aria-label="Download brochure">
+  <a href="javascript:void(0)" onclick="openBrModal()"><svg><use href="#ico-download"/></svg> Download Brochure</a>
+</div>
 <!-- MOBILE BOOK BAR -->
 <div class="mobile-book-bar" aria-label="Quick booking">
   <div>
@@ -923,6 +966,7 @@ select.bkfi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
     <div class="mb-label">Classroom · London / Dubai</div>
   </div>
   <button onclick="openBkModal()" class="btn-book" style="padding:12px 20px;font-size:11px;margin-bottom:0;width:auto;margin-left:auto;">Book Now →</button>
+</div>
 </div>
 
 <script>
@@ -1480,7 +1524,7 @@ async function submitBk(){
     country:document.getElementById('bkCN').value,
     course_category:'Legal & Fiscal',
     course_duration:'3 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">24–26 Aug 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">London, UK</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">23–25 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Dubai, UAE</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£3,300 per delegate. London sessions subject to 20% VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:buildSessionsHtml(),page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{
@@ -1499,6 +1543,152 @@ async function submitBk(){
     if(typeof grecaptcha!=='undefined') grecaptcha.reset();
     alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
   }
+}
+</script>
+
+<!-- ── BROCHURE DOWNLOAD MODAL ── -->
+<div id="brOverlay" onclick="if(event.target===this)closeBrModal()">
+  <div id="brModal">
+    <div class="brh">
+      <div class="brh-left">
+        <img src="logo-dark.png" alt="London Petro Academy">
+        <div class="brh-t">Download <em>Brochure</em></div>
+        <div class="brh-s">Legal Aspects of Production Sharing Contracts · 2026</div>
+      </div>
+      <button class="br-x" onclick="closeBrModal()">&#x2715;</button>
+    </div>
+    <div class="brb">
+      <div id="brFormArea">
+        <div class="br-field">
+          <label class="brfl">Full Name <span class="r">*</span></label>
+          <input class="brfi" id="brName" type="text" placeholder="Jane Smith" autocomplete="name">
+        </div>
+        <div class="br-field">
+          <label class="brfl">Work Email <span class="r">*</span></label>
+          <input class="brfi" id="brEmail" type="email" placeholder="jane@company.com" autocomplete="email">
+        </div>
+        <div class="br-field">
+          <label class="brfl">Phone Number <span class="r">*</span></label>
+          <div class="phone-wrap-br">
+            <select class="brfi dial-sel-br" id="brDial">
+              <option value="+93">🇦🇫 Afghanistan (+93)</option>
+              <option value="+213">🇩🇿 Algeria (+213)</option>
+              <option value="+244">🇦🇴 Angola (+244)</option>
+              <option value="+54">🇦🇷 Argentina (+54)</option>
+              <option value="+61">🇦🇺 Australia (+61)</option>
+              <option value="+43">🇦🇹 Austria (+43)</option>
+              <option value="+994">🇦🇿 Azerbaijan (+994)</option>
+              <option value="+973">🇧🇭 Bahrain (+973)</option>
+              <option value="+880">🇧🇩 Bangladesh (+880)</option>
+              <option value="+32">🇧🇪 Belgium (+32)</option>
+              <option value="+55">🇧🇷 Brazil (+55)</option>
+              <option value="+1">🇨🇦 Canada (+1)</option>
+              <option value="+56">🇨🇱 Chile (+56)</option>
+              <option value="+86">🇨🇳 China (+86)</option>
+              <option value="+57">🇨🇴 Colombia (+57)</option>
+              <option value="+45">🇩🇰 Denmark (+45)</option>
+              <option value="+20">🇪🇬 Egypt (+20)</option>
+              <option value="+358">🇫🇮 Finland (+358)</option>
+              <option value="+33">🇫🇷 France (+33)</option>
+              <option value="+49">🇩🇪 Germany (+49)</option>
+              <option value="+233">🇬🇭 Ghana (+233)</option>
+              <option value="+30">🇬🇷 Greece (+30)</option>
+              <option value="+91">🇮🇳 India (+91)</option>
+              <option value="+62">🇮🇩 Indonesia (+62)</option>
+              <option value="+98">🇮🇷 Iran (+98)</option>
+              <option value="+964">🇮🇶 Iraq (+964)</option>
+              <option value="+353">🇮🇪 Ireland (+353)</option>
+              <option value="+39">🇮🇹 Italy (+39)</option>
+              <option value="+81">🇯🇵 Japan (+81)</option>
+              <option value="+962">🇯🇴 Jordan (+962)</option>
+              <option value="+7">🇰🇿 Kazakhstan (+7)</option>
+              <option value="+254">🇰🇪 Kenya (+254)</option>
+              <option value="+965">🇰🇼 Kuwait (+965)</option>
+              <option value="+961">🇱🇧 Lebanon (+961)</option>
+              <option value="+218">🇱🇾 Libya (+218)</option>
+              <option value="+60">🇲🇾 Malaysia (+60)</option>
+              <option value="+52">🇲🇽 Mexico (+52)</option>
+              <option value="+212">🇲🇦 Morocco (+212)</option>
+              <option value="+31">🇳🇱 Netherlands (+31)</option>
+              <option value="+64">🇳🇿 New Zealand (+64)</option>
+              <option value="+234">🇳🇬 Nigeria (+234)</option>
+              <option value="+47">🇳🇴 Norway (+47)</option>
+              <option value="+968">🇴🇲 Oman (+968)</option>
+              <option value="+92">🇵🇰 Pakistan (+92)</option>
+              <option value="+970">🇵🇸 Palestine (+970)</option>
+              <option value="+63">🇵🇭 Philippines (+63)</option>
+              <option value="+48">🇵🇱 Poland (+48)</option>
+              <option value="+351">🇵🇹 Portugal (+351)</option>
+              <option value="+974">🇶🇦 Qatar (+974)</option>
+              <option value="+40">🇷🇴 Romania (+40)</option>
+              <option value="+7">🇷🇺 Russia (+7)</option>
+              <option value="+966">🇸🇦 Saudi Arabia (+966)</option>
+              <option value="+65">🇸🇬 Singapore (+65)</option>
+              <option value="+27">🇿🇦 South Africa (+27)</option>
+              <option value="+82">🇰🇷 South Korea (+82)</option>
+              <option value="+34">🇪🇸 Spain (+34)</option>
+              <option value="+46">🇸🇪 Sweden (+46)</option>
+              <option value="+41">🇨🇭 Switzerland (+41)</option>
+              <option value="+66">🇹🇭 Thailand (+66)</option>
+              <option value="+90">🇹🇷 Turkey (+90)</option>
+              <option value="+380">🇺🇦 Ukraine (+380)</option>
+              <option value="+971">🇦🇪 United Arab Emirates (+971)</option>
+              <option value="+44" selected>🇬🇧 United Kingdom (+44)</option>
+              <option value="+1">🇺🇸 United States (+1)</option>
+              <option value="+84">🇻🇳 Vietnam (+84)</option>
+            </select>
+            <input class="brfi phone-num-br" id="brPhone" type="tel" placeholder="7700 900000">
+          </div>
+        </div>
+        <p style="font-size:12px;color:#aaa;margin-top:12px;line-height:1.6;">By submitting you agree to our <a href="privacy-policy.html" target="_blank" style="color:#c8873a;">Privacy Policy</a>. We will email the brochure immediately.</p>
+        <button class="br-sub" id="brSB" onclick="submitBrochure()">Send Me the Brochure →</button>
+      </div>
+      <div class="br-ok" id="brOK">
+        <div class="br-ok-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Brochure on Its Way!</h3>
+        <p>Check your inbox — the course brochure has been sent to your email address.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
+function buildSessionsHtml(){
+  var sel=document.getElementById('bkSes');
+  var rows='';
+  if(sel){
+    Array.prototype.forEach.call(sel.options,function(opt){
+      var v=opt.value;
+      if(!v) return;
+      var parts=v.split('|');
+      var c1=(parts[0]||'').trim();
+      var c2=(parts[1]||'').trim();
+      rows+='<tr style="border-bottom:1px solid #f0ede8;"><td style="padding:10px 0;color:#888;font-size:13px;width:180px;">'+c1+'</td><td style="padding:10px 0;color:#111;font-weight:600;">'+c2+'</td></tr>';
+    });
+  }
+  var noteEl=document.querySelector('.bc-price-note');
+  var note=noteEl?noteEl.textContent.trim():'';
+  if(note){
+    rows+='<tr><td colspan="2" style="padding:14px 0 0;font-size:13px;color:#666;">'+note+'</td></tr>';
+  }
+  return rows;
+}
+async function submitBrochure(){
+  var name=document.getElementById('brName'),email=document.getElementById('brEmail'),phone=document.getElementById('brPhone');
+  var ok=true;
+  [name,email,phone].forEach(function(el){el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
+  if(!ok) return;
+  var btn=document.getElementById('brSB');btn.textContent='Sending…';btn.disabled=true;
+  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'Legal Aspects of Production Sharing Contracts',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/legal-aspects-production-sharing-contracts.pdf',sessions_html:buildSessionsHtml(),page_url:window.location.href,submitted_at:new Date().toISOString()};
+  try{
+    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
+    document.getElementById('brFormArea').style.display='none';
+    document.getElementById('brOK').style.display='block';
+    if(typeof gtag==='function') gtag('event','brochure_download',{course_name:payload.course});
+  }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');}
 }
 </script>
 
