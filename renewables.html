@@ -339,6 +339,7 @@ h1.hero-title em{font-style:italic;color:var(--amber);}
   font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
   color:var(--dark);font-weight:600;
 }
+.filter-prompt-text-mobile{display:none;}
 .filter-prompt-arrow{
   font-size:20px;color:var(--dark);opacity:.6;
   animation:nudge 1.8s ease-in-out infinite;
@@ -722,23 +723,25 @@ footer{
   .filter-prompt{padding:0 24px;height:auto;min-height:44px;padding-top:10px;padding-bottom:10px;}
   .filter-prompt-cats{display:none;}
   .filter-prompt-arrow{display:none;}
-  /* Sidebar becomes horizontal scroll strip */
+  .filter-prompt-text-desktop{display:none;}
+  .filter-prompt-text-mobile{display:inline;}
+  /* Sidebar: vertical stacked list on mobile, same as desktop */
   .body-wrap{grid-template-columns:1fr;}
   .sidebar{
     position:sticky;top:116px;
-    height:auto;
-    flex-direction:row;
-    overflow-x:auto;overflow-y:visible;
+    height:auto;max-height:60vh;
+    flex-direction:column;
+    overflow-x:visible;overflow-y:auto;
     border-right:none;border-bottom:2px solid var(--amber);
   }
-  .sidebar::-webkit-scrollbar{display:none;}
-  .sb-head,.sb-divider,.sb-inhouse{display:none;}
-  .sb-list{display:flex;flex-direction:row;padding:0;flex:unset;}
+  .sb-divider,.sb-inhouse{display:none;}
+  .sb-head{padding:20px 20px 16px;}
+  .sb-list{display:flex;flex-direction:column;padding:8px 0;}
   .sb-btn{
-    padding:14px 18px;border-left:none;border-bottom:3px solid transparent;
-    white-space:nowrap;font-size:13px;flex-shrink:0;
+    padding:13px 20px;border-left:3px solid transparent;border-bottom:none;
+    white-space:normal;font-size:14px;flex-shrink:0;
   }
-  .sb-btn.active{border-left:none;border-bottom-color:var(--amber);background:none;color:var(--amber);}
+  .sb-btn.active{border-left-color:var(--amber);border-bottom:none;background:var(--page2);color:var(--amber);}
   .panel{padding:32px 24px 60px;}
   .course-row{grid-template-columns:52px 1fr auto;}
   .course-row::before{left:-24px;right:-24px;}
@@ -829,7 +832,8 @@ footer{
 <!-- FILTER PROMPT BAR -->
 <div class="filter-prompt">
   <span class="filter-prompt-icon">🔍</span>
-  <span class="filter-prompt-text">Filter courses by category using the panel on the left</span>
+  <span class="filter-prompt-text filter-prompt-text-desktop">Filter courses by category using the panel on the left</span>
+  <span class="filter-prompt-text filter-prompt-text-mobile">Filter courses by category using the list above</span>
   <span class="filter-prompt-arrow">←</span>
   <div class="filter-prompt-cats">
     <button class="fp-cat" onclick="switchCat('renewables')">Renewables</button>
