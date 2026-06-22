@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Virtual Training Calendar | London Petro Academy</title>
+<meta name="description" content="Browse LPA's 2026 virtual training calendar — live online sessions in Renewable Energy and Petroleum Taxation, scheduled across global time zones. Book now.">
+<link rel="canonical" href="https://www.londonpetroacademy.co.uk/oil-gas-renewable-energy-virtual-training-courses">
+<meta property="og:title" content="2026 Virtual Training Calendar | London Petro Academy">
+<meta property="og:description" content="Browse LPA's 2026 virtual training calendar — live online sessions in Renewable Energy and Petroleum Taxation, scheduled across global time zones.">
+<meta property="og:url" content="https://www.londonpetroacademy.co.uk/oil-gas-renewable-energy-virtual-training-courses">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=&display=swap" rel="stylesheet">
+<script src="config.js" defer></script>
+<style>
+:root{
+  --bg:#edeae4;--bg2:#e4e0d8;--bg3:#d8d4cc;--surface:#f4f1eb;--surface2:#ece8e0;
+  --amber:#b8721e;--amber-dim:rgba(184,114,30,.1);--amber-glow:rgba(184,114,30,.2);
+  --green:#2e7d52;--green-dim:rgba(46,125,82,.1);
+  --blue:#2c6ea6;--blue-dim:rgba(44,110,166,.1);
+  --purple:#6b4fa8;--purple-dim:rgba(107,79,168,.1);
+  --teal:#1f7a72;--teal-dim:rgba(31,122,114,.1);
+  --off-white:#111111;--ink-light:#6b6b6b;--ink-mid:#444444;
+  --serif:'Fraunces',serif;--sans:'Barlow',sans-serif;
+  --r:8px;--r2:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#111111;font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(10,11,13,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);transition:background .4s,border-color .4s,backdrop-filter .4s;}
+nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-color:rgba(0,0,0,0.09);}
+nav.scrolled .nav-links a{color:rgba(20,20,20,0.7);}
+nav.scrolled .nav-links a:hover{color:#000;}
+nav.scrolled .nav-links a.active{color:#c8873a;}
+nav.scrolled .nav-cta{border-color:#c8873a!important;color:#c8873a!important;}
+nav.scrolled .nav-cta:hover{background:#c8873a!important;color:#fff!important;}
+nav.scrolled .hamburger span{background:#111;}
+nav.scrolled .nav-logo img{filter:brightness(0);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:44px;width:auto;max-width:280px;object-fit:contain;object-position:left center;display:block;transition:opacity .2s,filter .3s;}
+.nav-logo:hover img{opacity:.82;}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+.nav-links a{font-family:'Barlow',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.72);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.active{color:#c8873a;}
+.nav-cta{border:1px solid #c8873a!important;color:#c8873a!important;padding:10px 24px;transition:background .2s,color .2s!important;}
+.nav-cta:hover{background:#c8873a!important;color:#0a0b0d!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#e8e6e0;}
+.mob{display:none;position:fixed;inset:0;z-index:950;background:#0a0b0d;flex-direction:column;justify-content:center;align-items:center;gap:28px;}
+.mob.open{display:flex;}
+.mob a{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#e8e6e0;text-decoration:none;transition:color .2s;}
+.mob a:hover{color:#c8873a;}
+.mob-close{position:absolute;top:24px;right:32px;background:none;border:none;cursor:pointer;color:#8a8f96;font-size:26px;}
+@media(max-width:768px){nav{padding:0 24px;height:64px;}.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* HERO */
+.hero{position:relative;min-height:520px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;padding:140px 60px 80px;text-align:center;background:#070a0f;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(200,135,58,0.06) 0%,transparent 70%),#070a0f;z-index:0;}
+.hero-grid-lines{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:80px 80px;}
+.hero-top{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:20px;font-family:var(--cond);}
+.hero-tag::before,.hero-tag::after{content:'';width:28px;height:1px;background:var(--amber);}
+.hero-h1{font-family:var(--serif);font-size:clamp(44px,6vw,84px);font-weight:300;line-height:0.95;letter-spacing:-1px;color:#fff;margin-bottom:20px;}
+.hero-h1 em{font-style:italic;color:var(--amber);}
+.hero-desc{font-size:17px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.65;margin:0 auto 36px;max-width:520px;}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-bottom:40px;flex-wrap:wrap;}
+.stat{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.stat-num{font-family:var(--serif);font-size:42px;font-weight:300;color:#fff;line-height:1;}
+.stat-label{font-family:var(--cond);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+@media(max-width:768px){.hero{padding:120px 24px 64px;}.hero-stats{gap:28px;}.stat-num{font-size:32px;}.hero-btns{flex-direction:column;align-items:center;}}
+
+/* BUTTONS */
+.btn-primary{background:var(--amber);color:#fff;font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400;padding:13px 28px;border-radius:var(--r);transition:opacity .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{opacity:.85;}
+.btn-secondary{border:1px solid rgba(184,114,30,.4);color:var(--amber);font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400;padding:13px 28px;border-radius:var(--r);transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-secondary:hover{background:var(--amber-dim);}
+
+/* LANG BANNER */
+.lang-banner{background:#1a1d23;color:rgba(255,255,255,.85);text-align:center;padding:11px 24px;font-size:13px;font-family:var(--sans);border-bottom:1px solid rgba(255,255,255,.08);}
+.lang-banner strong{color:var(--amber);font-weight:500;}
+
+/* FILTER BAR */
+.filter-bar{position:sticky;top:64px;z-index:100;background:rgba(237,234,228,0.98);backdrop-filter:blur(16px);border-bottom:2px solid rgba(0,0,0,0.08);padding:22px 40px;box-shadow:0 4px 20px rgba(0,0,0,0.06);}
+.filter-inner{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.search-wrap{position:relative;display:flex;align-items:center;background:#fff;border:2px solid rgba(0,0,0,0.12);border-radius:12px;flex:1;min-width:260px;max-width:420px;transition:border-color .2s,box-shadow .2s;}
+.search-wrap:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(184,114,30,.12);}
+.search-ico{position:absolute;left:14px;color:#bbb;pointer-events:none;}
+.search-input{width:100%;padding:14px 42px 14px 46px;border:none;background:transparent;outline:none;font-family:var(--sans);font-size:15px;color:#111;}
+.search-input::placeholder{color:#bbb;}
+.search-clear{position:absolute;right:12px;background:none;border:none;color:#bbb;cursor:pointer;font-size:16px;padding:4px;display:none;line-height:1;}
+.search-clear.visible{display:block;}
+.filter-divider{width:1px;height:48px;background:rgba(0,0,0,0.1);flex-shrink:0;}
+.filter-group{display:flex;flex-direction:column;gap:7px;}
+.filter-group-label{font-family:var(--cond);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;}
+.f-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.f-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:10px;border:2px solid rgba(0,0,0,0.12);background:#fff;font-family:var(--cond);font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:#555;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.f-btn:hover{border-color:var(--amber);color:var(--amber);}
+.f-btn.active{background:var(--amber);border-color:var(--amber);color:#fff;}
+.f-btn.cat-renewables.active{background:var(--purple);border-color:var(--purple);}
+.f-btn.cat-taxation.active{background:var(--teal);border-color:var(--teal);}
+.filter-results{margin-left:auto;font-family:var(--cond);font-size:13px;letter-spacing:1px;color:#888;white-space:nowrap;}
+@media(max-width:900px){.filter-bar{padding:14px 20px;}.filter-divider{display:none;}.search-wrap{min-width:100%;max-width:100%;}.f-btn{padding:9px 14px;font-size:12px;}.filter-group-label{display:none;}}
+/* MONTH NAV */
+.month-nav-wrap{background:#e4e0d8;border-bottom:1px solid rgba(0,0,0,.08);position:sticky;top:108px;z-index:850;}
+.month-nav{max-width:1200px;margin:0 auto;padding:0 32px;}
+.month-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:8px 0;}
+.month-tabs::-webkit-scrollbar{display:none;}
+.m-tab{font-family:var(--cond);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;border-radius:var(--r);border:none;background:transparent;color:#777;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.m-tab:hover{color:var(--amber);background:rgba(184,114,30,.08);}
+.m-tab.active{background:var(--amber-dim);color:var(--amber);}
+.m-tab.past{opacity:.4;}
+.m-tab.past:hover{opacity:.7;}
+
+/* MOBILE MONTH SELECT */
+.month-select-wrap{display:none;padding:10px 16px;}
+.month-select{width:100%;background:#fff;border:1px solid rgba(0,0,0,.15);color:#111111;font-family:var(--cond);font-size:13px;letter-spacing:1px;padding:10px 14px;border-radius:var(--r);appearance:none;cursor:pointer;}
+
+/* MAIN */
+.cal-wrap{max-width:1200px;margin:0 auto;padding:36px 32px 80px;}
+
+/* MONTH BLOCK */
+.month-block{padding:48px 0 8px;}
+.month-block.hidden{display:none;}
+.month-header{display:flex;align-items:baseline;gap:16px;padding:0 40px 20px;border-bottom:2px solid rgba(0,0,0,0.07);margin-bottom:24px;}
+.month-name{font-family:var(--serif);font-size:44px;font-weight:300;color:#111;letter-spacing:-0.5px;}
+.month-name em{font-style:italic;color:var(--amber);}
+.month-count{font-family:var(--cond);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#888;background:rgba(0,0,0,0.06);padding:5px 14px;border-radius:20px;}
+@media(max-width:768px){.month-header{padding:0 20px 16px;}.month-name{font-size:32px;}}
+/* SESSION CARDS */
+.sessions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;padding:0 40px 32px;}
+.session-card{background:#fff;border-radius:16px;border:1.5px solid rgba(0,0,0,0.07);padding:28px 28px 22px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+.session-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.10);border-color:var(--amber);}
+.session-card.hidden{display:none;}
+.card-cat{display:inline-flex;align-self:flex-start;padding:5px 14px;border-radius:20px;font-family:var(--cond);font-size:11px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;}
+.cat-renewables .card-cat{background:var(--purple-dim);color:var(--purple);}
+.cat-taxation .card-cat{background:var(--teal-dim);color:var(--teal);}
+.card-title{font-family:var(--serif);font-size:20px;font-weight:400;color:#111;line-height:1.35;flex:1;}
+.card-meta{display:flex;flex-direction:column;gap:9px;padding:14px 0;border-top:1px solid rgba(0,0,0,0.07);}
+.card-meta-item{display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:14px;color:#444;}
+.card-meta-item svg{flex-shrink:0;color:var(--amber);}
+.card-date{font-weight:400;font-size:16px;color:#111;}
+.card-format{display:inline-flex;align-self:flex-start;padding:5px 12px;border-radius:6px;font-family:var(--cond);font-size:11px;font-weight:400;letter-spacing:1px;background:rgba(0,0,0,0.05);color:#666;text-transform:uppercase;}
+.card-footer{display:flex;align-items:center;gap:12px;padding-top:4px;}
+.card-enquire{display:inline-flex;align-items:center;gap:6px;background:var(--amber);color:#fff;font-family:var(--cond);font-size:13px;font-weight:400;letter-spacing:1px;padding:12px 24px;border-radius:8px;text-transform:uppercase;transition:opacity .2s;flex-shrink:0;}
+.card-enquire:hover{opacity:.85;}
+.card-view{font-family:var(--cond);font-size:13px;font-weight:400;color:var(--amber);text-decoration:underline;text-underline-offset:3px;transition:opacity .2s;}
+.card-view:hover{opacity:.75;}
+@media(max-width:768px){.sessions-grid{grid-template-columns:1fr;padding:0 20px 24px;}.card-title{font-size:18px;}}
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,#fff8f0,#fff3e6);border:1px solid rgba(184,114,30,.25);border-radius:var(--r2);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
+.cta-banner-text h3{font-family:var(--serif);font-size:20px;font-weight:300;margin-bottom:5px;}
+.cta-banner-text h3 em{font-style:italic;color:var(--amber);}
+.cta-banner-text p{font-size:14px;color:#4a4a4a;}
+.cta-banner-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+
+/* IN-HOUSE */
+.inhouse-section{background:#d8d4cc;border-radius:16px;padding:48px;text-align:center;margin-bottom:48px;}
+.inhouse-section h2{font-family:var(--serif);font-size:30px;font-weight:300;margin-bottom:12px;}
+.inhouse-section h2 em{font-style:italic;color:var(--amber);}
+.inhouse-section>p{color:#3d3d3d;max-width:540px;margin:0 auto 28px;}
+.inhouse-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:780px;margin:0 auto 28px;}
+.inhouse-card{background:#f4f1eb;border:1px solid rgba(0,0,0,.08);border-radius:var(--r2);padding:20px;text-align:left;}
+.inhouse-card-icon{font-size:26px;margin-bottom:10px;}
+.inhouse-card h4{font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:7px;}
+.inhouse-card p{font-size:13px;color:#4a4a4a;line-height:1.5;}
+.inhouse-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* STICKY BOTTOM CTA */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:800;background:rgba(237,234,228,.99);backdrop-filter:blur(12px);border-top:1px solid rgba(184,114,30,.2);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;transform:translateY(100%);transition:transform .35s ease;}
+.sticky-cta.visible{transform:translateY(0);}
+.sticky-cta-text{font-size:14px;color:#3d3d3d;}
+.sticky-cta-text strong{color:#111111;}
+.sticky-cta-btns{display:flex;gap:8px;flex-shrink:0;}
+.sticky-close{background:none;border:none;color:#888;cursor:pointer;padding:4px 8px;font-size:20px;line-height:1;flex-shrink:0;}
+
+/* FOOTER */
+.cal-footer{background:#d4d0c8;border-top:1px solid rgba(0,0,0,.08);padding:48px 32px 32px;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand p{font-size:13px;color:#4a4a4a;margin-top:12px;line-height:1.7;max-width:280px;}
+.footer-col h4{font-family:var(--cond);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#777;margin-bottom:14px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:8px;}
+.footer-col ul li a{font-size:13px;color:#3d3d3d;transition:color .2s;}
+.footer-col ul li a:hover{color:var(--amber);}
+.footer-bottom{max-width:1200px;margin:24px auto 0;padding-top:20px;border-top:1px solid rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:12px;color:#777;}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink-mid);}
+.empty-state h3{font-family:var(--serif);font-size:22px;font-weight:300;margin-bottom:8px;color:#111111;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .footer-brand{grid-column:1/-1;}
+}
+@media(max-width:768px){
+  .nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .hero{padding:100px 16px 48px;min-height:440px;}
+  .hero-stats{gap:24px;}
+  .stat-num{font-size:28px;}
+  .filter-bar{padding:0 16px;}
+  .filter-label{display:none;}
+  .month-nav-wrap{top:108px;}
+  .month-tabs{display:none;}
+  .month-select-wrap{display:block;}
+  .cal-wrap{padding:24px 16px 80px;}
+  .sessions-grid{grid-template-columns:1fr;}
+  .cta-banner{padding:20px;flex-direction:column;}
+  .cta-banner-btns{width:100%;}
+  .cta-banner-btns .btn-primary,.cta-banner-btns .btn-secondary{flex:1;justify-content:center;padding:11px 16px;}
+  .inhouse-section{padding:28px 16px;}
+  .inhouse-section h2{font-size:24px;}
+  .sticky-cta{padding:10px 16px;}
+  .sticky-cta-text{font-size:12px;}
+}
+@media(max-width:480px){
+  .hero-title{font-size:34px;}
+  .footer-inner{grid-template-columns:1fr;}
+  .inhouse-btns .btn-primary,.inhouse-btns .btn-secondary{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ico-cal" viewBox="0 0 16 16"><path fill="currentColor" d="M11 1v1H5V1H3v1H1v13h14V2h-2V1h-2zm2 12H3V6h10v7zM5 8h2v2H5zm4 0h2v2H9zm-4 3h2v1H5zm4 0h2v1H9z"/></symbol>
+  <symbol id="ico-pin" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1a5 5 0 0 0-5 5c0 3.5 5 9 5 9s5-5.5 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></symbol>
+  <symbol id="ico-mail" viewBox="0 0 16 16"><path fill="currentColor" d="M0 3v10h16V3H0zm14 1-6 4-6-4h12zm0 8H2V5.5l6 4 6-4V12z"/></symbol>
+  <symbol id="ico-phone" viewBox="0 0 16 16"><path fill="currentColor" d="M3.5 1C2 1 1 2 1 3.5 1 9.8 6.2 15 12.5 15c1.5 0 2.5-1 2.5-2.5v-2c0-.8-.5-1.4-1.2-1.5l-2-.3c-.7-.1-1.4.2-1.8.7l-.6.7C8.3 9.4 6.6 7.7 5.9 6.6l.7-.6c.5-.4.8-1.1.7-1.8l-.3-2C6.9 1.5 6.3 1 5.5 1h-2z"/></symbol>
+  <symbol id="ico-arrow" viewBox="0 0 16 16"><path fill="currentColor" d="M3 8h8.6l-3.3-3.3 1.4-1.4L14 8l-4.3 4.7-1.4-1.4L11.6 8H3z"/></symbol>
+  <symbol id="ico-teams" viewBox="0 0 16 16"><path fill="currentColor" d="M9 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM9 7c-2 0-4 1-4 3v1h8v-1c0-2-2-3-4-3zm-7 3c0-.7.2-1.3.6-1.8A4.9 4.9 0 0 0 2 8v2H0v-.5A2.5 2.5 0 0 1 2 7zm12 0c0-.7-.2-1.3-.6-1.8.4-.2.9-.2 1.3 0 .8.5 1.3 1.2 1.3 2V10h-2V9.5z"/></symbol>
+</svg>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><img src="logo-white.png" alt="London Petro Academy"></a>
+  <ul class="nav-links">
+    <li><a href="upstream.html">Upstream</a></li>
+    <li><a href="downstream.html">Downstream</a></li>
+    <li><a href="renewables.html">Renewables</a></li>
+    <li><a href="inhouse.html">In-House</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+<div id="mob" class="mob" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mob-close" onclick="toggleNav()" aria-label="Close menu">&#x2715;</button>
+  <a href="upstream.html" onclick="toggleNav()">Upstream</a>
+  <a href="downstream.html" onclick="toggleNav()">Downstream</a>
+  <a href="renewables.html" onclick="toggleNav()">Renewables</a>
+  <a href="inhouse.html" onclick="toggleNav()">In-House</a>
+  <a href="about.html" onclick="toggleNav()">About</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="2026 Virtual Training Calendar">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-top">
+    <div class="hero-tag">London Petro Academy · 2026</div>
+    <h1 class="hero-h1">Live <em>Virtual</em> Training</h1>
+    <p class="hero-desc">Renewable Energy & Petroleum Taxation — live online, scheduled across global time zones. Filter, search and secure your place.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">30<span style="color:var(--amber)">+</span></div><div class="stat-label">Sessions</div></div>
+      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Courses</div></div>
+      <div class="stat"><div class="stat-num">15<span style="color:var(--amber)">+</span></div><div class="stat-label">Time Zones</div></div>
+      <div class="stat"><div class="stat-num">7<span style="color:var(--amber)">+</span></div><div class="stat-label">Min. Group Size</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="mailto:info@londonpetroacademy.co.uk?subject=2026 Virtual Course Enquiry" class="btn-primary">
+        <svg width="14" height="14"><use href="#ico-mail"/></svg> Enquire About a Course
+      </a>
+      <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="14" height="14"><use href="#ico-teams"/></svg> Book a Teams Meeting
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGE BANNER -->
+<div class="lang-banner"><strong>All our Renewable Energy courses are available in Spanish, French, German and English!</strong> Contact us for more details.</div>
+
+<!-- FILTER + SEARCH BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="search-wrap">
+      <svg class="search-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="courseSearch" class="search-input" placeholder="Search courses, topics, time zones..." oninput="applyFilter()" aria-label="Search courses">
+      <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear">&#x2715;</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group">
+      <span class="filter-group-label">Topic</span>
+      <div class="f-btns">
+        <button class="f-btn active" onclick="filterCat(this,'all')">All Courses</button>
+        <button class="f-btn cat-renewables" onclick="filterCat(this,'renewables')">Renewable Energy</button>
+        <button class="f-btn cat-taxation" onclick="filterCat(this,'taxation')">Petroleum Taxation</button>
+      </div>
+    </div>
+    <div class="filter-results" id="filterResults"></div>
+  </div>
+</div>
+
+<!-- MONTH NAV (desktop tabs + mobile select) -->
+<div class="month-nav-wrap">
+  <div class="month-nav">
+    <div class="month-tabs" id="monthTabs">
+      <button class="m-tab past" data-month="jan" onclick="jumpMonth('jan')">January</button>
+      <button class="m-tab past" data-month="feb" onclick="jumpMonth('feb')">February</button>
+      <button class="m-tab past" data-month="mar" onclick="jumpMonth('mar')">March</button>
+      <button class="m-tab past" data-month="apr" onclick="jumpMonth('apr')">April</button>
+      <button class="m-tab past" data-month="may" onclick="jumpMonth('may')">May</button>
+      <button class="m-tab past" data-month="jun" onclick="jumpMonth('jun')">June</button>
+      <button class="m-tab" data-month="jul" onclick="jumpMonth('jul')">July</button>
+      <button class="m-tab" data-month="aug" onclick="jumpMonth('aug')">August</button>
+      <button class="m-tab" data-month="sep" onclick="jumpMonth('sep')">September</button>
+      <button class="m-tab" data-month="oct" onclick="jumpMonth('oct')">October</button>
+      <button class="m-tab" data-month="nov" onclick="jumpMonth('nov')">November</button>
+      <button class="m-tab" data-month="dec" onclick="jumpMonth('dec')">December</button>
+    </div>
+    <div class="month-select-wrap">
+      <select class="month-select" onchange="jumpMonth(this.value)">
+        <option value="jan">January 2026</option>
+        <option value="feb">February 2026</option>
+        <option value="mar">March 2026</option>
+        <option value="apr">April 2026</option>
+        <option value="may">May 2026</option>
+        <option value="jun">June 2026</option>
+        <option value="jul" selected>July 2026</option>
+        <option value="aug">August 2026</option>
+        <option value="sep">September 2026</option>
+        <option value="oct">October 2026</option>
+        <option value="nov">November 2026</option>
+        <option value="dec">December 2026</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR CONTENT -->
+<main class="cal-wrap" id="calMain"></main>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>Found a course?</strong> Our team responds within 24 hours.</div>
+  <div class="sticky-cta-btns">
+    <a href="mailto:info@londonpetroacademy.co.uk?subject=2026 Course Enquiry" class="btn-primary" style="padding:8px 16px;font-size:12px;">
+      <svg width="12" height="12"><use href="#ico-mail"/></svg> Enquire Now
+    </a>
+    <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener" class="btn-secondary" style="padding:8px 16px;font-size:12px;">Book a Meeting</a>
+  </div>
+  <button class="sticky-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="cal-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo-dark.png" alt="London Petro Academy" style="height:30px;">
+      <p>World-leading oil, gas and renewable energy training provider. Headquartered in London, delivering programmes in 20+ cities worldwide.</p>
+      <p style="margin-top:10px;"><a href="mailto:info@londonpetroacademy.co.uk" style="color:var(--amber);">info@londonpetroacademy.co.uk</a><br><a href="tel:+441582516247" style="color:var(--ink-mid);">+44 (0) 1582 516247</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Training Areas</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="renewables.html">Renewable Energy</a></li>
+        <li><a href="upstream.html">Upstream &amp; Midstream</a></li>
+        <li><a href="calendar-2026.html">Classroom Calendar</a></li>
+        <li><a href="virtual-calendar-2026.html">Virtual Calendar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Key Time Zones</h4>
+      <ul>
+        <li><a href="virtual-calendar-2026.html">London (GMT)</a></li>
+        <li><a href="virtual-calendar-2026.html">Singapore</a></li>
+        <li><a href="virtual-calendar-2026.html">Dubai</a></li>
+        <li><a href="virtual-calendar-2026.html">Houston (CT)</a></li>
+        <li><a href="virtual-calendar-2026.html">Johannesburg</a></li>
+        <li><a href="virtual-calendar-2026.html">Sydney</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="mailto:info@londonpetroacademy.co.uk">Email Us</a></li>
+        <li><a href="tel:+441582516247">Call Us</a></li>
+        <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener">Book a Meeting</a></li>
+        <li><a href="mailto:j.rogus@londonpetroacademy.co.uk">In-House Enquiry</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 London Petro Academy Limited. All rights reserved.</p>
+    <p>207 Regent Street, London, United Kingdom</p>
+  </div>
+</footer>
+
+<script>
+// ── CALENDAR DATA ──
+const SESSIONS = [
+  // JANUARY
+  {month:'jan',cat:'renewables',title:'Renewable Energy Economics & Finance',dates:'5–7 Jan 2026',tz:'Singapore Time',time:'9:00 AM – 5:00 PM',days:'3 Days',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
+  // FEBRUARY
+  {month:'feb',cat:'renewables',title:'Solar Power Finance',dates:'2–3 Feb 2026',tz:'Singapore Time',time:'9:00 AM – 5:00 PM',days:'2 Days',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
+  {month:'feb',cat:'taxation',title:'Economic Analysis, Design & Modelling of Petroleum Fiscal Regimes',dates:'9–11 Feb 2026',tz:'Chicago, USA (CST)',time:'9:00 AM – 5:00 PM',days:'3 Days',url:'course-world-fiscal-systems-unconventional.html',tag:'Petroleum Taxation'},
+  // MARCH
+  {month:'mar',cat:'renewables',title:'Solar Power Finance',dates:'2–3 Mar 2026',tz:'Pacific Time',time:'9:00 AM – 5:00 PM',days:'2 Days',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
+  {month:'mar',cat:'taxation',title:'World Fiscal Systems for Oil & Gas',dates:'9–13 Mar 2026',tz:'London, UK (GMT)',time:'10:00 AM – 6:00 PM',days:'5 Days',url:'course-energy-transition-fiscal-systems.html',tag:'Petroleum Taxation'},
+  {month:'mar',cat:'renewables',title:'Hydrogen Technology, Economics & Business Models',dates:'16–19 Mar 2026',tz:'Houston, USA (CT)',time:'8:00 AM – 1:00 PM',days:'4 Days',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
+  // APRIL
+  {month:'apr',cat:'taxation',title:'World Fiscal Systems for Oil & Gas',dates:'6–10 Apr 2026',tz:'Rio de Janeiro (BRT)',time:'9:00 AM – 5:00 PM',days:'5 Days',url:'course-energy-transition-fiscal-systems.html',tag:'Petroleum Taxation'},
+  {month:'apr',cat:'renewables',title:'Battery Economics & Business Models',dates:'13–14 Apr 2026',tz:'Seoul, South Korea',time:'10:00 AM – 4:00 PM',days:'2 Days',url:'course-battery-economics-business-models.html',tag:'Renewable Energy'},
+  {month:'apr',cat:'renewables',title:'IPPs Power Project Contracts',dates:'20–22 Apr 2026',tz:'Dubai, UAE',time:'9:00 AM – 3:00 PM',days:'3 Days',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
+  {month:'apr',cat:'renewables',title:'Corporate Power Purchase Agreements',dates:'27–29 Apr 2026',tz:'San Francisco, USA',time:'7:00 AM – 1:00 PM',days:'3 Days',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
+  // MAY
+  {month:'may',cat:'renewables',title:'IPPs Power Project Finance',dates:'4–6 May 2026',tz:'Dubai, UAE',time:'9:00 AM – 3:00 PM',days:'3 Days',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
+  {month:'may',cat:'renewables',title:'IPPs & Power Purchase Agreements',dates:'11–14 May 2026',tz:'Dubai, UAE',time:'9:00 AM – 3:00 PM',days:'4 Days',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
+  {month:'may',cat:'renewables',title:'Mini MBA Renewable Energy Auctions',dates:'18–22 May 2026',tz:'Sydney, Australia',time:'9:00 AM – 3:00 PM',days:'5 Days',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
+  {month:'may',cat:'renewables',title:'Hydrogen Technology, Economics & Business Models',dates:'25–28 May 2026',tz:'Amsterdam, Netherlands',time:'9:00 AM – 3:00 PM',days:'4 Days',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
+  // JUNE
+  {month:'jun',cat:'renewables',title:'Mini MBA Renewable Energy Auctions',dates:'1–5 Jun 2026',tz:'Berlin, Germany',time:'9:00 AM – 3:00 PM',days:'5 Days',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
+  {month:'jun',cat:'renewables',title:'Battery Economics & Business Models',dates:'15–16 Jun 2026',tz:'San Francisco, USA',time:'7:00 AM – 1:00 PM',days:'2 Days',url:'course-battery-economics-business-models.html',tag:'Renewable Energy'},
+  {month:'jun',cat:'renewables',title:'IPPs Power Project Contracts',dates:'22–24 Jun 2026',tz:'London, UK',time:'9:00 AM – 3:00 PM',days:'3 Days',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
+  {month:'jun',cat:'renewables',title:'Mini MBA – Renewable Energy Auctions',dates:'29 Jun – 3 Jul 2026',tz:'London, UK',time:'9:00 AM – 3:00 PM',days:'5 Days',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
+  // JULY
+  {month:'jul',cat:'renewables',title:'Corporate Power Purchase Agreements',dates:'6–8 Jul 2026',tz:'London, UK',time:'9:00 AM – 3:00 PM',days:'3 Days',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
+  {month:'jul',cat:'renewables',title:'IPPs Power Project Finance',dates:'13–15 Jul 2026',tz:'London, UK',time:'9:00 AM – 3:00 PM',days:'3 Days',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
+  {month:'jul',cat:'renewables',title:'IPPs & Power Purchase Agreements',dates:'20–23 Jul 2026',tz:'London, UK',time:'9:00 AM – 3:00 PM',days:'4 Days',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
+  // AUGUST
+  {month:'aug',cat:'renewables',title:'Hydrogen Technology, Economics & Business Models',dates:'10–13 Aug 2026',tz:'Seoul, South Korea',time:'10:00 AM – 4:00 PM',days:'4 Days',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
+  // SEPTEMBER
+  {month:'sep',cat:'renewables',title:'Renewable Energy Economics & Finance',dates:'7–9 Sep 2026',tz:'Central European Time',time:'9:00 AM – 5:00 PM',days:'3 Days',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
+  {month:'sep',cat:'renewables',title:'Battery Economics & Business Models',dates:'28–29 Sep 2026',tz:'Madrid, Spain',time:'9:00 AM – 1:00 PM',days:'2 Days',url:'course-battery-economics-business-models.html',tag:'Renewable Energy'},
+  // OCTOBER
+  {month:'oct',cat:'renewables',title:'IPPs Power Project Contracts',dates:'5–7 Oct 2026',tz:'Johannesburg, South Africa',time:'9:00 AM – 1:00 PM',days:'3 Days',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
+  {month:'oct',cat:'renewables',title:'Corporate Power Purchase Agreements',dates:'12–14 Oct 2026',tz:'Johannesburg, South Africa',time:'9:00 AM – 1:00 PM',days:'3 Days',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
+  {month:'oct',cat:'renewables',title:'IPPs Power Project Finance',dates:'19–21 Oct 2026',tz:'Johannesburg, South Africa',time:'9:00 AM – 1:00 PM',days:'3 Days',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
+  // NOVEMBER
+  {month:'nov',cat:'renewables',title:'IPPs & Power Purchase Agreements',dates:'2–5 Nov 2026',tz:'Johannesburg, South Africa',time:'9:00 AM – 1:00 PM',days:'4 Days',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
+  {month:'nov',cat:'renewables',title:'Renewable Energy Economics & Finance',dates:'16–18 Nov 2026',tz:'Pacific Standard Time',time:'9:00 AM – 5:00 PM',days:'3 Days',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
+  {month:'nov',cat:'renewables',title:'Solar Power Finance',dates:'23–24 Nov 2026',tz:'Central European Time',time:'9:00 AM – 5:00 PM',days:'2 Days',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
+  // DECEMBER — no sessions currently scheduled
+];
+
+const MONTHS = [
+  {id:'jan',name:'January'},  {id:'feb',name:'February'}, {id:'mar',name:'March'},
+  {id:'apr',name:'April'},    {id:'may',name:'May'},       {id:'jun',name:'June'},
+  {id:'jul',name:'July'},     {id:'aug',name:'August'},    {id:'sep',name:'September'},
+  {id:'oct',name:'October'},  {id:'nov',name:'November'},  {id:'dec',name:'December'}
+];
+
+const CTA_AFTER = ['apr','aug']; // months after which a CTA banner appears
+
+// ── RENDER CARDS ──
+function cardHTML(s){
+  const subj = encodeURIComponent('Virtual Enquiry — ' + s.title + ' — ' + s.dates + ' (' + s.tz + ')');
+  return `<div class="session-card cat-${s.cat}" data-month="${s.month}">
+  <span class="card-cat">${s.tag}</span>
+  <div class="card-title">${s.title}</div>
+  <div class="card-meta">
+    <span class="card-meta-item"><svg width="12" height="12"><use href="#ico-cal"/></svg><span class="card-date">${s.dates}</span></span>
+    <span class="card-meta-item"><svg width="12" height="12"><use href="#ico-pin"/></svg>${s.tz}</span>
+    <span class="card-meta-item"><svg width="12" height="12"><use href="#ico-teams"/></svg>${s.time}</span>
+    <span class="card-format">${s.days}</span>
+  </div>
+  <div class="card-footer">
+    <a href="mailto:info@londonpetroacademy.co.uk?subject=${subj}" class="card-enquire">Enquire <svg width="12" height="12"><use href="#ico-arrow"/></svg></a>
+    <a href="${s.url}" class="card-view">View Course →</a>
+  </div>
+</div>`;
+}
+
+function ctaBannerHTML(type){
+  if(type==='group') return `<div class="cta-banner">
+  <div class="cta-banner-text">
+    <h3>Dates don't work? We can <em>fix that.</em></h3>
+    <p>With a minimum of 7 participants, we'll arrange any virtual course at a time zone that best suits your team.</p>
+  </div>
+  <div class="cta-banner-btns">
+    <a href="mailto:info@londonpetroacademy.co.uk?subject=Group Booking Enquiry — Virtual 2026" class="btn-primary"><svg width="13" height="13"><use href="#ico-mail"/></svg> Email Us</a>
+    <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener" class="btn-secondary"><svg width="13" height="13"><use href="#ico-teams"/></svg> Book a Meeting</a>
+  </div>
+</div>`;
+  return `<div class="cta-banner">
+  <div class="cta-banner-text">
+    <h3>Need an <em>in-house solution?</em></h3>
+    <p>All LPA courses are available for in-house virtual delivery, fully customised to your team's needs and time zone.</p>
+  </div>
+  <div class="cta-banner-btns">
+    <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House Virtual Training Enquiry 2026" class="btn-primary"><svg width="13" height="13"><use href="#ico-mail"/></svg> Request In-House</a>
+    <a href="tel:+441582516247" class="btn-secondary"><svg width="13" height="13"><use href="#ico-phone"/></svg> +44 (0)1582 516247</a>
+  </div>
+</div>`;
+}
+
+function inhouseHTML(){
+  return `<div class="inhouse-section">
+  <h2>Dates not <em>convenient?</em></h2>
+  <p>We offer flexible scheduling to meet your needs. All courses are also available for in-house delivery, customised to your specific requirements.</p>
+  <div class="inhouse-cards">
+    <div class="inhouse-card"><div class="inhouse-card-icon">🌐</div><h4>Any Time Zone</h4><p>With a minimum of 7 participants, we can arrange any virtual course at a time zone that best suits your team.</p></div>
+    <div class="inhouse-card"><div class="inhouse-card-icon">🎯</div><h4>Custom Programmes</h4><p>All courses are available for in-house delivery and can be customised to meet your specific needs.</p></div>
+    <div class="inhouse-card"><div class="inhouse-card-icon">👥</div><h4>Larger Groups</h4><p>Have a larger group? Contact us to discuss your training requirements with our experts.</p></div>
+  </div>
+  <div class="inhouse-btns">
+    <a href="mailto:info@londonpetroacademy.co.uk?subject=In-House Virtual Training Enquiry 2026" class="btn-primary"><svg width="13" height="13"><use href="#ico-mail"/></svg> Email Us</a>
+    <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener" class="btn-secondary"><svg width="13" height="13"><use href="#ico-teams"/></svg> Book a Meeting</a>
+    <a href="tel:+441582516247" class="btn-secondary"><svg width="13" height="13"><use href="#ico-phone"/></svg> +44 (0)1582 516247</a>
+  </div>
+</div>`;
+}
+
+// ── BUILD DOM ──
+function buildCalendar(){
+  const main = document.getElementById('calMain');
+  let html = '';
+  MONTHS.forEach((m, idx) => {
+    const sessions = SESSIONS.filter(s=>s.month===m.id);
+    html += `<section class="month-block" id="month-${m.id}" data-month="${m.id}">
+  <div class="month-header">
+    <h2 class="month-name"><em>${m.name}</em> 2026</h2>
+    <span class="month-count">${sessions.length} session${sessions.length!==1?'s':''}</span>
+  </div>
+  <div class="sessions-grid" id="grid-${m.id}">
+    ${sessions.map(cardHTML).join('\n    ')}
+  </div>
+</section>`;
+    if(CTA_AFTER.includes(m.id) && m.id==='apr') html += ctaBannerHTML('group');
+    if(CTA_AFTER.includes(m.id) && m.id==='aug') html += ctaBannerHTML('inhouse');
+  });
+  html += inhouseHTML();
+  main.innerHTML = html;
+}
+
+// ── FILTER ──
+let activeFilter = 'all';
+function clearSearch(){
+  const inp=document.getElementById('courseSearch');
+  if(inp)inp.value='';
+  const clr=document.getElementById('searchClear');
+  if(clr)clr.classList.remove('visible');
+  applyFilter();
+}
+function filterCat(btn, filter){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = filter;
+  applyFilter();
+}
+function applyFilter(){
+  const q=(document.getElementById('courseSearch')?.value||'').toLowerCase().trim();
+  const clr=document.getElementById('searchClear');
+  if(clr)clr.classList.toggle('visible',q.length>0);
+  let total=0;
+  document.querySelectorAll('.session-card').forEach(card=>{
+    const catMatch =
+      activeFilter==='all' ||
+      (activeFilter==='renewables' && card.classList.contains('cat-renewables')) ||
+      (activeFilter==='taxation'   && card.classList.contains('cat-taxation'));
+    const text=((card.querySelector('.card-title')?.textContent||'')+' '+(card.querySelector('.card-meta')?.textContent||'')).toLowerCase();
+    const searchMatch=!q||text.includes(q);
+    const show=catMatch&&searchMatch;
+    card.classList.toggle('hidden',!show);
+    if(show)total++;
+  });
+  const res=document.getElementById('filterResults');
+  if(res)res.textContent=total+(total===1?' course':' courses')+' found';
+  // update counts + hide empty months
+  document.querySelectorAll('.month-block').forEach(block=>{
+    const vis = block.querySelectorAll('.session-card:not(.hidden)').length;
+    const c = block.querySelector('.month-count');
+    if(c) c.textContent = vis + (vis===1?' session':' sessions');
+    block.classList.toggle('hidden', !block.querySelector('.sessions-grid') ? false : vis===0);
+  });
+  // Show empty message if all hidden
+  const anyVis = document.querySelectorAll('.month-block:not(.hidden)').length;
+  let emp = document.getElementById('emptyState');
+  if(!anyVis){
+    if(!emp){
+      emp = document.createElement('div');
+      emp.id='emptyState';
+      emp.className='empty-state';
+      emp.innerHTML='<h3>No sessions match this filter</h3><p>Try a different category or <a href="mailto:info@londonpetroacademy.co.uk" style="color:var(--amber)">contact us</a> — we can arrange a session on request.</p>';
+      document.getElementById('calMain').prepend(emp);
+    }
+    emp.style.display='block';
+  } else if(emp) emp.style.display='none';
+}
+
+// ── MONTH JUMP ──
+function jumpMonth(m){
+  const el = document.getElementById('month-'+m);
+  if(!el) return;
+  el.classList.remove('hidden');
+  const offset = 180;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({top, behavior:'smooth'});
+  setActiveTab(m);
+  // sync select
+  const sel = document.querySelector('.month-select');
+  if(sel) sel.value = m;
+}
+
+function setActiveTab(m){
+  document.querySelectorAll('.m-tab').forEach(t=>t.classList.remove('active'));
+  const tab = document.querySelector(`.m-tab[data-month="${m}"]`);
+  if(tab) tab.classList.add('active');
+}
+
+// ── SCROLL SPY ──
+const SCROLL_OFFSET = 200;
+window.addEventListener('scroll',()=>{
+  const ids = MONTHS.map(m=>m.id);
+  let current = null;
+  for(const id of ids){
+    const el=document.getElementById('month-'+id);
+    if(!el||el.classList.contains('hidden')) continue;
+    if(el.getBoundingClientRect().top <= SCROLL_OFFSET) current=id;
+  }
+  if(current) setActiveTab(current);
+  // sticky CTA
+  if(window.scrollY>500) document.getElementById('stickyCta').classList.add('visible');
+},{passive:true});
+
+// ── NAV ──
+function toggleNav(){document.getElementById('mob').classList.toggle('open');document.body.style.overflow=document.getElementById('mob').classList.contains('open')?'hidden':'';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('mob').classList.contains('open'))toggleNav();});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  buildCalendar();
+  // Mark past months
+  const now = new Date();
+  const monthNames=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  const curIdx = now.getMonth(); // dynamically detects current month
+  monthNames.forEach((m,i)=>{
+    if(i < curIdx){
+      const tab = document.querySelector(`.m-tab[data-month="${m}"]`);
+      if(tab) tab.classList.add('past');
+    }
+  });
+  // Scroll to current month
+  setTimeout(()=>{
+    const cur = monthNames[curIdx];
+    jumpMonth(cur);
+  }, 200);
+});
+</script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function chk(){if(nav)nav.classList.toggle('scrolled',window.pageYOffset>80);}
+  window.addEventListener('scroll',chk,{passive:true});
+  chk();
+})();
+</script>
+</body>
+</html>
