@@ -1561,7 +1561,7 @@ footer::before {
         <h3 class="del-card-title">Remote <em>Live</em> Courses</h3>
         <div class="del-card-rule"></div>
         <p class="del-card-desc">Live instructor-led sessions across multiple time zones. Fully interactive with real-time Q&amp;A. Flexible scheduling available for your team.</p>
-        <a href="upstream.html" class="del-card-link">View Schedule</a>
+        <a href="javascript:void(0)" onclick="openVirtualCalModal()" class="del-card-link">View Schedule</a>
       </div>
     </div>
     <div class="del-card reveal">
@@ -2115,6 +2115,54 @@ footer::before {
   </div>
 </div>
 
+<!-- ── VIRTUAL CALENDAR ACCESS MODAL ── -->
+<div class="cal-modal-overlay" id="virtualCalDlOverlay" role="dialog" aria-modal="true" aria-labelledby="virtualCalDlTitle">
+  <div class="cal-modal">
+    <div class="cal-modal-head">
+      <div>
+        <div class="cal-modal-title" id="virtualCalDlTitle">Access the <em>2026 Virtual Training Calendar</em></div>
+        <div class="cal-modal-sub">30+ live online sessions — instant access</div>
+      </div>
+      <button class="cal-modal-close" onclick="closeVirtualCalModal()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="cal-modal-body">
+      <div id="virtualCalDlForm">
+        <div class="cal-field-row">
+          <div class="cal-field">
+            <label for="virtualCalFirstName">First Name *</label>
+            <input type="text" id="virtualCalFirstName" name="first_name" placeholder="Jane" required>
+          </div>
+          <div class="cal-field">
+            <label for="virtualCalLastName">Last Name *</label>
+            <input type="text" id="virtualCalLastName" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="cal-field">
+          <label for="virtualCalEmail">Work Email *</label>
+          <input type="email" id="virtualCalEmail" name="email" placeholder="jane.smith@company.com" required>
+        </div>
+        <div class="cal-field">
+          <label for="virtualCalOrg">Organisation</label>
+          <input type="text" id="virtualCalOrg" name="organisation" placeholder="Company name">
+        </div>
+        <div class="cal-field">
+          <label for="virtualCalPhone">Phone Number</label>
+          <input type="tel" id="virtualCalPhone" name="phone" placeholder="+44 7700 000000">
+        </div>
+        <button class="cal-modal-submit" id="virtualCalDlSubmit" onclick="submitVirtualCalDownload()">
+          Access the Virtual Calendar →
+        </button>
+        <div class="cal-modal-note">We will not share your details with third parties.</div>
+      </div>
+      <div id="virtualCalDlSuccess" style="display:none;text-align:center;padding:20px 0;">
+        <div style="font-size:40px;margin-bottom:12px;">✓</div>
+        <div style="font-family:'Barlow',sans-serif;font-size:20px;color:#111;margin-bottom:8px;">Redirecting you now…</div>
+        <div style="font-size:13px;color:#888;font-family:'Barlow',sans-serif;">Opening the Virtual Training Calendar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -2126,17 +2174,30 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlOverlay').classList.remove('open');
     document.body.style.overflow='';
   }
+  function openVirtualCalModal(){
+    document.getElementById('virtualCalDlOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeVirtualCalModal(){
+    document.getElementById('virtualCalDlOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
 
   document.getElementById('calDlOverlay').addEventListener('click',function(e){
     if(e.target===this) closeCalModal();
   });
+  document.getElementById('virtualCalDlOverlay').addEventListener('click',function(e){
+    if(e.target===this) closeVirtualCalModal();
+  });
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape') closeCalModal();
+    if(e.key==='Escape'){ closeCalModal(); closeVirtualCalModal(); }
   });
 
   // Expose to onclick attributes
   window.openCalModal  = openCalModal;
   window.closeCalModal = closeCalModal;
+  window.openVirtualCalModal  = openVirtualCalModal;
+  window.closeVirtualCalModal = closeVirtualCalModal;
 
   window.submitCalDownload = function(){
     var fn  = document.getElementById('calFirstName').value.trim();
@@ -2163,6 +2224,33 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
+  };
+
+  window.submitVirtualCalDownload = function(){
+    var fn  = document.getElementById('virtualCalFirstName').value.trim();
+    var ln  = document.getElementById('virtualCalLastName').value.trim();
+    var em  = document.getElementById('virtualCalEmail').value.trim();
+    var org = document.getElementById('virtualCalOrg').value.trim();
+    var ph  = document.getElementById('virtualCalPhone').value.trim();
+    if(!fn||!ln||!em){ alert('Please fill in your name and email.'); return; }
+    var btn = document.getElementById('virtualCalDlSubmit');
+    btn.disabled = true;
+    btn.textContent = 'One moment…';
+    // Reuses the same proven calendar-download webhook; src is tagged so
+    // the team can distinguish virtual-calendar requests in the sheet.
+    var qs = [
+      'fn='  + encodeURIComponent(fn),
+      'ln='  + encodeURIComponent(ln),
+      'em='  + encodeURIComponent(em),
+      'ph='  + encodeURIComponent(ph),
+      'src=' + encodeURIComponent('Virtual Calendar Request — ' + window.location.href)
+    ].join('&');
+    fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
+      method:'GET', mode:'no-cors'
+    }).catch(function(){});
+    document.getElementById('virtualCalDlForm').style.display = 'none';
+    document.getElementById('virtualCalDlSuccess').style.display = 'block';
+    setTimeout(function(){ window.location.href = 'virtual-calendar-2026.html'; }, 1200);
   };
 
 });
