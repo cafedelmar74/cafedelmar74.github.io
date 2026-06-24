@@ -496,10 +496,8 @@ nav.scrolled .hamburger span { background: #2c2825; }
 @keyframes logoScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .trust-track { animation: none; }
-}
+}@media (prefers-reduced-motion: reduce){
+  .trust-track { animation: none; }}
 
 /* ─── DELIVERY FORMATS (moved up before about) ─── */
 /* ─── DELIVERY FORMATS ─── */
@@ -1048,150 +1046,13 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .eq-note { font-size: 11px; color: var(--grey-mid); margin-top: 10px; text-align: center; }
 .form-urgency { display: none; }
 
-/* ─── FOOTER ─── */
-footer {
-  background: #0c0a08;
-  position: relative;
-  overflow: hidden;
-}
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,106,30,0.5), transparent);
-}
-.foot-top {
-  padding: 80px 60px 60px;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: 64px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.foot-brand {}
-.foot-logo { text-decoration: none; display: block; margin-bottom: 24px; }
-.foot-logo img { height: 48px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; }
-.foot-tagline {
-  font-size: 14px; color: rgba(255,255,255,0.4);
-  line-height: 1.8; max-width: 280px;
-  margin-bottom: 32px; font-weight: 300;
-}
-.foot-contact { display: flex; flex-direction: column; gap: 12px; }
-.foot-contact a, .foot-contact span {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 13px; color: rgba(255,255,255,0.45);
-  text-decoration: none; transition: color 0.2s;
-}
-.foot-contact a:hover { color: var(--orange); }
-.foot-contact-icon {
-  width: 30px; height: 30px; flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; color: var(--orange);
-}
-.foot-col {}
-.foot-col h4 {
-  font-family: var(--font-cond);
-  font-size: 11px; letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.foot-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.foot-links a {
-  font-size: 14px; color: rgba(255,255,255,0.45);
-  text-decoration: none; font-weight: 300;
-  transition: color 0.2s;
-  display: flex; align-items: center; gap: 8px;
-}
-.foot-links a::before {
-  content: '';
-  width: 0; height: 1px;
-  background: var(--orange);
-  transition: width 0.25s ease;
-  flex-shrink: 0;
-}
-.foot-links a:hover { color: #fff; }
-.foot-links a:hover::before { width: 12px; }
-/* Mid bar — orange accent strip */
-.foot-mid {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 28px 60px;
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  flex-wrap: wrap;
-}
-.foot-mid-label {
-  font-family: var(--font-cond); font-size: 10px;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
-}
-.foot-mid-items {
-  display: flex; gap: 32px; flex-wrap: wrap;
-}
-.foot-mid-item {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-cond); font-size: 11px;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-}
-.foot-mid-item::before {
-  content: '';
-  width: 4px; height: 4px;
-  background: var(--orange);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-/* Bottom bar */
-.footer-bottom {
-  padding: 24px 60px;
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.foot-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
-.foot-copy a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-.foot-copy a:hover { color: var(--orange); }
-.foot-social { display: flex; gap: 10px; }
-.foot-social a {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.35); text-decoration: none;
-  font-size: 13px; font-weight: 600;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
-}
-.foot-social a:hover { border-color: var(--orange); color: var(--orange); background: rgba(201,106,30,0.08); }
-/* Footer responsive */
-@media(max-width: 1024px) {
-  .foot-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-}
-@media(max-width: 768px) {
-  .foot-top { grid-template-columns: 1fr; padding: 56px 24px 40px; gap: 36px; }
-  .foot-mid { padding: 24px; gap: 16px; }
-  .footer-bottom { padding: 20px 24px; flex-direction: column; text-align: center; }
-}
-
 /* ─── SCROLL REVEAL ─── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.show { opacity: 1; transform: translateY(0); }
 .reveal:nth-child(2) { transition-delay: 0.1s; }
 .reveal:nth-child(3) { transition-delay: 0.2s; }
-.reveal:nth-child(4) { transition-delay: 0.3s; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1100px) {
+.reveal:nth-child(4) { transition-delay: 0.3s; }/* ─── RESPONSIVE ─── */
+@media (max-width: 1100px){
   .hero-selector { grid-template-columns: 1fr; }
   .hero-panel { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 32px 40px; }
   .hero-panel:last-child { border-bottom: none; }
@@ -1201,13 +1062,10 @@ footer::before {
   .del-card { min-height: 420px; }
   .del-card-title { font-size: 28px; }
   .testi-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .cta-banner { grid-template-columns: 1fr; }
   .cta-banner-right { min-height: 320px; }
   .cta-banner-left { padding: 64px 28px; }
-  .enquiry-cta { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
+  .enquiry-cta { grid-template-columns: 1fr; }}@media (max-width: 768px){
   nav { padding: 0 24px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
@@ -1220,32 +1078,22 @@ footer::before {
   .cta-banner,
   .eq-left { padding: 64px 28px; }
   .eq-right { padding: 56px 28px; }
-  footer { padding: 60px 24px 32px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .testi-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: 1fr; }
   .stat-box { border-right: none; border-bottom: 1px solid var(--border); }
   .stat-box:last-child { border-bottom: none; }
   .trust-inner { gap: 32px; }
   .trust-logos { gap: 32px; }
-  .eq-form-row { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
+  .eq-form-row { grid-template-columns: 1fr; }}@media (prefers-reduced-motion: reduce){
   .reveal { transition: none; opacity: 1; transform: none; }
-  .ticker-inner { animation: none; }
-}
-@media (max-width: 768px) {
+  .ticker-inner { animation: none; }}@media (max-width: 768px){
   .trust {
     padding-top: 16px;
     padding-bottom: 18px;
-  }
-}
-
-@media (max-width: 768px) {
+  }}@media (max-width: 768px){
   .hero-desc {
     margin-bottom: 24px;
-  }
-}
+  }}
 
 
 /* ════════════════════════════════════════
@@ -1289,9 +1137,7 @@ footer::before {
 .trust::before { background: linear-gradient(to right, rgba(7,10,15,0.9), transparent) !important; }
 .trust::after  { background: linear-gradient(to left,  rgba(7,10,15,0.9), transparent) !important; }
 .trust-label { color: rgba(255,255,255,0.5) !important; }
-.trust-logos img { filter: brightness(0) invert(1) !important; opacity: 0.45 !important; }
-
-@media (max-width: 768px) {
+.trust-logos img { filter: brightness(0) invert(1) !important; opacity: 0.45 !important; }@media (max-width: 768px){
   .hero-cta-btn { width: 100%; text-align: center; padding: 18px 20px; display: block; }
   .stats-bar .stats-row { grid-template-columns: 1fr 1fr; }
   .stat-box { padding: 32px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -1304,8 +1150,7 @@ footer::before {
   .impact-n { font-size: 36px; }
   .stats-bar { padding: 48px 24px; }
   .why-lpa { padding: 72px 24px; }
-  .impact-band { padding: 48px 24px; }
-}
+  .impact-band { padding: 48px 24px; }}
 /* ── CALENDAR DOWNLOAD MODAL ── */
 .cal-modal-overlay{display:none;position:fixed;inset:0;z-index:99000;background:rgba(10,11,13,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
 .cal-modal-overlay.open{display:flex;}
@@ -1326,9 +1171,31 @@ footer::before {
 .cal-modal-submit{width:100%;padding:15px;background:#c8873a;color:#fff;border:none;font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px;}
 .cal-modal-submit:hover{background:#b8772a;}
 .cal-modal-submit:disabled{background:#ccc;cursor:not-allowed;}
-.cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}
-@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}
+.cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}
 
+/* ── MASTER FOOTER (site-wide, do not customize per-page) ── */
+footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72px 60px 36px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px;}
+.fl{text-decoration:none;display:block;margin-bottom:14px;}
+.fl img{height:44px;width:auto;max-width:260px;object-fit:contain;opacity:.9;display:block;}
+.ft{font-size:13px;color:#7a7f88;line-height:1.7;margin-top:14px;max-width:300px;font-weight:300;}
+.fc{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.fc a,.fc span{font-size:13px;color:#7a7f88;display:flex;align-items:center;gap:8px;transition:color .2s;text-decoration:none;}
+.fc a:hover{color:#c8873a;}
+.fc svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
+.fcol h4{font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7a7f88;margin-bottom:18px;}
+.flinks{list-style:none;}
+.flinks li{margin-bottom:10px;}
+.flinks a{font-size:14px;color:#7a7f88;text-decoration:none;font-weight:300;transition:color .2s;}
+.flinks a:hover{color:#c8873a;}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.fcopy{font-size:12px;color:#7a7f88;}
+.fsoc{display:flex;gap:16px;}
+.fsoc a{font-size:13px;color:#7a7f88;transition:color .2s;}
+.fsoc a:hover{color:#c8873a;}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:768px){footer{padding:48px 24px 28px;}.fg{grid-template-columns:1fr;}}
+/* ── END MASTER FOOTER ── */
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
@@ -1850,57 +1717,37 @@ footer::before {
   FOOTER
 ════════════════════════════════════════════ -->
 <footer>
-
-  <!-- Main grid -->
-  <div class="foot-top">
-    <div class="foot-brand">
-      <a href="index.html" class="foot-logo"><img src="logo-white.png" alt="London Petro Academy" loading="lazy"></a>
-      <p class="foot-tagline">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide since 2015.</p>
-      <div class="foot-contact">
-        <a href="tel:+441582516247">
-          <span class="foot-contact-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
-          </span>
-          +44 (0) 1582 516247
-        </a>
-        <a href="mailto:info@londonpetroacademy.co.uk">
-          <span class="foot-contact-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </span>
-          info@londonpetroacademy.co.uk
-        </a>
-        <span>
-          <span class="foot-contact-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          </span>
-          207 Regent Street, London W1B 3HH
-        </span>
+  <div class="fg">
+    <div>
+      <a href="index.html" class="fl"><img src="logo-white.png" alt="London Petro Academy" loading="lazy"></a>
+      <p class="ft">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide since 2015.</p>
+      <div class="fc">
+        <a href="tel:+441582516247"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>+44 (0) 1582 516247</a>
+        <a href="mailto:info@londonpetroacademy.co.uk"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@londonpetroacademy.co.uk</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>207 Regent Street, London W1B 3HH</span>
       </div>
     </div>
-
-    <div class="foot-col">
-      <h4>Disciplines</h4>
-      <ul class="foot-links">
-        <li><a href="upstream.html">Upstream Petroleum</a></li>
-        <li><a href="downstream.html">Downstream</a></li>
+    <div class="fcol">
+      <h4>Upstream Courses</h4>
+      <ul class="flinks">
+        <li><a href="upstream.html">All Upstream Courses</a></li>
+        <li><a href="course-gas-lng-contracts-negotiations.html">Gas &amp; LNG Contracts</a></li>
+        <li><a href="course-legal-aspects-production-sharing-contracts.html">Legal Aspects of PSCs</a></li>
+        <li><a href="course-brazil-jv.html">JVs in Brazil</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Training Portfolios</h4>
+      <ul class="flinks">
+        <li><a href="upstream.html">Upstream &amp; Midstream</a></li>
+        <li><a href="downstream.html">Downstream &amp; Trading</a></li>
         <li><a href="renewables.html">Renewable Energy</a></li>
-        <li><a href="inhouse.html">In-House Training</a></li>
+        <li><a href="about.html">About LPA</a></li>
       </ul>
     </div>
-
-    <div class="foot-col">
-      <h4>Delivery</h4>
-      <ul class="foot-links">
-        <li><a href="upstream.html">Remote Live</a></li>
-        <li><a href="upstream.html">Classroom</a></li>
-        <li><a href="inhouse.html">In-House</a></li>
-        <li><a href="calendar-2026.html">2026 Calendar</a></li>
-      </ul>
-    </div>
-
-    <div class="foot-col">
+    <div class="fcol">
       <h4>Company</h4>
-      <ul class="foot-links">
+      <ul class="flinks">
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
         <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener">Book a Consultation</a></li>
@@ -1908,33 +1755,13 @@ footer::before {
       </ul>
     </div>
   </div>
-
-  <!-- Delivery locations mid bar -->
-  <div class="foot-mid">
-    <span class="foot-mid-label">Global Delivery</span>
-    <div class="foot-mid-items">
-      <span class="foot-mid-item">London</span>
-      <span class="foot-mid-item">Dubai</span>
-      <span class="foot-mid-item">Singapore</span>
-      <span class="foot-mid-item">Rio de Janeiro</span>
-      <span class="foot-mid-item">Paris</span>
-      <span class="foot-mid-item">Bali</span>
-      <span class="foot-mid-item">Bangkok</span>
-      <span class="foot-mid-item">Amsterdam</span>
-      <span class="foot-mid-item">Istanbul</span>
-      <span class="foot-mid-item">40+ Countries</span>
+  <div class="fbot">
+    <span class="fcopy">© 2026 London Petro Academy Ltd · Registered in England &amp; Wales No. 09875694 · VAT 267 3190 90</span>
+    <div class="fsoc">
+      <a href="https://www.linkedin.com/company/london-petro-academy-limited/" title="LinkedIn" aria-label="LinkedIn">in</a>
+      <a href="https://twitter.com/London_Petro_Ac" title="X" aria-label="X">𝕏</a>
     </div>
   </div>
-
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <span class="foot-copy">© 2026 London Petro Academy Ltd · Registered in England &amp; Wales No. 09875694 · VAT 267 3190 90 · <a href="privacy-policy.html">Privacy Policy</a></span>
-    <div class="foot-social">
-      <a href="https://www.linkedin.com/company/london-petro-academy-limited/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-      <a href="https://twitter.com/LondonPetroAc" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">𝕏</a>
-    </div>
-  </div>
-
 </footer>
 
 <script>

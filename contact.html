@@ -212,35 +212,10 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .faq-q svg{width:18px;height:18px;stroke:var(--amber);fill:none;stroke-width:1.5;flex-shrink:0;transition:transform .3s;}
 .faq-item.open .faq-q svg{transform:rotate(45deg);}
 .faq-a{font-size:14px;color:var(--grey);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding-top:0;}
-.faq-item.open .faq-a{max-height:300px;padding-top:16px;}
-
-/* ── FOOTER ── */
-.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding:64px 60px 48px;max-width:1400px;margin:0 auto;}
-footer{background:#080909;border-top:1px solid var(--line);}
-.fl{display:block;margin-bottom:18px;}
-.fl img{height:40px;width:auto;filter:brightness(0) invert(1);opacity:.9;}
-.ft{font-size:13px;color:var(--grey);font-weight:300;line-height:1.7;margin-bottom:20px;max-width:280px;}
-.fc{display:flex;flex-direction:column;gap:10px;}
-.fc a,.fc span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;}
-.fc a:hover{color:var(--amber);}
-.fc svg{width:14px;height:14px;stroke:var(--amber);fill:none;flex-shrink:0;}
-.fcol h4{font-family:var(--cond);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px;}
-.flinks{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.flinks a{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;font-weight:300;}
-.flinks a:hover{color:var(--amber);}
-.fbot{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;border-top:1px solid var(--line);max-width:1400px;margin:0 auto;}
-.fcopy{font-size:12px;color:rgba(138,143,150,.6);}
-.fsoc{display:flex;gap:16px;}
-.fsoc a{font-size:13px;color:var(--grey);text-decoration:none;transition:color .2s;}
-.fsoc a:hover{color:var(--amber);}
-
-/* ── RESPONSIVE ── */
+.faq-item.open .faq-a{max-height:300px;padding-top:16px;}/* ── RESPONSIVE ── */
 @media(max-width:1024px){
   .contact-grid{grid-template-columns:1fr;gap:56px;}
-  .team-grid{grid-template-columns:1fr 1fr;}
-  .fg{grid-template-columns:1fr 1fr;gap:32px;}
-}
-@media(max-width:768px){
+  .team-grid{grid-template-columns:1fr 1fr;}}@media(max-width:768px){
   nav{padding:0 24px;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
@@ -249,10 +224,31 @@ footer{background:#080909;border-top:1px solid var(--line);}
   .enquiry-form-wrap{padding:32px 24px;}
   .frow.two{grid-template-columns:1fr;}
   .team-section,.faq-section{padding:56px 24px;}
-  .team-grid{grid-template-columns:1fr;}
-  .fg{grid-template-columns:1fr;padding:48px 24px 32px;}
-  .fbot{flex-direction:column;gap:12px;text-align:center;padding:20px 24px;}
-}
+  .team-grid{grid-template-columns:1fr;}}
+
+/* ── MASTER FOOTER (site-wide, do not customize per-page) ── */
+footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72px 60px 36px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px;}
+.fl{text-decoration:none;display:block;margin-bottom:14px;}
+.fl img{height:44px;width:auto;max-width:260px;object-fit:contain;opacity:.9;display:block;}
+.ft{font-size:13px;color:#7a7f88;line-height:1.7;margin-top:14px;max-width:300px;font-weight:300;}
+.fc{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.fc a,.fc span{font-size:13px;color:#7a7f88;display:flex;align-items:center;gap:8px;transition:color .2s;text-decoration:none;}
+.fc a:hover{color:#c8873a;}
+.fc svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
+.fcol h4{font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7a7f88;margin-bottom:18px;}
+.flinks{list-style:none;}
+.flinks li{margin-bottom:10px;}
+.flinks a{font-size:14px;color:#7a7f88;text-decoration:none;font-weight:300;transition:color .2s;}
+.flinks a:hover{color:#c8873a;}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.fcopy{font-size:12px;color:#7a7f88;}
+.fsoc{display:flex;gap:16px;}
+.fsoc a{font-size:13px;color:#7a7f88;transition:color .2s;}
+.fsoc a:hover{color:#c8873a;}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:768px){footer{padding:48px 24px 28px;}.fg{grid-template-columns:1fr;}}
+/* ── END MASTER FOOTER ── */
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">

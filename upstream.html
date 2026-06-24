@@ -687,60 +687,16 @@ h1.hero-title em{font-style:italic;color:var(--amber);}
   font-family:var(--cond);font-size:12px;letter-spacing:2px;text-transform:uppercase;
   color:var(--amber);display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
 }
-.other-card:hover .oc-cta{gap:14px;}
-
-/* ══════════════════════
-   FOOTER  (dark)
-══════════════════════ */
-footer{
-  background:var(--dark2);border-top:1px solid var(--d-line);
-  padding:72px 60px 36px;
-}
-.fg{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;
-  padding-bottom:52px;border-bottom:1px solid var(--d-line);margin-bottom:32px;
-}
-.fl{text-decoration:none;display:block;margin-bottom:14px;}
-.fl img{height:44px;width:auto;object-fit:contain;opacity:.9;filter:invert(1);}
-.ft{font-size:13px;color:var(--d-faint);line-height:1.7;max-width:260px;margin-bottom:22px;font-weight:300;}
-.fc a,.fc span{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:13px;color:var(--d-muted);text-decoration:none;margin-bottom:8px;transition:color .2s;
-}
-.fc a:hover{color:var(--amber);}
-.fci{color:var(--amber);flex-shrink:0;}
-.fcol h4{
-  font-family:var(--cond);font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--d-faint);margin-bottom:18px;
-}
-.flinks{list-style:none;}
-.flinks li{margin-bottom:10px;}
-.flinks a{font-size:14px;color:var(--d-muted);text-decoration:none;font-weight:300;transition:color .2s;}
-.flinks a:hover{color:var(--amber);}
-.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.fcopy{font-size:12px;color:var(--d-faint);}
-.fsoc{display:flex;gap:10px;}
-.fsoc a{
-  width:34px;height:34px;border:1px solid var(--d-line);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--d-muted);text-decoration:none;font-size:13px;
-  transition:border-color .2s,color .2s;
-}
-.fsoc a:hover{border-color:var(--amber);color:var(--amber);}
-
-/* ══════════════════════
+.other-card:hover .oc-cta{gap:14px;}/* ══════════════════════
    RESPONSIVE
 ══════════════════════ */
 @media(max-width:1100px){
   .body-wrap{grid-template-columns:240px 1fr;}
   .panel{padding:48px 40px 80px;}
-  .fg{grid-template-columns:1fr 1fr;gap:40px;}
   .inhouse{grid-template-columns:1fr;}
   .others-grid{grid-template-columns:1fr;}
   .hero-photo{width:38%;}
-  .hero-inner{max-width:62%;}
-}
-@media(max-width:860px){
+  .hero-inner{max-width:62%;}}@media(max-width:860px){
   nav{padding:0 24px;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
@@ -778,12 +734,9 @@ footer{
   .cr-arrow{opacity:1;transform:none;}
   .inhouse{padding:60px 24px;}
   .others{padding:60px 24px;}
-  footer{padding:60px 24px 32px;}
-  .fg{grid-template-columns:1fr;gap:32px;}
   .cat-head{flex-direction:column;align-items:flex-start;}
   .filter-prompt{top:72px;}
-  .sidebar{top:108px;}
-}
+  .sidebar{top:108px;}}
 .skip-link{position:absolute;top:-100px;left:0;background:var(--amber);color:var(--dark);padding:8px 20px;z-index:9999;font-family:var(--cond);font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:top .15s;}.skip-link:focus{top:0;}
 
 .sb-btn[data-cat="production"],.sb-btn[data-cat="reservoir"]{font-size:13px;color:var(--ink-light);}
@@ -859,13 +812,11 @@ footer{
   letter-spacing: 3px;
   align-self: center;
   opacity: 0.85;
-}
-@media(max-width:768px) {
+}@media(max-width:768px){
   .up-testi { padding: 48px 24px; }
   .up-testi-inner { grid-template-columns: 1fr; gap: 16px; }
   .up-testi-quote-mark { font-size: 64px; margin-top: 0; }
-  .up-testi-stars { display: none; }
-}
+  .up-testi-stars { display: none; }}
 
 /* ── CALENDAR DOWNLOAD MODAL ── */
 .cal-dl-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1.5px solid rgba(255,255,255,0.55);color:#fff;font-family:var(--cond,'Barlow',sans-serif);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:border-color .2s,background .2s,color .2s;}
@@ -890,8 +841,31 @@ footer{
 .cal-modal-submit{width:100%;padding:15px;background:#c8873a;color:#fff;border:none;font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px;}
 .cal-modal-submit:hover{background:#b8772a;}
 .cal-modal-submit:disabled{background:#ccc;cursor:not-allowed;}
-.cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}
-@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}
+.cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}/* ── END MASTER FOOTER ── */
+
+/* ── MASTER FOOTER (site-wide, do not customize per-page) ── */
+footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72px 60px 36px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px;}
+.fl{text-decoration:none;display:block;margin-bottom:14px;}
+.fl img{height:44px;width:auto;max-width:260px;object-fit:contain;opacity:.9;display:block;}
+.ft{font-size:13px;color:#7a7f88;line-height:1.7;margin-top:14px;max-width:300px;font-weight:300;}
+.fc{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.fc a,.fc span{font-size:13px;color:#7a7f88;display:flex;align-items:center;gap:8px;transition:color .2s;text-decoration:none;}
+.fc a:hover{color:#c8873a;}
+.fc svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
+.fcol h4{font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7a7f88;margin-bottom:18px;}
+.flinks{list-style:none;}
+.flinks li{margin-bottom:10px;}
+.flinks a{font-size:14px;color:#7a7f88;text-decoration:none;font-weight:300;transition:color .2s;}
+.flinks a:hover{color:#c8873a;}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.fcopy{font-size:12px;color:#7a7f88;}
+.fsoc{display:flex;gap:16px;}
+.fsoc a{font-size:13px;color:#7a7f88;transition:color .2s;}
+.fsoc a:hover{color:#c8873a;}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:768px){footer{padding:48px 24px 28px;}.fg{grid-template-columns:1fr;}}
+/* ── END MASTER FOOTER ── */
 </style>
 </head>
 <body>
@@ -1275,45 +1249,47 @@ footer{
 <footer>
   <div class="fg">
     <div>
-      <a href="index.html" class="fl"><img src="logo-dark.png" alt="London Petro Academy"></a>
-      <p class="ft">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide.</p>
+      <a href="index.html" class="fl"><img src="logo-white.png" alt="London Petro Academy" loading="lazy"></a>
+      <p class="ft">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide since 2015.</p>
       <div class="fc">
-        <a href="tel:+441582516247"><span class="fci">📞</span>+44 (0) 1582 516247</a>
-        <a href="mailto:info@londonpetroacademy.co.uk"><span class="fci">✉️</span>info@londonpetroacademy.co.uk</a>
-        <span><span class="fci">📍</span>207 Regent Street, London W1B 3HH</span>
+        <a href="tel:+441582516247"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>+44 (0) 1582 516247</a>
+        <a href="mailto:info@londonpetroacademy.co.uk"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@londonpetroacademy.co.uk</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>207 Regent Street, London W1B 3HH</span>
       </div>
     </div>
     <div class="fcol">
       <h4>Upstream Courses</h4>
       <ul class="flinks">
-        <li><a href="#" onclick="switchCat('legal');return false;">Legal &amp; Fiscal</a></li>
-        <li><a href="#" onclick="switchCat('gas');return false;">Gas &amp; LNG</a></li>
-        <li><a href="#" onclick="switchCat('drilling');return false;">Drilling Engineering</a></li>
-        <li><a href="#" onclick="switchCat('economics');return false;">Petroleum Economics</a></li>
-        <li><a href="#" onclick="switchCat('reservoir');return false;">Reservoir Engineering</a></li>
+        <li><a href="upstream.html">All Upstream Courses</a></li>
+        <li><a href="course-gas-lng-contracts-negotiations.html">Gas &amp; LNG Contracts</a></li>
+        <li><a href="course-legal-aspects-production-sharing-contracts.html">Legal Aspects of PSCs</a></li>
+        <li><a href="course-brazil-jv.html">JVs in Brazil</a></li>
       </ul>
     </div>
     <div class="fcol">
-      <h4>Other Portfolios</h4>
+      <h4>Training Portfolios</h4>
       <ul class="flinks">
-        <li><a href="downstream.html">Downstream</a></li>
+        <li><a href="upstream.html">Upstream &amp; Midstream</a></li>
+        <li><a href="downstream.html">Downstream &amp; Trading</a></li>
         <li><a href="renewables.html">Renewable Energy</a></li>
+        <li><a href="about.html">About LPA</a></li>
       </ul>
     </div>
     <div class="fcol">
       <h4>Company</h4>
       <ul class="flinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="mailto:info@londonpetroacademy.co.uk">Contact</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" target="_blank" rel="noopener">Book a Consultation</a></li>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="fbot">
-    <span class="fcopy">© 2026 London Petro Academy Ltd. All rights reserved.</span>
+    <span class="fcopy">© 2026 London Petro Academy Ltd · Registered in England &amp; Wales No. 09875694 · VAT 267 3190 90</span>
     <div class="fsoc">
-      <a href="https://www.linkedin.com/company/london-petro-academy-limited/" title="LinkedIn">in</a>
-      <a href="https://twitter.com/London_Petro_Ac" title="X">𝕏</a>
+      <a href="https://www.linkedin.com/company/london-petro-academy-limited/" title="LinkedIn" aria-label="LinkedIn">in</a>
+      <a href="https://twitter.com/London_Petro_Ac" title="X" aria-label="X">𝕏</a>
     </div>
   </div>
 </footer>
