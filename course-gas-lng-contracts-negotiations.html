@@ -1794,6 +1794,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // Redirect immediately — never block the user waiting for n8n
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
+    sessionStorage.setItem('lpa_cal_unlocked','1');
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
   };
 

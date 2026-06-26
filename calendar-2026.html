@@ -220,10 +220,35 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 .fsoc a:hover{color:#c8873a;}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
 @media(max-width:768px){footer{padding:48px 24px 28px;}.fg{grid-template-columns:1fr;}}
+/* ── 2026 CALENDAR ACCESS GATE ── */
+body.cal-gate-locked > nav,
+body.cal-gate-locked > .hero,
+body.cal-gate-locked > main.cal-wrap,
+body.cal-gate-locked > footer{display:none !important;}
+body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
+.cal-gate-overlay{position:fixed;inset:0;z-index:99000;background:rgba(10,11,13,0.92);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;}
+.cal-modal{background:#fff;width:100%;max-width:480px;border-top:4px solid #c8873a;box-shadow:0 40px 100px rgba(0,0,0,0.5);animation:calIn .3s cubic-bezier(.34,1.4,.64,1) forwards;}
+@keyframes calIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.cal-modal-head{padding:28px 32px 20px;border-bottom:1px solid #f0ede8;}
+.cal-modal-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#111;line-height:1.2;}
+.cal-modal-title em{font-style:italic;color:#c8873a;}
+.cal-modal-sub{font-size:13px;color:#888;margin-top:4px;font-family:'Barlow',sans-serif;}
+.cal-modal-body{padding:24px 32px 28px;}
+.cal-field{margin-bottom:18px;}
+.cal-field label{display:block;font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:6px;}
+.cal-field input{width:100%;padding:12px 14px;border:1.5px solid #e0ddd8;font-family:'Barlow',sans-serif;font-size:14px;color:#111;outline:none;transition:border-color .2s;background:#fafaf8;}
+.cal-field input:focus{border-color:#c8873a;background:#fff;}
+.cal-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.cal-modal-submit{width:100%;padding:15px;background:#c8873a;color:#fff;border:none;font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px;}
+.cal-modal-submit:hover{background:#b8772a;}
+.cal-modal-submit:disabled{background:#ccc;cursor:not-allowed;}
+.cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}
+@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}
 /* ── END MASTER FOOTER ── */
 </style>
 </head>
-<body>
+<body class="cal-gate-locked">
+<script>if(sessionStorage.getItem('lpa_cal_unlocked')==='1'){document.body.classList.remove('cal-gate-locked');}</script>
 
 <!-- SVG SPRITE -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -713,6 +738,73 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('scroll',chk,{passive:true});
   chk();
 })();
+</script>
+
+<!-- ── 2026 CALENDAR ACCESS GATE ── -->
+<div class="cal-gate-overlay" id="calGateOverlay" role="dialog" aria-modal="true" aria-labelledby="calGateTitle">
+  <div class="cal-modal">
+    <div class="cal-modal-head">
+      <div>
+        <div class="cal-modal-title" id="calGateTitle">Access the <em>2026 Training Calendar</em></div>
+        <div class="cal-modal-sub">70+ sessions worldwide — tell us a little about yourself first</div>
+      </div>
+    </div>
+    <div class="cal-modal-body">
+      <div id="calGateForm">
+        <div class="cal-field-row">
+          <div class="cal-field">
+            <label for="gateFirstName">First Name *</label>
+            <input type="text" id="gateFirstName" name="first_name" placeholder="Jane" required>
+          </div>
+          <div class="cal-field">
+            <label for="gateLastName">Last Name *</label>
+            <input type="text" id="gateLastName" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="cal-field">
+          <label for="gateEmail">Work Email *</label>
+          <input type="email" id="gateEmail" name="email" placeholder="jane.smith@company.com" required>
+        </div>
+        <div class="cal-field">
+          <label for="gateOrg">Organisation</label>
+          <input type="text" id="gateOrg" name="organisation" placeholder="Company name">
+        </div>
+        <div class="cal-field">
+          <label for="gatePhone">Phone Number</label>
+          <input type="tel" id="gatePhone" name="phone" placeholder="+44 7700 000000">
+        </div>
+        <button class="cal-modal-submit" id="gateSubmit" onclick="submitCalGate()">
+          Access the 2026 Calendar →
+        </button>
+        <div class="cal-modal-note">We will not share your details with third parties.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function submitCalGate(){
+  var fn  = document.getElementById('gateFirstName').value.trim();
+  var ln  = document.getElementById('gateLastName').value.trim();
+  var em  = document.getElementById('gateEmail').value.trim();
+  var org = document.getElementById('gateOrg').value.trim();
+  var ph  = document.getElementById('gatePhone').value.trim();
+  if(!fn||!ln||!em){ alert('Please fill in your name and email.'); return; }
+  var btn = document.getElementById('gateSubmit');
+  btn.disabled = true;
+  btn.textContent = 'One moment…';
+  var qs = [
+    'fn='  + encodeURIComponent(fn),
+    'ln='  + encodeURIComponent(ln),
+    'em='  + encodeURIComponent(em),
+    'ph='  + encodeURIComponent(ph),
+    'src=' + encodeURIComponent(window.location.href)
+  ].join('&');
+  fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
+    method:'GET', mode:'no-cors'
+  }).catch(function(){});
+  sessionStorage.setItem('lpa_cal_unlocked','1');
+  document.body.classList.remove('cal-gate-locked');
+}
 </script>
 </body>
 </html>
