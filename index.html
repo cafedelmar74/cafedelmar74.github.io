@@ -1795,46 +1795,32 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    var fn   = form.full_name.value.trim();
-    var org  = form.organisation.value.trim();
-    var em   = form.email.value.trim();
-    var ph   = form.phone.value.trim();
-    var req  = form.requirements.value.trim();
+    lpaSubmit({
+      fn:           form.full_name.value.trim(),
+      ln:           '',
+      email:        form.email.value.trim(),
+      phone:        form.phone.value.trim(),
+      company:      form.organisation.value.trim(),
+      jobtitle:     '',
+      country:      '',
+      course:       'Homepage Enquiry',
+      session:      '',
+      requirements: form.requirements.value.trim(),
+      src:          'homepage_enquiry',
+      submitted_at: new Date().toISOString()
+    });
 
-    var qs = 'fn=' + encodeURIComponent(fn)
-           + '&ln='  + encodeURIComponent('')
-           + '&email=' + encodeURIComponent(em)
-           + '&phone=' + encodeURIComponent(ph)
-           + '&company=' + encodeURIComponent(org)
-           + '&jobtitle=' + encodeURIComponent('')
-           + '&country=' + encodeURIComponent('')
-           + '&course=' + encodeURIComponent('Homepage Enquiry')
-           + '&session=' + encodeURIComponent('')
-           + '&requirements=' + encodeURIComponent(req)
-           + '&src=homepage_enquiry'
-           + '&submitted_at=' + encodeURIComponent(new Date().toISOString());
-
-    fetch(LPA.webhook + '?' + qs, { mode: 'no-cors' })
-      .then(function(){
-        btn.textContent = 'Enquiry Sent ✓';
-        btn.style.background = '#2a7a4e';
-        setTimeout(function(){
-          form.reset();
-          btn.textContent = origTxt;
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 4000);
-      })
-      .catch(function(){
-        btn.textContent = 'Enquiry Sent ✓';
-        btn.style.background = '#2a7a4e';
-        setTimeout(function(){
-          form.reset();
-          btn.textContent = origTxt;
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 4000);
-      });
+    // Show success (no-cors means we can't read the response, so assume sent)
+    setTimeout(function(){
+      btn.textContent = 'Enquiry Sent ✓';
+      btn.style.background = '#2a7a4e';
+      setTimeout(function(){
+        form.reset();
+        btn.textContent = origTxt;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    }, 600);
   }
 
 
