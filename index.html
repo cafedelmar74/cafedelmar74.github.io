@@ -1803,7 +1803,8 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       job_title:       '',
       country:         '',
       billing_address: '',
-      course_name:     'Homepage Enquiry' + (form.requirements.value.trim() ? ' — ' + form.requirements.value.trim().substring(0,120) : ''),
+      course_name:     'Homepage Enquiry',
+      requirements:    form.requirements.value.trim(),
       course_session:  '',
       course_category: 'Enquiry',
       source:          'homepage_enquiry',
@@ -1816,7 +1817,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 
     // Image beacon — most reliable cross-origin GET, bypasses CORS and most blockers
     var img = new Image();
-    img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-leads?' + qs;
+    img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs;
 
     setTimeout(function(){
       btn.textContent = 'Enquiry Sent ✓';
