@@ -1795,22 +1795,24 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    lpaSubmit({
-      fn:           form.full_name.value.trim(),
-      ln:           '',
-      email:        form.email.value.trim(),
-      phone:        form.phone.value.trim(),
-      company:      form.organisation.value.trim(),
-      jobtitle:     '',
-      country:      '',
-      course:       'Homepage Enquiry',
-      session:      '',
-      requirements: form.requirements.value.trim(),
-      src:          'homepage_enquiry',
-      submitted_at: new Date().toISOString()
-    });
+    try {
+      lpaSubmit({
+        full_name:      form.full_name.value.trim(),
+        email:          form.email.value.trim(),
+        phone:          form.phone.value.trim(),
+        company:        form.organisation.value.trim(),
+        job_title:      '',
+        country:        '',
+        billing_address:'',
+        course_name:    'Homepage Enquiry — ' + (form.requirements.value.trim().substring(0,80) || 'General'),
+        course_session: '',
+        course_category:'Enquiry',
+        source:         'homepage_enquiry',
+        page_url:       window.location.href,
+        submitted_at:   new Date().toISOString()
+      });
+    } catch(err) { /* fire-and-forget */ }
 
-    // Show success (no-cors means we can't read the response, so assume sent)
     setTimeout(function(){
       btn.textContent = 'Enquiry Sent ✓';
       btn.style.background = '#2a7a4e';
