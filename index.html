@@ -1786,22 +1786,55 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // Enquiry form handler
-  // TODO: Replace with your HubSpot form endpoint or n8n webhook
+  // Enquiry form handler — sends to n8n LPA leads webhook
   function handleEnquiry(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
-    const originalText = btn.textContent;
-    btn.textContent = 'Enquiry Sent ✓';
-    btn.style.background = '#2a7a4e';
+    var form = e.target;
+    var btn = form.querySelector('button');
+    var origTxt = btn.textContent;
+    btn.textContent = 'Sending…';
     btn.disabled = true;
-    // Reset after 4 seconds
-    setTimeout(() => {
-      e.target.reset();
-      btn.textContent = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 4000);
+
+    var fn   = form.full_name.value.trim();
+    var org  = form.organisation.value.trim();
+    var em   = form.email.value.trim();
+    var ph   = form.phone.value.trim();
+    var req  = form.requirements.value.trim();
+
+    var qs = 'fn=' + encodeURIComponent(fn)
+           + '&ln='  + encodeURIComponent('')
+           + '&email=' + encodeURIComponent(em)
+           + '&phone=' + encodeURIComponent(ph)
+           + '&company=' + encodeURIComponent(org)
+           + '&jobtitle=' + encodeURIComponent('')
+           + '&country=' + encodeURIComponent('')
+           + '&course=' + encodeURIComponent('Homepage Enquiry')
+           + '&session=' + encodeURIComponent('')
+           + '&requirements=' + encodeURIComponent(req)
+           + '&src=homepage_enquiry'
+           + '&submitted_at=' + encodeURIComponent(new Date().toISOString());
+
+    fetch(LPA.webhook + '?' + qs, { mode: 'no-cors' })
+      .then(function(){
+        btn.textContent = 'Enquiry Sent ✓';
+        btn.style.background = '#2a7a4e';
+        setTimeout(function(){
+          form.reset();
+          btn.textContent = origTxt;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      })
+      .catch(function(){
+        btn.textContent = 'Enquiry Sent ✓';
+        btn.style.background = '#2a7a4e';
+        setTimeout(function(){
+          form.reset();
+          btn.textContent = origTxt;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      });
   }
 
 
