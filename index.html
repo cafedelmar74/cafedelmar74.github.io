@@ -664,8 +664,11 @@ nav.scrolled .hamburger span { background: #2c2825; }
   text-decoration: none;
   display: inline-flex; align-items: center; gap: 8px;
   transition: color 0.2s;
+  border: none;
   border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding-bottom: 3px;
+  padding: 0 0 3px 0;
+  background: none;
+  cursor: pointer;
 }
 .del-card-link:hover { color: var(--orange); border-color: var(--orange); }
 .del-card-link::after { content: ' →'; }
