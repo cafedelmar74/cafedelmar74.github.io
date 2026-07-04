@@ -250,6 +250,21 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:32px;}}
 @media(max-width:768px){footer{padding:48px 24px 28px;}.fg{grid-template-columns:1fr;}}
 /* ── END MASTER FOOTER ── */
+
+/* ── HOMEPAGE ENQUIRY FORM (transplanted) ── */
+.eq-form{display:flex;flex-direction:column;gap:14px;}
+.eq-form input,.eq-form textarea{background:#f8f7f5;border:1px solid rgba(0,0,0,0.12);color:#1a1c1f;padding:16px 20px;font-size:14px;font-family:var(--cond);outline:none;transition:border-color .2s,background .2s;resize:none;width:100%;}
+.eq-form input::placeholder,.eq-form textarea::placeholder{color:#b0aba5;}
+.eq-form input:focus,.eq-form textarea:focus{border-color:var(--amber);background:#fff;}
+.eq-form textarea{min-height:110px;}
+.eq-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.trust-bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:4px;}
+.trust-bullets li{font-size:12px;color:var(--grey);display:flex;align-items:center;gap:8px;}
+.trust-bullets li::before{content:'✓';color:var(--amber);font-weight:700;flex-shrink:0;}
+.eq-submit{background:var(--amber);color:#000;border:none;cursor:pointer;width:100%;padding:18px 32px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-family:var(--cond);transition:background .2s;margin-top:4px;}
+.eq-submit:hover{background:var(--amber2);}
+.eq-note{font-size:11px;color:var(--grey);margin-top:10px;text-align:center;}
+@media(max-width:640px){.eq-form-row{grid-template-columns:1fr;}}
 </style>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -362,7 +377,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <div class="consult-strip">
         <h3 class="cs-title">Free <em>Zoom Consultation</em></h3>
         <p class="cs-text">Not sure which programme is right for your team? Book a complimentary 30-minute consultation with one of our course advisers — no obligation, just expert guidance.</p>
-        <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" class="btn-amber">
+        <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" class="btn-amber">
           Book Your Free Session
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -374,71 +389,24 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <h2 class="form-title">Send an <em>Enquiry</em></h2>
       <p class="form-sub">Complete the form below and we'll respond within one business day.</p>
 
-      <div id="cf-form">
-        <div class="frow two" style="margin-bottom:16px;">
-          <div class="fg-item">
-            <label for="cf-fn">First Name *</label>
-            <input type="text" id="cf-fn" name="first_name" placeholder="Jane" required autocomplete="given-name">
-          </div>
-          <div class="fg-item">
-            <label for="cf-ln">Last Name *</label>
-            <input type="text" id="cf-ln" name="last_name" placeholder="Smith" required autocomplete="family-name">
-          </div>
+      <form class="eq-form" onsubmit="handleEnquiry(event)" aria-label="Enquiry form">
+        <div class="eq-form-row">
+          <input type="text" placeholder="Full name" required aria-label="Full name" name="full_name" autocomplete="name">
+          <input type="text" placeholder="Organisation" aria-label="Organisation" name="organisation" autocomplete="organization">
         </div>
-        <div class="frow" style="margin-bottom:16px;">
-          <div class="fg-item">
-            <label for="cf-email">Work Email *</label>
-            <input type="email" id="cf-email" name="email" placeholder="jane.smith@company.com" required autocomplete="email">
-          </div>
+        <div class="eq-form-row">
+          <input type="email" placeholder="Work email" required aria-label="Email address" name="email" autocomplete="email">
+          <input type="tel" placeholder="Phone (optional)" aria-label="Phone number" name="phone" autocomplete="tel">
         </div>
-        <div class="frow two" style="margin-bottom:16px;">
-          <div class="fg-item">
-            <label for="cf-org">Organisation *</label>
-            <input type="text" id="cf-org" name="organisation" placeholder="Company name" required autocomplete="organization">
-          </div>
-          <div class="fg-item">
-            <label for="cf-role">Job Title</label>
-            <input type="text" id="cf-role" name="job_title" placeholder="Your role" autocomplete="organization-title">
-          </div>
-        </div>
-        <div class="frow" style="margin-bottom:16px;">
-          <div class="fg-item">
-            <label for="cf-topic">Enquiry Type *</label>
-            <select id="cf-topic" name="enquiry_type" required>
-              <option value="" disabled selected>Select an option…</option>
-              <option value="course-enquiry">Open Course Enquiry</option>
-              <option value="inhouse">In-House / Tailored Training</option>
-              <option value="group-booking">Group Booking (3+ delegates)</option>
-              <option value="calendar">2026 Training Calendar</option>
-              <option value="brochure">Course Brochure Request</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="frow" style="margin-bottom:20px;">
-          <div class="fg-item">
-            <label for="cf-msg">Message *</label>
-            <textarea id="cf-msg" name="message" placeholder="Tell us about your training needs — which course(s) you're interested in, number of delegates, preferred dates or locations…" required></textarea>
-          </div>
-        </div>
-        <div class="form-check" style="margin-bottom:20px;">
-          <input type="checkbox" id="cf-consent" name="consent" required>
-          <label for="cf-consent">I agree to London Petro Academy processing my data to respond to this enquiry. See our <a href="privacy-policy.html">Privacy Policy</a>.</label>
-        </div>
-        <div class="form-submit">
-          <button type="button" class="btn-submit" onclick="submitContactForm()">
-            Send Enquiry
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-        <p class="form-note">Your details are never shared with third parties.</p>
-      </div>
-
-      <div id="cf-ok" role="alert">
-        <div class="ok-icon">✓</div>
-        <div class="ok-title">Enquiry Received</div>
-        <p class="ok-text">Thank you — we'll be in touch within one business day.<br>For urgent matters call <a href="tel:+441582516247" style="color:var(--amber);">+44 (0) 1582 516247</a>.</p>
-      </div>
+        <textarea placeholder="Tell us about your training requirements — topic, delegates, dates, format…" aria-label="Training requirements" name="requirements"></textarea>
+        <ul class="trust-bullets">
+          <li>No obligation — just tell us what you need</li>
+          <li>Custom proposal prepared within 1 business day</li>
+          <li>Free training needs consultation available</li>
+        </ul>
+        <button type="submit" class="eq-submit">Send Enquiry →</button>
+        <p class="eq-note">Handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
+      </form>
     </div>
 
   </div>
@@ -626,38 +594,49 @@ function toggleFaq(btn){
   btn.setAttribute('aria-expanded',!isOpen);
 }
 
-// Contact form submission via GET/no-cors to n8n
-function submitContactForm(){
-  const fn=document.getElementById('cf-fn').value.trim();
-  const ln=document.getElementById('cf-ln').value.trim();
-  const email=document.getElementById('cf-email').value.trim();
-  const org=document.getElementById('cf-org').value.trim();
-  const role=document.getElementById('cf-role').value.trim();
-  const topic=document.getElementById('cf-topic').value;
-  const msg=document.getElementById('cf-msg').value.trim();
-  const consent=document.getElementById('cf-consent').checked;
+// Enquiry form handler — sends to n8n enquiry webhook via image beacon
+function handleEnquiry(e){
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('button');
+  var origTxt = btn.textContent;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
 
-  if(!fn||!ln||!email||!org||!topic||!msg){alert('Please complete all required fields.');return;}
-  if(!consent){alert('Please confirm your consent to proceed.');return;}
+  var params = {
+    full_name:       form.full_name.value.trim(),
+    email:           form.email.value.trim(),
+    phone:           form.phone.value.trim(),
+    company:         form.organisation.value.trim(),
+    job_title:       '',
+    country:         '',
+    billing_address: '',
+    course_name:     'Contact Page Enquiry',
+    requirements:    form.requirements.value.trim(),
+    course_session:  '',
+    course_category: 'Enquiry',
+    source:          'contact_page',
+    page_url:        window.location.href,
+    submitted_at:    new Date().toISOString()
+  };
+  var qs = Object.keys(params).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k] || '');
+  }).join('&');
 
-  const recaptchaResponse=typeof grecaptcha!=='undefined'?grecaptcha.getResponse():'';
+  // Image beacon — most reliable cross-origin GET, bypasses CORS and most blockers
+  var img = new Image();
+  img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs;
 
-  const params=new URLSearchParams({
-    form_type:'contact',
-    first_name:fn,last_name:ln,email:email,
-    organisation:org,job_title:role,
-    enquiry_type:topic,message:msg,
-    consent:'yes',
-    recaptcha:recaptchaResponse
-  });
-
-  const webhook=(typeof LPA!=='undefined'&LPA.webhook)||'https://n8n.srv765009.hstgr.cloud/webhook/lpa-leads';
-
-  fetch(webhook+'?'+params.toString(),{method:'GET',mode:'no-cors'})
-    .catch(()=>{});
-
-  document.getElementById('cf-form').style.display='none';
-  document.getElementById('cf-ok').style.display='block';
+  setTimeout(function(){
+    btn.textContent = 'Enquiry Sent ✓';
+    btn.style.background = '#2a7a4e';
+    setTimeout(function(){
+      form.reset();
+      btn.textContent = origTxt;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }, 800);
 }
 </script>
 </body>
