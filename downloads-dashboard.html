@@ -170,6 +170,56 @@ body{font-family:var(--sans);background:var(--bg);color:var(--off-white);min-hei
 <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+<!-- ── DASHBOARD ACCESS GATE ── -->
+<style>
+.dg-overlay{position:fixed;inset:0;z-index:99999;background:rgba(10,11,13,0.96);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;}
+.dg-card{background:#181c21;border:1px solid rgba(200,135,58,.35);padding:40px 36px;max-width:380px;width:100%;text-align:center;}
+.dg-card h2{font-size:20px;color:#e8e6e0;margin:0 0 6px;font-weight:600;}
+.dg-card p{font-size:13px;color:#8a8f96;margin:0 0 20px;}
+.dg-card input{width:100%;padding:13px 16px;font-size:14px;background:#0e1014;border:1px solid rgba(255,255,255,.15);color:#e8e6e0;outline:none;box-sizing:border-box;margin-bottom:12px;}
+.dg-card input:focus{border-color:#c8873a;}
+.dg-card button{width:100%;padding:13px;background:#c8873a;color:#000;border:none;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;}
+.dg-card button:hover{background:#d99a4e;}
+.dg-err{display:none;color:#e05c5c;font-size:12px;margin-top:10px;}
+body.dg-locked{overflow:hidden;}
+</style>
+<div class="dg-overlay" id="dgOverlay">
+  <div class="dg-card">
+    <h2>Restricted Area</h2>
+    <p>This dashboard contains customer data.<br>Enter the access passphrase to continue.</p>
+    <form id="dgForm">
+      <input type="password" id="dgPass" placeholder="Passphrase" autocomplete="current-password" autofocus>
+      <button type="submit">Unlock</button>
+      <div class="dg-err" id="dgErr">Incorrect passphrase.</div>
+    </form>
+  </div>
+</div>
+<script>
+const DASH_HASH='fef545f994957d1e95de453d7142614c80e7bef653719106b4e696b389caaba5';
+async function dgSha(t){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(d)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');}
+function dashGateInit(start){
+  if(sessionStorage.getItem('lpa_dash_auth')==='1'){
+    document.getElementById('dgOverlay').style.display='none';
+    start();
+    return;
+  }
+  document.body.classList.add('dg-locked');
+  document.getElementById('dgForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    var v=document.getElementById('dgPass').value;
+    if(await dgSha(v)===DASH_HASH){
+      sessionStorage.setItem('lpa_dash_auth','1');
+      document.getElementById('dgOverlay').style.display='none';
+      document.body.classList.remove('dg-locked');
+      start();
+    } else {
+      document.getElementById('dgErr').style.display='block';
+      document.getElementById('dgPass').value='';
+    }
+  });
+}
+</script>
+
 
 <!-- HEADER -->
 <header class="dash-header">
@@ -568,8 +618,7 @@ function exportCSV() {
 }
 
 // ── INIT ──────────────────────────────────────────────────
-loadDownloads();
-setInterval(loadDownloads, 60000);
+dashGateInit(function(){ loadDownloads(); setInterval(loadDownloads, 60000); });
 </script>
 </body>
 </html>
