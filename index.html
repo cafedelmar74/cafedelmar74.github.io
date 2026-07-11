@@ -364,7 +364,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
   display: flex; flex-direction: column; justify-content: space-between;
   overflow: hidden; padding-top: 76px;
 }
-.hero-bg { position: absolute; inset: 0; background: #070a0f; z-index: 0; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(120% 85% at 78% 12%, rgba(200,135,58,0.10) 0%, rgba(200,135,58,0) 55%), linear-gradient(158deg, #12151a 0%, #0a0b0d 46%, #070809 100%); z-index: 0; overflow: hidden; }
 .hero-bg::before {
   content: '';
   position: absolute; inset: 0; z-index: 1;
@@ -373,7 +373,8 @@ nav.scrolled .hamburger span { background: #2c2825; }
     rgba(7,10,15,0.7) 72%, rgba(7,10,15,0.97) 100%);
 }
 .hero-video { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-.hero-video video { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.55; }
+.hero-video video { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity .8s ease; }
+.hero-video video.is-ready { opacity: 0.55; }
 .hero-grid-lines {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background-image:
@@ -1179,7 +1180,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
    (rest of page is light mode)
 ════════════════════════════════════════ */
 .hero { background: #070a0f; }
-.hero-bg { background: #070a0f !important; }
+.hero-bg { background: radial-gradient(120% 85% at 78% 12%, rgba(200,135,58,0.10) 0%, rgba(200,135,58,0) 55%), linear-gradient(158deg, #12151a 0%, #0a0b0d 46%, #070809 100%) !important; }
 .hero-overlay {
   background: linear-gradient(180deg,
     rgba(7,10,15,0.55) 0%, rgba(7,10,15,0.2) 40%,
@@ -1216,6 +1217,7 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .trust::after  { background: linear-gradient(to left,  rgba(7,10,15,0.9), transparent) !important; }
 .trust-label { color: rgba(255,255,255,0.5) !important; }
 .trust-logos img { filter: brightness(0) invert(1) !important; opacity: 0.45 !important; }@media (max-width: 768px){
+  .hero-video { display: none !important; }
   .hero-cta-btn { width: 100%; text-align: center; padding: 18px 20px; display: block; }
   .stats-bar .stats-row { grid-template-columns: 1fr 1fr; }
   .stat-box { padding: 32px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -1322,9 +1324,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 <section class="hero" aria-label="Homepage hero">
   <div class="hero-bg">
     <div class="hero-video">
-      <video autoplay muted loop playsinline preload="auto" poster="/hero-poster.jpg">
-        <source src="hero-video.mp4" type="video/mp4">
-      </video>
+      <video id="heroVideo" muted loop playsinline preload="none" aria-hidden="true"></video>
     </div>
   </div>
   <div class="hero-grid-lines" aria-hidden="true"></div>
@@ -2192,6 +2192,31 @@ document.addEventListener('DOMContentLoaded', function(){
   };
 
 });
+</script>
+<script>
+/* Hero video: desktop-only, deferred until after full page load.
+   Mobile (<769px) and reduced-motion users keep the CSS dark gradient — zero hero media downloaded. */
+(function(){
+  var v = document.getElementById('heroVideo');
+  if(!v) return;
+  function loadHeroVideo(){
+    if(v.dataset.loaded) return;
+    if(!window.matchMedia('(min-width:769px)').matches) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    v.dataset.loaded = '1';
+    v.poster = 'hero-poster.jpg';
+    var s = document.createElement('source');
+    s.src = 'hero-video.mp4';
+    s.type = 'video/mp4';
+    v.appendChild(s);
+    v.load();
+    v.addEventListener('canplay', function(){ v.classList.add('is-ready'); }, { once: true });
+    var p = v.play();
+    if(p && typeof p.catch === 'function'){ p.catch(function(){}); }
+  }
+  if(document.readyState === 'complete'){ loadHeroVideo(); }
+  else { window.addEventListener('load', loadHeroVideo); }
+})();
 </script>
 </body>
 </html>
