@@ -280,7 +280,7 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
 </script>
 </head>
 <body class="cal-gate-locked">
-<script>if(sessionStorage.getItem('lpa_cal_unlocked')==='1'){document.body.classList.remove('cal-gate-locked');}</script>
+<script>if(sessionStorage.getItem('lpa_cal_unlocked_2026')==='1'){document.body.classList.remove('cal-gate-locked');}</script>
 
 <!-- SVG SPRITE -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -834,7 +834,7 @@ function submitCalGate(){
   fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
     method:'GET', mode:'no-cors'
   }).catch(function(){});
-  sessionStorage.setItem('lpa_cal_unlocked','1');
+  sessionStorage.setItem('lpa_cal_unlocked_2026','1');
   document.body.classList.remove('cal-gate-locked');
 }
 </script>
