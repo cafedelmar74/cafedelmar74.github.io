@@ -350,6 +350,10 @@ nav.scrolled .hamburger span { background: #2c2825; }
   transition: background 0.2s;
 }
 .hero-cta-btn:hover { background: #b05c18; }
+.hero-cta-row { display: flex; align-items: center; justify-content: flex-start; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+.hero-cta-row .hero-cta-btn { margin-top: 0; }
+.hero-cal-btn { display: inline-block; font-family: var(--font-cond); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 15px 26px; text-decoration: none; color: var(--off-white, #e8e6e0); border: 1px solid rgba(200,135,58,.55); background: rgba(200,135,58,.08); transition: background .2s, border-color .2s, color .2s; }
+.hero-cal-btn:hover { background: rgba(200,135,58,.18); border-color: var(--amber, #c8873a); color: #fff; }
 .hero-reassurance {
   display: block;
   margin-top: 12px;
@@ -1219,6 +1223,8 @@ nav.scrolled .hamburger span { background: #2c2825; }
 .trust-logos img { filter: brightness(0) invert(1) !important; opacity: 0.45 !important; }@media (max-width: 768px){
   .hero-video { display: none !important; }
   .hero-cta-btn { width: 100%; text-align: center; padding: 18px 20px; display: block; }
+  .hero-cta-row { flex-direction: column; gap: 10px; }
+  .hero-cal-btn { width: 100%; text-align: center; padding: 15px 20px; display: block; }
   .stats-bar .stats-row { grid-template-columns: 1fr 1fr; }
   .stat-box { padding: 32px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .stat-box:last-child { border-bottom: none; }
@@ -1333,7 +1339,11 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     <div class="hero-tag" aria-hidden="true">London Petro Academy</div>
     <h1 class="hero-h1">Oil, Gas &amp; Renewable Energy <em>Training</em> for Industry Professionals</h1>
     <p class="hero-desc">Premier training for NOCs, IOCs and Energy Ministries worldwide — classroom, remote and in-house delivery.</p>
-    <a href="#contact-form" class="hero-cta-btn">Request a Training Proposal →</a>
+    <div class="hero-cta-row">
+      <a href="calendar-2026.html" class="hero-cal-btn">2026 Calendar</a>
+      <a href="#contact-form" class="hero-cta-btn">Request a Training Proposal →</a>
+      <a href="calendar-2027.html" class="hero-cal-btn">2027 Calendar</a>
+    </div>
     <span class="hero-reassurance">No obligation · Response within 1 business day</span>
   </div>
 
