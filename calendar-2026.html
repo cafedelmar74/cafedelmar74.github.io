@@ -827,6 +827,8 @@ function submitCalGate(){
     'ln='  + encodeURIComponent(ln),
     'em='  + encodeURIComponent(em),
     'ph='  + encodeURIComponent(ph),
+    'org=' + encodeURIComponent(org),
+    'cal=' + encodeURIComponent('2026'),
     'src=' + encodeURIComponent(window.location.href)
   ].join('&');
   fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
