@@ -410,10 +410,12 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
 <main class="cal-wrap" id="calMain"></main>
 
 <style>
-.cal-about{max-width:900px;margin:0 auto;padding:56px 24px 24px;}
-.cal-about h2{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--off-white,#e8e6e0);margin-bottom:18px;}
-.cal-about h2 em{color:var(--amber,#c8873a);font-style:italic;}
-.cal-about p{font-size:15px;line-height:1.75;color:var(--grey,#8a8f96);font-weight:300;margin-bottom:14px;}
+.cal-about{max-width:900px;margin:56px auto 64px;padding:48px 56px;background:#f2efe9;border-radius:16px;}
+.cal-about h2{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:#0e1014;margin-bottom:20px;text-align:center;}
+.cal-about h2 em{color:#9a6425;font-style:italic;}
+.cal-about p{font-size:15px;line-height:1.8;color:#111;font-weight:400;margin-bottom:14px;text-align:justify;hyphens:auto;}
+.cal-about p:last-child{margin-bottom:0;}
+@media(max-width:768px){.cal-about{margin:40px 16px 48px;padding:32px 22px;}}
 </style>
 <section class="cal-about" aria-label="About the 2027 training calendar">
   <h2>About the <em>2027 Training Calendar</em></h2>
