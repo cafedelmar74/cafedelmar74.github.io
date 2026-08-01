@@ -14,7 +14,7 @@ const LPA = {
   calendly:    'https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy',
 
   // ── Analytics ────────────────────────────────────────────
-  ga4_id:      'G-88QEV1PLG4',
+  ga4_id:      'G-M8D1B87952',
 
   // ── n8n Lead Capture Webhook ─────────────────────────────
   // Switch between test and production URLs here only
