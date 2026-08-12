@@ -330,7 +330,7 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
     <li><a href="renewables.html">Renewables</a></li>
     <li><a href="inhouse.html" class="active">In-House</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    <li><a href="contact.html" class="nav-cta" onclick="LPA_trackCTA('inhouse_contact_link', {form_location:'inhouse_page'})">Contact Us</a></li>
   </ul>
   <div class="hamburger" onclick="toggleNav()" aria-label="Open menu" role="button" aria-expanded="false"><span></span><span></span><span></span></div>
 </nav>
@@ -345,10 +345,10 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
     <h1 class="hero-h1">In-House <em>Tailored</em> <br>Training Programmes</h1>
     <p class="hero-sub">Fully customised programmes delivered at your workplace or any preferred venue worldwide. We adapt content, pace and format to your team's exact requirements.</p>
     <div class="hero-btns">
-      <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House%20Training%20Enquiry" class="btn-a">
+      <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House%20Training%20Enquiry" class="btn-a" onclick="LPA_trackCTA('inhouse_mailto', {form_location:'inhouse_page'})">
         <svg width="14" height="14"><use href="#ico-mail"/></svg> Request a Proposal
       </a>
-      <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" class="btn-b">
+      <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" class="btn-b" onclick="LPA_trackCTA('inhouse_calendly', {form_location:'inhouse_page'})">
         <svg width="14" height="14"><use href="#ico-video"/></svg> Book a Free Consultation
       </a>
     </div>
@@ -525,7 +525,7 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
         <div class="offer-body">
           <h3><em>Bespoke</em> Curricula</h3>
           <p>Need something beyond our existing portfolio? Our subject-matter experts will design a fully bespoke programme aligned to your organisation's strategic objectives.</p>
-          <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=Bespoke%20Programme%20Enquiry" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--cond);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-top:14px;transition:gap .15s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Discuss a Bespoke Programme <svg width="12" height="12"><use href="#ico-arrow"/></svg></a>
+          <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=Bespoke%20Programme%20Enquiry" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--cond);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-top:14px;transition:gap .15s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'" onclick="LPA_trackCTA('inhouse_mailto', {form_location:'inhouse_page'})">Discuss a Bespoke Programme <svg width="12" height="12"><use href="#ico-arrow"/></svg></a>
         </div>
       </div>
     </div>
@@ -613,13 +613,13 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
     <p class="cta-strip-sub">Contact us today and we'll have a tailored proposal with you within 48 hours.</p>
   </div>
   <div class="cta-strip-btns">
-    <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House%20Training%20Enquiry%202026" class="btn-dark">
+    <a href="mailto:j.rogus@londonpetroacademy.co.uk?subject=In-House%20Training%20Enquiry%202026" class="btn-dark" onclick="LPA_trackCTA('inhouse_mailto', {form_location:'inhouse_page'})">
       <svg width="14" height="14"><use href="#ico-mail"/></svg> Request a Proposal
     </a>
-    <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" class="btn-outline-dark">
+    <a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" class="btn-outline-dark" onclick="LPA_trackCTA('inhouse_calendly', {form_location:'inhouse_page'})">
       <svg width="14" height="14"><use href="#ico-video"/></svg> Book a Free Call
     </a>
-    <a href="tel:+441582516247" class="btn-outline-dark">
+    <a href="tel:+441582516247" class="btn-outline-dark" onclick="LPA_trackCTA('inhouse_tel', {form_location:'inhouse_page'})">
       <svg width="14" height="14"><use href="#ico-phone"/></svg> +44 (0)1582 516247
     </a>
   </div>
@@ -632,8 +632,8 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
       <a href="https://cafedelmar74.github.io/index.html" class="fl"><img src="logo-white.png" alt="London Petro Academy" loading="lazy" width="180" height="40"></a>
       <p class="ft">Empowering energy professionals for a sustainable future. Trusted by NOCs, IOCs and Energy Ministries worldwide since 2015.</p>
       <div class="fc">
-        <a href="tel:+441582516247"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>+44 (0) 1582 516247</a>
-        <a href="mailto:info@londonpetroacademy.co.uk"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@londonpetroacademy.co.uk</a>
+        <a href="tel:+441582516247" onclick="LPA_trackCTA('inhouse_tel', {form_location:'inhouse_page'})"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.61 4.47 2 2 0 0 1 3.59 2.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>+44 (0) 1582 516247</a>
+        <a href="mailto:info@londonpetroacademy.co.uk" onclick="LPA_trackCTA('inhouse_mailto', {form_location:'inhouse_page'})"><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@londonpetroacademy.co.uk</a>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="#c8873a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>207 Regent Street, London W1B 3HH</span>
       </div>
     </div>
@@ -659,8 +659,8 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
       <h4>Company</h4>
       <ul class="flinks">
         <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener">Book a Consultation</a></li>
+        <li><a href="contact.html" onclick="LPA_trackCTA('inhouse_contact_link', {form_location:'inhouse_page'})">Contact Us</a></li>
+        <li><a href="https://calendly.com/london_petro_academy/ms-teams-session-with-london-petro-academy" rel="noopener nofollow" target="_blank" rel="noopener" onclick="LPA_trackCTA('inhouse_calendly', {form_location:'inhouse_page'})">Book a Consultation</a></li>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>

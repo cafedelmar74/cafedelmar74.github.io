@@ -1502,7 +1502,7 @@ window.addEventListener('scroll',()=>{
 </div>
 
 <script>
-function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', {course_name:'Accounting for Oil & Gas'});}
 function closeBkModal(){document.getElementById('bkOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBkModal();});
 document.getElementById('btnOpenBooking').addEventListener('click',openBkModal);
@@ -1543,11 +1543,12 @@ async function submitBk(){
     await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
-    if(typeof gtag==='function') gtag('event','booking_submitted',{course_name:payload.course_name});
+    LPA_track('booking_submitted', {course_name:payload.course_name, lead_type:'public', form_location:'course_page'});
   }catch(e){
     btn.textContent='Confirm Booking Request →';btn.disabled=false;
     if(typeof grecaptcha!=='undefined') grecaptcha.reset();
     alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
+    LPA_track('form_error', {form_location:'course_page'});
   }
 }
 </script>
@@ -1659,7 +1660,7 @@ async function submitBk(){
 </div>
 
 <script>
-function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', {course_name:'Accounting for Oil & Gas'});}
 function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
 function buildSessionsHtml(){
@@ -1693,8 +1694,8 @@ async function submitBrochure(){
     await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
     document.getElementById('brFormArea').style.display='none';
     document.getElementById('brOK').style.display='block';
-    if(typeof gtag==='function') gtag('event','brochure_download',{course_name:payload.course});
-  }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');}
+    LPA_track('brochure_download', {course_name:payload.course, lead_type:'public', form_location:'course_page'});
+  }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');LPA_track('form_error', {form_location:'course_page'});}
 }
 </script>
 
@@ -1761,6 +1762,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function openCalModal(){
     document.getElementById('calDlOverlay').classList.add('open');
     document.body.style.overflow='hidden';
+    LPA_trackCTA('calendar_open', {form_location:'course_page', course_name:'Accounting for Oil & Gas'});
   }
   function closeCalModal(){
     document.getElementById('calDlOverlay').classList.remove('open');
@@ -1803,6 +1805,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
+    LPA_track('calendar_download', {form_location:'course_page', course_name:'Accounting for Oil & Gas'});
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
   };
 

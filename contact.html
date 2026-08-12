@@ -639,6 +639,7 @@ function handleEnquiry(e){
   setTimeout(function(){
     btn.textContent = 'Enquiry Sent ✓';
     btn.style.background = '#2a7a4e';
+    LPA_track('enquiry_submitted', {enquiry_type:'general', form_location:'contact_page', lead_type:'public'});
     setTimeout(function(){
       form.reset();
       btn.textContent = origTxt;

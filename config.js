@@ -43,3 +43,14 @@ async function lpaSubmit(payload) {
   }).join('&');
   fetch(base + '?' + qs, { method: 'GET', mode: 'no-cors' }).catch(function(){});
 }
+
+// ── GA4 event tracking helpers ────────────────────────────────
+// Centralised so every page fires events with the same name/param shape.
+// No PII (name/email/phone/company/job title/free text) should ever be
+// passed in the params object — bounded values only.
+function LPA_track(eventName, params) {
+  if (typeof gtag === 'function') { gtag('event', eventName, params || {}); }
+}
+function LPA_trackCTA(ctaType, extra) {
+  LPA_track('cta_click', Object.assign({ cta_type: ctaType }, extra || {}));
+}

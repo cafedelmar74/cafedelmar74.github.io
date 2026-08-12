@@ -972,6 +972,7 @@ function submitCalGate(){
     method:'GET', mode:'no-cors'
   }).catch(function(){});
   document.body.classList.remove('cal-gate-locked');
+  LPA_track('calendar_download', {form_location:'calendar_2027_page'});
 }
 </script>
 </body>

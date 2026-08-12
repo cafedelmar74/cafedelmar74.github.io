@@ -11,6 +11,7 @@
   gtag('js', new Date());
   gtag('config', 'G-M8D1B87952');
 </script>
+<script src="config.js"></script>
 
 
 <!-- ═══════════════════════════════════════════
@@ -1349,9 +1350,9 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     <h1 class="hero-h1">Oil, Gas &amp; Renewable Energy <em>Training</em> for Industry Professionals</h1>
     <p class="hero-desc">Premier training for NOCs, IOCs and Energy Ministries worldwide — classroom, remote and in-house delivery.</p>
     <div class="hero-cta-row">
-      <a href="calendar-2026.html" class="hero-cal-btn">2026 Calendar</a>
+      <a href="calendar-2026.html" class="hero-cal-btn" onclick="LPA_trackCTA('calendar_open', {form_location:'homepage_hero_2026'})">2026 Calendar</a>
       <a href="#contact-form" class="hero-cta-btn">Request a Training Proposal →</a>
-      <a href="calendar-2027.html" class="hero-cal-btn">2027 Calendar</a>
+      <a href="calendar-2027.html" class="hero-cal-btn" onclick="LPA_trackCTA('calendar_open', {form_location:'homepage_hero_2027'})">2027 Calendar</a>
     </div>
     <span class="hero-reassurance">No obligation · Response within 1 business day</span>
   </div>
@@ -2123,6 +2124,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function openCalModal(){
     document.getElementById('calDlOverlay').classList.add('open');
     document.body.style.overflow='hidden';
+    LPA_trackCTA('calendar_open', {form_location:'homepage_2026'});
   }
   function closeCalModal(){
     document.getElementById('calDlOverlay').classList.remove('open');
@@ -2131,6 +2133,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function openVirtualCalModal(){
     document.getElementById('virtualCalDlOverlay').classList.add('open');
     document.body.style.overflow='hidden';
+    LPA_trackCTA('calendar_open', {form_location:'homepage_virtual'});
   }
   function closeVirtualCalModal(){
     document.getElementById('virtualCalDlOverlay').classList.remove('open');
@@ -2179,6 +2182,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
+    LPA_track('calendar_download', {form_location:'homepage_2026'});
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
   };
 
@@ -2207,6 +2211,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }).catch(function(){});
     document.getElementById('virtualCalDlForm').style.display = 'none';
     document.getElementById('virtualCalDlSuccess').style.display = 'block';
+    LPA_track('calendar_download', {form_location:'homepage_virtual'});
     setTimeout(function(){ window.location.href = 'virtual-calendar-2026.html'; }, 1200);
   };
 

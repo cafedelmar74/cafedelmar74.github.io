@@ -846,6 +846,7 @@ function submitCalGate(){
   }).catch(function(){});
   sessionStorage.setItem('lpa_cal_unlocked_2026','1');
   document.body.classList.remove('cal-gate-locked');
+  LPA_track('calendar_download', {form_location:'calendar_2026_page'});
 }
 </script>
 </body>
