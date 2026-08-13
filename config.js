@@ -41,7 +41,7 @@ async function lpaSubmit(payload) {
   var qs = Object.keys(payload).map(function(k){
     return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k] || '');
   }).join('&');
-  fetch(base + '?' + qs, { method: 'GET', mode: 'no-cors' }).catch(function(){});
+  await fetch(base + '?' + qs, { method: 'GET', mode: 'no-cors' });
 }
 
 // ── GA4 event tracking helpers ────────────────────────────────
