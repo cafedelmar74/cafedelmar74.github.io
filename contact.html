@@ -603,8 +603,12 @@ function toggleFaq(btn){
   btn.setAttribute('aria-expanded',!isOpen);
 }
 
-// Enquiry form handler — sends to n8n enquiry webhook via image beacon
-function handleEnquiry(e){
+// Enquiry form handler — sends to n8n enquiry webhook and waits for the
+// request to complete before confirming success. mode:'no-cors' (same as
+// the booking/brochure flows) means the HTTP status can't be read, but a
+// genuine network-level failure (offline/DNS/connection refused) will now
+// be caught instead of silently assumed successful.
+async function handleEnquiry(e){
   e.preventDefault();
   var form = e.target;
   var btn = form.querySelector('button');
@@ -632,11 +636,8 @@ function handleEnquiry(e){
     return encodeURIComponent(k) + '=' + encodeURIComponent(params[k] || '');
   }).join('&');
 
-  // Image beacon — most reliable cross-origin GET, bypasses CORS and most blockers
-  var img = new Image();
-  img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs;
-
-  setTimeout(function(){
+  try {
+    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs, { method: 'GET', mode: 'no-cors' });
     btn.textContent = 'Enquiry Sent ✓';
     btn.style.background = '#2a7a4e';
     LPA_track('enquiry_submitted', {enquiry_type:'general', form_location:'contact_page', lead_type:'public'});
@@ -646,7 +647,12 @@ function handleEnquiry(e){
       btn.style.background = '';
       btn.disabled = false;
     }, 4000);
-  }, 800);
+  } catch (err) {
+    btn.textContent = origTxt;
+    btn.disabled = false;
+    LPA_track('form_error', {form_location:'contact_page'});
+    alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
+  }
 }
 </script>
 </body>
