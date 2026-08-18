@@ -26,6 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=&display=swap" rel="stylesheet">
+<script src="course-data.js" defer></script>
 <script src="config.js" defer></script>
 <style>
 :root{
@@ -511,7 +512,6 @@ const SESSIONS = [
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'4–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Accounting for JVs & PSCs in Upstream Oil & Gas',dates:'10–14 Aug 2026',loc:'Houston, USA',url:'course-accounting-jvs-pscs-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'10–12 Aug 2026',loc:'Aberdeen, UK',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
-  {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal Aspects of Production Sharing Contracts',dates:'24–26 Aug 2026',loc:'London, UK',url:'course-legal-aspects-production-sharing-contracts.html',tag:'Upstream · Legal & Fiscal'},
   {month:'aug',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'24–26 Aug 2026',loc:'Buenos Aires, Argentina',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'25–27 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'17–21 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
@@ -553,7 +553,6 @@ const SESSIONS = [
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'23–26 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'International Gas Markets & Economic Evaluation of Gas Projects',dates:'30 Nov–4 Dec 2026',loc:'Doha, Qatar',url:'course-international-gas-markets.html',tag:'Upstream · Economics'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'19–20 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Legal Aspects of Production Sharing Contracts',dates:'23–25 Nov 2026',loc:'Dubai, UAE',url:'course-legal-aspects-production-sharing-contracts.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'17–19 Nov 2026',loc:'Singapore',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // DECEMBER
   {month:'dec',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'7–9 Dec 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
@@ -753,6 +752,7 @@ window.addEventListener('scroll',function(){document.getElementById('nav').class
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('legal-aspects-production-sharing-contracts', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();

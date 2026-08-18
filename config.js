@@ -371,3 +371,76 @@ function LPA_renderSessionOptions(course) {
     sel.appendChild(opt);
   });
 }
+
+// ── Phase 3D-3E: one-calendar pilot — legacy row generation ──────────────
+// Additive only. Existing shared functions above (LPA_courseForPath,
+// LPA_sessionById, LPA_sessionSnapshot, LPA_fireCoursePageView,
+// LPA_renderSessionOptions, and the display/formatting helpers) are
+// unmodified. Nothing here is called by any course page.
+
+// Looks up a course record by its immutable course_id — used where the
+// current page isn't the course's own page (e.g. a portfolio calendar), so
+// page_path can't be used as the lookup key. Pure lookup, no derivation.
+function LPA_courseById(courseId) {
+  if (typeof LPA_COURSES === 'undefined') { return null; }
+  for (var i = 0; i < LPA_COURSES.length; i++) {
+    if (LPA_COURSES[i].course_id === courseId) { return LPA_COURSES[i]; }
+  }
+  return null;
+}
+
+// Presentation-only short label for a course_category, used solely to
+// reproduce the legacy calendar card's "Upstream · X" tag text. This is
+// NOT a taxonomy and is never sent to GA4 or used as an identifier —
+// course_category itself stays exactly as authored in LPA_COURSES.
+// Deliberately partial: only covers categories exercised by courses
+// migrated so far; extend as further courses join the calendar pilot.
+var LPA_CALENDAR_CATEGORY_LABELS = {
+  'legal_fiscal_contracts': 'Legal & Fiscal'
+};
+function LPA_calendarCategoryLabel(courseCategory) {
+  return LPA_CALENDAR_CATEGORY_LABELS[courseCategory] || courseCategory;
+}
+
+// Maps a session's canonical delivery_format to the legacy calendar's two
+// display formats. Returns null for anything else — callers must exclude
+// the session rather than guess, so an unrecognised format (e.g. in_house,
+// tbc_on_request) never gets silently mislabelled as classroom.
+function LPA_legacyCalendarFmt(deliveryFormat) {
+  if (deliveryFormat === 'in_person') { return 'classroom'; }
+  if (deliveryFormat === 'virtual') { return 'virtual'; }
+  return null;
+}
+
+// Builds legacy-shaped calendar row objects ({month,cat,fmt,title,dates,
+// loc,url,tag}) for one course's scheduled sessions falling in the given
+// calendar year, sourced entirely from LPA_COURSES/LPA_SESSIONS. year is
+// required — each portfolio calendar page covers exactly one year, and
+// LPA_SESSIONS is not itself year-partitioned, so the caller must say
+// which year it's rendering.
+function LPA_legacyCalendarRowsForCourse(courseId, year) {
+  var course = LPA_courseById(courseId);
+  if (!course || typeof LPA_SESSIONS === 'undefined') { return []; }
+  var monthAbbr = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  var rows = [];
+  LPA_SESSIONS.filter(function(s) {
+    return s.course_id === courseId &&
+           s.session_status === 'scheduled' &&
+           s.course_start_date.slice(0, 4) === String(year);
+  }).forEach(function(s) {
+    var fmt = LPA_legacyCalendarFmt(s.delivery_format);
+    if (!fmt) { return; }
+    var monthIndex = parseInt(s.course_start_date.split('-')[1], 10) - 1;
+    rows.push({
+      month: monthAbbr[monthIndex],
+      cat: course.calendar_category,
+      fmt: fmt,
+      title: course.course_name,
+      dates: LPA_formatSessionDateRange(s.course_start_date, s.course_end_date),
+      loc: s.course_location + ', ' + LPA_displayCountry(s.course_country),
+      url: course.page_path.replace(/^\//, ''),
+      tag: course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + LPA_calendarCategoryLabel(course.course_category)
+    });
+  });
+  return rows;
+}
