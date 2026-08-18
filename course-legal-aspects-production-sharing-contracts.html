@@ -489,7 +489,17 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 </style>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!-- LPA config -->
+<script src="course-data.js"></script>
 <script src="config.js"></script>
+<script>
+  var LPA_CURRENT_COURSE = null;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    LPA_CURRENT_COURSE = LPA_courseForPath(window.location.pathname);
+    LPA_fireCoursePageView(LPA_CURRENT_COURSE);
+    LPA_renderSessionOptions(LPA_CURRENT_COURSE);
+  });
+</script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -1023,9 +1033,6 @@ window.addEventListener('scroll',()=>{
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
             <option value="">— Choose a date and location —</option>
-            <option value="24–26 Aug 2026 | London, UK">24–26 Aug 2026 — London, UK</option>
-            <option value="23–25 Nov 2026 | Dubai, UAE">23–25 Nov 2026 — Dubai, UAE</option>
-            <option value="1–3 Feb 2027 | Manila, Philippines">1–3 Feb 2027 — Manila, Philippines</option>
           </select>
         </div>
         <div class="bk-sep"></div>
@@ -1517,7 +1524,7 @@ window.addEventListener('scroll',()=>{
 </div>
 
 <script>
-function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', {course_name:'Legal Aspects of Production Sharing Contracts'});}
+function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Legal Aspects of Production Sharing Contracts'});}
 function closeBkModal(){document.getElementById('bkOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBkModal();});
 document.getElementById('btnOpenBooking').addEventListener('click',openBkModal);
@@ -1534,10 +1541,33 @@ async function submitBk(){
   var captchaResp='bypassed'; // reCAPTCHA active on production domain only
   document.getElementById('bkCaptchaErr').style.display='none';
   if(!ok){var fe=document.querySelector('.er');if(fe)fe.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(typeof LPA_SESSIONS==='undefined'||!LPA_CURRENT_COURSE){
+    alert('Something went wrong loading course session data. Please email info@londonpetroacademy.co.uk to book.');
+    LPA_track('form_error', {form_location:'course_page', error_type: typeof LPA_SESSIONS==='undefined' ? 'central_data_load_failure' : 'course_lookup_failure'});
+    return;
+  }
+  var bkSelOpt=document.getElementById('bkSes').selectedOptions[0];
+  var bkSessionId=bkSelOpt?bkSelOpt.dataset.sessionId:'';
+  var bkSession=LPA_sessionById(bkSessionId);
+  if(!bkSession){
+    alert('Please select a valid session and try again.');
+    LPA_track('form_error', {form_location:'course_page', error_type:'invalid_session'});
+    return;
+  }
+  if(bkSession.course_id!==LPA_CURRENT_COURSE.course_id){
+    alert('Something went wrong with your session selection. Please refresh the page and try again.');
+    LPA_track('form_error', {form_location:'course_page', error_type:'session_course_mismatch'});
+    return;
+  }
+  if(bkSession.session_status!=='scheduled'){
+    alert('This session is no longer available. Please choose a different date or contact us.');
+    LPA_track('form_error', {form_location:'course_page', error_type:'cancelled_session'});
+    return;
+  }
   var btn=document.getElementById('bkSB');
   btn.textContent='Sending…';btn.disabled=true;
   var payload={
-    course_name:'Legal Aspects of Production Sharing Contracts',
+    course_name:LPA_CURRENT_COURSE.course_name,
     course_session:document.getElementById('bkSes').value,
     first_name:document.getElementById('bkFN').value,
     last_name:document.getElementById('bkLN').value,
@@ -1563,7 +1593,13 @@ async function submitBk(){
     await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
-    LPA_track('booking_submitted', {course_name:payload.course_name, lead_type:'public', form_location:'course_page'});
+    LPA_track('booking_submitted', Object.assign({
+      course_id: LPA_CURRENT_COURSE.course_id,
+      course_name: LPA_CURRENT_COURSE.course_name,
+      course_category: LPA_CURRENT_COURSE.course_category,
+      lead_type:'public',
+      form_location:'course_page'
+    }, LPA_sessionSnapshot(bkSession)));
   }catch(e){
     btn.textContent='Confirm Booking Request →';btn.disabled=false;
     if(typeof grecaptcha!=='undefined') grecaptcha.reset();
@@ -1680,7 +1716,7 @@ async function submitBk(){
 </div>
 
 <script>
-function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', {course_name:'Legal Aspects of Production Sharing Contracts'});}
+function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Legal Aspects of Production Sharing Contracts'});}
 function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
 function buildSessionsHtml(){
@@ -1709,12 +1745,12 @@ async function submitBrochure(){
   [name,email,phone].forEach(function(el){el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
   if(!ok) return;
   var btn=document.getElementById('brSB');btn.textContent='Sending…';btn.disabled=true;
-  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'Legal Aspects of Production Sharing Contracts',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/legal-aspects-production-sharing-contracts.pdf',sessions_html:buildSessionsHtml(),page_url:window.location.href,submitted_at:new Date().toISOString()};
+  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:(LPA_CURRENT_COURSE&&LPA_CURRENT_COURSE.course_name)||'Legal Aspects of Production Sharing Contracts',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/legal-aspects-production-sharing-contracts.pdf',sessions_html:buildSessionsHtml(),page_url:window.location.href,submitted_at:new Date().toISOString()};
   try{
     await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
     document.getElementById('brFormArea').style.display='none';
     document.getElementById('brOK').style.display='block';
-    LPA_track('brochure_download', {course_name:payload.course, lead_type:'public', form_location:'course_page'});
+    LPA_track('brochure_download', Object.assign({lead_type:'public', form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name,course_category:LPA_CURRENT_COURSE.course_category}:{course_name:payload.course}));
   }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');LPA_track('form_error', {form_location:'course_page'});}
 }
 </script>
@@ -1782,7 +1818,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function openCalModal(){
     document.getElementById('calDlOverlay').classList.add('open');
     document.body.style.overflow='hidden';
-    LPA_trackCTA('calendar_open', {form_location:'course_page', course_name:'Legal Aspects of Production Sharing Contracts'});
+    LPA_trackCTA('calendar_open', Object.assign({form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Legal Aspects of Production Sharing Contracts'}));
   }
   function closeCalModal(){
     document.getElementById('calDlOverlay').classList.remove('open');
@@ -1825,7 +1861,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
-    LPA_track('calendar_download', {form_location:'course_page', course_name:'Legal Aspects of Production Sharing Contracts'});
+    LPA_track('calendar_download', Object.assign({form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Legal Aspects of Production Sharing Contracts'}));
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
   };
 

@@ -233,3 +233,141 @@ function LPA_track(eventName, params) {
 function LPA_trackCTA(ctaType, extra) {
   LPA_track('cta_click', Object.assign({ cta_type: ctaType }, extra || {}));
 }
+
+// ── Phase 3D-3D: central course/session data lookup (PILOT) ──────────────
+// Additive only — nothing above this point is modified or removed, and the
+// other 36 course pages (which do not load course-data.js) never call any
+// of the functions below, so this block changes no existing behaviour.
+
+// Looks up the course record whose page_path matches the given pathname.
+// This is a LOOKUP, not a derivation: course_id is never generated from
+// pathname, it is only retrieved from the matching, pre-authored record in
+// LPA_COURSES (course-data.js). Returns null if course-data.js hasn't
+// loaded or no record matches.
+function LPA_courseForPath(pathname) {
+  if (typeof LPA_COURSES === 'undefined') { return null; }
+  for (var i = 0; i < LPA_COURSES.length; i++) {
+    if (LPA_COURSES[i].page_path === pathname) { return LPA_COURSES[i]; }
+  }
+  return null;
+}
+
+// Looks up a session by its immutable course_session_id. Pure lookup, no
+// derivation. Does not validate that the session belongs to any particular
+// course or is currently scheduled — callers check that themselves so they
+// can report the correct error_type.
+function LPA_sessionById(sessionId) {
+  if (!sessionId || typeof LPA_SESSIONS === 'undefined') { return null; }
+  for (var i = 0; i < LPA_SESSIONS.length; i++) {
+    if (LPA_SESSIONS[i].course_session_id === sessionId) { return LPA_SESSIONS[i]; }
+  }
+  return null;
+}
+
+// Builds the booking_submitted session snapshot from a resolved session
+// record at the moment of submission. Copies the record's current values —
+// if the session is later rescheduled or relocated, this snapshot is
+// unaffected, since it was taken at submit time, not re-derived afterward.
+function LPA_sessionSnapshot(session) {
+  return {
+    course_session_id: session.course_session_id,
+    course_start_date: session.course_start_date,
+    course_end_date: session.course_end_date,
+    course_location: session.course_location,
+    course_country: session.course_country,
+    delivery_format: session.delivery_format
+  };
+}
+
+// Fires the dedicated course_page_view event at most once per page load.
+// Deliberately carries no session/date/location — viewing the page doesn't
+// imply interest in any one scheduled occurrence.
+//
+// LPA_coursePageViewFired is a plain in-memory flag, not persisted storage
+// — it resets naturally on every real page load/navigation, since config.js
+// itself is re-evaluated from scratch each time. A call with course == null
+// (lookup not yet resolved, or failed) returns before the flag is checked
+// or set, so it never consumes the guard — a later legitimate call in the
+// same page load still fires normally.
+var LPA_coursePageViewFired = false;
+function LPA_fireCoursePageView(course) {
+  if (!course) { return; }
+  if (LPA_coursePageViewFired) { return; }
+  LPA_coursePageViewFired = true;
+  LPA_track('course_page_view', {
+    course_id: course.course_id,
+    course_name: course.course_name,
+    course_category: course.course_category
+  });
+}
+
+// ── Phase 3D-3D correction: render #bkSes from LPA_SESSIONS ──────────────
+// The booking dropdown is generated from the central registry at load time
+// — nothing about a course's sessions is ever hand-authored in a course
+// page's HTML. course_session_id (not display text) is the option's
+// authoritative identifier; visitor-facing text/value are formatted from
+// the record's canonical fields, never the reverse.
+
+// Display-only abbreviation for the visitor-facing dropdown text and the
+// n8n-facing option value. Does NOT change what's stored in LPA_SESSIONS
+// or sent to GA4 — course_country stays canonical ("United Kingdom")
+// everywhere except this one rendering step.
+var LPA_COUNTRY_DISPLAY_ABBR = { 'United Kingdom': 'UK', 'United Arab Emirates': 'UAE' };
+function LPA_displayCountry(country) {
+  return LPA_COUNTRY_DISPLAY_ABBR[country] || country;
+}
+
+var LPA_MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function LPA_formatSessionDateRange(startISO, endISO) {
+  var s = startISO.split('-').map(Number), e = endISO.split('-').map(Number);
+  var sY=s[0], sM=s[1], sD=s[2], eY=e[0], eM=e[1], eD=e[2];
+  if (sY === eY && sM === eM) {
+    return sD + '–' + eD + ' ' + LPA_MONTH_ABBR[sM-1] + ' ' + sY;
+  }
+  if (sY === eY) {
+    return sD + ' ' + LPA_MONTH_ABBR[sM-1] + '–' + eD + ' ' + LPA_MONTH_ABBR[eM-1] + ' ' + eY;
+  }
+  return sD + ' ' + LPA_MONTH_ABBR[sM-1] + ' ' + sY + '–' + eD + ' ' + LPA_MONTH_ABBR[eM-1] + ' ' + eY;
+}
+
+// Renders #bkSes entirely from LPA_SESSIONS, filtered to this course and to
+// session_status === 'scheduled', sorted chronologically by
+// course_start_date. course_session_id is the option's authoritative
+// identifier (data-session-id) — nothing is recovered by parsing the
+// generated text. Leaves only the placeholder option and disables the
+// select — with a distinct message — for both failure states (central data
+// unavailable) and the legitimate zero-sessions state, so the existing
+// required-field validation in submitBk() blocks submission naturally,
+// without needing to fire form_error for a normal business state.
+function LPA_renderSessionOptions(course) {
+  var sel = document.getElementById('bkSes');
+  if (!sel) { return; }
+  while (sel.options.length > 1) { sel.remove(1); }
+  var placeholder = sel.options[0];
+  if (!course || typeof LPA_SESSIONS === 'undefined') {
+    if (placeholder) { placeholder.textContent = 'Session data unavailable — please contact us to book'; }
+    sel.disabled = true;
+    return;
+  }
+  var sessions = LPA_SESSIONS.filter(function(s) {
+    return s.course_id === course.course_id && s.session_status === 'scheduled';
+  }).sort(function(a, b) {
+    return a.course_start_date < b.course_start_date ? -1 : (a.course_start_date > b.course_start_date ? 1 : 0);
+  });
+  if (!sessions.length) {
+    if (placeholder) { placeholder.textContent = 'No sessions currently scheduled — please contact us'; }
+    sel.disabled = true;
+    return;
+  }
+  if (placeholder) { placeholder.textContent = '— Choose a date and location —'; }
+  sel.disabled = false;
+  sessions.forEach(function(s) {
+    var dateLabel = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date);
+    var locLabel = s.course_location + ', ' + LPA_displayCountry(s.course_country);
+    var opt = document.createElement('option');
+    opt.value = dateLabel + ' | ' + locLabel;
+    opt.setAttribute('data-session-id', s.course_session_id);
+    opt.textContent = dateLabel + ' — ' + locLabel;
+    sel.appendChild(opt);
+  });
+}
