@@ -225,7 +225,7 @@ function LPA_track(eventName, params) {
   if (canonicalName) {
     params = Object.assign({}, params, { course_name: canonicalName });
   }
-  if (eventName === 'booking_submitted' && LPA_COURSE_NAME[window.location.pathname]) {
+  if (eventName === 'booking_submitted' && LPA_COURSE_NAME[window.location.pathname] && typeof LPA_CURRENT_COURSE === 'undefined') {
     params = LPA_enrichBookingSession(params);
   }
   if (typeof gtag === 'function') { gtag('event', eventName, params); }
