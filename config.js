@@ -140,60 +140,6 @@ var LPA_COURSE_NAME = {
   '/course-world-fiscal-systems-unconventional.html': 'World Fiscal Systems for Unconventional Oil & Gas'
 };
 
-// Country-name normalisation for the two-component "City, Country" case only.
-var LPA_COUNTRY_NORMALIZE = { 'UK': 'United Kingdom' };
-
-// Explicit, bounded map for single-component physical locations that are
-// genuinely both city and country. Do NOT infer this generically — a future
-// bare city (e.g. "Dubai") must not silently become its own country.
-var LPA_SINGLE_LOCATION_COUNTRY = { 'Singapore': 'Singapore' };
-
-// Parses a raw <select id="bkSes"> option value into delivery_format plus,
-// for in_person sessions, course_location/course_country. No date parsing.
-// Returns null when the format isn't recognised — callers must omit fields
-// rather than guess.
-function LPA_parseSessionLocation(raw) {
-  if (!raw) { return null; }
-  if (raw === 'On Request' || raw === 'Upon Request') {
-    return { delivery_format: 'tbc_on_request' };
-  }
-  var parts = raw.split('|');
-  var first = parts[0] ? parts[0].trim() : '';
-  var second = parts[1] ? parts[1].trim() : '';
-  if (first === 'Classroom') { return { delivery_format: 'tbc_on_request' }; }
-  if (first === 'In-House') { return { delivery_format: 'in_house' }; }
-  if (!second) { return null; }
-  if (second.indexOf('Virtual') === 0) { return { delivery_format: 'virtual' }; }
-  var segs = second.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-  if (!segs.length) { return null; }
-  if (segs.length >= 2) {
-    var city = segs[0];
-    var country = LPA_COUNTRY_NORMALIZE[segs[segs.length - 1]] || segs[segs.length - 1];
-    return { delivery_format: 'in_person', course_location: city, course_country: country };
-  }
-  // Single-component location — only attach a country when explicitly known
-  // to be city==country. Otherwise send course_location and omit country.
-  var single = segs[0];
-  var result = { delivery_format: 'in_person', course_location: single };
-  if (LPA_SINGLE_LOCATION_COUNTRY[single]) {
-    result.course_country = LPA_SINGLE_LOCATION_COUNTRY[single];
-  }
-  return result;
-}
-
-// Reads the currently-selected booking session directly from the DOM
-// (#bkSes already exists on every course page and is already relied on by
-// that page's own n8n payload construction) and enriches params with the
-// parsed location/country/delivery_format. Only ever called for
-// booking_submitted.
-function LPA_enrichBookingSession(params) {
-  var sel = document.getElementById('bkSes');
-  if (!sel || !sel.value) { return params; }
-  var parsed = LPA_parseSessionLocation(sel.value);
-  if (!parsed) { return params; }
-  return Object.assign({}, params, parsed);
-}
-
 // Only these events/cta_types are eligible for automatic course_category
 // (and course_name) enrichment. Deliberately excludes form_error and
 // enquiry_submitted.
@@ -224,9 +170,6 @@ function LPA_track(eventName, params) {
   var canonicalName = LPA_nameFor(eventName, params);
   if (canonicalName) {
     params = Object.assign({}, params, { course_name: canonicalName });
-  }
-  if (eventName === 'booking_submitted' && LPA_COURSE_NAME[window.location.pathname] && typeof LPA_CURRENT_COURSE === 'undefined') {
-    params = LPA_enrichBookingSession(params);
   }
   if (typeof gtag === 'function') { gtag('event', eventName, params); }
 }
