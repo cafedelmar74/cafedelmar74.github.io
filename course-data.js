@@ -62,6 +62,14 @@ var LPA_COURSES = [
     calendar_category: 'downstream',
     page_path:         '/course-commercial-aspects-oil-refining.html',
     status:            'active'
+  },
+  {
+    course_id:         'accounting-for-oil-gas',
+    course_name:       'Accounting for Oil & Gas',
+    course_category:   'accounting_finance',
+    calendar_category: 'upstream',
+    page_path:         '/course-accounting-for-oil-gas.html',
+    status:            'active'
   }
 ];
 
@@ -420,6 +428,80 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-11-17',
     course_location:    'Dubai',
     course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Seventh course migrated (Phase 3D-3M). Business-confirmed sessions.
+    // VAT disclosure for London sessions is kept as a page-specific static
+    // exception (price table, FAQ, brochure note) — not modeled here or in
+    // the shared renderer, per explicit approval.
+    course_session_id: 'accounting-for-oil-gas-s1',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2026-08-03',
+    course_end_date:    '2026-08-07',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s2',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2026-10-26',
+    course_end_date:    '2026-10-30',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s3',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2026-12-04',
+    course_end_date:    '2026-12-08',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s4',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2027-03-08',
+    course_end_date:    '2027-03-12',
+    course_location:    'Cape Town',
+    course_country:     'South Africa',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s5',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2027-06-14',
+    course_end_date:    '2027-06-18',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s6',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2027-08-02',
+    course_end_date:    '2027-08-06',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-for-oil-gas-s7',
+    course_id:          'accounting-for-oil-gas',
+    course_start_date:  '2027-12-06',
+    course_end_date:    '2027-12-10',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
