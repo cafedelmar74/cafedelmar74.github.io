@@ -526,7 +526,6 @@ const SESSIONS = [
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'15–19 Mar 2027',loc:'Windhoek, Namibia',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'15–19 Mar 2027',loc:'Singapore',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   // APRIL
-  {month:'apr',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'5–7 Apr 2027',loc:'Kuala Lumpur, Malaysia',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'12–14 Apr 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'12–16 Apr 2027',loc:'London, UK',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
   {month:'apr',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'12–14 Apr 2027',loc:'Houston, USA',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
@@ -571,7 +570,6 @@ const SESSIONS = [
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'2–4 Aug 2027',loc:'Rio de Janeiro, Brazil',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'aug',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'2–6 Aug 2027',loc:'Singapore',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'9–12 Aug 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'aug',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'9–11 Aug 2027',loc:'Aberdeen, UK',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'16–20 Aug 2027',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'16–18 Aug 2027',loc:'Singapore',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
   {month:'aug',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'16–19 Aug 2027',loc:'Windhoek, Namibia',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
@@ -587,7 +585,6 @@ const SESSIONS = [
   {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'13–17 Sep 2027',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'20–24 Sep 2027',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'20–22 Sep 2027',loc:'Aberdeen, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'20–22 Sep 2027',loc:'Cairo, Egypt',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'20–22 Sep 2027',loc:'Manama, Bahrain',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'20–22 Sep 2027',loc:'Jakarta, Indonesia',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'20–21 Sep 2027',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
@@ -601,7 +598,6 @@ const SESSIONS = [
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'4–6 Oct 2027',loc:'Singapore',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'4–8 Oct 2027',loc:'Santiago, Chile',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'11–13 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'11–13 Oct 2027',loc:'Abu Dhabi, UAE',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'11–13 Oct 2027',loc:'Dubai, UAE',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'IPPs: Bankable Power Purchase Agreements',dates:'11–14 Oct 2027',loc:'London, UK',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'18–21 Oct 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
@@ -896,6 +892,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'international-gas-markets',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'stuck-pipe-prevention',
       2027
     )
   );

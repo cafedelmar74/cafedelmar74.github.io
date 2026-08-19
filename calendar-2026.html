@@ -507,7 +507,6 @@ const SESSIONS = [
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'21–23 Jul 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // AUGUST
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'4–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'aug',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'10–12 Aug 2026',loc:'Aberdeen, UK',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'aug',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'24–26 Aug 2026',loc:'Buenos Aires, Argentina',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'25–27 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'17–21 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
@@ -517,7 +516,6 @@ const SESSIONS = [
   {month:'sep',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'9–11 Sep 2026',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'sep',cat:'upstream',fmt:'virtual',title:'Offshore & Deepwater Drilling',dates:'14–16 Sep 2026',loc:'Stavanger (Virtual)',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Sep 2026',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'18–20 Sep 2026',loc:'Stavanger, Norway',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'24–25 Sep 2026',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   {month:'sep',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'8–10 Sep 2026',loc:'London, UK',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'22–24 Sep 2026',loc:'Singapore',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
@@ -746,6 +744,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('commercial-aspects-oil-refining', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('accounting-for-oil-gas', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-gas-markets', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('stuck-pipe-prevention', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();

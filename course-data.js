@@ -83,6 +83,14 @@ var LPA_COURSES = [
     calendar_label:    'Economics',
     page_path:         '/course-international-gas-markets.html',
     status:            'active'
+  },
+  {
+    course_id:         'stuck-pipe-prevention',
+    course_name:       'Stuck Pipe Prevention',
+    course_category:   'drilling_well_ops',
+    calendar_category: 'upstream',
+    page_path:         '/course-stuck-pipe-prevention.html',
+    status:            'active'
   }
 ];
 
@@ -586,6 +594,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-12-03',
     course_location:    'Doha',
     course_country:     'Qatar',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Ninth course migrated (Phase 3D-3O, final Group A). Business-confirmed sessions.
+    course_session_id: 'stuck-pipe-prevention-s1',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2026-08-10',
+    course_end_date:    '2026-08-12',
+    course_location:    'Aberdeen',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'stuck-pipe-prevention-s2',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2026-09-18',
+    course_end_date:    '2026-09-20',
+    course_location:    'Stavanger',
+    course_country:     'Norway',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'stuck-pipe-prevention-s3',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2027-04-05',
+    course_end_date:    '2027-04-07',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'stuck-pipe-prevention-s4',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2027-08-09',
+    course_end_date:    '2027-08-11',
+    course_location:    'Aberdeen',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'stuck-pipe-prevention-s5',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2027-09-20',
+    course_end_date:    '2027-09-22',
+    course_location:    'Cairo',
+    course_country:     'Egypt',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'stuck-pipe-prevention-s6',
+    course_id:          'stuck-pipe-prevention',
+    course_start_date:  '2027-10-11',
+    course_end_date:    '2027-10-13',
+    course_location:    'Abu Dhabi',
+    course_country:     'United Arab Emirates',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
