@@ -91,6 +91,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-stuck-pipe-prevention.html',
     status:            'active'
+  },
+  {
+    course_id:         'crude-oil-evaluation-economics-pricing',
+    course_name:       'Crude Oil Evaluation, Economics & Pricing',
+    course_category:   'trading_markets',
+    calendar_category: 'downstream',
+    page_path:         '/course-crude-oil-evaluation-economics-pricing.html',
+    status:            'active'
   }
 ];
 
@@ -655,6 +663,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-10-13',
     course_location:    'Abu Dhabi',
     course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Tenth course migrated (Phase 3D-3Q, first Group B1 migration). Business-confirmed sessions.
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s1',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2026-07-06',
+    course_end_date:    '2026-07-10',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s2',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2026-11-02',
+    course_end_date:    '2026-11-06',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s3',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2027-03-08',
+    course_end_date:    '2027-03-12',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s4',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2027-04-26',
+    course_end_date:    '2027-04-30',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s5',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2027-07-05',
+    course_end_date:    '2027-07-09',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s6',
+    course_id:          'crude-oil-evaluation-economics-pricing',
+    course_start_date:  '2027-11-08',
+    course_end_date:    '2027-11-12',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

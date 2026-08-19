@@ -520,7 +520,6 @@ const SESSIONS = [
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'1–5 Mar 2027',loc:'Manila, Philippines',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'8–11 Mar 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'8–10 Mar 2027',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
-  {month:'mar',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'8–12 Mar 2027',loc:'London, UK',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'mar',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'8–11 Mar 2027',loc:'Rotterdam, Netherlands',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'8–12 Mar 2027',loc:'Manila, Philippines',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'15–19 Mar 2027',loc:'Windhoek, Namibia',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
@@ -534,7 +533,6 @@ const SESSIONS = [
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'19–23 Apr 2027',loc:'London, UK',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'19–23 Apr 2027',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'26–28 Apr 2027',loc:'Al Khobar, Saudi Arabia',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'apr',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'26–30 Apr 2027',loc:'Dubai, UAE',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'26–30 Apr 2027',loc:'Singapore',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'26–28 Apr 2027',loc:'Nairobi, Kenya',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   // MAY
@@ -559,7 +557,6 @@ const SESSIONS = [
   {month:'jun',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'21–22 Jun 2027',loc:'Singapore',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // JULY
   {month:'jul',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'5–7 Jul 2027',loc:'London, UK',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'jul',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'5–9 Jul 2027',loc:'Singapore',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'12–16 Jul 2027',loc:'Singapore',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'12–14 Jul 2027',loc:'Houston, USA',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'jul',cat:'renewables',fmt:'classroom',title:'Solar Power Finance',dates:'12–14 Jul 2027',loc:'Mumbai, India',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
@@ -612,7 +609,6 @@ const SESSIONS = [
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'8–12 Nov 2027',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'8–10 Nov 2027',loc:'Lagos, Nigeria',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'8–10 Nov 2027',loc:'Aberdeen, UK',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
-  {month:'nov',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'8–12 Nov 2027',loc:'Rio de Janeiro, Brazil',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'nov',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'15–19 Nov 2027',loc:'Houston, USA',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Power Project Contracts, Finance, Risk & Negotiation',dates:'15–18 Nov 2027',loc:'Abu Dhabi, UAE',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'22–26 Nov 2027',loc:'Dubai, UAE',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
@@ -899,6 +895,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'stuck-pipe-prevention',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'crude-oil-evaluation-economics-pricing',
       2027
     )
   );

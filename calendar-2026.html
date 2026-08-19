@@ -502,7 +502,6 @@ const SESSIONS = [
   // JULY
   {month:'jul',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'6–8 Jul 2026',loc:'Bali, Indonesia',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'6–8 Jul 2026',loc:'Bali, Indonesia',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
-  {month:'jul',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'6–10 Jul 2026',loc:'Singapore',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'13–15 Jul 2026',loc:'Houston, USA',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'21–23 Jul 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // AUGUST
@@ -532,7 +531,6 @@ const SESSIONS = [
   {month:'oct',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'27–29 Oct 2026',loc:'Rotterdam, Netherlands',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'19–23 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   // NOVEMBER
-  {month:'nov',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'2–6 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'9–11 Nov 2026',loc:'Aberdeen, UK',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'nov',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'16–18 Nov 2026',loc:'London, United Kingdom',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'9–13 Nov 2026',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
@@ -745,6 +743,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('accounting-for-oil-gas', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-gas-markets', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('stuck-pipe-prevention', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('crude-oil-evaluation-economics-pricing', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
