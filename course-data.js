@@ -126,16 +126,13 @@ var LPA_COURSES = [
     status:            'active'
   },
   {
-    // offers_on_request intentionally NOT set — this course's existing
-    // "In-House | My location" on-request option has different commercial
-    // meaning than the shared offers_on_request renderer's hardcoded
-    // "Classroom Session — Contact us for dates" text. Course page wiring
-    // (and any offers_on_request field) deferred to a dedicated follow-up.
     course_id:         'petroleum-exploration-economics-decision',
     course_name:       'Petroleum Exploration Economics & Decision Strategies',
     course_category:   'petroleum_economics_fundamentals',
     calendar_category: 'upstream',
     calendar_label:    'Economics',
+    offers_in_house:   true,
+    in_house_label:    'In-House — My location',
     page_path:         '/course-petroleum-exploration-economics-decision.html',
     status:            'active'
   },

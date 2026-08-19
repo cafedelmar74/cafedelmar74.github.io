@@ -367,7 +367,7 @@ function LPA_renderSessionOptions(course) {
   }).sort(function(a, b) {
     return a.course_start_date < b.course_start_date ? -1 : (a.course_start_date > b.course_start_date ? 1 : 0);
   });
-  if (!sessions.length && !course.offers_on_request) {
+  if (!sessions.length && !course.offers_on_request && !course.offers_in_house) {
     if (placeholder) { placeholder.textContent = 'No sessions currently scheduled — please contact us'; }
     sel.disabled = true;
     return;
@@ -388,6 +388,12 @@ function LPA_renderSessionOptions(course) {
     onReqOpt.value = 'Classroom | Contact us for dates';
     onReqOpt.textContent = 'Classroom Session — Contact us for dates';
     sel.appendChild(onReqOpt);
+  }
+  if (course.offers_in_house) {
+    var inHouseOpt = document.createElement('option');
+    inHouseOpt.value = 'In-House | My location';
+    inHouseOpt.textContent = course.in_house_label || 'In-House — My location';
+    sel.appendChild(inHouseOpt);
   }
 }
 
