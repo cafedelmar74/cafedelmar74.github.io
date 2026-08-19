@@ -317,6 +317,16 @@ function LPA_displayCountry(country) {
   return LPA_COUNTRY_DISPLAY_ABBR[country] || country;
 }
 
+// Presentation-only location label for a session: "City, Country", or
+// just the city when course_location and course_country are identical
+// (e.g. a city-state like Singapore), so the label doesn't repeat itself
+// as "Singapore, Singapore". Same rule for every course — no per-course
+// exceptions. Canonical course_location/course_country stay untouched.
+function LPA_sessionLocationLabel(session) {
+  if (session.course_location === session.course_country) { return session.course_location; }
+  return session.course_location + ', ' + LPA_displayCountry(session.course_country);
+}
+
 var LPA_MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function LPA_formatSessionDateRange(startISO, endISO) {
   var s = startISO.split('-').map(Number), e = endISO.split('-').map(Number);
@@ -363,7 +373,7 @@ function LPA_renderSessionOptions(course) {
   sel.disabled = false;
   sessions.forEach(function(s) {
     var dateLabel = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date);
-    var locLabel = s.course_location + ', ' + LPA_displayCountry(s.course_country);
+    var locLabel = LPA_sessionLocationLabel(s);
     var opt = document.createElement('option');
     opt.value = dateLabel + ' | ' + locLabel;
     opt.setAttribute('data-session-id', s.course_session_id);
@@ -439,7 +449,7 @@ function LPA_legacyCalendarRowsForCourse(courseId, year) {
       fmt: fmt,
       title: course.course_name,
       dates: LPA_formatSessionDateRange(s.course_start_date, s.course_end_date),
-      loc: s.course_location + ', ' + LPA_displayCountry(s.course_country),
+      loc: LPA_sessionLocationLabel(s),
       url: course.page_path.replace(/^\//, ''),
       tag: course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + LPA_calendarCategoryLabel(course.course_category)
     });

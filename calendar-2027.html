@@ -501,7 +501,6 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
 const SESSIONS = [
   // JANUARY
   {month:'jan',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'11–15 Jan 2027',loc:'London, UK',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'jan',cat:'upstream',fmt:'classroom',title:'IFRS Fundamentals for Upstream Oil & Gas',dates:'11–13 Jan 2027',loc:'Singapore',url:'course-ifrs-fundamentals-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'jan',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'18–20 Jan 2027',loc:'London, UK',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'jan',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'18–20 Jan 2027',loc:'London, UK',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'jan',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'25–28 Jan 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
@@ -540,7 +539,6 @@ const SESSIONS = [
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'19–23 Apr 2027',loc:'London, UK',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'19–23 Apr 2027',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'26–28 Apr 2027',loc:'Al Khobar, Saudi Arabia',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'apr',cat:'upstream',fmt:'classroom',title:'IFRS Fundamentals for Upstream Oil & Gas',dates:'26–28 Apr 2027',loc:'London, UK',url:'course-ifrs-fundamentals-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'apr',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'26–30 Apr 2027',loc:'Dubai, UAE',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'26–30 Apr 2027',loc:'Singapore',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'26–28 Apr 2027',loc:'Nairobi, Kenya',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
@@ -574,7 +572,6 @@ const SESSIONS = [
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'12–14 Jul 2027',loc:'Houston, USA',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'jul',cat:'renewables',fmt:'classroom',title:'Solar Power Finance',dates:'12–14 Jul 2027',loc:'Mumbai, India',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'19–21 Jul 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'jul',cat:'upstream',fmt:'classroom',title:'IFRS Fundamentals for Upstream Oil & Gas',dates:'19–21 Jul 2027',loc:'Houston, USA',url:'course-ifrs-fundamentals-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'jul',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'19–21 Jul 2027',loc:'Singapore',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'jul',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'19–21 Jul 2027',loc:'London, UK',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   // AUGUST
@@ -600,7 +597,6 @@ const SESSIONS = [
   {month:'sep',cat:'downstream',fmt:'classroom',title:'Commercial Aspects of Oil Refining',dates:'13–15 Sep 2027',loc:'Singapore',url:'course-commercial-aspects-oil-refining.html',tag:'Downstream · Refining'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'International Gas Markets & Economic Evaluation of Gas Projects',dates:'20–24 Sep 2027',loc:'Singapore',url:'course-international-gas-markets.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'20–24 Sep 2027',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'IFRS Fundamentals for Upstream Oil & Gas',dates:'20–22 Sep 2027',loc:'Dubai, UAE',url:'course-ifrs-fundamentals-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'20–22 Sep 2027',loc:'Aberdeen, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'20–22 Sep 2027',loc:'Cairo, Egypt',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'20–22 Sep 2027',loc:'Manama, Bahrain',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
@@ -881,6 +877,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'drilling-for-non-drilling-personnel',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'ifrs-fundamentals-upstream-oil-gas',
       2027
     )
   );

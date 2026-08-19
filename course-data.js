@@ -38,6 +38,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-drilling-for-non-drilling-personnel.html',
     status:            'active'
+  },
+  {
+    course_id:         'ifrs-fundamentals-upstream-oil-gas',
+    course_name:       'IFRS Fundamentals for Upstream Oil & Gas',
+    course_category:   'accounting_finance',
+    calendar_category: 'upstream',
+    page_path:         '/course-ifrs-fundamentals-upstream-oil-gas.html',
+    status:            'active'
   }
 ];
 
@@ -213,6 +221,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-11-10',
     course_location:    'Houston',
     course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Fourth course migrated (Phase 3D-3J). Business-confirmed sessions.
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s1',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2026-07-20',
+    course_end_date:    '2026-07-22',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s2',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2026-12-07',
+    course_end_date:    '2026-12-09',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s3',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2027-01-11',
+    course_end_date:    '2027-01-13',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s4',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2027-04-26',
+    course_end_date:    '2027-04-28',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s5',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2027-07-19',
+    course_end_date:    '2027-07-21',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-fundamentals-upstream-oil-gas-s6',
+    course_id:          'ifrs-fundamentals-upstream-oil-gas',
+    course_start_date:  '2027-09-20',
+    course_end_date:    '2027-09-22',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
