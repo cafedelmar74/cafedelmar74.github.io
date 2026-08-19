@@ -312,7 +312,7 @@ function LPA_fireCoursePageView(course) {
 // n8n-facing option value. Does NOT change what's stored in LPA_SESSIONS
 // or sent to GA4 — course_country stays canonical ("United Kingdom")
 // everywhere except this one rendering step.
-var LPA_COUNTRY_DISPLAY_ABBR = { 'United Kingdom': 'UK', 'United Arab Emirates': 'UAE' };
+var LPA_COUNTRY_DISPLAY_ABBR = { 'United Kingdom': 'UK', 'United Arab Emirates': 'UAE', 'United States': 'USA' };
 function LPA_displayCountry(country) {
   return LPA_COUNTRY_DISPLAY_ABBR[country] || country;
 }
@@ -397,7 +397,8 @@ function LPA_courseById(courseId) {
 // migrated so far; extend as further courses join the calendar pilot.
 var LPA_CALENDAR_CATEGORY_LABELS = {
   'legal_fiscal_contracts': 'Legal & Fiscal',
-  'accounting_finance': 'Finance'
+  'accounting_finance': 'Finance',
+  'drilling_well_ops': 'Drilling'
 };
 function LPA_calendarCategoryLabel(courseCategory) {
   return LPA_CALENDAR_CATEGORY_LABELS[courseCategory] || courseCategory;

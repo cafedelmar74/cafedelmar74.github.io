@@ -30,6 +30,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-ifrs-accounting-jvs-upstream-oil-gas.html',
     status:            'active'
+  },
+  {
+    course_id:         'drilling-for-non-drilling-personnel',
+    course_name:       'Drilling for Non-Drilling Personnel',
+    course_category:   'drilling_well_ops',
+    calendar_category: 'upstream',
+    page_path:         '/course-drilling-for-non-drilling-personnel.html',
+    status:            'active'
   }
 ];
 
@@ -154,6 +162,57 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-12-09',
     course_location:    'Dubai',
     course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Third course migrated (Phase 3D-3I). Business-confirmed sessions.
+    course_session_id: 'drilling-for-non-drilling-personnel-s1',
+    course_id:          'drilling-for-non-drilling-personnel',
+    course_start_date:  '2026-11-02',
+    course_end_date:    '2026-11-04',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-for-non-drilling-personnel-s2',
+    course_id:          'drilling-for-non-drilling-personnel',
+    course_start_date:  '2027-04-26',
+    course_end_date:    '2027-04-28',
+    course_location:    'Aberdeen',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-for-non-drilling-personnel-s3',
+    course_id:          'drilling-for-non-drilling-personnel',
+    course_start_date:  '2027-05-24',
+    course_end_date:    '2027-05-26',
+    course_location:    'Cairo',
+    course_country:     'Egypt',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-for-non-drilling-personnel-s4',
+    course_id:          'drilling-for-non-drilling-personnel',
+    course_start_date:  '2027-09-27',
+    course_end_date:    '2027-09-29',
+    course_location:    'Al Khobar',
+    course_country:     'Saudi Arabia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-for-non-drilling-personnel-s5',
+    course_id:          'drilling-for-non-drilling-personnel',
+    course_start_date:  '2027-11-08',
+    course_end_date:    '2027-11-10',
+    course_location:    'Houston',
+    course_country:     'United States',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

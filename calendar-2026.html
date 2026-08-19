@@ -543,7 +543,6 @@ const SESSIONS = [
   {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'19–23 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   // NOVEMBER
   {month:'nov',cat:'downstream',fmt:'classroom',title:'Crude Oil Evaluation, Economics & Pricing',dates:'2–6 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-crude-oil-evaluation-economics-pricing.html',tag:'Downstream · Trading'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Drilling for Non-Drilling Personnel',dates:'2–4 Nov 2026',loc:'Houston, USA',url:'course-drilling-for-non-drilling-personnel.html',tag:'Upstream · Drilling'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'9–11 Nov 2026',loc:'Aberdeen, UK',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'nov',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'16–18 Nov 2026',loc:'London, United Kingdom',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'9–13 Nov 2026',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
@@ -753,6 +752,7 @@ window.addEventListener('scroll',function(){document.getElementById('nav').class
 document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('legal-aspects-production-sharing-contracts', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('ifrs-accounting-jvs-upstream-oil-gas', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('drilling-for-non-drilling-personnel', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
