@@ -323,6 +323,9 @@ function LPA_displayCountry(country) {
 // as "Singapore, Singapore". Same rule for every course — no per-course
 // exceptions. Canonical course_location/course_country stay untouched.
 function LPA_sessionLocationLabel(session) {
+  if (session.delivery_format === 'virtual' && session.virtual_timezone) {
+    return 'Virtual (' + (session.course_location ? session.course_location + ' ' : '') + session.virtual_timezone + ')';
+  }
   if (session.course_location === session.course_country) { return session.course_location; }
   return session.course_location + ', ' + LPA_displayCountry(session.course_country);
 }
@@ -364,7 +367,7 @@ function LPA_renderSessionOptions(course) {
   }).sort(function(a, b) {
     return a.course_start_date < b.course_start_date ? -1 : (a.course_start_date > b.course_start_date ? 1 : 0);
   });
-  if (!sessions.length) {
+  if (!sessions.length && !course.offers_on_request) {
     if (placeholder) { placeholder.textContent = 'No sessions currently scheduled — please contact us'; }
     sel.disabled = true;
     return;
@@ -380,6 +383,12 @@ function LPA_renderSessionOptions(course) {
     opt.textContent = dateLabel + ' — ' + locLabel;
     sel.appendChild(opt);
   });
+  if (course.offers_on_request) {
+    var onReqOpt = document.createElement('option');
+    onReqOpt.value = 'Classroom | Contact us for dates';
+    onReqOpt.textContent = 'Classroom Session — Contact us for dates';
+    sel.appendChild(onReqOpt);
+  }
 }
 
 // ── Phase 3D-3E: one-calendar pilot — legacy row generation ──────────────
@@ -452,7 +461,7 @@ function LPA_legacyCalendarRowsForCourse(courseId, year) {
       dates: LPA_formatSessionDateRange(s.course_start_date, s.course_end_date),
       loc: LPA_sessionLocationLabel(s),
       url: course.page_path.replace(/^\//, ''),
-      tag: course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + (course.calendar_label || LPA_calendarCategoryLabel(course.course_category))
+      tag: course.calendar_tag_override || (course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + (course.calendar_label || LPA_calendarCategoryLabel(course.course_category)))
     });
   });
   return rows;
