@@ -99,6 +99,14 @@ var LPA_COURSES = [
     calendar_category: 'downstream',
     page_path:         '/course-crude-oil-evaluation-economics-pricing.html',
     status:            'active'
+  },
+  {
+    course_id:         'drilling-hydraulics-design',
+    course_name:       'Drilling Hydraulics Design',
+    course_category:   'drilling_well_ops',
+    calendar_category: 'upstream',
+    page_path:         '/course-drilling-hydraulics-design.html',
+    status:            'active'
   }
 ];
 
@@ -724,6 +732,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-11-12',
     course_location:    'Rio de Janeiro',
     course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Eleventh course migrated (Phase 3D-3R). Business-confirmed sessions.
+    course_session_id: 'drilling-hydraulics-design-s1',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2026-07-13',
+    course_end_date:    '2026-07-15',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-hydraulics-design-s2',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2026-11-09',
+    course_end_date:    '2026-11-11',
+    course_location:    'Aberdeen',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-hydraulics-design-s3',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2027-02-01',
+    course_end_date:    '2027-02-03',
+    course_location:    'Abu Dhabi',
+    course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-hydraulics-design-s4',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2027-07-12',
+    course_end_date:    '2027-07-14',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-hydraulics-design-s5',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2027-08-23',
+    course_end_date:    '2027-08-25',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'drilling-hydraulics-design-s6',
+    course_id:          'drilling-hydraulics-design',
+    course_start_date:  '2027-11-08',
+    course_end_date:    '2027-11-10',
+    course_location:    'Aberdeen',
+    course_country:     'United Kingdom',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
