@@ -531,7 +531,6 @@ const SESSIONS = [
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'22–24 Sep 2026',loc:'London, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // OCTOBER
   {month:'oct',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'5–7 Oct 2026',loc:'Houston, USA',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'IFRS Accounting for JVs in Upstream Oil & Gas',dates:'5–8 Oct 2026',loc:'Calgary, Canada',url:'course-ifrs-accounting-jvs-upstream-oil-gas.html',tag:'Upstream · Finance'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'13–16 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'Commercial Aspects of Oil Refining',dates:'26–28 Oct 2026',loc:'Dubai, UAE',url:'course-commercial-aspects-oil-refining.html',tag:'Downstream · Refining'},
@@ -753,6 +752,7 @@ window.addEventListener('scroll',function(){document.getElementById('nav').class
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('legal-aspects-production-sharing-contracts', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('ifrs-accounting-jvs-upstream-oil-gas', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();

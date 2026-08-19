@@ -396,7 +396,8 @@ function LPA_courseById(courseId) {
 // Deliberately partial: only covers categories exercised by courses
 // migrated so far; extend as further courses join the calendar pilot.
 var LPA_CALENDAR_CATEGORY_LABELS = {
-  'legal_fiscal_contracts': 'Legal & Fiscal'
+  'legal_fiscal_contracts': 'Legal & Fiscal',
+  'accounting_finance': 'Finance'
 };
 function LPA_calendarCategoryLabel(courseCategory) {
   return LPA_CALENDAR_CATEGORY_LABELS[courseCategory] || courseCategory;

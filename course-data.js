@@ -22,6 +22,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-legal-aspects-production-sharing-contracts.html',
     status:            'active'
+  },
+  {
+    course_id:         'ifrs-accounting-jvs-upstream-oil-gas',
+    course_name:       'IFRS Accounting for JVs in Upstream Oil & Gas',
+    course_category:   'accounting_finance',
+    calendar_category: 'upstream',
+    page_path:         '/course-ifrs-accounting-jvs-upstream-oil-gas.html',
+    status:            'active'
   }
 ];
 
@@ -95,6 +103,57 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-08-25',
     course_location:    'London',
     course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Second course migrated (Phase 3D-3H). Business-confirmed sessions.
+    course_session_id: 'ifrs-accounting-jvs-upstream-oil-gas-s1',
+    course_id:          'ifrs-accounting-jvs-upstream-oil-gas',
+    course_start_date:  '2026-10-05',
+    course_end_date:    '2026-10-08',
+    course_location:    'Calgary',
+    course_country:     'Canada',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-accounting-jvs-upstream-oil-gas-s2',
+    course_id:          'ifrs-accounting-jvs-upstream-oil-gas',
+    course_start_date:  '2027-03-15',
+    course_end_date:    '2027-03-18',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-accounting-jvs-upstream-oil-gas-s3',
+    course_id:          'ifrs-accounting-jvs-upstream-oil-gas',
+    course_start_date:  '2027-07-12',
+    course_end_date:    '2027-07-15',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-accounting-jvs-upstream-oil-gas-s4',
+    course_id:          'ifrs-accounting-jvs-upstream-oil-gas',
+    course_start_date:  '2027-10-04',
+    course_end_date:    '2027-10-07',
+    course_location:    'Calgary',
+    course_country:     'Canada',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ifrs-accounting-jvs-upstream-oil-gas-s5',
+    course_id:          'ifrs-accounting-jvs-upstream-oil-gas',
+    course_start_date:  '2027-12-06',
+    course_end_date:    '2027-12-09',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
