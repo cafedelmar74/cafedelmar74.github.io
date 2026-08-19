@@ -207,6 +207,47 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-production-sharing-contracts-brazil.html',
     status:            'active'
+  },
+  {
+    course_id:         'brazil-jv',
+    course_name:       'Petroleum Agreements & Joint Ventures in Brazil',
+    course_category:   'legal_fiscal_contracts',
+    calendar_category: 'upstream',
+    page_path:         '/course-brazil-jv.html',
+    status:            'active'
+  },
+  {
+    course_id:         'commercial-economic-jv-oil-gas',
+    course_name:       'Indonesia Oil & Gas Fiscal and Joint Venture Training',
+    course_category:   'legal_fiscal_contracts',
+    calendar_category: 'upstream',
+    page_path:         '/course-commercial-economic-jv-oil-gas.html',
+    status:            'active'
+  },
+  {
+    course_id:         'financial-fiscal-aspects-oil-gas-projects-brazil',
+    course_name:       'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',
+    course_category:   'legal_fiscal_contracts',
+    calendar_category: 'upstream',
+    page_path:         '/course-financial-fiscal-aspects-oil-gas-projects-brazil.html',
+    status:            'active'
+  },
+  {
+    course_id:         'energy-transition-fiscal-systems',
+    course_name:       'Energy Transition & Petroleum Fiscal Systems',
+    course_category:   'energy_transition',
+    calendar_category: 'upstream',
+    calendar_label:    'Legal & Fiscal',
+    page_path:         '/course-energy-transition-fiscal-systems.html',
+    status:            'active'
+  },
+  {
+    course_id:         'offshore-deepwater-drilling',
+    course_name:       'Offshore & Deepwater Drilling',
+    course_category:   'drilling_well_ops',
+    calendar_category: 'upstream',
+    page_path:         '/course-offshore-deepwater-drilling.html',
+    status:            'active'
   }
 ];
 
@@ -1271,6 +1312,108 @@ var LPA_SESSIONS = [
     course_end_date:    '2026-11-26',
     course_location:    'Rio de Janeiro',
     course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Group B2.4 batch (Phase 3D-3W). A-tier confirmed sessions only.
+    // World Fiscal Systems and the renewable cluster remain deferred.
+    course_session_id: 'brazil-jv-s1',
+    course_id:          'brazil-jv',
+    course_start_date:  '2026-10-13',
+    course_end_date:    '2026-10-16',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-economic-jv-oil-gas-s1',
+    course_id:          'commercial-economic-jv-oil-gas',
+    course_start_date:  '2026-09-07',
+    course_end_date:    '2026-09-11',
+    course_location:    'Bali',
+    course_country:     'Indonesia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'financial-fiscal-aspects-oil-gas-projects-brazil-s1',
+    course_id:          'financial-fiscal-aspects-oil-gas-projects-brazil',
+    course_start_date:  '2026-07-21',
+    course_end_date:    '2026-07-23',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'financial-fiscal-aspects-oil-gas-projects-brazil-s2',
+    course_id:          'financial-fiscal-aspects-oil-gas-projects-brazil',
+    course_start_date:  '2026-10-06',
+    course_end_date:    '2026-10-08',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'energy-transition-fiscal-systems-s1',
+    course_id:          'energy-transition-fiscal-systems',
+    course_start_date:  '2026-11-09',
+    course_end_date:    '2026-11-13',
+    course_location:    'Istanbul',
+    course_country:     'Turkey',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'energy-transition-fiscal-systems-s2',
+    course_id:          'energy-transition-fiscal-systems',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-27',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'energy-transition-fiscal-systems-s3',
+    course_id:          'energy-transition-fiscal-systems',
+    course_start_date:  '2027-03-08',
+    course_end_date:    '2027-03-12',
+    course_location:    'Manila',
+    course_country:     'Philippines',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'offshore-deepwater-drilling-s1',
+    course_id:          'offshore-deepwater-drilling',
+    course_start_date:  '2026-09-22',
+    course_end_date:    '2026-09-24',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'offshore-deepwater-drilling-s2',
+    course_id:          'offshore-deepwater-drilling',
+    course_start_date:  '2026-10-06',
+    course_end_date:    '2026-10-08',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'offshore-deepwater-drilling-s3',
+    course_id:          'offshore-deepwater-drilling',
+    course_start_date:  '2026-11-17',
+    course_end_date:    '2026-11-19',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

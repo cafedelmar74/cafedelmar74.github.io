@@ -518,7 +518,6 @@ const SESSIONS = [
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'8–11 Mar 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'8–10 Mar 2027',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'mar',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'8–11 Mar 2027',loc:'Rotterdam, Netherlands',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
-  {month:'mar',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'8–12 Mar 2027',loc:'Manila, Philippines',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'15–19 Mar 2027',loc:'Windhoek, Namibia',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'15–19 Mar 2027',loc:'Singapore',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   // APRIL
@@ -976,6 +975,41 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'production-sharing-contracts-brazil',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'brazil-jv',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'commercial-economic-jv-oil-gas',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'financial-fiscal-aspects-oil-gas-projects-brazil',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'energy-transition-fiscal-systems',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'offshore-deepwater-drilling',
       2027
     )
   );

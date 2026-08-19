@@ -502,25 +502,15 @@ const SESSIONS = [
   // JULY
   {month:'jul',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'6–8 Jul 2026',loc:'Bali, Indonesia',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'6–8 Jul 2026',loc:'Bali, Indonesia',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
-  {month:'jul',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'21–23 Jul 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // AUGUST
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'4–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // SEPTEMBER
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'7–11 Sep 2026',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
   {month:'sep',cat:'upstream',fmt:'virtual',title:'Offshore & Deepwater Drilling',dates:'14–16 Sep 2026',loc:'Stavanger (Virtual)',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Sep 2026',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'24–25 Sep 2026',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'22–24 Sep 2026',loc:'London, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // OCTOBER
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'13–16 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'6–8 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // NOVEMBER
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'9–13 Nov 2026',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'23–27 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'19–20 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'17–19 Nov 2026',loc:'Singapore',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // DECEMBER
   {month:'dec',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'7–9 Dec 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
 ];
@@ -737,6 +727,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-crude-oil-markets', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-oil-supply-trading', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('production-sharing-contracts-brazil', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('brazil-jv', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('commercial-economic-jv-oil-gas', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('financial-fiscal-aspects-oil-gas-projects-brazil', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('energy-transition-fiscal-systems', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('offshore-deepwater-drilling', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
