@@ -781,7 +781,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
         </details>
         <details class="faq-item">
           <summary class="faq-q">What are the 2026 session dates? <span class="faq-arrow">+</span></summary>
-          <p class="faq-a">Virtual sessions: 23–24 November 2026 (Central European time, 9 AM–5 PM). Classroom sessions available on request.</p>
+          <p class="faq-a">Virtual sessions: 23–25 November 2026 (Central European time, 9 AM–5 PM). Classroom sessions available on request.</p>
         </details>
         <details class="faq-item">
           <summary class="faq-q">What is the course fee? <span class="faq-arrow">+</span></summary>
@@ -1538,7 +1538,7 @@ async function submitBk(){
     billing_address:document.getElementById('bkAD').value,
     country:document.getElementById('bkCN').value,
     course_category:'Renewable Energy',course_duration:'2 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">23-24 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (CET)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,800 per delegate. UK-based sessions subject to VAT. Group discounts available.</td></tr>',page_url:window.location.href,
+    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">23-25 Nov 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (CET)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,800 per delegate. UK-based sessions subject to VAT. Group discounts available.</td></tr>',page_url:window.location.href,
     submitted_at:new Date().toISOString(),captcha_token:captchaResp
   };
   try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
