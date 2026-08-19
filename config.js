@@ -408,7 +408,8 @@ function LPA_courseById(courseId) {
 var LPA_CALENDAR_CATEGORY_LABELS = {
   'legal_fiscal_contracts': 'Legal & Fiscal',
   'accounting_finance': 'Finance',
-  'drilling_well_ops': 'Drilling'
+  'drilling_well_ops': 'Drilling',
+  'refining_downstream': 'Refining'
 };
 function LPA_calendarCategoryLabel(courseCategory) {
   return LPA_CALENDAR_CATEGORY_LABELS[courseCategory] || courseCategory;

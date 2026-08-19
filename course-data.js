@@ -54,6 +54,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-accounting-jvs-pscs-upstream-oil-gas.html',
     status:            'active'
+  },
+  {
+    course_id:         'commercial-aspects-oil-refining',
+    course_name:       'Commercial Aspects of Oil Refining',
+    course_category:   'refining_downstream',
+    calendar_category: 'downstream',
+    page_path:         '/course-commercial-aspects-oil-refining.html',
+    status:            'active'
   }
 ];
 
@@ -351,6 +359,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-11-26',
     course_location:    'Bali',
     course_country:     'Indonesia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Sixth course migrated (Phase 3D-3L). Business-confirmed sessions.
+    course_session_id: 'commercial-aspects-oil-refining-s1',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2026-09-14',
+    course_end_date:    '2026-09-16',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-aspects-oil-refining-s2',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2026-10-26',
+    course_end_date:    '2026-10-28',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-aspects-oil-refining-s3',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2027-02-22',
+    course_end_date:    '2027-02-24',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-aspects-oil-refining-s4',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2027-06-07',
+    course_end_date:    '2027-06-09',
+    course_location:    'Rotterdam',
+    course_country:     'Netherlands',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-aspects-oil-refining-s5',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2027-09-13',
+    course_end_date:    '2027-09-15',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-aspects-oil-refining-s6',
+    course_id:          'commercial-aspects-oil-refining',
+    course_start_date:  '2027-11-15',
+    course_end_date:    '2027-11-17',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
