@@ -165,6 +165,24 @@ var LPA_COURSES = [
     calendar_label:    'Fundamentals',
     page_path:         '/course-oil-gas-fundamentals.html',
     status:            'active'
+  },
+  {
+    course_id:         'gas-lng-contracts-negotiations',
+    course_name:       'Gas & LNG Contracts Negotiations Masterclass',
+    course_category:   'gas_lng',
+    calendar_category: 'upstream',
+    calendar_label:    'Gas & LNG',
+    page_path:         '/course-gas-lng-contracts-negotiations.html',
+    status:            'active'
+  },
+  {
+    course_id:         'lng-value-chain',
+    course_name:       'LNG Value Chain: Markets, Trading, Operations & Energy Transition',
+    course_category:   'gas_lng',
+    calendar_category: 'downstream',
+    calendar_label:    'LNG',
+    page_path:         '/course-lng-value-chain.html',
+    status:            'active'
   }
 ];
 
@@ -1074,6 +1092,88 @@ var LPA_SESSIONS = [
     course_end_date:    '2026-10-21',
     course_location:    'Kuala Lumpur',
     course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Group B2.2 batch (Phase 3D-3U): gas_lng cluster. A-tier confirmed
+    // sessions only — Bali 6-8 Jul 2026 and all 2027 sessions deferred.
+    course_session_id: 'gas-lng-contracts-negotiations-s1',
+    course_id:          'gas-lng-contracts-negotiations',
+    course_start_date:  '2026-08-25',
+    course_end_date:    '2026-08-27',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'gas-lng-contracts-negotiations-s2',
+    course_id:          'gas-lng-contracts-negotiations',
+    course_start_date:  '2026-09-09',
+    course_end_date:    '2026-09-11',
+    course_location:    'Bangkok',
+    course_country:     'Thailand',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'gas-lng-contracts-negotiations-s3',
+    course_id:          'gas-lng-contracts-negotiations',
+    course_start_date:  '2026-09-22',
+    course_end_date:    '2026-09-24',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'gas-lng-contracts-negotiations-s4',
+    course_id:          'gas-lng-contracts-negotiations',
+    course_start_date:  '2026-10-26',
+    course_end_date:    '2026-10-28',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'lng-value-chain-s1',
+    course_id:          'lng-value-chain',
+    course_start_date:  '2026-08-24',
+    course_end_date:    '2026-08-26',
+    course_location:    'Buenos Aires',
+    course_country:     'Argentina',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'lng-value-chain-s2',
+    course_id:          'lng-value-chain',
+    course_start_date:  '2026-09-09',
+    course_end_date:    '2026-09-11',
+    course_location:    'Bangkok',
+    course_country:     'Thailand',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'lng-value-chain-s3',
+    course_id:          'lng-value-chain',
+    course_start_date:  '2026-10-13',
+    course_end_date:    '2026-10-15',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'lng-value-chain-s4',
+    course_id:          'lng-value-chain',
+    course_start_date:  '2026-11-16',
+    course_end_date:    '2026-11-18',
+    course_location:    'London',
+    course_country:     'United Kingdom',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
