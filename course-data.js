@@ -334,6 +334,16 @@ var LPA_COURSES = [
     offers_on_request:     true,
     page_path:             '/course-solar-power-finance.html',
     status:                'active'
+  },
+  {
+    course_id:             'world-fiscal-systems-unconventional',
+    course_name:           'World Fiscal Systems for Unconventional Oil & Gas',
+    course_category:       'legal_fiscal_contracts',
+    calendar_category:     'upstream',
+    offers_on_request:     true,
+    on_request_label:      'Available Upon Request — Contact Us',
+    page_path:             '/course-world-fiscal-systems-unconventional.html',
+    status:                'active'
   }
 ];
 

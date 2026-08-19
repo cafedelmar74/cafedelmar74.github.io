@@ -386,7 +386,7 @@ function LPA_renderSessionOptions(course) {
   if (course.offers_on_request) {
     var onReqOpt = document.createElement('option');
     onReqOpt.value = 'Classroom | Contact us for dates';
-    onReqOpt.textContent = 'Classroom Session — Contact us for dates';
+    onReqOpt.textContent = course.on_request_label || 'Classroom Session — Contact us for dates';
     sel.appendChild(onReqOpt);
   }
   if (course.offers_in_house) {
