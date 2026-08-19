@@ -115,6 +115,56 @@ var LPA_COURSES = [
     calendar_category: 'downstream',
     page_path:         '/course-petroleum-refining-non-technical.html',
     status:            'active'
+  },
+  {
+    course_id:         'advanced-petroleum-economics-decision-analysis',
+    course_name:       'Advanced Petroleum Economics & Decision Analysis',
+    course_category:   'petroleum_economics_fundamentals',
+    calendar_category: 'upstream',
+    calendar_label:    'Economics',
+    page_path:         '/course-advanced-petroleum-economics-decision-analysis.html',
+    status:            'active'
+  },
+  {
+    // offers_on_request intentionally NOT set — this course's existing
+    // "In-House | My location" on-request option has different commercial
+    // meaning than the shared offers_on_request renderer's hardcoded
+    // "Classroom Session — Contact us for dates" text. Course page wiring
+    // (and any offers_on_request field) deferred to a dedicated follow-up.
+    course_id:         'petroleum-exploration-economics-decision',
+    course_name:       'Petroleum Exploration Economics & Decision Strategies',
+    course_category:   'petroleum_economics_fundamentals',
+    calendar_category: 'upstream',
+    calendar_label:    'Economics',
+    page_path:         '/course-petroleum-exploration-economics-decision.html',
+    status:            'active'
+  },
+  {
+    course_id:         'petroleum-project-economics-risk',
+    course_name:       'Petroleum Project Economics & Risk Decision Analysis',
+    course_category:   'petroleum_economics_fundamentals',
+    calendar_category: 'upstream',
+    calendar_label:    'Economics',
+    page_path:         '/course-petroleum-project-economics-risk.html',
+    status:            'active'
+  },
+  {
+    course_id:         'mini-mba-oil-gas-energy-business',
+    course_name:       'Mini MBA: Oil & Gas and Energy Business',
+    course_category:   'petroleum_economics_fundamentals',
+    calendar_category: 'upstream',
+    calendar_label:    'Leadership',
+    page_path:         '/course-mini-mba-oil-gas-energy-business.html',
+    status:            'active'
+  },
+  {
+    course_id:         'oil-gas-fundamentals',
+    course_name:       'Oil & Gas Fundamentals',
+    course_category:   'petroleum_economics_fundamentals',
+    calendar_category: 'upstream',
+    calendar_label:    'Fundamentals',
+    page_path:         '/course-oil-gas-fundamentals.html',
+    status:            'active'
   }
 ];
 
@@ -882,6 +932,148 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-10-27',
     course_location:    'Rotterdam',
     course_country:     'Netherlands',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Group B2.1 batch (Phase 3D-3T): petroleum_economics_fundamentals
+    // cluster. A-tier confirmed sessions only.
+    course_session_id: 'advanced-petroleum-economics-decision-analysis-s1',
+    course_id:          'advanced-petroleum-economics-decision-analysis',
+    course_start_date:  '2026-09-28',
+    course_end_date:    '2026-10-02',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'advanced-petroleum-economics-decision-analysis-s2',
+    course_id:          'advanced-petroleum-economics-decision-analysis',
+    course_start_date:  '2026-10-19',
+    course_end_date:    '2026-10-23',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'advanced-petroleum-economics-decision-analysis-s3',
+    course_id:          'advanced-petroleum-economics-decision-analysis',
+    course_start_date:  '2026-11-02',
+    course_end_date:    '2026-11-06',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-exploration-economics-decision-s1',
+    course_id:          'petroleum-exploration-economics-decision',
+    course_start_date:  '2026-08-18',
+    course_end_date:    '2026-08-22',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-exploration-economics-decision-s2',
+    course_id:          'petroleum-exploration-economics-decision',
+    course_start_date:  '2026-09-14',
+    course_end_date:    '2026-09-18',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-exploration-economics-decision-s3',
+    course_id:          'petroleum-exploration-economics-decision',
+    course_start_date:  '2026-11-16',
+    course_end_date:    '2026-11-20',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-exploration-economics-decision-s4',
+    course_id:          'petroleum-exploration-economics-decision',
+    course_start_date:  '2027-02-08',
+    course_end_date:    '2027-02-12',
+    course_location:    'Manila',
+    course_country:     'Philippines',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-project-economics-risk-s1',
+    course_id:          'petroleum-project-economics-risk',
+    course_start_date:  '2026-08-17',
+    course_end_date:    '2026-08-21',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-project-economics-risk-s2',
+    course_id:          'petroleum-project-economics-risk',
+    course_start_date:  '2026-12-14',
+    course_end_date:    '2026-12-18',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-project-economics-risk-s3',
+    course_id:          'petroleum-project-economics-risk',
+    course_start_date:  '2027-03-01',
+    course_end_date:    '2027-03-05',
+    course_location:    'Manila',
+    course_country:     'Philippines',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'mini-mba-oil-gas-energy-business-s1',
+    course_id:          'mini-mba-oil-gas-energy-business',
+    course_start_date:  '2026-09-07',
+    course_end_date:    '2026-09-11',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'mini-mba-oil-gas-energy-business-s2',
+    course_id:          'mini-mba-oil-gas-energy-business',
+    course_start_date:  '2026-11-09',
+    course_end_date:    '2026-11-13',
+    course_location:    'Miami',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'mini-mba-oil-gas-energy-business-s3',
+    course_id:          'mini-mba-oil-gas-energy-business',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-27',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'oil-gas-fundamentals-s1',
+    course_id:          'oil-gas-fundamentals',
+    course_start_date:  '2026-10-19',
+    course_end_date:    '2026-10-21',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

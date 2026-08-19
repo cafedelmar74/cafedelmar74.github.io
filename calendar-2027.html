@@ -510,13 +510,11 @@ const SESSIONS = [
   {month:'feb',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'1–3 Feb 2027',loc:'London, UK',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
   {month:'feb',cat:'renewables',fmt:'classroom',title:'Solar Power Finance',dates:'1–3 Feb 2027',loc:'Riyadh, Saudi Arabia',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
   {month:'feb',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'8–10 Feb 2027',loc:'Houston, USA',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'feb',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'8–12 Feb 2027',loc:'Manila, Philippines',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'feb',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'22–24 Feb 2027',loc:'Windhoek, Namibia',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'feb',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'22–24 Feb 2027',loc:'London, UK',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
   // MARCH
   {month:'mar',cat:'renewables',fmt:'classroom',title:'IPPs: Bankable Power Purchase Agreements',dates:'1–4 Mar 2027',loc:'Johannesburg, South Africa',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'mar',cat:'renewables',fmt:'classroom',title:'Power Project Contracts, Finance, Risk & Negotiation',dates:'1–4 Mar 2027',loc:'London, UK',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
-  {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'1–5 Mar 2027',loc:'Manila, Philippines',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'8–11 Mar 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'8–10 Mar 2027',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'mar',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'8–11 Mar 2027',loc:'Rotterdam, Netherlands',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
@@ -908,6 +906,41 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'petroleum-refining-non-technical',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'advanced-petroleum-economics-decision-analysis',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'petroleum-exploration-economics-decision',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'petroleum-project-economics-risk',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'mini-mba-oil-gas-energy-business',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'oil-gas-fundamentals',
       2027
     )
   );

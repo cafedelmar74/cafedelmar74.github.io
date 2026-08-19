@@ -507,7 +507,6 @@ const SESSIONS = [
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'4–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'aug',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'24–26 Aug 2026',loc:'Buenos Aires, Argentina',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'25–27 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
-  {month:'aug',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'17–21 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   // SEPTEMBER
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'7–11 Sep 2026',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'9–11 Sep 2026',loc:'Bangkok, Thailand',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
@@ -535,7 +534,6 @@ const SESSIONS = [
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'17–19 Nov 2026',loc:'Singapore',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // DECEMBER
   {month:'dec',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'7–9 Dec 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
-  {month:'dec',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Dec 2026',loc:'London, UK',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
 ];
 
 const MONTHS = [
@@ -740,6 +738,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('crude-oil-evaluation-economics-pricing', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('drilling-hydraulics-design', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('petroleum-refining-non-technical', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('advanced-petroleum-economics-decision-analysis', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('petroleum-exploration-economics-decision', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('petroleum-project-economics-risk', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('mini-mba-oil-gas-energy-business', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('oil-gas-fundamentals', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
