@@ -248,6 +248,95 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-offshore-deepwater-drilling.html',
     status:            'active'
+  },
+  {
+    course_id:             'corporate-power-purchase-agreements',
+    course_name:           'Corporate Power Purchase Agreements',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-corporate-power-purchase-agreements.html',
+    status:                'active'
+  },
+  {
+    course_id:             'grid-scale-bess-technology-markets-project-finance',
+    course_name:           'Grid-Scale BESS: Technology, Markets, and Project Finance',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    page_path:             '/course-grid-scale-bess-technology-markets-project-finance.html',
+    status:                'active'
+  },
+  {
+    course_id:             'hydrogen-economics-business-models',
+    course_name:           'Hydrogen Technology, Economics & Business Models',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-hydrogen-economics-business-models.html',
+    status:                'active'
+  },
+  {
+    course_id:             'ipps-power-project-contracts',
+    course_name:           'Power Project Contracts, Finance, Risk & Negotiation',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-ipps-power-project-contracts.html',
+    status:                'active'
+  },
+  {
+    course_id:             'ipps-power-project-finance',
+    course_name:           'Independent Power Producers (IPPs): Project Finance & Bankability in Emerging Markets',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-ipps-power-project-finance.html',
+    status:                'active'
+  },
+  {
+    course_id:             'ipps-power-purchase-agreements',
+    course_name:           'Independent Power Producers (IPPs): Bankable Power Purchase Agreements',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-ipps-power-purchase-agreements.html',
+    status:                'active'
+  },
+  {
+    course_id:             'mini-mba-renewable-energy-auctions',
+    course_name:           'Mini MBA: Renewable Energy Markets, Auctions & Project Finance',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-mini-mba-renewable-energy-auctions.html',
+    status:                'active'
+  },
+  {
+    course_id:             'renewable-energy-economics-finance',
+    course_name:           'Renewable Energy Economics and Finance',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-renewable-energy-economics-finance.html',
+    status:                'active'
+  },
+  {
+    course_id:             'solar-power-finance',
+    course_name:           'Solar Power Finance',
+    course_category:       'power_renewables',
+    calendar_category:     'renewables',
+    calendar_tag_override: 'Renewable Energy',
+    offers_on_request:     true,
+    page_path:             '/course-solar-power-finance.html',
+    status:                'active'
   }
 ];
 
@@ -1415,6 +1504,153 @@ var LPA_SESSIONS = [
     course_location:    'Singapore',
     course_country:     'Singapore',
     delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Renewable cluster batch. A-tier confirmed sessions only (14 total).
+    // 32 C-tier calendar-only 2027 rows remain deferred across this cluster.
+    course_session_id: 'corporate-power-purchase-agreements-s1',
+    course_id:          'corporate-power-purchase-agreements',
+    course_start_date:  '2026-10-12',
+    course_end_date:    '2026-10-14',
+    course_location:    'Johannesburg',
+    course_country:     'South Africa',
+    delivery_format:    'virtual',
+    virtual_timezone:   'SAST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'grid-scale-bess-technology-markets-project-finance-s1',
+    course_id:          'grid-scale-bess-technology-markets-project-finance',
+    course_start_date:  '2026-09-24',
+    course_end_date:    '2026-09-25',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'grid-scale-bess-technology-markets-project-finance-s2',
+    course_id:          'grid-scale-bess-technology-markets-project-finance',
+    course_start_date:  '2026-11-19',
+    course_end_date:    '2026-11-20',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'grid-scale-bess-technology-markets-project-finance-s3',
+    course_id:          'grid-scale-bess-technology-markets-project-finance',
+    course_start_date:  '2027-02-03',
+    course_end_date:    '2027-02-04',
+    course_location:    'Johannesburg',
+    course_country:     'South Africa',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'hydrogen-economics-business-models-s1',
+    course_id:          'hydrogen-economics-business-models',
+    course_start_date:  '2026-08-10',
+    course_end_date:    '2026-08-13',
+    course_location:    'Seoul',
+    course_country:     'South Korea',
+    delivery_format:    'virtual',
+    virtual_timezone:   'KST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ipps-power-project-contracts-s1',
+    course_id:          'ipps-power-project-contracts',
+    course_start_date:  '2026-07-20',
+    course_end_date:    '2026-07-23',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'virtual',
+    virtual_timezone:   'GMT',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ipps-power-project-contracts-s2',
+    course_id:          'ipps-power-project-contracts',
+    course_start_date:  '2026-11-02',
+    course_end_date:    '2026-11-05',
+    course_location:    'Johannesburg',
+    course_country:     'South Africa',
+    delivery_format:    'virtual',
+    virtual_timezone:   'SAST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ipps-power-project-finance-s1',
+    course_id:          'ipps-power-project-finance',
+    course_start_date:  '2026-10-19',
+    course_end_date:    '2026-10-21',
+    course_location:    'Johannesburg',
+    course_country:     'South Africa',
+    delivery_format:    'virtual',
+    virtual_timezone:   'SAST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ipps-power-purchase-agreements-s1',
+    course_id:          'ipps-power-purchase-agreements',
+    course_start_date:  '2026-07-20',
+    course_end_date:    '2026-07-23',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'virtual',
+    virtual_timezone:   'GMT',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'ipps-power-purchase-agreements-s2',
+    course_id:          'ipps-power-purchase-agreements',
+    course_start_date:  '2026-11-02',
+    course_end_date:    '2026-11-05',
+    course_location:    'Johannesburg',
+    course_country:     'South Africa',
+    delivery_format:    'virtual',
+    virtual_timezone:   'SAST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'mini-mba-renewable-energy-auctions-s1',
+    course_id:          'mini-mba-renewable-energy-auctions',
+    course_start_date:  '2026-06-29',
+    course_end_date:    '2026-07-03',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'virtual',
+    virtual_timezone:   'BST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'renewable-energy-economics-finance-s1',
+    course_id:          'renewable-energy-economics-finance',
+    course_start_date:  '2026-09-07',
+    course_end_date:    '2026-09-09',
+    delivery_format:    'virtual',
+    virtual_timezone:   'CET',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'renewable-energy-economics-finance-s2',
+    course_id:          'renewable-energy-economics-finance',
+    course_start_date:  '2026-11-16',
+    course_end_date:    '2026-11-18',
+    delivery_format:    'virtual',
+    virtual_timezone:   'PST',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'solar-power-finance-s1',
+    course_id:          'solar-power-finance',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-25',
+    delivery_format:    'virtual',
+    virtual_timezone:   'CET',
     session_status:     'scheduled'
   }
 ];

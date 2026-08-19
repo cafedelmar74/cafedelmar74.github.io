@@ -507,10 +507,8 @@ const SESSIONS = [
   // SEPTEMBER
   {month:'sep',cat:'upstream',fmt:'virtual',title:'Offshore & Deepwater Drilling',dates:'14–16 Sep 2026',loc:'Stavanger (Virtual)',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Sep 2026',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'24–25 Sep 2026',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // OCTOBER
   // NOVEMBER
-  {month:'nov',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'19–20 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // DECEMBER
   {month:'dec',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'7–9 Dec 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
 ];
@@ -732,6 +730,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('financial-fiscal-aspects-oil-gas-projects-brazil', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('energy-transition-fiscal-systems', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('offshore-deepwater-drilling', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('corporate-power-purchase-agreements', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('grid-scale-bess-technology-markets-project-finance', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('hydrogen-economics-business-models', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('ipps-power-project-contracts', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('ipps-power-project-finance', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('ipps-power-purchase-agreements', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('mini-mba-renewable-energy-auctions', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('renewable-energy-economics-finance', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('solar-power-finance', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();

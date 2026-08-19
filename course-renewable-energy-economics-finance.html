@@ -486,7 +486,17 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 .cal-modal-submit:disabled{background:#ccc;cursor:not-allowed;}
 .cal-modal-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;font-family:'Barlow',sans-serif;}@media(max-width:520px){.cal-modal{margin:16px;}.cal-field-row{grid-template-columns:1fr;}.cal-modal-head,.cal-modal-body{padding-left:20px;padding-right:20px;}}
 </style>
-<script src="config.js"></script>
+<script src="course-data.js" defer></script>
+<script src="config.js" defer></script>
+<script>
+  var LPA_CURRENT_COURSE = null;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    LPA_CURRENT_COURSE = LPA_courseForPath(window.location.pathname);
+    LPA_fireCoursePageView(LPA_CURRENT_COURSE);
+    LPA_renderSessionOptions(LPA_CURRENT_COURSE);
+  });
+</script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1020,10 +1030,7 @@ window.addEventListener('scroll',()=>{
         <div class="bk-session-block">
           <label class="bkfl">Course Session <span class="r">*</span></label>
           <select class="bkfi" id="bkSes">
-            <option value="">— Choose a date and time zone —</option>
-            <option value="7-9 Sep 2026 | Virtual (CET)">7–9 September 2026 — Virtual (Central European time)</option>
-            <option value="16-18 Nov 2026 | Virtual (Pacific)">16–18 November 2026 — Virtual (Pacific Standard time)</option>
-            <option value="Classroom | Contact us for dates">Classroom Session — Contact us for dates</option>
+            <option value="">— Choose a date and location —</option>
           </select>
         </div>
         <div class="bk-sep"></div>
@@ -1487,7 +1494,7 @@ window.addEventListener('scroll',()=>{
 </div>
 
 <script>
-function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', {course_name:'Renewable Energy Economics and Finance'});}
+function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Renewable Energy Economics and Finance'});}
 function closeBkModal(){document.getElementById('bkOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBkModal();});
 document.getElementById('btnOpenBooking').addEventListener('click',openBkModal);
@@ -1504,9 +1511,35 @@ async function submitBk(){
   var captchaResp='bypassed'; // reCAPTCHA active on production domain only
   document.getElementById('bkCaptchaErr').style.display='none';
   if(!ok){var fe=document.querySelector('.er');if(fe)fe.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(typeof LPA_SESSIONS==='undefined'||!LPA_CURRENT_COURSE){
+    alert('Something went wrong loading course session data. Please email info@londonpetroacademy.co.uk to book.');
+    LPA_track('form_error', {form_location:'course_page', error_type: typeof LPA_SESSIONS==='undefined' ? 'central_data_load_failure' : 'course_lookup_failure'});
+    return;
+  }
+  var bkSelOpt=document.getElementById('bkSes').selectedOptions[0];
+  var bkSessionId=bkSelOpt?bkSelOpt.dataset.sessionId:'';
+  var bkOnRequest=!!(LPA_CURRENT_COURSE.offers_on_request && bkSelOpt && !bkSessionId && bkSelOpt.value);
+  var bkSession=bkOnRequest?null:LPA_sessionById(bkSessionId);
+  if(!bkOnRequest){
+    if(!bkSession){
+      alert('Please select a valid session and try again.');
+      LPA_track('form_error', {form_location:'course_page', error_type:'invalid_session'});
+      return;
+    }
+    if(bkSession.course_id!==LPA_CURRENT_COURSE.course_id){
+      alert('Something went wrong with your session selection. Please refresh the page and try again.');
+      LPA_track('form_error', {form_location:'course_page', error_type:'session_course_mismatch'});
+      return;
+    }
+    if(bkSession.session_status!=='scheduled'){
+      alert('This session is no longer available. Please choose a different date or contact us.');
+      LPA_track('form_error', {form_location:'course_page', error_type:'cancelled_session'});
+      return;
+    }
+  }
   var btn=document.getElementById('bkSB');btn.textContent='Sending…';btn.disabled=true;
   var payload={
-    course_name:'Renewable Energy Economics and Finance',
+    course_name:LPA_CURRENT_COURSE.course_name,
     course_session:document.getElementById('bkSes').value,
     first_name:document.getElementById('bkFN').value,
     last_name:document.getElementById('bkLN').value,
@@ -1528,7 +1561,13 @@ async function submitBk(){
     await lpaSubmit(payload);
     document.getElementById('bkFormArea').style.display='none';
     document.getElementById('bkOK').style.display='block';
-    LPA_track('booking_submitted', {course_name:payload.course_name, lead_type:'public', form_location:'course_page'});
+    LPA_track('booking_submitted', Object.assign({
+      course_id: LPA_CURRENT_COURSE.course_id,
+      course_name: LPA_CURRENT_COURSE.course_name,
+      course_category: LPA_CURRENT_COURSE.course_category,
+      lead_type:'public',
+      form_location:'course_page'
+    }, bkSession ? LPA_sessionSnapshot(bkSession) : {}));
   }catch(e){
     btn.textContent='Confirm Booking Request →';btn.disabled=false;
     if(typeof grecaptcha!=='undefined') grecaptcha.reset();
@@ -1645,7 +1684,7 @@ async function submitBk(){
 </div>
 
 <script>
-function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', {course_name:'Renewable Energy Economics and Finance'});}
+function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Renewable Energy Economics and Finance'});}
 function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
 function buildSessionsHtml(){
@@ -1679,7 +1718,7 @@ async function submitBrochure(){
     await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
     document.getElementById('brFormArea').style.display='none';
     document.getElementById('brOK').style.display='block';
-    LPA_track('brochure_download', {course_name:payload.course, lead_type:'public', form_location:'course_page'});
+    LPA_track('brochure_download', Object.assign({lead_type:'public', form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name,course_category:LPA_CURRENT_COURSE.course_category}:{course_name:payload.course}));
   }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');LPA_track('form_error', {form_location:'course_page'});}
 }
 </script>
@@ -1747,7 +1786,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function openCalModal(){
     document.getElementById('calDlOverlay').classList.add('open');
     document.body.style.overflow='hidden';
-    LPA_trackCTA('calendar_open', {form_location:'course_page', course_name:'Renewable Energy Economics and Finance'});
+    LPA_trackCTA('calendar_open', Object.assign({form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Renewable Energy Economics and Finance'}));
   }
   function closeCalModal(){
     document.getElementById('calDlOverlay').classList.remove('open');
@@ -1790,7 +1829,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
-    LPA_track('calendar_download', {form_location:'course_page', course_name:'Renewable Energy Economics and Finance'});
+    LPA_track('calendar_download', Object.assign({form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Renewable Energy Economics and Finance'}));
     setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
   };
 
