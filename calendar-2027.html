@@ -958,6 +958,27 @@ document.addEventListener('DOMContentLoaded',()=>{
       2027
     )
   );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'international-crude-oil-markets',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'international-oil-supply-trading',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'production-sharing-contracts-brazil',
+      2027
+    )
+  );
   buildCalendar();
 computeStats();
   // Mark past months (year-aware: this is the 2027 calendar)

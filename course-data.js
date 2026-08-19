@@ -183,6 +183,30 @@ var LPA_COURSES = [
     calendar_label:    'LNG',
     page_path:         '/course-lng-value-chain.html',
     status:            'active'
+  },
+  {
+    course_id:         'international-crude-oil-markets',
+    course_name:       'International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging',
+    course_category:   'trading_markets',
+    calendar_category: 'downstream',
+    page_path:         '/course-international-crude-oil-markets.html',
+    status:            'active'
+  },
+  {
+    course_id:         'international-oil-supply-trading',
+    course_name:       'International Oil Supply, Trading & Market Dynamics',
+    course_category:   'trading_markets',
+    calendar_category: 'downstream',
+    page_path:         '/course-international-oil-supply-trading.html',
+    status:            'active'
+  },
+  {
+    course_id:         'production-sharing-contracts-brazil',
+    course_name:       'Production Sharing Contracts — Brazil: Legal, Fiscal & Financial Aspects',
+    course_category:   'legal_fiscal_contracts',
+    calendar_category: 'upstream',
+    page_path:         '/course-production-sharing-contracts-brazil.html',
+    status:            'active'
   }
 ];
 
@@ -1174,6 +1198,79 @@ var LPA_SESSIONS = [
     course_end_date:    '2026-11-18',
     course_location:    'London',
     course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Group B2.3 batch (Phase 3D-3V): title-mismatch/standard cluster.
+    // A-tier confirmed sessions only. World Fiscal Systems intentionally
+    // excluded from this batch — pending on-request wording decision.
+    course_session_id: 'international-crude-oil-markets-s1',
+    course_id:          'international-crude-oil-markets',
+    course_start_date:  '2026-08-17',
+    course_end_date:    '2026-08-21',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-crude-oil-markets-s2',
+    course_id:          'international-crude-oil-markets',
+    course_start_date:  '2026-11-09',
+    course_end_date:    '2026-11-13',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-crude-oil-markets-s3',
+    course_id:          'international-crude-oil-markets',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-27',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-oil-supply-trading-s1',
+    course_id:          'international-oil-supply-trading',
+    course_start_date:  '2026-09-14',
+    course_end_date:    '2026-09-18',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-oil-supply-trading-s2',
+    course_id:          'international-oil-supply-trading',
+    course_start_date:  '2026-10-05',
+    course_end_date:    '2026-10-09',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-oil-supply-trading-s3',
+    course_id:          'international-oil-supply-trading',
+    course_start_date:  '2026-10-19',
+    course_end_date:    '2026-10-23',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'production-sharing-contracts-brazil-s1',
+    course_id:          'production-sharing-contracts-brazil',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-26',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

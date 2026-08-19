@@ -510,19 +510,15 @@ const SESSIONS = [
   {month:'sep',cat:'upstream',fmt:'virtual',title:'Offshore & Deepwater Drilling',dates:'14–16 Sep 2026',loc:'Stavanger (Virtual)',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Sep 2026',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'24–25 Sep 2026',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'14–18 Sep 2026',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'22–24 Sep 2026',loc:'London, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // OCTOBER
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'13–16 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'5–9 Oct 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'6–8 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'19–23 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   // NOVEMBER
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'9–13 Nov 2026',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'23–27 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'23–26 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'19–20 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'17–19 Nov 2026',loc:'Singapore',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // DECEMBER
@@ -738,6 +734,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('oil-gas-fundamentals', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('gas-lng-contracts-negotiations', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('lng-value-chain', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-crude-oil-markets', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-oil-supply-trading', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('production-sharing-contracts-brazil', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
