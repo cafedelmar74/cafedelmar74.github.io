@@ -526,7 +526,6 @@ const SESSIONS = [
   // APRIL
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'12–14 Apr 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'12–16 Apr 2027',loc:'London, UK',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
-  {month:'apr',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'12–14 Apr 2027',loc:'Houston, USA',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'apr',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'12–14 Apr 2027',loc:'Cape Town, South Africa',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'19–21 Apr 2027',loc:'Singapore',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'19–23 Apr 2027',loc:'London, UK',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
@@ -541,7 +540,6 @@ const SESSIONS = [
   {month:'may',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'17–21 May 2027',loc:'Cape Town, South Africa',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'may',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'17–19 May 2027',loc:'Houston, USA',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'may',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'24–26 May 2027',loc:'Cape Town, South Africa',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'may',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'24–26 May 2027',loc:'Singapore',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'may',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'24–28 May 2027',loc:'London, UK',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
   {month:'may',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'31 May–3 Jun 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   // JUNE
@@ -579,7 +577,6 @@ const SESSIONS = [
   {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'13–17 Sep 2027',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'20–24 Sep 2027',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'20–22 Sep 2027',loc:'Aberdeen, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
-  {month:'sep',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'20–22 Sep 2027',loc:'Manama, Bahrain',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'20–22 Sep 2027',loc:'Jakarta, Indonesia',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'20–21 Sep 2027',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'27 Sep–1 Oct 2027',loc:'Houston, USA',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
@@ -599,7 +596,6 @@ const SESSIONS = [
   {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'18–22 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'25–27 Oct 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'25–27 Oct 2027',loc:'Dubai, UAE',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'25–27 Oct 2027',loc:'Rotterdam, Netherlands',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'25–26 Oct 2027',loc:'Riyadh, Saudi Arabia',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // NOVEMBER
   {month:'nov',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'1–3 Nov 2027',loc:'Dubai, UAE',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
@@ -905,6 +901,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     SESSIONS,
     LPA_legacyCalendarRowsForCourse(
       'drilling-hydraulics-design',
+      2027
+    )
+  );
+  SESSIONS.push.apply(
+    SESSIONS,
+    LPA_legacyCalendarRowsForCourse(
+      'petroleum-refining-non-technical',
       2027
     )
   );

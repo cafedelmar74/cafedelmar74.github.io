@@ -515,19 +515,16 @@ const SESSIONS = [
   {month:'sep',cat:'upstream',fmt:'virtual',title:'Offshore & Deepwater Drilling',dates:'14–16 Sep 2026',loc:'Stavanger (Virtual)',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Sep 2026',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'24–25 Sep 2026',loc:'London, UK',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'sep',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'8–10 Sep 2026',loc:'London, UK',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'22–24 Sep 2026',loc:'Singapore',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'14–18 Sep 2026',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'22–24 Sep 2026',loc:'London, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // OCTOBER
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'5–7 Oct 2026',loc:'Houston, USA',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'13–16 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'6–8 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'13–15 Oct 2026',loc:'Rio de Janeiro, Brazil',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'5–9 Oct 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'6–8 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'27–29 Oct 2026',loc:'Rotterdam, Netherlands',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
   {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'19–23 Oct 2026',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   // NOVEMBER
   {month:'nov',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'16–18 Nov 2026',loc:'London, United Kingdom',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
@@ -539,7 +536,6 @@ const SESSIONS = [
   // DECEMBER
   {month:'dec',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'7–9 Dec 2026',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'dec',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Dec 2026',loc:'London, UK',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'dec',cat:'downstream',fmt:'classroom',title:'Petroleum Refining for Non-Technical Persons',dates:'1–3 Dec 2026',loc:'Houston, USA',url:'course-petroleum-refining-non-technical.html',tag:'Downstream · Refining'},
 ];
 
 const MONTHS = [
@@ -743,6 +739,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('stuck-pipe-prevention', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('crude-oil-evaluation-economics-pricing', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('drilling-hydraulics-design', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('petroleum-refining-non-technical', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();

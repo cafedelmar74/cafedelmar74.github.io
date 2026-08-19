@@ -107,6 +107,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-drilling-hydraulics-design.html',
     status:            'active'
+  },
+  {
+    course_id:         'petroleum-refining-non-technical',
+    course_name:       'Petroleum Refining for Non-Technical Persons',
+    course_category:   'refining_downstream',
+    calendar_category: 'downstream',
+    page_path:         '/course-petroleum-refining-non-technical.html',
+    status:            'active'
   }
 ];
 
@@ -793,6 +801,87 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-11-10',
     course_location:    'Aberdeen',
     course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Twelfth course migrated (Phase 3D-3S, final Group B1 migration). Business-confirmed sessions.
+    course_session_id: 'petroleum-refining-non-technical-s1',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2026-09-08',
+    course_end_date:    '2026-09-10',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s2',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2026-10-05',
+    course_end_date:    '2026-10-07',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s3',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2026-10-27',
+    course_end_date:    '2026-10-29',
+    course_location:    'Rotterdam',
+    course_country:     'Netherlands',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s4',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2026-12-01',
+    course_end_date:    '2026-12-03',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s5',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2027-04-12',
+    course_end_date:    '2027-04-14',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s6',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2027-05-24',
+    course_end_date:    '2027-05-26',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s7',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2027-09-20',
+    course_end_date:    '2027-09-22',
+    course_location:    'Manama',
+    course_country:     'Bahrain',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'petroleum-refining-non-technical-s8',
+    course_id:          'petroleum-refining-non-technical',
+    course_start_date:  '2027-10-25',
+    course_end_date:    '2027-10-27',
+    course_location:    'Rotterdam',
+    course_country:     'Netherlands',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
