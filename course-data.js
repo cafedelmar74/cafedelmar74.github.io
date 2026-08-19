@@ -46,6 +46,14 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-ifrs-fundamentals-upstream-oil-gas.html',
     status:            'active'
+  },
+  {
+    course_id:         'accounting-jvs-pscs-upstream-oil-gas',
+    course_name:       'Accounting for JVs & PSCs in Upstream Oil & Gas',
+    course_category:   'accounting_finance',
+    calendar_category: 'upstream',
+    page_path:         '/course-accounting-jvs-pscs-upstream-oil-gas.html',
+    status:            'active'
   }
 ];
 
@@ -282,6 +290,67 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-09-22',
     course_location:    'Dubai',
     course_country:     'United Arab Emirates',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Fifth course migrated (Phase 3D-3K). Business-confirmed sessions.
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s1',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2026-08-10',
+    course_end_date:    '2026-08-14',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s2',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2026-11-23',
+    course_end_date:    '2026-11-27',
+    course_location:    'Bali',
+    course_country:     'Indonesia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s3',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2027-02-15',
+    course_end_date:    '2027-02-19',
+    course_location:    'London',
+    course_country:     'United Kingdom',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s4',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2027-08-09',
+    course_end_date:    '2027-08-13',
+    course_location:    'Houston',
+    course_country:     'United States',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s5',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2027-10-04',
+    course_end_date:    '2027-10-08',
+    course_location:    'Lagos',
+    course_country:     'Nigeria',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s6',
+    course_id:          'accounting-jvs-pscs-upstream-oil-gas',
+    course_start_date:  '2027-11-22',
+    course_end_date:    '2027-11-26',
+    course_location:    'Bali',
+    course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }
