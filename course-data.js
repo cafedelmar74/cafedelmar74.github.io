@@ -70,6 +70,19 @@ var LPA_COURSES = [
     calendar_category: 'upstream',
     page_path:         '/course-accounting-for-oil-gas.html',
     status:            'active'
+  },
+  {
+    // calendar_label overrides LPA_CALENDAR_CATEGORY_LABELS['gas_lng'] for
+    // this course only — 'gas_lng' is shared by other courses (Gas & LNG
+    // Contracts Negotiations, LNG Value Chain) whose legacy tags differ
+    // ('Gas & LNG', 'LNG'), so no single shared label can serve all three.
+    course_id:         'international-gas-markets',
+    course_name:       'International Gas Markets & Economic Evaluation of Gas Projects',
+    course_category:   'gas_lng',
+    calendar_category: 'upstream',
+    calendar_label:    'Economics',
+    page_path:         '/course-international-gas-markets.html',
+    status:            'active'
   }
 ];
 
@@ -502,6 +515,77 @@ var LPA_SESSIONS = [
     course_end_date:    '2027-12-10',
     course_location:    'Singapore',
     course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    // Eighth course migrated (Phase 3D-3N). Business-confirmed sessions.
+    course_session_id: 'international-gas-markets-s1',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2026-08-03',
+    course_end_date:    '2026-08-07',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s2',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2026-09-07',
+    course_end_date:    '2026-09-11',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s3',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2026-11-30',
+    course_end_date:    '2026-12-04',
+    course_location:    'Doha',
+    course_country:     'Qatar',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s4',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2027-02-01',
+    course_end_date:    '2027-02-05',
+    course_location:    'Cairo',
+    course_country:     'Egypt',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s5',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2027-07-12',
+    course_end_date:    '2027-07-16',
+    course_location:    'Rio de Janeiro',
+    course_country:     'Brazil',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s6',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2027-09-20',
+    course_end_date:    '2027-09-24',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'international-gas-markets-s7',
+    course_id:          'international-gas-markets',
+    course_start_date:  '2027-11-29',
+    course_end_date:    '2027-12-03',
+    course_location:    'Doha',
+    course_country:     'Qatar',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   }

@@ -452,7 +452,7 @@ function LPA_legacyCalendarRowsForCourse(courseId, year) {
       dates: LPA_formatSessionDateRange(s.course_start_date, s.course_end_date),
       loc: LPA_sessionLocationLabel(s),
       url: course.page_path.replace(/^\//, ''),
-      tag: course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + LPA_calendarCategoryLabel(course.course_category)
+      tag: course.calendar_category.charAt(0).toUpperCase() + course.calendar_category.slice(1) + ' · ' + (course.calendar_label || LPA_calendarCategoryLabel(course.course_category))
     });
   });
   return rows;

@@ -506,14 +506,12 @@ const SESSIONS = [
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Drilling Hydraulics Design',dates:'13–15 Jul 2026',loc:'Houston, USA',url:'course-drilling-hydraulics-design.html',tag:'Upstream · Drilling'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'21–23 Jul 2026',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // AUGUST
-  {month:'aug',cat:'upstream',fmt:'classroom',title:'International Gas Markets & Economic Evaluation of Gas Projects',dates:'3–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-international-gas-markets.html',tag:'Upstream · Economics'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'4–7 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Stuck Pipe Prevention',dates:'10–12 Aug 2026',loc:'Aberdeen, UK',url:'course-stuck-pipe-prevention.html',tag:'Upstream · Drilling'},
   {month:'aug',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'24–26 Aug 2026',loc:'Buenos Aires, Argentina',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'25–27 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'aug',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'17–21 Aug 2026',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   // SEPTEMBER
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'International Gas Markets & Economic Evaluation of Gas Projects',dates:'7–11 Sep 2026',loc:'Singapore',url:'course-international-gas-markets.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'7–11 Sep 2026',loc:'Bali, Indonesia',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'9–11 Sep 2026',loc:'Bangkok, Thailand',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'sep',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'9–11 Sep 2026',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
@@ -542,7 +540,6 @@ const SESSIONS = [
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'9–13 Nov 2026',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'23–27 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Legal, Financial & Fiscal Aspects of PSCs — Brazilian Model',dates:'23–26 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'International Gas Markets & Economic Evaluation of Gas Projects',dates:'30 Nov–4 Dec 2026',loc:'Doha, Qatar',url:'course-international-gas-markets.html',tag:'Upstream · Economics'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'19–20 Nov 2026',loc:'Rio de Janeiro, Brazil',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'17–19 Nov 2026',loc:'Singapore',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   // DECEMBER
@@ -748,6 +745,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('accounting-jvs-pscs-upstream-oil-gas', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('commercial-aspects-oil-refining', 2026));
   SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('accounting-for-oil-gas', 2026));
+  SESSIONS.push.apply(SESSIONS, LPA_legacyCalendarRowsForCourse('international-gas-markets', 2026));
   buildCalendar();
   // Mark past months
   const now = new Date();
