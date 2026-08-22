@@ -219,14 +219,17 @@ def validate_course_session_data(r):
     if n_date == 0:
         r.ok(cat, "all session dates valid and ordered")
 
+    n_virtual = 0
     n_tz = 0
     for o in sessions:
         sid = field(o, "course_session_id") or "?"
-        if field(o, "delivery_format") == "virtual" and not has_field(o, "virtual_timezone"):
-            r.warn(cat, f"{where(file='course-data.js')}virtual session {sid} missing virtual_timezone")
-            n_tz += 1
+        if field(o, "delivery_format") == "virtual":
+            n_virtual += 1
+            if not has_field(o, "virtual_timezone"):
+                r.fail(cat, f"{where(file='course-data.js')}virtual session {sid} missing virtual_timezone")
+                n_tz += 1
     if n_tz == 0:
-        r.ok(cat, "all virtual sessions have virtual_timezone")
+        r.ok(cat, f"all {n_virtual} virtual sessions declare virtual_timezone")
 
     return courses, sessions, cblock, sblock
 
@@ -582,6 +585,33 @@ def validate_safety(r, config, real_pages, sessions_block):
             n_forbidden_session += 1
     if n_forbidden_session == 0:
         r.ok(cat, f"LPA_SESSIONS never uses {sorted(FORBIDDEN_DELIVERY_FORMAT_VALUES)}")
+
+    snap_m = re.search(r"function LPA_sessionSnapshot\([^)]*\)\s*\{(.*?)\n\}", config, re.S)
+    if not snap_m:
+        r.fail(cat, f"{where(file='config.js')}LPA_sessionSnapshot() not found")
+    else:
+        snap_body = snap_m.group(1)
+        tz_lines = re.findall(r"virtual_timezone\s*:\s*session\.virtual_timezone", snap_body)
+        fmt_lines = re.findall(r"delivery_format\s*:\s*session\.delivery_format", snap_body)
+        if len(tz_lines) == 0:
+            r.fail(cat, f"{where(file='config.js')}LPA_sessionSnapshot missing virtual_timezone propagation")
+        elif len(tz_lines) > 1:
+            r.fail(cat, f"{where(file='config.js')}LPA_sessionSnapshot has {len(tz_lines)} virtual_timezone lines")
+        else:
+            r.ok(cat, "LPA_sessionSnapshot propagates virtual_timezone exactly once")
+        if len(fmt_lines) != 1:
+            r.fail(cat, f"{where(file='config.js')}LPA_sessionSnapshot has {len(fmt_lines)} delivery_format lines (expected 1)")
+        else:
+            r.ok(cat, "LPA_sessionSnapshot has exactly one delivery_format line")
+
+    n_hardcoded_tz = 0
+    for page in real_pages:
+        content_p = read(page)
+        if re.search(r"virtual_timezone\s*:\s*['\"][a-zA-Z]+['\"]", content_p):
+            r.fail(cat, f"{where(file=page)}hardcodes a literal virtual_timezone value")
+            n_hardcoded_tz += 1
+    if n_hardcoded_tz == 0:
+        r.ok(cat, "no non-session request path hardcodes virtual_timezone")
 
 
 def main():

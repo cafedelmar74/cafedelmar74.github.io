@@ -218,7 +218,8 @@ function LPA_sessionSnapshot(session) {
     course_end_date: session.course_end_date,
     course_location: session.course_location,
     course_country: session.course_country,
-    delivery_format: session.delivery_format
+    delivery_format: session.delivery_format,
+    virtual_timezone: session.virtual_timezone
   };
 }
 
