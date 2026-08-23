@@ -373,8 +373,10 @@ function LPA_renderEnquiryModal(course) {
     '#enqOverlay.open{display:flex;}' +
     '#enqModal{background:#fff;width:100%;max-width:480px;border-top:4px solid #c8873a;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:enqIn .3s cubic-bezier(.34,1.4,.64,1) forwards;max-height:94vh;overflow-y:auto;}' +
     '@keyframes enqIn{from{transform:scale(.94) translateY(12px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}' +
-    '.btn-enquiry-glow{position:relative;animation:enqGlow 2.2s ease-in-out infinite;}' +
-    '@keyframes enqGlow{0%,100%{box-shadow:0 0 0 0 rgba(200,135,58,.45);}50%{box-shadow:0 0 14px 4px rgba(224,154,74,.35);}}' +
+    '.btn-enquiry-glow{position:relative;border:1.5px solid transparent;background:linear-gradient(#0c0d0f,#0c0d0f) padding-box,conic-gradient(from var(--enq-border-angle,0deg),transparent,#c8873a,#e09a4a,#c8873a,transparent) border-box;color:#fff;animation:enqBorderSpin 3s linear infinite;}' +
+    '.btn-enquiry-glow:hover{border-color:transparent;color:#e09a4a;}' +
+    '@property --enq-border-angle{syntax:"<angle>";inherits:false;initial-value:0deg;}' +
+    '@keyframes enqBorderSpin{to{--enq-border-angle:360deg;}}' +
     '@media (prefers-reduced-motion: reduce){.btn-enquiry-glow{animation:none;}}';
   document.head.appendChild(style);
 
