@@ -402,7 +402,7 @@ function LPA_renderEnquiryModal(course) {
   htmlParts.push('</select></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Message</label><textarea class="brfi" id="enqMessage" rows="3" placeholder="Tell us what you need..."></textarea></div>');
   htmlParts.push('<button class="btn-book" id="enqSB" onclick="submitEnquiry()" type="button">Send Enquiry &rarr;</button>');
-  htmlParts.push('</div><div id="enqOK" style="display:none;text-align:center;padding:20px 0;"><p>Thanks &mdash; we will be in touch shortly.</p></div></div>');
+  htmlParts.push('</div><div id="enqOK" style="display:none;text-align:center;padding:20px 0;"><p>Thank you &mdash; your enquiry has been received. Our team will contact you shortly.</p></div></div>');
   htmlParts.push('</div>');
   htmlParts.push('</div>');
 
