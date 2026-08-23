@@ -492,6 +492,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     LPA_CURRENT_COURSE = LPA_courseForPath(window.location.pathname);
     LPA_fireCoursePageView(LPA_CURRENT_COURSE);
     LPA_renderSessionOptions(LPA_CURRENT_COURSE);
+    LPA_renderEnquiryModal(LPA_CURRENT_COURSE);
   });
 </script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -598,9 +599,10 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <p class="bc-price-note">£3,300 per delegate. Group discounts available.</p>
 
       <button type="button" class="btn-book" id="btnOpenBooking">Book This Course →</button>
-      <a href="mailto:info@londonpetroacademy.co.uk?subject=Enquiry%20%E2%80%94%20Drilling%20for%20NonDrilling%20Personnel" class="btn-secondary">
-        <svg><use href="#ico-send"/></svg> Send an Enquiry
-      </a>
+      <button type="button" class="btn-secondary btn-enquiry-glow" onclick="openEnqModal()">
+        <svg><use href="#ico-send"/></svg>
+        Send an Enquiry
+      </button>
       <button type="button" class="btn-secondary" onclick="openBrModal()">
         <svg><use href="#ico-download"/></svg> Download Brochure
       </button>

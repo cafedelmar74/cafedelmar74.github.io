@@ -341,6 +341,146 @@ function LPA_renderSessionOptions(course) {
   }
 }
 
+// ── Course enquiry modal (shared component) ──────────────────────────────
+// Injected once per page load via LPA_renderEnquiryModal(course), called
+// from the same DOMContentLoaded block that resolves LPA_CURRENT_COURSE.
+// Markup, styling, and submit logic all live here so no course page
+// duplicates modal HTML — mirrors how LPA_renderSessionOptions centralizes
+// the booking dropdown while pages carry only a thin stub. Entirely
+// separate from booking/brochure/contact-page flows: reuses the existing
+// lpa-enquiry webhook (same one contact.html's general enquiry form uses)
+// but tags itself enquiry_type:'course' so the two never conflate.
+var LPA_ENQUIRY_MODAL_INJECTED = false;
+
+// Same DOM-based escaping technique already used by esc() in
+// dashboard.html/downloads-dashboard.html — setting textContent then
+// reading innerHTML lets the browser's own serializer handle escaping,
+// rather than a hand-rolled regex replace. Local to this block since
+// those dashboard files aren't loaded by course pages.
+function LPA_escapeHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = String(s == null ? '' : s);
+  return d.innerHTML;
+}
+
+function LPA_renderEnquiryModal(course) {
+  if (LPA_ENQUIRY_MODAL_INJECTED) { return; }
+  LPA_ENQUIRY_MODAL_INJECTED = true;
+
+  var style = document.createElement('style');
+  style.textContent =
+    '#enqOverlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;background:rgba(10,11,13,0.92);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;}' +
+    '#enqOverlay.open{display:flex;}' +
+    '#enqModal{background:#fff;width:100%;max-width:480px;border-top:4px solid #c8873a;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:enqIn .3s cubic-bezier(.34,1.4,.64,1) forwards;max-height:94vh;overflow-y:auto;}' +
+    '@keyframes enqIn{from{transform:scale(.94) translateY(12px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}' +
+    '.btn-enquiry-glow{position:relative;animation:enqGlow 2.2s ease-in-out infinite;}' +
+    '@keyframes enqGlow{0%,100%{box-shadow:0 0 0 0 rgba(200,135,58,.45);}50%{box-shadow:0 0 14px 4px rgba(224,154,74,.35);}}' +
+    '@media (prefers-reduced-motion: reduce){.btn-enquiry-glow{animation:none;}}';
+  document.head.appendChild(style);
+
+  var courseName = LPA_escapeHtml(course ? course.course_name : document.title);
+
+  var htmlParts = [];
+  htmlParts.push('<div id="enqOverlay" onclick="if(event.target===this)closeEnqModal()">');
+  htmlParts.push('<div id="enqModal">');
+  htmlParts.push('<div class="brh"><div class="brh-left">');
+  htmlParts.push('<img src="logo-dark.png" alt="London Petro Academy" width="1202" height="316">');
+  htmlParts.push('<div class="brh-t">Send an <em>Enquiry</em></div>');
+  htmlParts.push('<div class="brh-s">' + courseName + '</div>');
+  htmlParts.push('</div><button class="br-x" onclick="closeEnqModal()">&#x2715;</button></div>');
+  htmlParts.push('<div class="brb"><div id="enqFormArea">');
+  htmlParts.push('<div class="br-field"><label class="brfl">Full Name <span class="r">*</span></label><input class="brfi" id="enqName" type="text" placeholder="Jane Smith" autocomplete="name"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Work Email <span class="r">*</span></label><input class="brfi" id="enqEmail" type="email" placeholder="jane@company.com" autocomplete="email"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Phone Number</label><input class="brfi" id="enqPhone" type="tel" placeholder="+44 7700 000000" autocomplete="tel"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Company</label><input class="brfi" id="enqCompany" type="text" placeholder="Company name" autocomplete="organization"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Job Title</label><input class="brfi" id="enqJobTitle" type="text" placeholder="Job title" autocomplete="organization-title"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Preferred Delivery Option</label><select class="brfi" id="enqDelivery">');
+  htmlParts.push('<option value="">No preference</option>');
+  htmlParts.push('<option value="Classroom">Classroom</option>');
+  htmlParts.push('<option value="Virtual">Virtual</option>');
+  htmlParts.push('<option value="In-house">In-house</option>');
+  htmlParts.push('</select></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Message</label><textarea class="brfi" id="enqMessage" rows="3" placeholder="Tell us what you need..."></textarea></div>');
+  htmlParts.push('<button class="btn-book" id="enqSB" onclick="submitEnquiry()" type="button">Send Enquiry &rarr;</button>');
+  htmlParts.push('</div><div id="enqOK" style="display:none;text-align:center;padding:20px 0;"><p>Thanks &mdash; we will be in touch shortly.</p></div></div>');
+  htmlParts.push('</div>');
+  htmlParts.push('</div>');
+
+  document.body.insertAdjacentHTML('beforeend', htmlParts.join(''));
+}
+
+function openEnqModal(){
+  document.getElementById('enqOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  LPA_trackCTA('enquiry', LPA_CURRENT_COURSE ? {course_id: LPA_CURRENT_COURSE.course_id, course_name: LPA_CURRENT_COURSE.course_name} : {});
+}
+
+function closeEnqModal(){
+  document.getElementById('enqOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function submitEnquiry(){
+  var name = document.getElementById('enqName');
+  var email = document.getElementById('enqEmail');
+  var ok = true;
+  [name, email].forEach(function(el){
+    el.classList.remove('er');
+    if (!el.value.trim()) { el.classList.add('er'); ok = false; }
+  });
+  if (!ok) { return; }
+
+  var btn = document.getElementById('enqSB');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var course = LPA_CURRENT_COURSE;
+  var deliveryOption = document.getElementById('enqDelivery').value;
+
+  var payload = {
+    full_name: name.value.trim(),
+    email: email.value.trim(),
+    phone: document.getElementById('enqPhone').value.trim(),
+    company: document.getElementById('enqCompany').value.trim(),
+    job_title: document.getElementById('enqJobTitle').value.trim(),
+    message: document.getElementById('enqMessage').value.trim(),
+    course_id: course ? course.course_id : '',
+    course_name: course ? course.course_name : document.title,
+    course_category: course ? course.course_category : '',
+    preferred_delivery_option: deliveryOption,
+    source: 'course_page_enquiry',
+    page_url: window.location.href,
+    submitted_at: new Date().toISOString()
+  };
+
+  var qs = Object.keys(payload).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k] || '');
+  }).join('&');
+
+  try {
+    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs, { method: 'GET', mode: 'no-cors' });
+    document.getElementById('enqFormArea').style.display = 'none';
+    document.getElementById('enqOK').style.display = 'block';
+    var gaParams = {
+      enquiry_type: 'course',
+      form_location: 'course_page',
+      lead_type: 'public',
+      preferred_delivery_option: deliveryOption
+    };
+    if (course) {
+      gaParams.course_id = course.course_id;
+      gaParams.course_name = course.course_name;
+      gaParams.course_category = course.course_category;
+    }
+    LPA_track('enquiry_submitted', gaParams);
+  } catch (e) {
+    btn.textContent = 'Send Enquiry →';
+    btn.disabled = false;
+    alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
+    LPA_track('form_error', {form_location: 'course_page'});
+  }
+}
+
 // ── Phase 3D-3E: one-calendar pilot — legacy row generation ──────────────
 // Additive only. Existing shared functions above (LPA_courseForPath,
 // LPA_sessionById, LPA_sessionSnapshot, LPA_fireCoursePageView,
