@@ -414,7 +414,7 @@ function LPA_renderEnquiryModal(course) {
 function openEnqModal(){
   document.getElementById('enqOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  LPA_trackCTA('enquiry', LPA_CURRENT_COURSE ? {course_id: LPA_CURRENT_COURSE.course_id, course_name: LPA_CURRENT_COURSE.course_name} : {});
+  LPA_trackCTA('enquiry', LPA_CURRENT_COURSE ? {course_id: LPA_CURRENT_COURSE.course_id, course_name: LPA_CURRENT_COURSE.course_name, course_category: LPA_CURRENT_COURSE.course_category} : {});
 }
 
 function closeEnqModal(){
