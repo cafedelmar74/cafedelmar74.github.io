@@ -1799,6 +1799,11 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
         <input type="email" placeholder="Work email" required aria-label="Email address" name="email">
         <input type="tel" placeholder="Phone (optional)" aria-label="Phone number" name="phone">
       </div>
+      <select name="lead_intent" aria-label="Enquiry type">
+        <option value="individual_training">Individual Training</option>
+        <option value="team_training">Team Training</option>
+        <option value="corporate_training">Corporate Training</option>
+      </select>
       <textarea placeholder="Tell us about your training requirements — topic, delegates, dates, format…" aria-label="Training requirements" name="requirements"></textarea>
       <ul class="trust-bullets">
         <li>No obligation — just tell us what you need</li>
@@ -1906,6 +1911,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       billing_address: '',
       course_name:     'Homepage Enquiry',
       requirements:    form.requirements.value.trim(),
+      lead_intent:     form.lead_intent.value,
       course_session:  '',
       course_category: 'Enquiry',
       source:          'homepage_enquiry',
@@ -1919,6 +1925,13 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     // Image beacon — most reliable cross-origin GET, bypasses CORS and most blockers
     var img = new Image();
     img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs;
+
+    LPA_track('enquiry_submitted', {
+      enquiry_type: 'general',
+      form_location: 'homepage',
+      lead_type: 'public',
+      lead_intent: form.lead_intent.value
+    });
 
     setTimeout(function(){
       btn.textContent = 'Enquiry Sent ✓';

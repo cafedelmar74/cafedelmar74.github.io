@@ -407,6 +407,11 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
           <input type="email" placeholder="Work email" required aria-label="Email address" name="email" autocomplete="email">
           <input type="tel" placeholder="Phone (optional)" aria-label="Phone number" name="phone" autocomplete="tel">
         </div>
+        <select name="lead_intent" aria-label="Enquiry type">
+          <option value="individual_training">Individual Training</option>
+          <option value="team_training">Team Training</option>
+          <option value="corporate_training">Corporate Training</option>
+        </select>
         <textarea placeholder="Tell us about your training requirements — topic, delegates, dates, format…" aria-label="Training requirements" name="requirements"></textarea>
         <ul class="trust-bullets">
           <li>No obligation — just tell us what you need</li>
@@ -626,6 +631,7 @@ async function handleEnquiry(e){
     billing_address: '',
     course_name:     'Contact Page Enquiry',
     requirements:    form.requirements.value.trim(),
+    lead_intent:     form.lead_intent.value,
     course_session:  '',
     course_category: 'Enquiry',
     source:          'contact_page',
@@ -640,7 +646,7 @@ async function handleEnquiry(e){
     await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs, { method: 'GET', mode: 'no-cors' });
     btn.textContent = 'Enquiry Sent ✓';
     btn.style.background = '#2a7a4e';
-    LPA_track('enquiry_submitted', {enquiry_type:'general', form_location:'contact_page', lead_type:'public'});
+    LPA_track('enquiry_submitted', {enquiry_type:'general', form_location:'contact_page', lead_type:'public', lead_intent: form.lead_intent.value});
     setTimeout(function(){
       form.reset();
       btn.textContent = origTxt;

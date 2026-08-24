@@ -396,6 +396,11 @@ function LPA_renderEnquiryModal(course) {
   htmlParts.push('<div class="br-field"><label class="brfl">Phone Number</label><input class="brfi" id="enqPhone" type="tel" placeholder="+44 7700 000000" autocomplete="tel"></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Company</label><input class="brfi" id="enqCompany" type="text" placeholder="Company name" autocomplete="organization"></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Job Title</label><input class="brfi" id="enqJobTitle" type="text" placeholder="Job title" autocomplete="organization-title"></div>');
+  htmlParts.push('<div class="br-field"><label class="brfl">Enquiry Type</label><select class="brfi" id="enqLeadIntent">');
+  htmlParts.push('<option value="individual_training">Individual Training</option>');
+  htmlParts.push('<option value="team_training">Team Training</option>');
+  htmlParts.push('<option value="corporate_training">Corporate Training</option>');
+  htmlParts.push('</select></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Preferred Delivery Option</label><select class="brfi" id="enqDelivery">');
   htmlParts.push('<option value="">No preference</option>');
   htmlParts.push('<option value="Classroom">Classroom</option>');
@@ -438,6 +443,7 @@ async function submitEnquiry(){
 
   var course = LPA_CURRENT_COURSE;
   var deliveryOption = document.getElementById('enqDelivery').value;
+  var leadIntent = document.getElementById('enqLeadIntent').value;
 
   var payload = {
     full_name: name.value.trim(),
@@ -450,6 +456,7 @@ async function submitEnquiry(){
     course_name: course ? course.course_name : document.title,
     course_category: course ? course.course_category : '',
     preferred_delivery_option: deliveryOption,
+    lead_intent: leadIntent,
     source: 'course_page_enquiry',
     page_url: window.location.href,
     submitted_at: new Date().toISOString()
@@ -467,7 +474,8 @@ async function submitEnquiry(){
       enquiry_type: 'course',
       form_location: 'course_page',
       lead_type: 'public',
-      preferred_delivery_option: deliveryOption
+      preferred_delivery_option: deliveryOption,
+      lead_intent: leadIntent
     };
     if (course) {
       gaParams.course_id = course.course_id;
