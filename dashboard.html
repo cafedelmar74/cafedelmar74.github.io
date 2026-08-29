@@ -353,28 +353,44 @@ body.dg-locked{overflow:hidden;}
   </div>
 </div>
 <script>
-const DASH_HASH='fef545f994957d1e95de453d7142614c80e7bef653719106b4e696b389caaba5';
-async function dgSha(t){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(d)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');}
-function dashGateInit(start){
-  if(sessionStorage.getItem('lpa_dash_auth')==='1'){
-    document.getElementById('dgOverlay').style.display='none';
-    start();
-    return;
-  }
+// Dashboard passphrase: sent to the n8n webhook and validated server-side.
+// No secret is stored in this page — a wrong passphrase gets a 401 and no data.
+function dgGetKey(){ return window.__dashKey || sessionStorage.getItem('lpa_dash_key') || ''; }
+function dgShowGate(){
   document.body.classList.add('dg-locked');
+  var ov=document.getElementById('dgOverlay'); if(ov){ ov.style.display='flex'; }
+}
+function dgHideGate(){
+  document.body.classList.remove('dg-locked');
+  var ov=document.getElementById('dgOverlay'); if(ov){ ov.style.display='none'; }
+}
+function dashGateInit(start){
   document.getElementById('dgForm').addEventListener('submit', async function(e){
     e.preventDefault();
     var v=document.getElementById('dgPass').value;
-    if(await dgSha(v)===DASH_HASH){
-      sessionStorage.setItem('lpa_dash_auth','1');
-      document.getElementById('dgOverlay').style.display='none';
-      document.body.classList.remove('dg-locked');
-      start();
-    } else {
+    if(!v) return;
+    window.__dashKey=v;
+    document.getElementById('dgErr').style.display='none';
+    try{
+      await start();
+      sessionStorage.setItem('lpa_dash_key', v);
+      dgHideGate();
+    }catch(err){
+      window.__dashKey='';
+      sessionStorage.removeItem('lpa_dash_key');
       document.getElementById('dgErr').style.display='block';
       document.getElementById('dgPass').value='';
     }
   });
+  // Same-session re-entry: if a key is already stored, try it without prompting.
+  if(dgGetKey()){
+    window.__dashKey=dgGetKey();
+    Promise.resolve().then(start).then(dgHideGate).catch(function(){
+      window.__dashKey=''; sessionStorage.removeItem('lpa_dash_key'); dgShowGate();
+    });
+  } else {
+    dgShowGate();
+  }
 }
 </script>
 
@@ -526,8 +542,22 @@ async function loadBookings() {
       <div class="loading-text">Refreshing…</div>
     </div>`;
 
+  let res;
   try {
-    const res = await fetch(BOOKINGS_WEBHOOK);
+    res = await fetch(BOOKINGS_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'key=' + encodeURIComponent(dgGetKey())
+    });
+  } catch(netErr) {
+    console.error('Network error loading bookings:', netErr);
+    allBookings = [];
+    renderAll();
+    document.getElementById('lastUpdated').textContent = 'Update failed';
+    return;
+  }
+  if (res.status === 401) { var authErr = new Error('unauthorized'); authErr.auth = true; throw authErr; }
+  try {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     allBookings = (Array.isArray(data) ? data : []).map(item => { const row = (item && item.json) ? item.json : item; return ({
@@ -826,7 +856,7 @@ document.getElementById('delOverlay').addEventListener('click', function(e) {
 });
 
 // ── INIT ────────────────────────────────────────────────────
-dashGateInit(function(){ loadBookings(); });
+dashGateInit(function(){ return loadBookings(); });
 </script>
 
 <!-- DELETE CONFIRM MODAL -->
