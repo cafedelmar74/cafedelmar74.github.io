@@ -346,9 +346,10 @@ body.dg-locked{overflow:hidden;}
     <h2>Restricted Area</h2>
     <p>This dashboard contains customer data.<br>Enter the access passphrase to continue.</p>
     <form id="dgForm">
-      <input type="password" id="dgPass" placeholder="Passphrase" autocomplete="current-password" autofocus>
+      <input type="text" id="dgPass" placeholder="Passphrase" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" name="lpa-access-key" style="-webkit-text-security:disc;" autofocus>
       <button type="submit">Unlock</button>
       <div class="dg-err" id="dgErr">Incorrect passphrase.</div>
+      <div style="font-size:11px;color:var(--grey);opacity:.55;margin-top:16px;">Secure access · build 2</div>
     </form>
   </div>
 </div>
