@@ -1790,7 +1790,8 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     <span class="eq-right-label">Send an Enquiry</span>
     <h3 class="eq-right-title">We'll respond within<br>one business day</h3>
     <p class="eq-right-sub">No obligation — tell us your training needs and we'll prepare a tailored proposal.</p>
-    <form class="eq-form" onsubmit="handleEnquiry(event)" aria-label="Enquiry form">
+    <form class="eq-form" aria-label="Enquiry form"
+            onsubmit="lpaSubmitEnquiry(event,{source:'homepage_enquiry',course_name:'Homepage Enquiry',course_category:'Enquiry',form_location:'homepage'})">
       <div class="eq-form-row">
         <input type="text" placeholder="Full name" required aria-label="Full name" name="full_name">
         <input type="text" placeholder="Organisation" aria-label="Organisation" name="organisation">
@@ -1810,6 +1811,14 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
         <li>Custom proposal prepared within 1 business day</li>
         <li>Free training needs consultation available</li>
       </ul>
+            <!-- Step 11-D honeypot. Off-screen, hidden from assistive tech, never
+           autofilled. A bot that fills it is rejected server-side. -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+        <label for="lpa-fax-home">Fax</label>
+        <input type="text" id="lpa-fax-home" name="fax" tabindex="-1" autocomplete="off">
+      </div>
+      <!-- Cloudflare Turnstile. Site key is public; the secret lives only in n8n. -->
+      <div class="cf-turnstile" style="margin:16px 0;" data-sitekey="0x4AAAAAAEsAvcbgyopndx7W" data-theme="dark" data-action="enquiry"></div>
       <button type="submit" class="eq-submit">Send Enquiry →</button>
       <p class="eq-note">Handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey-mid);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
     </form>
@@ -1892,58 +1901,9 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // Enquiry form handler — sends to n8n LPA leads webhook via image beacon
-  function handleEnquiry(e) {
-    e.preventDefault();
-    var form = e.target;
-    var btn = form.querySelector('button');
-    var origTxt = btn.textContent;
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
+  // Step 11-D: the old image-beacon handleEnquiry() was removed.
+// Submission is now lpaSubmitEnquiry() in lpa-enquiry-v2.js (POST + JSON).
 
-    var params = {
-      full_name:       form.full_name.value.trim(),
-      email:           form.email.value.trim(),
-      phone:           form.phone.value.trim(),
-      company:         form.organisation.value.trim(),
-      job_title:       '',
-      country:         '',
-      billing_address: '',
-      course_name:     'Homepage Enquiry',
-      requirements:    form.requirements.value.trim(),
-      lead_intent:     form.lead_intent.value,
-      course_session:  '',
-      course_category: 'Enquiry',
-      source:          'homepage_enquiry',
-      page_url:        window.location.href,
-      submitted_at:    new Date().toISOString()
-    };
-    var qs = Object.keys(params).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(params[k] || '');
-    }).join('&');
-
-    // Image beacon — most reliable cross-origin GET, bypasses CORS and most blockers
-    var img = new Image();
-    img.src = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs;
-
-    LPA_track('enquiry_submitted', {
-      enquiry_type: 'general',
-      form_location: 'homepage',
-      lead_type: 'public',
-      lead_intent: form.lead_intent.value
-    });
-
-    setTimeout(function(){
-      btn.textContent = 'Enquiry Sent ✓';
-      btn.style.background = '#2a7a4e';
-      setTimeout(function(){
-        form.reset();
-        btn.textContent = origTxt;
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 4000);
-    }, 800);
-  }
 
 
 
@@ -2255,5 +2215,7 @@ document.addEventListener('DOMContentLoaded', function(){
   else { window.addEventListener('load', loadHeroVideo); }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="lpa-enquiry-v2.js"></script>
 </body>
 </html>

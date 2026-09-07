@@ -22,6 +22,18 @@ const LPA = {
   webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-leads',
   get webhook() { return this.webhook_prod; }, // now live on production
 
+  // ── Step 11-D enquiry endpoint (POST + JSON + Turnstile) ─────────────
+  // The homepage and contact enquiry forms use THIS. Booking forms are
+  // unaffected and continue to use `webhook` above.
+  enquiry_webhook_test: 'https://n8n.srv765009.hstgr.cloud/webhook-test/lpa-enquiry-v2',
+  enquiry_webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry-v2',
+  get enquiry_webhook() { return this.enquiry_webhook_prod; },
+
+  // ── Cloudflare Turnstile ─────────────────────────────────────────────
+  // The SITE key is public by design. The SECRET key never appears in any
+  // website file; it lives only in the n8n credential.
+  turnstile_site_key: '0x4AAAAAAEsAvcbgyopndx7W',
+
   // ── Social ────────────────────────────────────────────────
   linkedin:    'https://www.linkedin.com/company/london-petro-academy-limited/',
   twitter:     'https://twitter.com/London_Petro_Ac',

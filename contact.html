@@ -398,7 +398,8 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <h2 class="form-title">Send an <em>Enquiry</em></h2>
       <p class="form-sub">Complete the form below and we'll respond within one business day.</p>
 
-      <form class="eq-form" onsubmit="handleEnquiry(event)" aria-label="Enquiry form">
+      <form class="eq-form" aria-label="Enquiry form"
+            onsubmit="lpaSubmitEnquiry(event,{source:'contact_page',course_name:'Contact Page Enquiry',course_category:'Enquiry',form_location:'contact_page'})">
         <div class="eq-form-row">
           <input type="text" placeholder="Full name" required aria-label="Full name" name="full_name" autocomplete="name">
           <input type="text" placeholder="Organisation" aria-label="Organisation" name="organisation" autocomplete="organization">
@@ -418,7 +419,15 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
           <li>Custom proposal prepared within 1 business day</li>
           <li>Free training needs consultation available</li>
         </ul>
-        <button type="submit" class="eq-submit">Send Enquiry →</button>
+              <!-- Step 11-D honeypot. Off-screen, hidden from assistive tech, never
+           autofilled. A bot that fills it is rejected server-side. -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+        <label for="lpa-fax-contact">Fax</label>
+        <input type="text" id="lpa-fax-contact" name="fax" tabindex="-1" autocomplete="off">
+      </div>
+      <!-- Cloudflare Turnstile. Site key is public; the secret lives only in n8n. -->
+      <div class="cf-turnstile" style="margin:16px 0;" data-sitekey="0x4AAAAAAEsAvcbgyopndx7W" data-theme="dark" data-action="enquiry"></div>
+      <button type="submit" class="eq-submit">Send Enquiry →</button>
         <p class="eq-note">Handled in accordance with our <a href="privacy-policy.html" style="color:var(--grey);text-decoration:underline">Privacy Policy</a>. We never share your data.</p>
       </form>
     </div>
@@ -608,58 +617,11 @@ function toggleFaq(btn){
   btn.setAttribute('aria-expanded',!isOpen);
 }
 
-// Enquiry form handler — sends to n8n enquiry webhook and waits for the
-// request to complete before confirming success. mode:'no-cors' (same as
-// the booking/brochure flows) means the HTTP status can't be read, but a
-// genuine network-level failure (offline/DNS/connection refused) will now
-// be caught instead of silently assumed successful.
-async function handleEnquiry(e){
-  e.preventDefault();
-  var form = e.target;
-  var btn = form.querySelector('button');
-  var origTxt = btn.textContent;
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
+// Step 11-D: the old no-cors handleEnquiry() was removed.
+// Submission is now lpaSubmitEnquiry() in lpa-enquiry-v2.js (POST + JSON).
 
-  var params = {
-    full_name:       form.full_name.value.trim(),
-    email:           form.email.value.trim(),
-    phone:           form.phone.value.trim(),
-    company:         form.organisation.value.trim(),
-    job_title:       '',
-    country:         '',
-    billing_address: '',
-    course_name:     'Contact Page Enquiry',
-    requirements:    form.requirements.value.trim(),
-    lead_intent:     form.lead_intent.value,
-    course_session:  '',
-    course_category: 'Enquiry',
-    source:          'contact_page',
-    page_url:        window.location.href,
-    submitted_at:    new Date().toISOString()
-  };
-  var qs = Object.keys(params).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k] || '');
-  }).join('&');
-
-  try {
-    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs, { method: 'GET', mode: 'no-cors' });
-    btn.textContent = 'Enquiry Sent ✓';
-    btn.style.background = '#2a7a4e';
-    LPA_track('enquiry_submitted', {enquiry_type:'general', form_location:'contact_page', lead_type:'public', lead_intent: form.lead_intent.value});
-    setTimeout(function(){
-      form.reset();
-      btn.textContent = origTxt;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 4000);
-  } catch (err) {
-    btn.textContent = origTxt;
-    btn.disabled = false;
-    LPA_track('form_error', {form_location:'contact_page'});
-    alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
-  }
-}
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="lpa-enquiry-v2.js"></script>
 </body>
 </html>
