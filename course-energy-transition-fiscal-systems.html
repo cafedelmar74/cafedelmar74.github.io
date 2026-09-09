@@ -556,6 +556,8 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 <!-- LPA config -->
 <script src="course-data.js" defer></script>
 <script src="config.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="lpa-brochure-v2.js" defer></script>
 <script>
   var LPA_CURRENT_COURSE = null;
 
@@ -1728,6 +1730,18 @@ async function submitBk(){
           </div>
         </div>
         <p style="font-size:12px;color:#aaa;margin-top:12px;line-height:1.6;">By submitting you agree to our <a href="privacy-policy.html" target="_blank" style="color:#c8873a;">Privacy Policy</a>. We will email the brochure immediately.</p>
+                <div class="br-field">
+          <label class="brfl">Organisation / Company</label>
+          <input class="brfi" id="brOrg" type="text" placeholder="Company name (optional)" autocomplete="organization">
+        </div>
+        <!-- Step 12-C honeypot. Off-screen, hidden from assistive tech, never
+             autofilled. A bot that fills it is rejected server-side. -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label for="brFax">Fax</label>
+          <input type="text" id="brFax" name="fax" tabindex="-1" autocomplete="off">
+        </div>
+        <!-- Cloudflare Turnstile. Site key is public; the secret lives only in n8n. -->
+        <div class="cf-turnstile" style="margin:12px 0;" data-sitekey="0x4AAAAAAEsAvcbgyopndx7W" data-theme="light" data-action="brochure_download"></div>
         <button class="br-sub" id="brSB" onclick="submitBrochure()">Send Me the Brochure →</button>
       </div>
       <div class="br-ok" id="brOK">
@@ -1740,7 +1754,7 @@ async function submitBk(){
 </div>
 
 <script>
-function openBrModal(){document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Energy Transition & Petroleum Fiscal Systems'});}
+function openBrModal(){LPA_brochureModalOpened();document.getElementById('brOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('brochure_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Energy Transition & Petroleum Fiscal Systems'});}
 function closeBrModal(){document.getElementById('brOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBrModal();});
 function buildSessionsHtml(){
@@ -1764,18 +1778,12 @@ function buildSessionsHtml(){
   return rows;
 }
 async function submitBrochure(){
-  var name=document.getElementById('brName'),email=document.getElementById('brEmail'),phone=document.getElementById('brPhone');
-  var ok=true;
-  [name,email,phone].forEach(function(el){el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
-  if(!ok) return;
-  var btn=document.getElementById('brSB');btn.textContent='Sending…';btn.disabled=true;
-  var payload={full_name:name.value.trim(),email:email.value.trim(),phone:(document.getElementById('brDial').value||'')+' '+phone.value.trim(),course:'Energy Transition & Petroleum Fiscal Systems',pdf_url:'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/energy-transition-fiscal-systems.pdf',sessions_html:buildSessionsHtml(),page_url:window.location.href,submitted_at:new Date().toISOString()};
-  try{
-    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure'+'?'+new URLSearchParams(payload).toString(),{method:'GET',mode:'no-cors'});
-    document.getElementById('brFormArea').style.display='none';
-    document.getElementById('brOK').style.display='block';
-    LPA_track('brochure_download', Object.assign({lead_type:'public', form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name,course_category:LPA_CURRENT_COURSE.course_category}:{course_name:payload.course}));
-  }catch(e){btn.textContent='Send Me the Brochure →';btn.disabled=false;alert('Something went wrong. Please email info@londonpetroacademy.co.uk');LPA_track('form_error', {form_location:'course_page'});}
+  lpaSubmitBrochure({
+    course: 'Energy Transition & Petroleum Fiscal Systems',
+    pdfUrl: 'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/energy-transition-fiscal-systems.pdf',
+    courseId: (LPA_CURRENT_COURSE && LPA_CURRENT_COURSE.course_id) || null,
+    sessionsHtml: buildSessionsHtml()
+  });
 }
 </script>
 
