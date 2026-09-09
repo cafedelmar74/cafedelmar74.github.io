@@ -29,6 +29,15 @@ const LPA = {
   enquiry_webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry-v2',
   get enquiry_webhook() { return this.enquiry_webhook_prod; },
 
+  // ── Step 12-C brochure endpoint (POST + JSON + Turnstile) ────────────
+  // Course-page brochure requests use THIS once migrated. The n8n workflow
+  // (LPA CRM — Brochure Download POST v2) is currently an unpublished draft,
+  // so this URL is not yet reachable in production. Course pages still call
+  // the old GET /webhook/lpa-brochure endpoint until explicitly migrated.
+  brochure_webhook_test: 'https://n8n.srv765009.hstgr.cloud/webhook-test/lpa-brochure-v2',
+  brochure_webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-v2',
+  get brochure_webhook() { return this.brochure_webhook_prod; },
+
   // ── Cloudflare Turnstile ─────────────────────────────────────────────
   // The SITE key is public by design. The SECRET key never appears in any
   // website file; it lives only in the n8n credential.
