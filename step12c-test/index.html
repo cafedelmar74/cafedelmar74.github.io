@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Step 12-C Test — LPA Brochure Validation</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+  body{font-family:Arial,sans-serif;max-width:520px;margin:60px auto;color:#222;}
+  .br-overlay{display:none;border:1px solid #ddd;padding:24px;margin-top:24px;background:#fafafa;}
+  .br-overlay.open{display:block;}
+  .brfi{display:block;width:100%;box-sizing:border-box;margin:8px 0;padding:8px;}
+  .brfi.er{border-color:#c0392b;}
+  .br-sub{margin-top:12px;padding:10px 18px;}
+</style>
+</head>
+<body>
+  <h1>Step 12-C — Isolated Brochure Test</h1>
+  <p>Internal validation page for the secure POST brochure transport. Not part of the public site; not linked from navigation.</p>
+  <button type="button" onclick="openBrModal()">Open Brochure Modal</button>
+
+  <div id="brOverlay" class="br-overlay">
+    <div id="brFormArea">
+      <h2>Request Brochure — Oil &amp; Gas Fundamentals</h2>
+      <input class="brfi" id="brName" type="text" placeholder="Full name" autocomplete="name">
+      <input class="brfi" id="brEmail" type="email" placeholder="Email" autocomplete="email">
+      <input class="brfi" id="brDial" type="text" value="+44" style="width:60px;display:inline-block;">
+      <input class="brfi" id="brPhone" type="text" placeholder="Phone" style="width:calc(100% - 72px);display:inline-block;" autocomplete="tel">
+      <input class="brfi" id="brOrg" type="text" placeholder="Organisation / Company (optional)" autocomplete="organization">
+      <!-- Honeypot. Off-screen, hidden from assistive tech, never autofilled. -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+        <label for="brFax">Fax</label>
+        <input type="text" id="brFax" name="fax" tabindex="-1" autocomplete="off">
+      </div>
+      <!-- Genuine production Cloudflare Turnstile site key. Secret lives only in n8n. -->
+      <div class="cf-turnstile" style="margin:12px 0;" data-sitekey="0x4AAAAAAEsAvcbgyopndx7W" data-theme="light" data-action="brochure_download"></div>
+      <button class="br-sub" id="brSB" type="button" onclick="submitBrochure()">Send Me the Brochure &rarr;</button>
+    </div>
+    <div id="brOK" style="display:none;">Thank you — check your email.</div>
+  </div>
+
+  <script>
+    // TEST-ONLY, page-local. Points this isolated test page at the TEST
+    // webhook. Does not exist in and does not modify config.js or
+    // lpa-brochure-v2.js, both of which remain exactly as checkpointed /
+    // production.
+    window.LPA = { brochure_webhook: 'https://n8n.srv765009.hstgr.cloud/webhook-test/lpa-brochure-v2' };
+
+    function openBrModal(){
+      LPA_brochureModalOpened();
+      document.getElementById('brOverlay').classList.add('open');
+    }
+    async function submitBrochure(){
+      lpaSubmitBrochure({
+        course: 'Oil & Gas Fundamentals',
+        pdfUrl: 'https://raw.githubusercontent.com/cafedelmar74/cafedelmar74.github.io/main/brochures/oil-gas-fundamentals.pdf',
+        courseId: 'oil-gas-fundamentals'
+      });
+    }
+  </script>
+  <script src="/lpa-brochure-v2.js" defer></script>
+</body>
+</html>
