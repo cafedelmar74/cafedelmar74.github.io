@@ -29,6 +29,13 @@ const LPA = {
   enquiry_webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry-v2',
   get enquiry_webhook() { return this.enquiry_webhook_prod; },
 
+  // ── Step 13-C booking endpoint (POST + JSON + Turnstile) ────────────
+  // All 37 course-page booking forms use THIS. The legacy GET /webhook/lpa-leads
+  // endpoint below remains active as the rollback fallback and is unchanged.
+  booking_webhook_test: 'https://n8n.srv765009.hstgr.cloud/webhook-test/lpa-booking-v2',
+  booking_webhook_prod: 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-booking-v2',
+  get booking_webhook() { return this.booking_webhook_prod; },
+
   // ── Step 12-C brochure endpoint (POST + JSON + Turnstile) ────────────
   // Course-page brochure requests use THIS once migrated. The n8n workflow
   // (LPA CRM — Brochure Download POST v2) is currently an unpublished draft,

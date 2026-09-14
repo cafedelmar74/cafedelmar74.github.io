@@ -490,6 +490,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
 <script src="config.js" defer></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="lpa-brochure-v2.js" defer></script>
+<script src="lpa-booking-v2.js" defer></script>
 <script>
   var LPA_CURRENT_COURSE = null;
 
@@ -500,7 +501,6 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
     LPA_renderEnquiryModal(LPA_CURRENT_COURSE);
   });
 </script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -1475,8 +1475,16 @@ window.addEventListener('scroll',()=>{
           </div>
           <div class="bk-captcha-row2">
             <div class="bk-captcha-side2">
-              <div class="g-recaptcha" data-sitekey="6LewZUQtAAAAACb6RPdMsXeyNLSctwZG6LOWob3E"></div>
-              <div id="bkCaptchaErr" class="bk-captcha-err2" style="display:none">Please complete the CAPTCHA.</div>
+              <!-- Step 13-C honeypot. Off-screen, hidden from assistive tech, never
+                   autofilled. A bot that fills it is rejected server-side. -->
+              <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+                <label for="bkFax">Fax</label>
+                <input type="text" id="bkFax" name="fax" tabindex="-1" autocomplete="off">
+              </div>
+              <!-- Cloudflare Turnstile. Site key is public; the secret lives only in n8n.
+                   The booking-specific action is asserted server-side, so a token minted
+                   on the enquiry or brochure widget cannot be replayed here. -->
+              <div class="cf-turnstile" style="margin:4px 0;" data-sitekey="0x4AAAAAAEsAvcbgyopndx7W" data-theme="light" data-action="booking_submit"></div>
             </div>
             <div class="bk-submit-side2">
               <button class="bk-sub2" id="bkSB" onclick="submitBk()">Confirm Booking Request →</button>
@@ -1495,86 +1503,21 @@ window.addEventListener('scroll',()=>{
 </div>
 
 <script>
-function openBkModal(){document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Independent Power Producers (IPPs): Project Finance & Bankability in Emerging Markets'});}
+function openBkModal(){LPA_bookingModalOpened();document.getElementById('bkOverlay').classList.add('open');document.body.style.overflow='hidden';LPA_trackCTA('booking_open', LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Independent Power Producers (IPPs): Project Finance & Bankability in Emerging Markets'});}
 function closeBkModal(){document.getElementById('bkOverlay').classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBkModal();});
 document.getElementById('btnOpenBooking').addEventListener('click',openBkModal);
 async function submitBk(){
-  var ids=['bkSes','bkFN','bkLN','bkEM','bkPH','bkCO','bkJT','bkAD','bkCN'];
-  var ok=true;
-  ids.forEach(function(id){var el=document.getElementById(id);el.classList.remove('er');if(!el.value.trim()){el.classList.add('er');ok=false;}});
-  var termsEl=document.getElementById('bkTerms');
-  document.getElementById('bkTermsErr').style.display=termsEl.checked?'none':'block';
-  if(!termsEl.checked) ok=false;
-  var privEl=document.getElementById('bkPrivacy');
-  document.getElementById('bkPrivacyErr').style.display=privEl.checked?'none':'block';
-  if(!privEl.checked) ok=false;
-  var captchaResp='bypassed'; // reCAPTCHA active on production domain only
-  document.getElementById('bkCaptchaErr').style.display='none';
-  if(!ok){var fe=document.querySelector('.er');if(fe)fe.scrollIntoView({behavior:'smooth',block:'center'});return;}
-  if(typeof LPA_SESSIONS==='undefined'||!LPA_CURRENT_COURSE){
-    alert('Something went wrong loading course session data. Please email info@londonpetroacademy.co.uk to book.');
-    LPA_track('form_error', {form_location:'course_page', error_type: typeof LPA_SESSIONS==='undefined' ? 'central_data_load_failure' : 'course_lookup_failure'});
-    return;
-  }
-  var bkSelOpt=document.getElementById('bkSes').selectedOptions[0];
-  var bkSessionId=bkSelOpt?bkSelOpt.dataset.sessionId:'';
-  var bkOnRequest=!!(LPA_CURRENT_COURSE.offers_on_request && bkSelOpt && !bkSessionId && bkSelOpt.value);
-  var bkSession=bkOnRequest?null:LPA_sessionById(bkSessionId);
-  if(!bkOnRequest){
-    if(!bkSession){
-      alert('Please select a valid session and try again.');
-      LPA_track('form_error', {form_location:'course_page', error_type:'invalid_session'});
-      return;
-    }
-    if(bkSession.course_id!==LPA_CURRENT_COURSE.course_id){
-      alert('Something went wrong with your session selection. Please refresh the page and try again.');
-      LPA_track('form_error', {form_location:'course_page', error_type:'session_course_mismatch'});
-      return;
-    }
-    if(bkSession.session_status!=='scheduled'){
-      alert('This session is no longer available. Please choose a different date or contact us.');
-      LPA_track('form_error', {form_location:'course_page', error_type:'cancelled_session'});
-      return;
-    }
-  }
-  var btn=document.getElementById('bkSB');btn.textContent='Sending…';btn.disabled=true;
-  var payload={
-    course_name:LPA_CURRENT_COURSE.course_name,
-    course_session:document.getElementById('bkSes').value,
-    first_name:document.getElementById('bkFN').value,
-    last_name:document.getElementById('bkLN').value,
-    full_name:document.getElementById('bkFN').value+' '+document.getElementById('bkLN').value,
-    email:document.getElementById('bkEM').value,
-    phone:(document.getElementById('bkDial')?document.getElementById('bkDial').value:'')+' '+document.getElementById('bkPH').value,
-    company:document.getElementById('bkCO').value,
-    job_title:document.getElementById('bkJT').value,
-    billing_address:document.getElementById('bkAD').value,
-    country:document.getElementById('bkCN').value,
-    course_category:'IPPs & Power',course_duration:'3 days',
-    source:'booking_form',sessions_html:'<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">19-21 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Johannesburg SAST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,900 per delegate. Group discounts available.</td></tr>',page_url:window.location.href,
-    submitted_at:new Date().toISOString(),captcha_token:captchaResp
-  };
-  try{var stored=localStorage.getItem('lpa_bookings');var bookings=[];try{bookings=JSON.parse(stored)||[];}catch(e){}
-  var exists=bookings.find(function(b){return b.submitted_at===payload.submitted_at&b.email===payload.email;});
-  if(!exists){bookings.unshift(payload);localStorage.setItem('lpa_bookings',JSON.stringify(bookings));}}catch(e){}
-  try{
-    await lpaSubmit(payload);
-    document.getElementById('bkFormArea').style.display='none';
-    document.getElementById('bkOK').style.display='block';
-    LPA_track('booking_submitted', Object.assign({
-      course_id: LPA_CURRENT_COURSE.course_id,
-      course_name: LPA_CURRENT_COURSE.course_name,
-      course_category: LPA_CURRENT_COURSE.course_category,
-      lead_type:'public',
-      form_location:'course_page'
-    }, bkSession ? LPA_sessionSnapshot(bkSession) : {}));
-  }catch(e){
-    btn.textContent='Confirm Booking Request →';btn.disabled=false;
-    if(typeof grecaptcha!=='undefined') grecaptcha.reset();
-    alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
-    LPA_track('form_error', {form_location:'course_page'});
-  }
+  // Step 13-C: the transport, validation, Turnstile, honeypot, timing and session
+  // resolution all live in the shared lpa-booking-v2.js. course_id comes from
+  // LPA_CURRENT_COURSE and course_session_id from the selected option's
+  // data-session-id; neither is ever derived from display text. On-request and
+  // in-house options, which carry no session id, are handled there too.
+  lpaSubmitBooking({
+    courseCategory: 'IPPs & Power',
+    courseDuration: '3 days',
+    sessionsHtml: '<tr style=\"border-bottom:1px solid #f0ede8;\"><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">19-21 Oct 2026</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Virtual (Johannesburg SAST)</td></tr><tr><td style=\"padding:10px 0;color:#888;font-size:13px;width:180px;\">Classroom</td><td style=\"padding:10px 0;color:#111;font-weight:600;\">Contact us for dates</td></tr><tr><td colspan=\"2\" style=\"padding:14px 0 0;font-size:13px;color:#666;\">£1,900 per delegate. Group discounts available.</td></tr>',
+  });
 }
 </script>
 
