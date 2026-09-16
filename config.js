@@ -372,6 +372,27 @@ function LPA_renderSessionOptions(course) {
 // lpa-enquiry webhook (same one contact.html's general enquiry form uses)
 // but tags itself enquiry_type:'course' so the two never conflate.
 var LPA_ENQUIRY_MODAL_INJECTED = false;
+var LPA_ENQ_TURNSTILE_ID = null;
+var LPA_ENQ_RENDERED_AT = null;
+
+// Explicit render, not implicit auto-scan: the modal (and its .cf-turnstile
+// div) is injected into the DOM after page load, so it may not exist yet
+// when the Turnstile script performs its one-time implicit scan. Retries
+// until window.turnstile is available.
+function LPA_renderEnquiryTurnstile() {
+  var el = document.getElementById('enqTurnstile');
+  if (!el || el.getAttribute('data-rendered') === '1') { return; }
+  if (window.turnstile && window.turnstile.render) {
+    LPA_ENQ_TURNSTILE_ID = window.turnstile.render(el, {
+      sitekey: LPA.turnstile_site_key,
+      theme: 'light',
+      action: 'enquiry'
+    });
+    el.setAttribute('data-rendered', '1');
+  } else {
+    setTimeout(LPA_renderEnquiryTurnstile, 150);
+  }
+}
 
 // Same DOM-based escaping technique already used by esc() in
 // dashboard.html/downloads-dashboard.html — setting textContent then
@@ -429,12 +450,16 @@ function LPA_renderEnquiryModal(course) {
   htmlParts.push('<option value="In-house">In-house</option>');
   htmlParts.push('</select></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Message</label><textarea class="brfi" id="enqMessage" rows="3" placeholder="Tell us what you need..."></textarea></div>');
+  htmlParts.push('<div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"><label for="enqFax">Fax</label><input type="text" id="enqFax" name="fax" tabindex="-1" autocomplete="off"></div>');
+  htmlParts.push('<div class="cf-turnstile" id="enqTurnstile" style="margin:12px 0;"></div>');
   htmlParts.push('<button class="btn-book" id="enqSB" onclick="submitEnquiry()" type="button">Send Enquiry &rarr;</button>');
   htmlParts.push('</div><div id="enqOK" style="display:none;text-align:center;padding:20px 0;"><p>Thank you &mdash; your enquiry has been received. Our team will contact you shortly.</p></div></div>');
   htmlParts.push('</div>');
   htmlParts.push('</div>');
 
   document.body.insertAdjacentHTML('beforeend', htmlParts.join(''));
+  LPA_ENQ_RENDERED_AT = new Date().toISOString();
+  LPA_renderEnquiryTurnstile();
 }
 
 function openEnqModal(){
@@ -458,6 +483,13 @@ async function submitEnquiry(){
   });
   if (!ok) { return; }
 
+  var token = (window.turnstile && LPA_ENQ_TURNSTILE_ID != null)
+    ? window.turnstile.getResponse(LPA_ENQ_TURNSTILE_ID) : '';
+  if (!token) {
+    alert('Please complete the verification check and try again.');
+    return;
+  }
+
   var btn = document.getElementById('enqSB');
   btn.textContent = 'Sending...';
   btn.disabled = true;
@@ -465,8 +497,10 @@ async function submitEnquiry(){
   var course = LPA_CURRENT_COURSE;
   var deliveryOption = document.getElementById('enqDelivery').value;
   var leadIntent = document.getElementById('enqLeadIntent').value;
+  var fax = document.getElementById('enqFax');
 
   var payload = {
+    source: 'course_page_enquiry',
     full_name: name.value.trim(),
     email: email.value.trim(),
     phone: document.getElementById('enqPhone').value.trim(),
@@ -478,17 +512,23 @@ async function submitEnquiry(){
     course_category: course ? course.course_category : '',
     preferred_delivery_option: deliveryOption,
     lead_intent: leadIntent,
-    source: 'course_page_enquiry',
     page_url: window.location.href,
-    submitted_at: new Date().toISOString()
+    submitted_at: new Date().toISOString(),
+    turnstile_token: token,
+    fax: fax ? fax.value : '',
+    form_rendered_at: LPA_ENQ_RENDERED_AT
   };
 
-  var qs = Object.keys(payload).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k] || '');
-  }).join('&');
-
   try {
-    await fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-enquiry?' + qs, { method: 'GET', mode: 'no-cors' });
+    var res = await fetch(LPA.enquiry_webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    var data = {};
+    try { data = await res.json(); } catch (e2) { /* non-JSON error body */ }
+    if (!res.ok || !data || data.ok !== true) { throw new Error('rejected'); }
+
     document.getElementById('enqFormArea').style.display = 'none';
     document.getElementById('enqOK').style.display = 'block';
     var gaParams = {
@@ -507,6 +547,7 @@ async function submitEnquiry(){
   } catch (e) {
     btn.textContent = 'Send Enquiry →';
     btn.disabled = false;
+    if (window.turnstile && LPA_ENQ_TURNSTILE_ID != null) { window.turnstile.reset(LPA_ENQ_TURNSTILE_ID); }
     alert('Something went wrong. Please email info@londonpetroacademy.co.uk');
     LPA_track('form_error', {form_location: 'course_page'});
   }
