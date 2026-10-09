@@ -154,7 +154,7 @@ var LPA_COURSE_NAME = {
   '/course-petroleum-exploration-economics-decision.html': 'Petroleum Exploration Economics & Decision Strategies',
   '/course-petroleum-project-economics-risk.html': 'Petroleum Project Economics & Risk Decision Analysis',
   '/course-petroleum-refining-non-technical.html': 'Petroleum Refining for Non-Technical Persons',
-  '/course-production-sharing-contracts-brazil.html': 'Production Sharing Contracts — Brazil: Legal, Fiscal & Financial Aspects',
+  '/course-production-sharing-contracts-brazil.html': 'Legal, Financial and Fiscal Aspects of Brazilian Production-Sharing Contracts',
   '/course-renewable-energy-economics-finance.html': 'Renewable Energy Economics and Finance',
   '/course-solar-power-finance.html': 'Solar Power Finance',
   '/course-stuck-pipe-prevention.html': 'Stuck Pipe Prevention',
