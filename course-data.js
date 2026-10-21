@@ -1476,8 +1476,8 @@ var LPA_SESSIONS = [
   {
     course_session_id: 'energy-transition-fiscal-systems-s2',
     course_id:          'energy-transition-fiscal-systems',
-    course_start_date:  '2026-11-23',
-    course_end_date:    '2026-11-27',
+    course_start_date:  '2026-12-07',
+    course_end_date:    '2026-12-11',
     course_location:    'Rio de Janeiro',
     course_country:     'Brazil',
     delivery_format:    'in_person',
