@@ -147,6 +147,11 @@ main{display:block;}
 .tt-row.brk{background:var(--amber-dim);}
 .tt-row.brk .tt-what{color:var(--amber-ink);font-weight:500;}
 .tt-row.reg .tt-what small{display:block;font-size:12px;color:var(--ink-light);}
+.tt-sub{border-top:2px solid var(--amber);background:var(--page);}
+.tt-row.fin{background:var(--ink);}
+.tt-row.fin .tt-time{color:var(--amber2);}
+.tt-row.fin .tt-what{color:#fff;font-weight:500;}
+.day-end{display:inline-block;align-self:flex-start;background:var(--amber);color:#0c0d0f;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:4px 8px;margin:-6px 0 14px;}
 
 .days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;}
 .day{background:var(--page3);border:1px solid var(--line);padding:20px 18px 22px;position:relative;display:flex;flex-direction:column;min-height:230px;transition:border-color .2s,transform .2s;}
@@ -524,7 +529,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <p class="hero-sub"><b>Istanbul</b> · Monday 9 – Friday 13 November 2026</p>
       <div class="pills" role="list">
         <span class="pill" role="listitem"><svg><use href="#i-cal"/></svg>5 Days</span>
-        <span class="pill" role="listitem"><svg><use href="#i-clock"/></svg>09:00 – 17:00 daily</span>
+        <span class="pill" role="listitem"><svg><use href="#i-clock"/></svg>09:00 – 17:00 · Fri until lunch</span>
         <span class="pill" role="listitem"><svg><use href="#i-hotel"/></svg>Sheraton Istanbul City Center</span>
         <span class="pill" role="listitem" style="background:rgba(200,135,58,.18);border-color:rgba(200,135,58,.5);color:var(--amber2)"><svg><use href="#i-laptop"/></svg>Laptop required</span>
       </div>
@@ -538,6 +543,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       </div>
       <ul class="glance-list">
         <li><svg><use href="#i-clock"/></svg><div><div class="gl-k">Day 1 registration</div><div class="gl-v">Monday 9 Nov, 08:30</div></div></li>
+        <li><svg><use href="#i-award"/></svg><div><div class="gl-k">Final day</div><div class="gl-v">Friday 13 Nov, finishes around lunchtime</div></div></li>
         <li><svg><use href="#i-pin"/></svg><div><div class="gl-k">Venue</div><div class="gl-v">Sheraton Istanbul City Center, Beyoğlu</div></div></li>
         <li><svg><use href="#i-laptop"/></svg><div><div class="gl-k">Bring your laptop</div><div class="gl-v">Computer-based course · <a href="#materials" style="color:var(--amber2)">check access</a></div></div></li>
       </ul>
@@ -570,12 +576,12 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
         <span class="sec-num">01 · Daily Timing</span>
         <h2 class="sec-title" id="h-timing">Your week <em>at a glance</em></h2>
       </div>
-      <p class="sec-lede">Each day runs from 09:00 to 17:00 (Istanbul time, UTC+3) with 6.5 hours of teaching, morning and afternoon refreshment breaks and a lunch break. On Day 1, please arrive by 08:30 to register and collect your welcome pack.</p>
+      <p class="sec-lede">Days 1–4 run from 09:00 to 17:00 (Istanbul time, UTC+3), with morning and afternoon refreshment breaks and a lunch break. <strong style="color:var(--ink);font-weight:600">Day 5 finishes around lunchtime</strong>, so you can plan a Friday afternoon or evening flight home. On Day 1, please arrive by 08:30 to register and collect your welcome pack.</p>
     </div>
 
     <div class="tt-wrap">
       <div class="timetable">
-        <div class="tt-head"><h3>Daily timetable</h3><span>Mon – Fri</span></div>
+        <div class="tt-head"><h3>Daily timetable</h3><span>Mon – Thu</span></div>
         <div class="tt-row reg"><div class="tt-time">08:30</div><div class="tt-what">Registration &amp; welcome coffee<small>Day 1 only</small></div></div>
         <div class="tt-row"><div class="tt-time">09:00 – 10:30</div><div class="tt-what">Session 1</div></div>
         <div class="tt-row brk"><div class="tt-time">10:30 – 10:45</div><div class="tt-what">Morning break</div></div>
@@ -584,6 +590,11 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
         <div class="tt-row"><div class="tt-time">13:30 – 15:15</div><div class="tt-what">Session 3</div></div>
         <div class="tt-row brk"><div class="tt-time">15:15 – 15:30</div><div class="tt-what">Afternoon break</div></div>
         <div class="tt-row"><div class="tt-time">15:30 – 17:00</div><div class="tt-what">Session 4</div></div>
+        <div class="tt-head tt-sub"><h3>Friday · Day 5</h3><span>Half day</span></div>
+        <div class="tt-row"><div class="tt-time">09:00 – 10:30</div><div class="tt-what">Session 1</div></div>
+        <div class="tt-row brk"><div class="tt-time">10:30 – 10:45</div><div class="tt-what">Morning break</div></div>
+        <div class="tt-row"><div class="tt-time">10:45 – 12:30</div><div class="tt-what">Session 2</div></div>
+        <div class="tt-row fin"><div class="tt-time">≈ 12:30</div><div class="tt-what">Course close &amp; certificates, followed by lunch</div></div>
       </div>
 
       <div class="days" id="days">
@@ -604,7 +615,8 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
           <div class="day-topic"><b>Advanced fiscal structures</b>PSCs, JVs, carried interest, progressive taxes and revenue splits</div>
         </article>
         <article class="day" data-date="2026-11-13">
-          <div class="day-n">Day 5</div><div class="day-date">13 Nov</div><div class="day-dow">Friday</div>
+          <div class="day-n">Day 5 · Half day</div><div class="day-date">13 Nov</div><div class="day-dow">Friday</div>
+          <span class="day-end">Finishes around lunchtime</span>
           <div class="day-topic"><b>Country analysis &amp; close</b>Country fiscal reviews, government-take comparisons, certificates</div>
         </article>
         <p class="days-cap">Daily topics are indicative; the trainer may adjust the order to suit the group.</p>
@@ -961,7 +973,7 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
       <div class="info-item"><svg><use href="#i-shirt"/></svg><h4>Dress code</h4><p>Business casual throughout the week. Meeting rooms can be cool, so a layer is useful.</p></div>
       <div class="info-item"><svg><use href="#i-coin"/></svg><h4>Currency</h4><p>Turkish lira (TRY). Cards are widely accepted; carry some cash for small purchases and tips.</p></div>
       <div class="info-item"><svg><use href="#i-plug"/></svg><h4>Power</h4><p>230 V with European two-pin sockets (types C and F). Bring an adaptor if needed.</p></div>
-      <div class="info-item"><svg><use href="#i-cup"/></svg><h4>What's included</h4><p>Tuition, daily lunch, morning and afternoon refreshments, digital course materials and a certificate of completion, presented on Friday afternoon.</p></div>    </div>
+      <div class="info-item"><svg><use href="#i-cup"/></svg><h4>What's included</h4><p>Tuition, daily lunch, morning and afternoon refreshments, digital course materials and a certificate of completion, presented at the close on Friday (around lunchtime).</p></div>    </div>
   </section>
 
   <!-- HELP -->
