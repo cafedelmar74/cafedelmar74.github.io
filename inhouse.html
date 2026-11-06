@@ -261,6 +261,10 @@ footer{background:var(--dark2);border-top:1px solid var(--d-line);padding:72px 6
   .nav-links,.nav-cta{display:none;}
   .hamburger{display:flex;}
   .hero-content{padding:80px 24px 60px;}
+  /* Mobile: text sits over the busy part of the photo, so darken it more */
+  .hero-bg::after{background:linear-gradient(180deg,rgba(12,13,15,.80) 0%,rgba(12,13,15,.72) 35%,rgba(12,13,15,.86) 65%,rgba(12,13,15,.98) 100%);}
+  .hero-eyebrow,.hero-h1,.hero-sub{text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  .hero-sub{color:rgba(255,255,255,.88);}
   .sec{padding:64px 24px;}
   .journey-inner{padding:0 24px;}
   .testi-sec{padding:64px 24px;}
