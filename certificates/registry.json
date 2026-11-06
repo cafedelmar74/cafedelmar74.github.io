@@ -1,0 +1,96 @@
+{
+  "_readme": "London Petro Academy certificate registry. Each certificate stores only a SHA-256 fingerprint of its number and normalised participant name; no names are stored here. Read by verify.html.",
+  "courses": {
+    "LON26-LNGVC": {
+      "title": "The Complete LNG Value Chain: Markets, Operations & Trading",
+      "mode": "In-classroom",
+      "location": "London, United Kingdom",
+      "start": "2026-11-09",
+      "end": "2026-11-12",
+      "issued": "2026-11-12",
+      "page": "course-lng-value-chain.html"
+    }
+  },
+  "certificates": {
+    "LPA-LON26-LNGVC-001": {
+      "c": "LON26-LNGVC",
+      "h": "017835c7afda5413ad1d0a42842b823679e90c0911218d5099d31d0c2ea07989"
+    },
+    "LPA-LON26-LNGVC-002": {
+      "c": "LON26-LNGVC",
+      "h": "5cb02656d1e7659651ffc9d98997e360820141126b8b41bc576e8e081d79bf4c"
+    },
+    "LPA-LON26-LNGVC-003": {
+      "c": "LON26-LNGVC",
+      "h": "b839c2fc3072ed5d03cc94acf78927d9c1dab122294959258f91327d4a7b4874"
+    },
+    "LPA-LON26-LNGVC-004": {
+      "c": "LON26-LNGVC",
+      "h": "c92765b2f498d46b1e8ff50a30ba58b0a3355adb0a54048c4feb880f33f594ac"
+    },
+    "LPA-LON26-LNGVC-005": {
+      "c": "LON26-LNGVC",
+      "h": "dbc6522791cb62956321a3c8792c868d30d20af06116a6cf2d972e1487a43195"
+    },
+    "LPA-LON26-LNGVC-006": {
+      "c": "LON26-LNGVC",
+      "h": "114cb2a3358f9f30693258f160625a3463266a1ba03019e0934a111138739d71"
+    },
+    "LPA-LON26-LNGVC-007": {
+      "c": "LON26-LNGVC",
+      "h": "b768d5513eb0f3bd5b2d675a8e2e2bb752839258ce3d2d34d3e4f74deca0a927"
+    },
+    "LPA-LON26-LNGVC-008": {
+      "c": "LON26-LNGVC",
+      "h": "14e00400f883913f5c492824f3bab4d2651fc476522d55a2d8d38ebf7e200ed7"
+    },
+    "LPA-LON26-LNGVC-009": {
+      "c": "LON26-LNGVC",
+      "h": "d943bb9e697974e71512ff578016c13775583d83791c6e111d40d2b581aa2b0a"
+    },
+    "LPA-LON26-LNGVC-010": {
+      "c": "LON26-LNGVC",
+      "h": "acef376bc8e1c8fc4c5824ca3edd63267725454344528d09c3db4b0fd76b8f61"
+    },
+    "LPA-LON26-LNGVC-011": {
+      "c": "LON26-LNGVC",
+      "h": "97a721c5cdd03b6acea4b34f5d459446232080bcf6731f66c689edd572cade35"
+    },
+    "LPA-LON26-LNGVC-012": {
+      "c": "LON26-LNGVC",
+      "h": "d00cb26f184ba73ba48536f5eea2a1fc083d345f5cd4602132cf7282d27bf0bb"
+    },
+    "LPA-LON26-LNGVC-013": {
+      "c": "LON26-LNGVC",
+      "h": "4eff29c39888166f4e6ded54544427b5e79755f8834a7a8defe2327e1ea14b6f"
+    },
+    "LPA-LON26-LNGVC-014": {
+      "c": "LON26-LNGVC",
+      "h": "7176147aaab71134f7e9c2b6a8d5b415d1c30abf6ce41a78df6e59e9d8e7036e"
+    },
+    "LPA-LON26-LNGVC-015": {
+      "c": "LON26-LNGVC",
+      "h": "a239e616d559d771327de3db32351352c49691694b82907ad60281b69a72528a"
+    },
+    "LPA-LON26-LNGVC-016": {
+      "c": "LON26-LNGVC",
+      "h": "2f502bd639e512ae0943e7b81f05ef0348c887017e17f75a6b2361edc794a6d4"
+    },
+    "LPA-LON26-LNGVC-017": {
+      "c": "LON26-LNGVC",
+      "h": "8df1662ae22c7fc87ee6ef5cad2c156d22d08d7c154902f6d272fa85106fb1b3"
+    },
+    "LPA-LON26-LNGVC-018": {
+      "c": "LON26-LNGVC",
+      "h": "ca8522794e542ed557b02a686a5bb73d40bfab6da95cc997b264d55957581232"
+    },
+    "LPA-LON26-LNGVC-019": {
+      "c": "LON26-LNGVC",
+      "h": "09a684e4c6fbce5b8e5b3fe4a64c12b0428853d2a1470693b78d13aa47aff421"
+    },
+    "LPA-LON26-LNGVC-020": {
+      "c": "LON26-LNGVC",
+      "h": "b4df11fdf08a5553c240416e4b09dedafc359b5a8eeba272a7d1b37bbb4ee05a"
+    }
+  }
+}
