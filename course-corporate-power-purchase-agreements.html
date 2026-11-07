@@ -1759,11 +1759,11 @@ document.addEventListener('DOMContentLoaded', function(){
     var ph  = document.getElementById('calPhone').value.trim();
     if(!fn||!ln||!em){ alert('Please fill in your name and email.'); return; }
     var btn = document.getElementById('calDlSubmit');
-    if (!LPA_calendarReady(btn)) return; // waits for Cloudflare's check, then clicks again by itself
+    if (window.LPA_calendarReady && !LPA_calendarReady(btn)) return; // waits for Cloudflare's check, then clicks again by itself
     btn.disabled = true;
     btn.textContent = 'One moment…';
     // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
-    var lpaCalSent = LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, minDelay:1200});
+    var lpaCalSent = window.LPA_calendarSend ? LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, minDelay:1200}) : Promise.resolve({ok:false});
     // Show the success message now; move on once the details are sent
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
@@ -1775,6 +1775,6 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
-<script src="lpa-calendar-v2.js"></script>
+<script src="lpa-calendar-v2.js?v=2"></script>
 </body>
 </html>
