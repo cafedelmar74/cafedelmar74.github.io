@@ -398,7 +398,7 @@ function dashGateInit(start){
 
 <!-- HEADER -->
 <header class="dash-header">
-  <a href="https://cafedelmar74.github.io/index.html" class="dash-logo">
+  <a href="/" class="dash-logo">
     <img src="logo-dark.png" alt="London Petro Academy">
     <span class="dash-logo-title">Bookings <span>Dashboard</span></span>
   </a>
@@ -851,9 +851,12 @@ function executeDelete() {
   renderAll();
 }
 
-// Close delete modal on overlay click
-document.getElementById('delOverlay').addEventListener('click', function(e) {
-  if (e.target === this) cancelDelete();
+// Close delete modal on overlay click. The modal sits below this script,
+// so wire it up once the page has loaded (otherwise the login never starts).
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('delOverlay').addEventListener('click', function(e) {
+    if (e.target === this) cancelDelete();
+  });
 });
 
 // ── INIT ────────────────────────────────────────────────────
