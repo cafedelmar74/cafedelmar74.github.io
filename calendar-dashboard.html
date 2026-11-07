@@ -246,6 +246,8 @@ function shortSource(url){
   if(!url) return '—';
   try{ var u=new URL(url); return u.pathname.replace(/\//g,'').replace('.html','')||'homepage'; }catch(e){ return url.split('/').pop()||url; }
 }
+// Form data comes from a public form, so make it display-only before putting it on the page.
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 
 function loadData(){
   document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;"><div class="spinner"></div></td></tr>';
@@ -313,12 +315,12 @@ function renderTable(){
     var gi = allRows.indexOf(r);
     return '<tr data-idx="'+gi+'">'
       +'<td class="cb-col"><input type="checkbox" class="row-cb" data-idx="'+gi+'" onchange="onRowCheck()"></td>'
-      +'<td class="td-date">'+formatDate(r.timestamp)+'</td>'
-      +'<td>'+(r.first_name||'—')+'</td>'
-      +'<td>'+(r.last_name||'—')+'</td>'
-      +'<td class="td-email"><a href="mailto:'+r.email+'">'+(r.email||'—')+'</a></td>'
-      +'<td>'+(r.phone||'—')+'</td>'
-      +'<td class="td-source" title="'+r.source+'">'+shortSource(r.source)+'</td>'
+      +'<td class="td-date">'+esc(formatDate(r.timestamp))+'</td>'
+      +'<td>'+(esc(r.first_name)||'—')+'</td>'
+      +'<td>'+(esc(r.last_name)||'—')+'</td>'
+      +'<td class="td-email"><a href="mailto:'+esc(r.email)+'">'+(esc(r.email)||'—')+'</a></td>'
+      +'<td>'+(esc(r.phone)||'—')+'</td>'
+      +'<td class="td-source" title="'+esc(r.source)+'">'+esc(shortSource(r.source))+'</td>'
       +'<td><button class="btn-del" onclick="openDelModal('+gi+')" title="Delete">✕</button></td>'
       +'</tr>';
   }).join('');
@@ -356,7 +358,9 @@ function nextPage(){ var pages=Math.ceil(filteredRows.length/PER_PAGE); if(curre
 function exportCSV(){
   var rows = [['Timestamp','First Name','Last Name','Email','Phone','Source Page']];
   filteredRows.forEach(function(r){ rows.push([r.timestamp,r.first_name,r.last_name,r.email,r.phone,r.source]); });
-  var csv = rows.map(function(r){ return r.map(function(c){ return '"'+(c||'').replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+  // A leading = + - @ makes Excel treat a cell as a formula; prefix ' so it stays plain text.
+  // Plain numbers such as "+44 1582 516247" can't run anything, so they are left as they are.
+  var csv = rows.map(function(r){ return r.map(function(c){ var v=String(c||''); if(/^[=+\-@\t\r]/.test(v) && !/^[+\-]?[\d\s().\-]+$/.test(v)) v="'"+v; return '"'+v.replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
   var blob = new Blob([csv],{type:'text/csv'});
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);

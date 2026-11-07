@@ -373,8 +373,9 @@ footer{background:#141618;border-top:1px solid rgba(255,255,255,.08);padding:72p
   <div class="gpm-legend">Selected Locations &nbsp;·&nbsp; <b>16+</b> Cities Worldwide</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<!-- Exact versions with integrity checks: the browser refuses these files if they ever change. -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
 
 <!-- ══ PILLARS ══ -->
 <section class="section pillars-bg" aria-labelledby="pillars-heading">
@@ -703,7 +704,7 @@ window.addEventListener('scroll',function(){
     var d3 = window.d3, topojson = window.topojson;
     if(!d3 || !topojson) return;
 
-    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(function(world){
+    d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json', {integrity: 'sha384-5oFOGoMd0tkagYW08lVco4uAi7XDEDBwBxOdeKx+SA1ihbsHiR/aFAJGretluTzG'}).then(function(world){
       var svg = d3.select('#gpmSvg');
       svg.selectAll('*').remove();
 

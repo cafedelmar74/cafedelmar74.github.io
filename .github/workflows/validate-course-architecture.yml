@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+# This check only reads the code, so its GitHub token gets read-only access.
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest

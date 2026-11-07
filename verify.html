@@ -9,6 +9,8 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  // The tab title later shows the participant's name, so every event gets this fixed title instead.
+  gtag('set', {page_title: 'Certificate Verification | London Petro Academy'});
   gtag('config', 'G-M8D1B87952', {page_location: location.origin + location.pathname});
 </script>
 
@@ -167,7 +169,8 @@ footer a:hover{color:var(--amber)}
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
   function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-  function track(name,p){try{if(window.gtag)gtag('event',name,p||{});}catch(e){}}
+  /* The tab title includes the participant's name, so send a fixed title to Analytics instead. */
+  function track(name,p){try{if(window.gtag)gtag('event',name,Object.assign({page_title:'Certificate Verification | London Petro Academy'},p||{}));}catch(e){}}
 
   /* Must match the generator script exactly. */
   function normName(s){
