@@ -2139,24 +2139,14 @@ document.addEventListener('DOMContentLoaded', function(){
     var btn = document.getElementById('calDlSubmit');
     btn.disabled = true;
     btn.textContent = 'One moment…';
-    // GET + no-cors to n8n — exact param names the workflow expects: fn, ln, em, ph, src
-    var qs = [
-      'fn='  + encodeURIComponent(fn),
-      'ln='  + encodeURIComponent(ln),
-      'em='  + encodeURIComponent(em),
-      'ph='  + encodeURIComponent(ph),
-      'org=' + encodeURIComponent(org),
-      'src=' + encodeURIComponent(window.location.href)
-    ].join('&');
-    fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
-      method:'GET', mode:'no-cors'
-    }).catch(function(){});
-    // Redirect immediately — never block the user waiting for n8n
+    // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
+    var lpaCalSent = LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, minDelay:1200});
+    // Show the success message now; move on once the details are sent
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
     LPA_track('calendar_download', {form_location:'homepage_2026'});
-    setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
+    lpaCalSent.then(function(){ window.location.href = 'calendar-2026.html'; });
   };
 
   window.submitVirtualCalDownload = function(){
@@ -2169,23 +2159,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var btn = document.getElementById('virtualCalDlSubmit');
     btn.disabled = true;
     btn.textContent = 'One moment…';
-    // Reuses the same proven calendar-download webhook; src is tagged so
-    // the team can distinguish virtual-calendar requests in the sheet.
-    var qs = [
-      'fn='  + encodeURIComponent(fn),
-      'ln='  + encodeURIComponent(ln),
-      'em='  + encodeURIComponent(em),
-      'ph='  + encodeURIComponent(ph),
-      'org=' + encodeURIComponent(org),
-      'src=' + encodeURIComponent('Virtual Calendar Request — ' + window.location.href)
-    ].join('&');
-    fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
-      method:'GET', mode:'no-cors'
-    }).catch(function(){});
+    // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
+    var lpaCalSent = LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, variant:'virtual', minDelay:1200});
     document.getElementById('virtualCalDlForm').style.display = 'none';
     document.getElementById('virtualCalDlSuccess').style.display = 'block';
     LPA_track('calendar_download', {form_location:'homepage_virtual'});
-    setTimeout(function(){ window.location.href = 'virtual-calendar-2026.html'; }, 1200);
+    lpaCalSent.then(function(){ window.location.href = 'virtual-calendar-2026.html'; });
   };
 
 });
@@ -2217,5 +2196,6 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="lpa-enquiry-v2.js"></script>
+<script src="lpa-calendar-v2.js"></script>
 </body>
 </html>

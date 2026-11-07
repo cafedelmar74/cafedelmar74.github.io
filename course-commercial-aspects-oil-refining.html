@@ -1788,27 +1788,19 @@ document.addEventListener('DOMContentLoaded', function(){
     var btn = document.getElementById('calDlSubmit');
     btn.disabled = true;
     btn.textContent = 'One moment…';
-    // GET + no-cors to n8n — exact param names the workflow expects: fn, ln, em, ph, src
-    var qs = [
-      'fn='  + encodeURIComponent(fn),
-      'ln='  + encodeURIComponent(ln),
-      'em='  + encodeURIComponent(em),
-      'ph='  + encodeURIComponent(ph),
-      'src=' + encodeURIComponent(window.location.href)
-    ].join('&');
-    fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
-      method:'GET', mode:'no-cors'
-    }).catch(function(){});
-    // Redirect immediately — never block the user waiting for n8n
+    // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
+    var lpaCalSent = LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, minDelay:1200});
+    // Show the success message now; move on once the details are sent
     document.getElementById('calDlForm').style.display = 'none';
     document.getElementById('calDlSuccess').style.display = 'block';
     sessionStorage.setItem('lpa_cal_unlocked','1');
     LPA_track('calendar_download', Object.assign({form_location:'course_page'}, LPA_CURRENT_COURSE?{course_id:LPA_CURRENT_COURSE.course_id,course_name:LPA_CURRENT_COURSE.course_name}:{course_name:'Commercial Aspects of Oil Refining'}));
-    setTimeout(function(){ window.location.href = 'calendar-2026.html'; }, 1200);
+    lpaCalSent.then(function(){ window.location.href = 'calendar-2026.html'; });
   };
 
 });
 </script>
 
+<script src="lpa-calendar-v2.js"></script>
 </body>
 </html>

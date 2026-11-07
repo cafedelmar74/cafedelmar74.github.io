@@ -1160,21 +1160,12 @@ function submitCalGate(){
   var btn = document.getElementById('gateSubmit');
   btn.disabled = true;
   btn.textContent = 'One moment…';
-  var qs = [
-    'fn='  + encodeURIComponent(fn),
-    'ln='  + encodeURIComponent(ln),
-    'em='  + encodeURIComponent(em),
-    'ph='  + encodeURIComponent(ph),
-    'org=' + encodeURIComponent(org),
-    'cal=' + encodeURIComponent('2027'),
-    'src=' + encodeURIComponent(window.location.href)
-  ].join('&');
-  fetch('https://n8n.srv765009.hstgr.cloud/webhook/calendar-download?' + qs,{
-    method:'GET', mode:'no-cors'
-  }).catch(function(){});
+  // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
+  LPA_calendarSend({first_name:fn, last_name:ln, email:em, phone:ph, organisation:org, calendar:'2027'});
   document.body.classList.remove('cal-gate-locked');
   LPA_track('calendar_download', {form_location:'calendar_2027_page'});
 }
 </script>
+<script src="lpa-calendar-v2.js"></script>
 </body>
 </html>
