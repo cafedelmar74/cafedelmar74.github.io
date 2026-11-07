@@ -196,35 +196,53 @@ body.dg-locked{overflow:hidden;}
   </div>
 </div>
 <script>
-const DASH_HASH='fef545f994957d1e95de453d7142614c80e7bef653719106b4e696b389caaba5';
-async function dgSha(t){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(d)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');}
+// Dashboard passphrase: sent to n8n with every request and checked there (same as the
+// Bookings dashboard). No secret is stored in this page; a wrong passphrase gets a 401 and no data.
+function dgGetKey(){ try{ return window.__dashKey || sessionStorage.getItem('lpa_dash_key') || ''; }catch(e){ return window.__dashKey || ''; } }
+function dgShowGate(){ document.body.classList.add('dg-locked'); document.getElementById('dgOverlay').style.display='flex'; }
+function dgHideGate(){ document.body.classList.remove('dg-locked'); document.getElementById('dgOverlay').style.display='none'; }
+function dgLockOut(){ window.__dashKey=''; try{ sessionStorage.removeItem('lpa_dash_key'); }catch(e){} dgShowGate(); }
+// POST to an n8n dashboard link with the passphrase in the body, never in the address.
+function dashPost(url, fields){
+  var body='key='+encodeURIComponent(dgGetKey());
+  Object.keys(fields||{}).forEach(function(k){ body+='&'+k+'='+encodeURIComponent(fields[k]); });
+  return fetch(url,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(r){
+    if(r.status===401){ var e=new Error('unauthorized'); e.auth=true; throw e; }
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r;
+  });
+}
 function dashGateInit(start){
-  if(sessionStorage.getItem('lpa_dash_auth')==='1'){
-    document.getElementById('dgOverlay').style.display='none';
-    start();
-    return;
-  }
-  document.body.classList.add('dg-locked');
   document.getElementById('dgForm').addEventListener('submit', async function(e){
     e.preventDefault();
     var v=document.getElementById('dgPass').value;
-    if(await dgSha(v)===DASH_HASH){
-      sessionStorage.setItem('lpa_dash_auth','1');
-      document.getElementById('dgOverlay').style.display='none';
-      document.body.classList.remove('dg-locked');
-      start();
-    } else {
+    if(!v) return;
+    window.__dashKey=v;
+    document.getElementById('dgErr').style.display='none';
+    try{
+      await start();
+      try{ sessionStorage.setItem('lpa_dash_key', v); }catch(err){}
+      dgHideGate();
+    }catch(err){
+      window.__dashKey='';
       document.getElementById('dgErr').style.display='block';
       document.getElementById('dgPass').value='';
     }
   });
+  // Same browser tab: if the passphrase was already accepted, try it again without asking.
+  if(dgGetKey()){
+    window.__dashKey=dgGetKey();
+    Promise.resolve().then(start).then(dgHideGate).catch(dgLockOut);
+  } else {
+    dgShowGate();
+  }
 }
 </script>
 
 
 <!-- HEADER -->
 <header class="dash-header">
-  <a href="https://cafedelmar74.github.io/index.html" class="dash-logo">
+  <a href="/" class="dash-logo">
     <img src="logo-dark.png" alt="London Petro Academy">
     <span class="dash-logo-title">Brochure <span>Downloads</span></span>
   </a>
@@ -384,13 +402,16 @@ function getCourseBadge(course) {
 
 function shortCourse(s) { return (s && s.length > 30) ? s.substring(0,28)+'…' : (s||'—'); }
 
-// ── DELETED ROWS TRACKING (avoids reappearing during auto-refresh race) ──
-const deletedRowNumbers = new Set();
+const READ_URL   = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-read';
+const DELETE_URL = 'https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-delete';
+let deleting = false; // while true, auto-refresh and further deletes wait
 
 // ── LOAD ──────────────────────────────────────────────────
+// Returns a promise. A wrong passphrase (401) is passed on so the gate can show it;
+// any other problem shows "Unable to load data".
 function loadDownloads() {
   document.getElementById('tableBody').innerHTML = `<div class="loading-state"><div class="spinner"></div><div class="loading-text">Refreshing…</div></div>`;
-  fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-read?t=' + Date.now())
+  return dashPost(READ_URL)
     .then(r => r.json())
     .then(data => {
       const rows = data.rows || [];
@@ -403,12 +424,12 @@ function loadDownloads() {
           phone:        r.phone || '',
           page_url:     r.page_url || '',
           submitted_at: r.submitted_at || ''
-        }))
-        .filter(dl => !deletedRowNumbers.has(dl.row_number));
+        }));
       renderAll();
       document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
     })
-    .catch(() => {
+    .catch(err => {
+      if (err && err.auth) throw err;
       document.getElementById('tableBody').innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">Unable to load data</div><div class="empty-sub">Check your connection or try refreshing.</div></div>`;
       document.getElementById('lastUpdated').textContent = 'Error loading data';
     });
@@ -583,18 +604,24 @@ function confirmDelete(filteredIdx) {
 }
 function cancelDelete() { pendingDeleteIdx = null; document.getElementById('delOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 function executeDelete() {
-  if (pendingDeleteIdx === null || pendingDeleteIdx < 0) return;
+  if (pendingDeleteIdx === null || pendingDeleteIdx < 0 || deleting) return;
   const dl = allDownloads[pendingDeleteIdx];
-  if (dl && dl.row_number) {
-    deletedRowNumbers.add(dl.row_number);
-    fetch('https://n8n.srv765009.hstgr.cloud/webhook/lpa-brochure-delete?row_number=' + dl.row_number, {method:'GET', mode:'no-cors'}).catch(()=>{});
-  }
   allDownloads.splice(pendingDeleteIdx, 1);
   pendingDeleteIdx = null;
   document.getElementById('delOverlay').classList.remove('open');
   document.body.style.overflow = '';
   closeDrawer();
   renderAll();
+  if (!dl || !dl.row_number) return;
+  // Wait for the sheet to confirm, then reload so row numbers match the sheet again.
+  deleting = true;
+  dashPost(DELETE_URL, { row_number: dl.row_number })
+    .catch(err => {
+      if (err && err.auth) { dgLockOut(); return; }
+      alert('That record could not be deleted. The list will now refresh.');
+    })
+    .then(() => { deleting = false; if (!document.body.classList.contains('dg-locked')) return loadDownloads(); })
+    .catch(err => { if (err && err.auth) dgLockOut(); });
 }
 document.getElementById('delOverlay').addEventListener('click', function(e) { if(e.target===this) cancelDelete(); });
 
@@ -610,7 +637,9 @@ function formatDateFull(s){ try{return new Date(s).toLocaleDateString('en-GB',{w
 function exportCSV() {
   const cols = ['submitted_at','full_name','email','phone','course','page_url','pdf_url'];
   const header = cols.join(',');
-  const rows = filtered.map(dl => cols.map(c => `"${(dl[c]||'').toString().replace(/"/g,'""')}"`).join(','));
+  // A leading = + - @ makes Excel treat a cell as a formula; prefix ' so it stays plain text.
+  const cell = v => { v = (v||'').toString(); if (/^[=+\-@\t\r]/.test(v) && !/^[+\-]?[\d\s().\-]+$/.test(v)) v = "'" + v; return `"${v.replace(/"/g,'""')}"`; };
+  const rows = filtered.map(dl => cols.map(c => cell(dl[c])).join(','));
   const csv = [header,...rows].join('\n');
   const a = document.createElement('a');
   a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
@@ -619,7 +648,15 @@ function exportCSV() {
 }
 
 // ── INIT ──────────────────────────────────────────────────
-dashGateInit(function(){ loadDownloads(); setInterval(loadDownloads, 60000); });
+let refreshTimer = null;
+dashGateInit(function(){
+  return loadDownloads().then(function(){
+    if (!refreshTimer) refreshTimer = setInterval(function(){
+      if (deleting || document.body.classList.contains('dg-locked')) return;
+      loadDownloads().catch(function(err){ if (err && err.auth) dgLockOut(); });
+    }, 60000);
+  });
+});
 </script>
 </body>
 </html>
