@@ -2137,6 +2137,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ph  = document.getElementById('calPhone').value.trim();
     if(!fn||!ln||!em){ alert('Please fill in your name and email.'); return; }
     var btn = document.getElementById('calDlSubmit');
+    if (!LPA_calendarReady(btn)) return; // waits for Cloudflare's check, then clicks again by itself
     btn.disabled = true;
     btn.textContent = 'One moment…';
     // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
@@ -2157,6 +2158,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ph  = document.getElementById('virtualCalPhone').value.trim();
     if(!fn||!ln||!em){ alert('Please fill in your name and email.'); return; }
     var btn = document.getElementById('virtualCalDlSubmit');
+    if (!LPA_calendarReady(btn)) return; // waits for Cloudflare's check, then clicks again by itself
     btn.disabled = true;
     btn.textContent = 'One moment…';
     // Details go to n8n by POST with a Cloudflare check (lpa-calendar-v2.js), never in the URL.
