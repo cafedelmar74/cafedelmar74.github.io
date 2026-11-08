@@ -331,11 +331,11 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
   <div class="hero-top">
     <div class="hero-tag">London Petro Academy · 2027</div>
     <h1 class="hero-h1">Training <em>Calendar</em> 2027</h1>
-    <p class="hero-desc"><span id="statSessionsInline">146</span> scheduled sessions worldwide across five regions. Filter, search and secure your place.</p>
+    <p class="hero-desc"><span id="statSessionsInline">149</span> scheduled sessions worldwide across five regions. Filter, search and secure your place.</p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num" id="statSessions">146</div><div class="stat-label">Sessions</div></div>
+      <div class="stat"><div class="stat-num" id="statSessions">149</div><div class="stat-label">Sessions</div></div>
       <div class="stat"><div class="stat-num" id="statCourses">37</div><div class="stat-label">Courses</div></div>
-      <div class="stat"><div class="stat-num" id="statCities">30</div><div class="stat-label">Cities</div></div>
+      <div class="stat"><div class="stat-num" id="statCities">29</div><div class="stat-label">Cities</div></div>
       <div class="stat"><div class="stat-num" id="statMonths">12</div><div class="stat-label">Months</div></div>
     </div>
     <div class="hero-btns">
@@ -429,7 +429,7 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
 <section class="cal-about" aria-label="About the 2027 training calendar">
   <h2>About the <em>2027 Training Calendar</em></h2>
   <p>This calendar brings together London Petro Academy's full public course schedule for 2027, spanning our three portfolios: upstream petroleum, downstream oil &amp; gas, and renewable energy. Programmes cover petroleum economics and fiscal systems, gas and LNG contracts, accounting and IFRS for E&amp;P, drilling operations, crude oil markets and trading, power project finance, and the economics of solar, hydrogen and battery storage.</p>
-  <p>Sessions run from January to December across five world regions — the Americas, Europe, the Middle East, Asia and Africa — in energy hubs including London, Rio de Janeiro, Singapore, Dubai, Doha, Bali, Houston, Aberdeen, Cairo, Lagos, Cape Town, Kuala Lumpur and Santiago. Every course runs in four different regions during the year, while our Brazil-focused programmes are delivered exclusively in Rio de Janeiro and the Indonesia fiscal &amp; JV programme exclusively in Bali. Most classroom courses run as intensive two-to-five-day programmes, with fees starting from £1,600, and every delegate receives a certificate of completion.</p>
+  <p>Sessions run from January to December across five world regions — the Americas, Europe, the Middle East, Asia and Africa — in energy hubs including London, Rio de Janeiro, Singapore, Istanbul, Doha, Bali, Houston, Aberdeen, Cairo, Lagos, Cape Town, Kuala Lumpur and Santiago. Every course runs in four different regions during the year, while our Brazil-focused programmes are delivered exclusively in Rio de Janeiro and the Indonesia fiscal &amp; JV programme exclusively in Bali. Most classroom courses run as intensive two-to-five-day programmes, with fees starting from £1,600, and every delegate receives a certificate of completion.</p>
   <p>Our courses are designed for professionals from national and international oil companies, energy ministries, regulators, utilities, and the banks, law firms and advisory practices that serve the sector. Delegates typically include commercial, finance, legal, planning and technical staff seeking a structured, practitioner-led deep dive into their subject.</p>
   <p>To book, use the month tabs above to find a session, then follow through to the course page to reserve your place — our team confirms every booking within one working day. If the dates or locations shown don't fit, any course in the calendar can also be delivered in-house at your offices for groups of six or more delegates.</p>
 </section>
@@ -501,9 +501,7 @@ body:not(.cal-gate-locked) .cal-gate-overlay{display:none !important;}
 const SESSIONS = [
   // JANUARY
   {month:'jan',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'11–15 Jan 2027',loc:'London, UK',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'jan',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'18–20 Jan 2027',loc:'London, UK',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'jan',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'18–20 Jan 2027',loc:'London, UK',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
-  {month:'jan',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'25–28 Jan 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'jan',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'25–29 Jan 2027',loc:'London, UK',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'jan',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'25–29 Jan 2027',loc:'Abu Dhabi, UAE',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
   // FEBRUARY
@@ -518,38 +516,38 @@ const SESSIONS = [
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Legal, Financial and Fiscal Aspects of Brazilian Production-Sharing Contracts',dates:'8–11 Mar 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'mar',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'8–10 Mar 2027',loc:'Bangkok, Thailand',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'mar',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'8–11 Mar 2027',loc:'Rotterdam, Netherlands',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
+  {month:'mar',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'15–17 Mar 2027',loc:'London, UK',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'mar',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'15–19 Mar 2027',loc:'Windhoek, Namibia',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
-  {month:'mar',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'15–19 Mar 2027',loc:'Singapore',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   // APRIL
+  {month:'apr',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'12–15 Apr 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'12–14 Apr 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'12–16 Apr 2027',loc:'London, UK',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
   {month:'apr',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'12–14 Apr 2027',loc:'Cape Town, South Africa',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'19–21 Apr 2027',loc:'Singapore',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'19–23 Apr 2027',loc:'London, UK',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
-  {month:'apr',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'19–23 Apr 2027',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
+  {month:'apr',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'19–21 Apr 2027',loc:'Istanbul, Turkey',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'26–28 Apr 2027',loc:'Al Khobar, Saudi Arabia',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
   {month:'apr',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'26–30 Apr 2027',loc:'Singapore',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'apr',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'26–28 Apr 2027',loc:'Nairobi, Kenya',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   // MAY
   {month:'may',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'3–4 May 2027',loc:'Santiago, Chile',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
-  {month:'may',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'10–12 May 2027',loc:'Dubai, UAE',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
-  {month:'may',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'10–14 May 2027',loc:'Lagos, Nigeria',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
+  {month:'may',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'10–12 May 2027',loc:'Istanbul, Turkey',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
+  {month:'may',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'10–12 May 2027',loc:'Lagos, Nigeria',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
+  {month:'may',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'10–14 May 2027',loc:'Istanbul, Turkey',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
   {month:'may',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'17–21 May 2027',loc:'Cape Town, South Africa',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'may',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'17–19 May 2027',loc:'Houston, USA',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'may',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'24–26 May 2027',loc:'Cape Town, South Africa',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
   {month:'may',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'24–28 May 2027',loc:'London, UK',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
-  {month:'may',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'31 May–3 Jun 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   // JUNE
   {month:'jun',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'7–9 Jun 2027',loc:'Rio de Janeiro, Brazil',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'jun',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'7–10 Jun 2027',loc:'Tokyo, Japan',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
-  {month:'jun',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'14–18 Jun 2027',loc:'Kuala Lumpur, Malaysia',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
   {month:'jun',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'14–16 Jun 2027',loc:'London, UK',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'jun',cat:'renewables',fmt:'classroom',title:'IPPs: Bankable Power Purchase Agreements',dates:'14–17 Jun 2027',loc:'Manila, Philippines',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'jun',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'21–25 Jun 2027',loc:'London, UK',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
-  {month:'jun',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'21–25 Jun 2027',loc:'Dubai, UAE',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
   {month:'jun',cat:'renewables',fmt:'classroom',title:'Power Project Contracts, Finance, Risk & Negotiation',dates:'21–24 Jun 2027',loc:'Cairo, Egypt',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
   {month:'jun',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'21–22 Jun 2027',loc:'Singapore',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // JULY
+  {month:'jul',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'5–8 Jul 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'5–7 Jul 2027',loc:'London, UK',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
   {month:'jul',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'12–16 Jul 2027',loc:'Singapore',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
   {month:'jul',cat:'renewables',fmt:'classroom',title:'Solar Power Finance',dates:'12–14 Jul 2027',loc:'Mumbai, India',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
@@ -565,13 +563,13 @@ const SESSIONS = [
   {month:'aug',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'16–19 Aug 2027',loc:'Windhoek, Namibia',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
   {month:'aug',cat:'renewables',fmt:'classroom',title:'Power Project Contracts, Finance, Risk & Negotiation',dates:'16–19 Aug 2027',loc:'Bangkok, Thailand',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
   {month:'aug',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'23–25 Aug 2027',loc:'Buenos Aires, Argentina',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
-  {month:'aug',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'30 Aug–3 Sep 2027',loc:'Dubai, UAE',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
+  {month:'aug',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'30 Aug–3 Sep 2027',loc:'Istanbul, Turkey',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   // SEPTEMBER
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'6–10 Sep 2027',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'IPPs: Bankable Power Purchase Agreements',dates:'6–9 Sep 2027',loc:'Riyadh, Saudi Arabia',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'13–15 Sep 2027',loc:'Cairo, Egypt',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
-  {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'13–17 Sep 2027',loc:'Dubai, UAE',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
-  {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'13–17 Sep 2027',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
+  {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Project Economics and Risk Decision Analysis',dates:'13–17 Sep 2027',loc:'Istanbul, Turkey',url:'course-petroleum-project-economics-risk.html',tag:'Upstream · Economics'},
+  {month:'sep',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'13–15 Sep 2027',loc:'London, UK',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'20–24 Sep 2027',loc:'Rio de Janeiro, Brazil',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'sep',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'20–22 Sep 2027',loc:'Aberdeen, UK',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
   {month:'sep',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'20–22 Sep 2027',loc:'Jakarta, Indonesia',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
@@ -581,34 +579,33 @@ const SESSIONS = [
   // OCTOBER
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Gas & LNG Contracts Negotiations',dates:'4–6 Oct 2027',loc:'Doha, Qatar',url:'course-gas-lng-contracts-negotiations.html',tag:'Upstream · Gas & LNG'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Offshore & Deepwater Drilling',dates:'4–6 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-offshore-deepwater-drilling.html',tag:'Upstream · Drilling'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'4–8 Oct 2027',loc:'Dubai, UAE',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Hydrogen Technology, Economics & Business Models',dates:'4–7 Oct 2027',loc:'Abu Dhabi, UAE',url:'course-hydrogen-economics-business-models.html',tag:'Renewable Energy'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'4–6 Oct 2027',loc:'Singapore',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Mini MBA: Renewable Energy Markets, Auctions & Finance',dates:'4–8 Oct 2027',loc:'Santiago, Chile',url:'course-mini-mba-renewable-energy-auctions.html',tag:'Renewable Energy'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'World Fiscal Systems for Unconventional Oil & Gas',dates:'11–13 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-world-fiscal-systems-unconventional.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'11–13 Oct 2027',loc:'Dubai, UAE',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
+  {month:'oct',cat:'renewables',fmt:'classroom',title:'Renewable Energy Economics & Finance',dates:'11–13 Oct 2027',loc:'Istanbul, Turkey',url:'course-renewable-energy-economics-finance.html',tag:'Renewable Energy'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'IPPs: Bankable Power Purchase Agreements',dates:'11–14 Oct 2027',loc:'London, UK',url:'course-ipps-power-purchase-agreements.html',tag:'Renewable Energy'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Petroleum Agreements & Joint Ventures in Brazil',dates:'18–21 Oct 2027',loc:'Rio de Janeiro, Brazil',url:'course-brazil-jv.html',tag:'Upstream · Legal & Fiscal'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'18–22 Oct 2027',loc:'Singapore',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'18–22 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
+  {month:'oct',cat:'downstream',fmt:'classroom',title:'International Oil Supply & Trading',dates:'18–20 Oct 2027',loc:'Kuala Lumpur, Malaysia',url:'course-international-oil-supply-trading.html',tag:'Downstream · Trading'},
   {month:'oct',cat:'upstream',fmt:'classroom',title:'Financial & Fiscal Aspects of Oil & Gas Projects in Brazil',dates:'25–27 Oct 2027',loc:'Rio de Janeiro, Brazil',url:'course-financial-fiscal-aspects-oil-gas-projects-brazil.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'oct',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'25–27 Oct 2027',loc:'Dubai, UAE',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
+  {month:'oct',cat:'downstream',fmt:'classroom',title:'LNG Value Chain — Markets, Trading, Operations & Energy Transition',dates:'25–27 Oct 2027',loc:'Istanbul, Turkey',url:'course-lng-value-chain.html',tag:'Downstream · LNG'},
   {month:'oct',cat:'renewables',fmt:'classroom',title:'Grid-Scale BESS: Technology, Markets and Project Finance',dates:'25–26 Oct 2027',loc:'Riyadh, Saudi Arabia',url:'course-grid-scale-bess-technology-markets-project-finance.html',tag:'Renewable Energy'},
   // NOVEMBER
-  {month:'nov',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'1–3 Nov 2027',loc:'Dubai, UAE',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
+  {month:'nov',cat:'renewables',fmt:'classroom',title:'IPPs: Project Finance & Bankability in Emerging Markets',dates:'1–3 Nov 2027',loc:'Istanbul, Turkey',url:'course-ipps-power-project-finance.html',tag:'Renewable Energy'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'8–12 Nov 2027',loc:'Istanbul, Turkey',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Oil & Gas Fundamentals',dates:'8–10 Nov 2027',loc:'Lagos, Nigeria',url:'course-oil-gas-fundamentals.html',tag:'Upstream · Fundamentals'},
+  {month:'nov',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'8–12 Nov 2027',loc:'Houston, USA',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
   {month:'nov',cat:'downstream',fmt:'classroom',title:'International Crude Oil Markets: Benchmarks & Hedging',dates:'15–19 Nov 2027',loc:'Houston, USA',url:'course-international-crude-oil-markets.html',tag:'Downstream · Trading'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Power Project Contracts, Finance, Risk & Negotiation',dates:'15–18 Nov 2027',loc:'Abu Dhabi, UAE',url:'course-ipps-power-project-contracts.html',tag:'Renewable Energy'},
-  {month:'nov',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'22–26 Nov 2027',loc:'Dubai, UAE',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
+  {month:'nov',cat:'upstream',fmt:'classroom',title:'Advanced Petroleum Economics & Decision Analysis',dates:'22–26 Nov 2027',loc:'Istanbul, Turkey',url:'course-advanced-petroleum-economics-decision-analysis.html',tag:'Upstream · Economics'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Energy Transition & World Fiscal Systems for Oil & Gas',dates:'22–26 Nov 2027',loc:'Rio de Janeiro, Brazil',url:'course-energy-transition-fiscal-systems.html',tag:'Upstream · Legal & Fiscal'},
   {month:'nov',cat:'renewables',fmt:'classroom',title:'Solar Power Finance',dates:'22–24 Nov 2027',loc:'Santiago, Chile',url:'course-solar-power-finance.html',tag:'Renewable Energy'},
   {month:'nov',cat:'upstream',fmt:'classroom',title:'Legal, Financial and Fiscal Aspects of Brazilian Production-Sharing Contracts',dates:'29 Nov–2 Dec 2027',loc:'Rio de Janeiro, Brazil',url:'course-production-sharing-contracts-brazil.html',tag:'Upstream · Legal & Fiscal'},
   // DECEMBER
   {month:'dec',cat:'upstream',fmt:'classroom',title:'Petroleum Exploration Economics & Decision Strategies',dates:'6–10 Dec 2027',loc:'Kuala Lumpur, Malaysia',url:'course-petroleum-exploration-economics-decision.html',tag:'Upstream · Economics'},
   {month:'dec',cat:'upstream',fmt:'classroom',title:'Indonesia Oil & Gas Fiscal and Joint Venture',dates:'6–10 Dec 2027',loc:'Bali, Indonesia',url:'course-commercial-economic-jv-oil-gas.html',tag:'Upstream · Legal & Fiscal'},
-  {month:'dec',cat:'upstream',fmt:'classroom',title:'Mini MBA: Oil & Gas and Energy Business',dates:'6–10 Dec 2027',loc:'Houston, USA',url:'course-mini-mba-oil-gas-energy-business.html',tag:'Upstream · Leadership'},
-  {month:'dec',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'13–15 Dec 2027',loc:'Dubai, UAE',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
+  {month:'dec',cat:'renewables',fmt:'classroom',title:'Corporate Power Purchase Agreements',dates:'13–15 Dec 2027',loc:'Istanbul, Turkey',url:'course-corporate-power-purchase-agreements.html',tag:'Renewable Energy'},
 ];
 
 const MONTHS = [
