@@ -1488,8 +1488,8 @@ var LPA_SESSIONS = [
     course_id:          'energy-transition-fiscal-systems',
     course_start_date:  '2027-05-10',
     course_end_date:    '2027-05-14',
-    course_location:    'Kuala Lumpur',
-    course_country:     'Malaysia',
+    course_location:    'Amsterdam'   ,
+    course_country:     'Netherlands',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
