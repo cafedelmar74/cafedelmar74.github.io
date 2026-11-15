@@ -9,6 +9,15 @@
       "end": "2026-11-12",
       "issued": "2026-11-12",
       "page": "course-lng-value-chain.html"
+    },
+    "LON26NOV-LNGVC": {
+      "title": "LNG Value Chain: Markets, Trading & Energy Transition",
+      "mode": "In-classroom",
+      "location": "London, United Kingdom",
+      "start": "2026-11-16",
+      "end": "2026-11-18",
+      "issued": "2026-11-18",
+      "page": "course-lng-value-chain.html"
     }
   },
   "certificates": {
@@ -91,6 +100,22 @@
     "LPA-LON26-LNGVC-020": {
       "c": "LON26-LNGVC",
       "h": "b4df11fdf08a5553c240416e4b09dedafc359b5a8eeba272a7d1b37bbb4ee05a"
+    },
+    "LPA-LON26NOV-LNGVC-001": {
+      "c": "LON26NOV-LNGVC",
+      "h": "df0a691462c81ee54ddd1a6ec328cbc67af29c6cc27c0da4da1e9d2749271351"
+    },
+    "LPA-LON26NOV-LNGVC-002": {
+      "c": "LON26NOV-LNGVC",
+      "h": "8dc335100f6a5312c89c26b6177aad6d519500f986b67d0d6e26060db47e6154"
+    },
+    "LPA-LON26NOV-LNGVC-003": {
+      "c": "LON26NOV-LNGVC",
+      "h": "5ba6f87f5aca6c8884efb8a9a88e5e382095f2fb3537f2c5fa91526ac59a1e39"
+    },
+    "LPA-LON26NOV-LNGVC-004": {
+      "c": "LON26NOV-LNGVC",
+      "h": "e6e35beef3932e2aead78eafd1eaed69c1375e280ea3aaf972f276168bda6a2b"
     }
   }
 }

@@ -265,7 +265,14 @@ footer a:hover{color:var(--amber)}
         ok = (h === cert.h);
         course = reg.courses[cert.c];
       }
-      if(ok && course){
+      var issuedOn = ok && course ? (cert.issued||course.issued) : '';
+      var now = new Date();
+      var todayIso = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+      if(ok && course && issuedOn && issuedOn > todayIso){
+        /* Registered ahead of the course: don't state completion before the issue date. */
+        out.innerHTML = '<div class="msg"><h2>Certificate not yet issued</h2><p>Certificate <b>'+esc(id)+'</b> is registered for <b>'+esc(p.n)+'</b> on the course <i>'+esc(course.title)+'</i> ('+esc(fmtRange(course.start,course.end))+'). It will be issued on '+esc(fmtDate(issuedOn))+', on completion of the course. Please check again from that date.</p></div>';
+        track('certificate_pending',{course_key:cert.c, method:source||'link'});
+      }else if(ok && course){
         showVerified(id, p.n, cert, course);
         track('certificate_verified',{course_key:cert.c, method:source||'link'});
       }else{
