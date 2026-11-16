@@ -411,10 +411,10 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'legal-aspects-production-sharing-contracts-s7',
+    course_session_id: 'legal-aspects-production-sharing-contracts-s8',
     course_id:          'legal-aspects-production-sharing-contracts',
-    course_start_date:  '2027-08-23',
-    course_end_date:    '2027-08-25',
+    course_start_date:  '2027-11-15',
+    course_end_date:    '2027-11-17',
     course_location:    'London',
     course_country:     'United Kingdom',
     delivery_format:    'in_person',
@@ -493,12 +493,12 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'drilling-for-non-drilling-personnel-s3',
+    course_session_id: 'drilling-for-non-drilling-personnel-s6',
     course_id:          'drilling-for-non-drilling-personnel',
     course_start_date:  '2027-05-24',
     course_end_date:    '2027-05-26',
-    course_location:    'Cairo',
-    course_country:     'Egypt',
+    course_location:    'Kuala Lumpur',
+    course_country:     'Malaysia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -635,11 +635,11 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s6',
+    course_session_id: 'accounting-jvs-pscs-upstream-oil-gas-s7',
     course_id:          'accounting-jvs-pscs-upstream-oil-gas',
     course_start_date:  '2027-11-22',
     course_end_date:    '2027-11-26',
-    course_location:    'Bali',
+    course_location:    'Jakarta',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
@@ -696,12 +696,12 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-aspects-oil-refining-s6',
+    course_session_id: 'commercial-aspects-oil-refining-s7',
     course_id:          'commercial-aspects-oil-refining',
     course_start_date:  '2027-11-15',
     course_end_date:    '2027-11-17',
-    course_location:    'Istanbul',
-    course_country:     'Turkey',
+    course_location:    'Dubai',
+    course_country:     'United Arab Emirates',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -740,12 +740,12 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'accounting-for-oil-gas-s4',
+    course_session_id: 'accounting-for-oil-gas-s9',
     course_id:          'accounting-for-oil-gas',
-    course_start_date:  '2027-03-08',
-    course_end_date:    '2027-03-12',
-    course_location:    'Cape Town',
-    course_country:     'South Africa',
+    course_start_date:  '2027-03-15',
+    course_end_date:    '2027-03-19',
+    course_location:    'Houston',
+    course_country:     'United States',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -760,10 +760,10 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'accounting-for-oil-gas-s6',
+    course_session_id: 'accounting-for-oil-gas-s8',
     course_id:          'accounting-for-oil-gas',
-    course_start_date:  '2027-08-02',
-    course_end_date:    '2027-08-06',
+    course_start_date:  '2027-09-27',
+    course_end_date:    '2027-10-01',
     course_location:    'London',
     course_country:     'United Kingdom',
     delivery_format:    'in_person',
@@ -831,20 +831,20 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'international-gas-markets-s6',
+    course_session_id: 'international-gas-markets-s8',
     course_id:          'international-gas-markets',
-    course_start_date:  '2027-09-20',
-    course_end_date:    '2027-09-24',
+    course_start_date:  '2027-10-11',
+    course_end_date:    '2027-10-15',
     course_location:    'Singapore',
     course_country:     'Singapore',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'international-gas-markets-s7',
+    course_session_id: 'international-gas-markets-s9',
     course_id:          'international-gas-markets',
-    course_start_date:  '2027-11-29',
-    course_end_date:    '2027-12-03',
+    course_start_date:  '2027-11-14',
+    course_end_date:    '2027-11-18',
     course_location:    'Doha',
     course_country:     'Qatar',
     delivery_format:    'in_person',
@@ -882,22 +882,22 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'stuck-pipe-prevention-s4',
+    course_session_id: 'stuck-pipe-prevention-s7',
     course_id:          'stuck-pipe-prevention',
-    course_start_date:  '2027-08-09',
-    course_end_date:    '2027-08-11',
+    course_start_date:  '2027-10-18',
+    course_end_date:    '2027-10-20',
     course_location:    'Aberdeen',
     course_country:     'United Kingdom',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'stuck-pipe-prevention-s5',
+    course_session_id: 'stuck-pipe-prevention-s8',
     course_id:          'stuck-pipe-prevention',
     course_start_date:  '2027-09-20',
     course_end_date:    '2027-09-22',
-    course_location:    'Cairo',
-    course_country:     'Egypt',
+    course_location:    'Houston',
+    course_country:     'United States',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -933,10 +933,10 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'crude-oil-evaluation-economics-pricing-s3',
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s7',
     course_id:          'crude-oil-evaluation-economics-pricing',
-    course_start_date:  '2027-03-08',
-    course_end_date:    '2027-03-12',
+    course_start_date:  '2027-04-05',
+    course_end_date:    '2027-04-09',
     course_location:    'London',
     course_country:     'United Kingdom',
     delivery_format:    'in_person',
@@ -963,12 +963,12 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'crude-oil-evaluation-economics-pricing-s6',
+    course_session_id: 'crude-oil-evaluation-economics-pricing-s8',
     course_id:          'crude-oil-evaluation-economics-pricing',
     course_start_date:  '2027-11-08',
     course_end_date:    '2027-11-12',
-    course_location:    'Rio de Janeiro',
-    course_country:     'Brazil',
+    course_location:    'Houston',
+    course_country:     'United States',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -1095,12 +1095,12 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'petroleum-refining-non-technical-s7',
+    course_session_id: 'petroleum-refining-non-technical-s9',
     course_id:          'petroleum-refining-non-technical',
     course_start_date:  '2027-09-20',
     course_end_date:    '2027-09-22',
-    course_location:    'Manama',
-    course_country:     'Bahrain',
+    course_location:    'Al Khobar',
+    course_country:     'Saudi Arabia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
@@ -1309,6 +1309,16 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
+    course_session_id: 'lng-value-chain-s6',
+    course_id:          'lng-value-chain',
+    course_start_date:  '2027-05-10',
+    course_end_date:    '2027-05-12',
+    course_location:    'Singapore',
+    course_country:     'Singapore',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
     // Group B2.3 batch (Phase 3D-3V): title-mismatch/standard cluster.
     // A-tier confirmed sessions only. World Fiscal Systems intentionally
     // excluded from this batch — pending on-request wording decision.
@@ -1394,31 +1404,31 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-economic-jv-oil-gas-s3',
+    course_session_id: 'commercial-economic-jv-oil-gas-s6',
     course_id:          'commercial-economic-jv-oil-gas',
     course_start_date:  '2027-04-26',
     course_end_date:    '2027-04-30',
-    course_location:    'Bali',
+    course_location:    'Jakarta',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-economic-jv-oil-gas-s4',
+    course_session_id: 'commercial-economic-jv-oil-gas-s7',
     course_id:          'commercial-economic-jv-oil-gas',
     course_start_date:  '2027-09-27',
     course_end_date:    '2027-10-01',
-    course_location:    'Bali',
+    course_location:    'Jakarta',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-economic-jv-oil-gas-s5',
+    course_session_id: 'commercial-economic-jv-oil-gas-s8',
     course_id:          'commercial-economic-jv-oil-gas',
     course_start_date:  '2027-12-06',
     course_end_date:    '2027-12-10',
-    course_location:    'Bali',
+    course_location:    'Jakarta',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
