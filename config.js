@@ -390,6 +390,25 @@ function LPA_parseDisplayedStartISO(text) {
   return null;
 }
 
+// One booking-card block (same markup the authored cards used) for a session.
+function LPA_buildSessionCard(s, labelText) {
+  var nb = document.createElement('div');
+  nb.className = 'bc-session-block';
+  nb.setAttribute('data-lpa-generated', '1');
+  var lab = document.createElement('div');
+  lab.className = 'bc-session-label';
+  lab.textContent = labelText;
+  var dt = document.createElement('div');
+  dt.className = 'bc-session-date-lg';
+  dt.textContent = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date);
+  var lc = document.createElement('div');
+  lc.className = 'bc-session-loc-row';
+  lc.innerHTML = '<svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> ';
+  lc.appendChild(document.createTextNode(LPA_sessionLocationLabel(s)));
+  nb.appendChild(lab); nb.appendChild(dt); nb.appendChild(lc);
+  return nb;
+}
+
 // Hides past sessions in the hand-authored booking-card blocks and the
 // "Sessions & Fees" table, in place. Nothing is removed from the DOM — hidden
 // elements are marked data-lpa-past="1" — and nothing unparseable is hidden.
@@ -407,7 +426,7 @@ function LPA_applyUpcomingSessionFilter(todayISO, course) {
   var today = todayISO || LPA_todayISO();
   if (course === undefined) { course = LPA_courseForPath(window.location.pathname); }
   var upcoming = course ? LPA_upcomingSessionsForCourse(course.course_id, today) : [];
-  var result = { today: today, cards_hidden: 0, cards_kept: 0, cards_generated: 0, rows_hidden: 0, rows_kept: 0, fallback_shown: false };
+  var result = { today: today, cards_hidden: 0, cards_kept: 0, cards_generated: 0, rows_hidden: 0, rows_kept: 0, fallback_shown: false, pills_hidden: 0, pills_generated: 0 };
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-lpa-generated]'), function(el) {
     el.parentNode.removeChild(el);
@@ -497,6 +516,12 @@ function LPA_applyUpcomingSessionFilter(todayISO, course) {
     Array.prototype.forEach.call(table.querySelectorAll('tbody tr:not([data-lpa-generated])'), function(tr) {
       var dEl = tr.querySelector('.session-date');
       var startISO = dEl ? LPA_parseDisplayedStartISO(dEl.textContent) : null;
+      if (!dEl) {
+        // One page keeps the date inside the location cell: "London, UK · 14–18 Sep 2026".
+        var lEl = tr.querySelector('.session-loc');
+        var lText = lEl ? lEl.textContent : '';
+        startISO = lText.indexOf('·') >= 0 ? LPA_parseDisplayedStartISO(lText.split('·').pop()) : null;
+      }
       if (startISO === null) { return; }
       if (startISO < today) {
         tr.style.display = 'none';
@@ -523,14 +548,343 @@ function LPA_applyUpcomingSessionFilter(todayISO, course) {
       tb.insertBefore(fr, tb.firstChild);
     }
   });
+
+  // --- sessions rendered straight from the registry ---
+  // Course pages no longer carry authored dated cards / table rows / pills. They
+  // keep a neutral placeholder (data-lpa-sessions-placeholder, or a
+  // data-lpa-session-pills container) and these three blocks fill it with the
+  // current/future sessions of THIS course. Re-runnable: generated nodes are
+  // data-lpa-generated and were removed at the top of this function.
+  var phCard = document.querySelector('.bc-sessions-wrap [data-lpa-sessions-placeholder]');
+  if (phCard) {
+    if (upcoming.length) {
+      phCard.style.display = 'none';
+      var cardAnchor = phCard;
+      upcoming.slice(0, 3).forEach(function(s, idx) {
+        var lab = idx === 0 ? (s.delivery_format === 'virtual' ? 'NEXT VIRTUAL SESSION' : 'NEXT CLASSROOM SESSION') : 'ALSO AVAILABLE';
+        var nb = LPA_buildSessionCard(s, lab);
+        cardAnchor.parentNode.insertBefore(nb, cardAnchor.nextSibling);
+        cardAnchor = nb; result.cards_generated++;
+      });
+    } else {
+      phCard.style.display = ''; result.fallback_shown = true;
+    }
+  }
+
+  var phRow = document.querySelector('table.sessions-table tr[data-lpa-sessions-placeholder]');
+  if (phRow) {
+    var heads = Array.prototype.map.call(phRow.closest('table').querySelectorAll('thead th'), function(th) { return th.textContent.trim(); });
+    var rowFmt = phRow.getAttribute('data-lpa-format') || 'Classroom';
+    var rowFee = phRow.getAttribute('data-lpa-fee') || '';
+    var rowDur = phRow.getAttribute('data-lpa-duration') || '';
+    var msgCell = phRow.querySelector('td');
+    // Only sessions of the SAME format as the authored fee are tabulated: the page
+    // carries one fee per format and central data holds none, so a session of
+    // another format is left to the booking section (or the page's own generic
+    // "contact us" row) instead of being shown with a fee that may not apply.
+    var rowVirtual = rowFmt.toLowerCase() === 'virtual';
+    var tableSessions = upcoming.filter(function(s) { return (s.delivery_format === 'virtual') === rowVirtual; });
+    if (tableSessions.length) {
+      phRow.style.display = 'none';
+      var rowAnchor = phRow;
+      tableSessions.slice(0, 4).forEach(function(s) {
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-lpa-generated', '1');
+        var range = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date);
+        heads.forEach(function(h) {
+          var td = document.createElement('td');
+          if (h === 'Dates') {
+            td.innerHTML = '<span class="session-date"></span>'; td.firstChild.textContent = range;
+          } else if (h === 'Time Zone') {
+            td.innerHTML = '<span class="session-loc"></span>';
+            td.firstChild.textContent = rowVirtual && s.virtual_timezone ? (s.course_location ? s.course_location + ' (' + s.virtual_timezone + ')' : s.virtual_timezone) : LPA_sessionLocationLabel(s);
+          } else if (h === 'Location') {
+            td.innerHTML = '<span class="session-loc"></span>';
+            td.firstChild.textContent = LPA_sessionLocationLabel(s) + (heads.indexOf('Dates') < 0 ? ' · ' + range : '');
+          } else if (h === 'Format') {
+            td.innerHTML = '<span class="session-tag" style="color:var(--amber);background:var(--amber-dim);border-color:rgba(200,135,58,.3);"></span>';
+            td.firstChild.textContent = rowFmt;
+          } else if (h === 'Duration') {
+            td.textContent = rowDur;
+          } else if (/^Fee/.test(h)) {
+            td.textContent = rowFee;
+          }
+          tr.appendChild(td);
+        });
+        rowAnchor.parentNode.insertBefore(tr, rowAnchor.nextSibling);
+        rowAnchor = tr;
+      });
+    } else if (msgCell) {
+      phRow.style.display = '';
+      if (!upcoming.length) { msgCell.textContent = 'Classroom Session — Contact us for upcoming dates'; }
+    }
+  }
+
+  var pillBox = document.querySelector('.course-pills[data-lpa-session-pills]');
+  if (pillBox && upcoming.length) {
+    var pillTag = pillBox.tagName === 'UL' ? 'li' : 'span';
+    upcoming.slice(0, 3).reverse().forEach(function(s) {
+      var np = document.createElement(pillTag);
+      np.className = 'pill pill-highlight';
+      np.setAttribute('role', 'listitem');
+      np.setAttribute('data-lpa-generated', '1');
+      np.innerHTML = '<svg aria-hidden="true"><use href="#ico-cal"/></svg> ';
+      np.appendChild(document.createTextNode(LPA_formatSessionDateRange(s.course_start_date, s.course_end_date) +
+        ' · ' + (s.delivery_format === 'virtual' ? 'Virtual' : s.course_location)));
+      pillBox.insertBefore(np, pillBox.firstChild);
+      result.pills_generated++;
+    });
+  }
+
+  // --- hero "at a glance" date pills (any authored dated pill that remains) ---
+  // Same rule as the cards: past dated pills are hidden (never deleted); if every
+  // authored dated pill has passed but the registry still has upcoming sessions,
+  // pills are rebuilt from it. Non-date pills ("3 Days", "5-Star Hotel") are untouched.
+  // Pills usually omit the year ("10–12 Aug · Aberdeen"), so the start date is
+  // recovered by matching the label against THIS course's registry sessions.
+  // A label that matches nothing is left visible, never hidden on a guess.
+  function pillStartISO(p) {
+    var iso = LPA_parseDisplayedStartISO(p.textContent);
+    if (iso !== null) { return iso; }
+    if (!course || typeof LPA_SESSIONS === 'undefined') { return null; }
+    var label = p.textContent.split('·')[0].replace(/\s+/g, ' ').trim().replace(/ ?[-–—] ?/g, '–').toLowerCase();
+    if (!/^\d{1,2}/.test(label)) { return null; }
+    for (var i = 0; i < LPA_SESSIONS.length; i++) {
+      var s = LPA_SESSIONS[i];
+      if (s.course_id !== course.course_id || s.session_status !== 'scheduled') { continue; }
+      var short = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date).replace(/ \d{4}/g, '').toLowerCase();
+      if (short === label) { return s.course_start_date; }
+    }
+    return null;
+  }
+  var datedPills = Array.prototype.slice.call(document.querySelectorAll('.course-pills .pill-highlight')).filter(function(p) {
+    return pillStartISO(p) !== null;
+  });
+  datedPills.forEach(function(p) {
+    if (pillStartISO(p) < today) {
+      p.style.display = 'none'; p.setAttribute('data-lpa-past', '1'); result.pills_hidden++;
+    } else {
+      p.style.display = ''; p.removeAttribute('data-lpa-past');
+    }
+  });
+  if (datedPills.length && result.pills_hidden === datedPills.length && upcoming.length) {
+    upcoming.slice(0, 3).forEach(function(s) {
+      var np = datedPills[0].cloneNode(true);
+      np.removeAttribute('data-lpa-past'); np.style.display = ''; np.setAttribute('data-lpa-generated', '1');
+      Array.prototype.slice.call(np.childNodes).forEach(function(n) { if (n.nodeType === 3) { np.removeChild(n); } });
+      np.appendChild(document.createTextNode(' ' + LPA_formatSessionDateRange(s.course_start_date, s.course_end_date) +
+        ' · ' + (s.delivery_format === 'virtual' ? 'Virtual' : s.course_location)));
+      datedPills[0].parentNode.insertBefore(np, datedPills[0]);
+      result.pills_generated++;
+    });
+  }
   return result;
 }
 
-(function() {
-  function run() { try { LPA_applyUpcomingSessionFilter(); } catch (e) { /* display-only; never break the page */ } }
-  if (typeof document === 'undefined') { return; }
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
-})();
+
+// ── Upcoming-only dates for SEO text and outgoing payloads ────────────────
+// Same single rule (LPA_isUpcomingSession: course_start_date >= today) applied
+// to the non-booking-UI places that still carried hand-authored, point-in-time
+// dates: the Course JSON-LD instances, the "when/where are the sessions" FAQ
+// (visible + FAQPage JSON-LD), and the sessions_html blob sent with booking and
+// brochure submissions. All of it is regenerated from LPA_SESSIONS at call time,
+// so a calendar change never needs per-page metadata edits. LPA_SESSIONS itself
+// and the archived calendars are never touched.
+var LPA_MONTH_LONG = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var LPA_COUNTRY_ISO = {
+  'Argentina':'AR','Brazil':'BR','Canada':'CA','Chile':'CL','Egypt':'EG','India':'IN','Indonesia':'ID','Japan':'JP',
+  'Kenya':'KE','Malaysia':'MY','Namibia':'NA','Netherlands':'NL','Nigeria':'NG','Norway':'NO','Philippines':'PH',
+  'Qatar':'QA','Saudi Arabia':'SA','Singapore':'SG','South Africa':'ZA','South Korea':'KR','Spain':'ES','Thailand':'TH',
+  'Turkey':'TR','United Arab Emirates':'AE','United Kingdom':'GB','United States':'US'
+};
+
+// "15–17 March 2027", "30 November–4 December 2026", "28 December 2026–1 January 2027".
+function LPA_formatSessionDateRangeLong(startISO, endISO) {
+  var s = startISO.split('-').map(Number), e = endISO.split('-').map(Number);
+  if (s[0] === e[0] && s[1] === e[1]) { return s[2] + '–' + e[2] + ' ' + LPA_MONTH_LONG[s[1]-1] + ' ' + s[0]; }
+  if (s[0] === e[0]) { return s[2] + ' ' + LPA_MONTH_LONG[s[1]-1] + '–' + e[2] + ' ' + LPA_MONTH_LONG[e[1]-1] + ' ' + s[0]; }
+  return s[2] + ' ' + LPA_MONTH_LONG[s[1]-1] + ' ' + s[0] + '–' + e[2] + ' ' + LPA_MONTH_LONG[e[1]-1] + ' ' + e[0];
+}
+
+// Any hand-written date: "3–7 August", "Aug 2026", "2026".
+var LPA_DATE_TOKEN_RE = /\b\d{1,2}(?:\s?[–-]\s?\d{1,2})?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+20\d\d\b|\b20\d\d\b/;
+var LPA_HOURS_RE = /\d{1,2}(?::\d{2})?\s?[AP]M\s?[–-]\s?\d{1,2}(?::\d{2})?\s?[AP]M/;
+
+// Durable wording used in the STATIC HTML for the "when/where" FAQ, so the raw
+// page never carries a date that can expire. The runtime then fills in the real
+// upcoming sessions (see LPA_rewriteDatesFaq).
+var LPA_DATES_FAQ_Q = 'When and where is the course delivered?';
+var LPA_DATES_FAQ_STATIC_LEAD = 'Upcoming dates and locations are shown in the booking section of this page, or contact us for upcoming dates.';
+var LPA_DATES_FAQ_NONE_LEAD = 'Please contact us for upcoming dates.';
+
+// Splits on sentence-ending punctuation followed by whitespace, so an address like
+// "info@londonpetroacademy.co.uk" is never cut in the middle.
+function LPA_splitSentences(text) {
+  var out = [], last = 0, re = /[.!?]+(?=\s|$)/g, m;
+  while ((m = re.exec(text))) { out.push(text.slice(last, m.index + m[0].length).trim()); last = m.index + m[0].length; }
+  if (text.slice(last).trim()) { out.push(text.slice(last).trim()); }
+  return out.filter(Boolean);
+}
+
+// Is this FAQ the "when / where are the sessions" entry? Either it already uses
+// the durable question, or (legacy authored wording) it asks when/where and its
+// answer lists dates.
+function LPA_isDatesFaq(q, a) {
+  if (q === LPA_DATES_FAQ_Q) { return true; }
+  return /\b(when|where|dates?|scheduled)\b/i.test(q) && /\b(sessions?|dates?)\b/i.test(q) &&
+    !/\b(fee|price|cost|vat|discount|trainer|delivers?)\b/i.test(q) && LPA_DATE_TOKEN_RE.test(a);
+}
+
+// Rewrites one dates-FAQ pair. Returns {q, a} or null if the pair is not a dates
+// FAQ. Sentences of the authored answer that carry NO date (e.g. "All sessions are
+// held at five-star hotel venues.", "Virtual sessions run 9 AM–1 PM.") are kept;
+// dated sentences and the previous generated lead are replaced by ONE lead:
+//   upcoming.length > 0   -> "Upcoming sessions: <current/future sessions>."
+//   upcoming empty        -> "Please contact us for upcoming dates."
+//   upcoming === null     -> the durable static lead (used when writing HTML)
+// The question is always the durable LPA_DATES_FAQ_Q.
+function LPA_rewriteDatesFaq(q, a, upcoming) {
+  if (!LPA_isDatesFaq(q, a)) { return null; }
+  var kept = LPA_splitSentences(a).filter(function(x) {
+    return x && !LPA_DATE_TOKEN_RE.test(x) && !/^\d+\s+(?:sessions?|locations?)\b/i.test(x) &&
+      x !== LPA_DATES_FAQ_STATIC_LEAD && x !== LPA_DATES_FAQ_NONE_LEAD;
+  });
+  var lead;
+  if (upcoming === null) {
+    lead = LPA_DATES_FAQ_STATIC_LEAD;
+  } else if (upcoming.length) {
+    lead = 'Upcoming sessions: ' + upcoming.map(function(s) {
+      var range = LPA_formatSessionDateRangeLong(s.course_start_date, s.course_end_date);
+      return (s.delivery_format === 'virtual' && s.virtual_timezone)
+        ? range + ', ' + LPA_sessionLocationLabel(s)
+        : range + ' in ' + LPA_sessionLocationLabel(s);
+    }).join('; ') + '.';
+  } else {
+    lead = LPA_DATES_FAQ_NONE_LEAD;
+  }
+  return { q: LPA_DATES_FAQ_Q, a: [lead].concat(kept).join(' ') };
+}
+
+// A parenthetical that is only a date, e.g. "The London session (26–28 October) is …"
+// in a fee answer, is dropped: it would otherwise outlive the session.
+function LPA_stripParenDates(a) {
+  return a.replace(/\s*\(\s*\d{1,2}(?:\s?[–-]\s?\d{1,2})?\s+[A-Z][a-z]+(?:\s+20\d\d)?\s*\)/g, '');
+}
+
+// Restrained Course.hasCourseInstance rule (never enumerates the whole schedule):
+//   - authored undated instances: kept as written;
+//   - authored dated instances: dropped when past, or when central data no longer
+//     has an upcoming session starting that day; otherwise kept as written;
+//   - if the page HAD dated instances and none survive (all stale), regenerate
+//     only the next LPA_LD_MAX_REGENERATED upcoming session(s) from the registry.
+// Empty result => hasCourseInstance removed (it is optional in schema.org).
+var LPA_LD_MAX_REGENERATED = 2;
+function LPA_rebuildCourseInstances(existing, upcoming, today) {
+  var upcomingStarts = {};
+  upcoming.forEach(function(s) { upcomingStarts[s.course_start_date] = true; });
+  var kept = [], dropped = 0, hadDated = false, keptDated = 0;
+  (existing || []).forEach(function(inst) {
+    if (inst && inst.startDate) {
+      hadDated = true;
+      if (inst.startDate < today || !upcomingStarts[inst.startDate]) { dropped++; return; }
+      keptDated++;
+    }
+    kept.push(inst);
+  });
+  var added = 0;
+  if (hadDated && keptDated === 0) {
+    upcoming.slice(0, LPA_LD_MAX_REGENERATED).forEach(function(s) {
+      var inst = { '@type': 'CourseInstance', 'courseMode': s.delivery_format === 'virtual' ? 'online' : 'onsite',
+        'startDate': s.course_start_date, 'endDate': s.course_end_date };
+      if (s.delivery_format !== 'virtual') {
+        var addr = { '@type': 'PostalAddress', 'addressLocality': s.course_location };
+        if (LPA_COUNTRY_ISO[s.course_country]) { addr.addressCountry = LPA_COUNTRY_ISO[s.course_country]; }
+        inst.location = { '@type': 'Place', 'name': 'Five-Star Hotel Venue', 'address': addr };
+      }
+      kept.push(inst); added++;
+    });
+  }
+  return { instances: kept, dropped: dropped, added: added };
+}
+
+// Applies the above to the live page. Idempotent; display/SEO text only.
+function LPA_applyUpcomingMetadata(todayISO, course) {
+  var today = todayISO || LPA_todayISO();
+  if (course === undefined) { course = LPA_courseForPath(window.location.pathname); }
+  var result = { today: today, faq_rewritten: 0, faq_paren_stripped: 0, ld_faq_rewritten: 0, ld_instances_dropped: 0, ld_instances_added: 0 };
+  if (!course) { return result; }                      // unknown page: leave authored text alone
+  var upcoming = LPA_upcomingSessionsForCourse(course.course_id, today);
+
+  // Visible FAQ
+  Array.prototype.forEach.call(document.querySelectorAll('details.faq-item'), function(item) {
+    var qEl = item.querySelector('.faq-q'), aEl = item.querySelector('.faq-a');
+    if (!qEl || !aEl) { return; }
+    var qNode = null;
+    Array.prototype.forEach.call(qEl.childNodes, function(n) { if (!qNode && n.nodeType === 3 && n.data.trim()) { qNode = n; } });
+    if (!qNode) { return; }
+    var r = LPA_rewriteDatesFaq(qNode.data.trim(), aEl.textContent.trim(), upcoming);
+    if (r) {
+      qNode.data = r.q + ' '; aEl.textContent = r.a; result.faq_rewritten++;
+    } else {
+      var stripped = LPA_stripParenDates(aEl.textContent);
+      if (stripped !== aEl.textContent) { aEl.textContent = stripped; result.faq_paren_stripped++; }
+    }
+  });
+
+  // Structured data
+  Array.prototype.forEach.call(document.querySelectorAll('script[type="application/ld+json"]'), function(el) {
+    var data;
+    try { data = JSON.parse(el.textContent); } catch (e) { return; }   // never touch what we cannot parse
+    var changed = false;
+    if (data && data['@type'] === 'Course') {
+      var rb = LPA_rebuildCourseInstances(data.hasCourseInstance, upcoming, today);
+      if (rb.dropped || rb.added) {
+        if (rb.instances.length) { data.hasCourseInstance = rb.instances; } else { delete data.hasCourseInstance; }
+        result.ld_instances_dropped += rb.dropped; result.ld_instances_added += rb.added; changed = true;
+      }
+    } else if (data && data['@type'] === 'FAQPage' && Array.isArray(data.mainEntity)) {
+      data.mainEntity.forEach(function(qa) {
+        if (!qa || !qa.acceptedAnswer || typeof qa.acceptedAnswer.text !== 'string') { return; }
+        var r = LPA_rewriteDatesFaq(String(qa.name || ''), qa.acceptedAnswer.text, upcoming);
+        if (r) {
+          if (qa.name !== r.q || qa.acceptedAnswer.text !== r.a) { qa.name = r.q; qa.acceptedAnswer.text = r.a; changed = true; }
+          result.ld_faq_rewritten++;
+        }
+        else {
+          var s2 = LPA_stripParenDates(qa.acceptedAnswer.text);
+          if (s2 !== qa.acceptedAnswer.text) { qa.acceptedAnswer.text = s2; changed = true; }
+        }
+      });
+    }
+    if (changed) { el.textContent = JSON.stringify(data); }
+  });
+  return result;
+}
+
+// sessions_html for booking and brochure submissions: upcoming sessions only,
+// built from the registry (never from page-authored text), in the markup the
+// team/customer emails already use. Falls back to a clean contact line when the
+// course has nothing upcoming. todayISO is optional (tests).
+function LPA_buildSessionsHtml(course, todayISO) {
+  var tdL = 'padding:10px 0;color:#888;font-size:13px;width:180px;', tdR = 'padding:10px 0;color:#111;font-weight:600;';
+  var rows = '';
+  var upcoming = course ? LPA_upcomingSessionsForCourse(course.course_id, todayISO) : [];
+  upcoming.forEach(function(s) {
+    rows += '<tr style="border-bottom:1px solid #f0ede8;"><td style="' + tdL + '">' +
+      LPA_escapeHtml(LPA_formatSessionDateRange(s.course_start_date, s.course_end_date)) + '</td><td style="' + tdR + '">' +
+      LPA_escapeHtml(LPA_sessionLocationLabel(s)) + '</td></tr>';
+  });
+  if (course && course.offers_on_request) {
+    rows += '<tr style="border-bottom:1px solid #f0ede8;"><td style="' + tdL + '">Classroom</td><td style="' + tdR + '">Contact us for dates</td></tr>';
+  }
+  if (!rows) {
+    rows = '<tr><td colspan="2" style="padding:10px 0;color:#111;font-weight:600;">Contact us for upcoming dates.</td></tr>';
+  }
+  var noteEl = (typeof document !== 'undefined') ? document.querySelector('.bc-price-note') : null;
+  var note = noteEl ? noteEl.textContent.trim() : '';
+  if (note) { rows += '<tr><td colspan="2" style="padding:14px 0 0;font-size:13px;color:#666;">' + LPA_escapeHtml(note) + '</td></tr>'; }
+  return rows;
+}
 
 // Renders #bkSes entirely from LPA_SESSIONS, filtered to this course, to
 // session_status === 'scheduled' and to sessions that have not yet started
@@ -862,3 +1216,17 @@ function LPA_legacyCalendarRowsForCourse(courseId, year) {
   });
   return rows;
 }
+
+// ── Run the display / SEO-text passes ─────────────────────────────────────
+// Deliberately the LAST statement in this file: a deferred script runs while
+// document.readyState is already 'interactive', so run() fires immediately and
+// every var-assigned constant above (LPA_DATES_FAQ_Q, LPA_DATE_TOKEN_RE, …) must
+// already be initialised by then.
+(function() {
+  function run() {
+    try { LPA_applyUpcomingSessionFilter(); } catch (e) { /* display-only; never break the page */ }
+    try { LPA_applyUpcomingMetadata(); } catch (e) { /* SEO text only; never break the page */ }
+  }
+  if (typeof document === 'undefined') { return; }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();

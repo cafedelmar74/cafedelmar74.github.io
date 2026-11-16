@@ -7,7 +7,7 @@
  * inline submitBk() transports. Mirrors the Step 11-D enquiry and Step 12-C
  * brochure pattern (lpa-enquiry-v2.js, lpa-brochure-v2.js). Each page keeps only
  * a thin submitBk() wrapper supplying its own course_category, course_duration
- * and (where it has one) its sessions_html presentation blob.
+ * (sessions_html is built centrally from the registry).
  *
  * Load AFTER course-data.js and config.js, and after the Turnstile script:
  *   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -104,10 +104,8 @@
    * @param {Object} opts {
    *   courseCategory: the page's existing course_category literal (required),
    *   courseDuration: the page's existing course_duration literal (required),
-   *   sessionsHtml:   optional legacy presentation HTML for the team email —
-   *                   a string, or a function returning one (seven pages build
-   *                   it dynamically). NEVER used for identity or Course/Session
-   *                   resolution: the server does not forward it to the resolver.
+   *   (sessions_html is built by LPA_buildSessionsHtml in config.js from the
+   *   central registry; pages no longer pass one.)
    *   fieldIds:       optional overrides; all 37 pages share the default ids.
    * }
    */
@@ -203,11 +201,12 @@
       form_rendered_at: formRenderedAt || new Date().toISOString()
     };
 
-    var sessionsHtml = (typeof o.sessionsHtml === 'function') ? o.sessionsHtml() : o.sessionsHtml;
-    if (sessionsHtml) {
-      // Legacy/untrusted presentation-only context for the team email. Never used
-      // for identity, Course or Session resolution server-side.
-      payload.sessions_html = sessionsHtml;
+    // Presentation-only context for the team email, built from the central
+    // registry so it lists ONLY sessions starting today or later. Pages carry no
+    // session-date snapshot of their own. Never used for identity, Course or
+    // Session resolution server-side.
+    if (typeof LPA_buildSessionsHtml === 'function') {
+      payload.sessions_html = LPA_buildSessionsHtml(course);
     }
 
     // Local booking history, preserved from the previous transport for the

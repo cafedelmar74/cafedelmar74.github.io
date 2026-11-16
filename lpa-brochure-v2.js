@@ -61,8 +61,8 @@
    *   pdfUrl: the existing page-specific brochure PDF URL (required, unchanged),
    *   courseId: LPA_CURRENT_COURSE.course_id when available, else null,
    *   fieldIds: { overlay, formArea, ok, name, email, dial, phone, org, sb, fax },
-   *   sessionsHtml: optional legacy/untrusted presentation HTML for the
-   *     customer email (never used for identity or Course/Session resolution)
+   *   (sessions_html is built by LPA_buildSessionsHtml in config.js from the
+   *   central registry; pages no longer pass one.)
    * }
    */
   window.lpaSubmitBrochure = function (opts) {
@@ -111,10 +111,12 @@
       fax: val(ids.fax || 'brFax'),
       form_rendered_at: formRenderedAt || new Date().toISOString()
     };
-    if (o.sessionsHtml) {
-      // Legacy/untrusted presentation-only context for the customer email.
-      // Never used for identity, Course, or Session resolution server-side.
-      payload.sessions_html = o.sessionsHtml;
+    // Customer-facing email context, built from the central registry so it lists
+    // ONLY sessions starting today or later. Pages carry no session-date
+    // snapshot of their own. Never used for identity, Course, or Session
+    // resolution server-side.
+    if (typeof LPA_buildSessionsHtml === 'function' && window.LPA_CURRENT_COURSE) {
+      payload.sessions_html = LPA_buildSessionsHtml(window.LPA_CURRENT_COURSE);
     }
 
     fetch(endpoint(), {
