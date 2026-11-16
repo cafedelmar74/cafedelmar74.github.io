@@ -1260,40 +1260,10 @@
       "session_status": "scheduled"
     },
     {
-      "course_session_id": "lng-value-chain-s1",
+      "course_session_id": "lng-value-chain-s5",
       "course_id": "lng-value-chain",
-      "course_start_date": "2026-08-24",
-      "course_end_date": "2026-08-26",
-      "course_location": "Buenos Aires",
-      "course_country": "Argentina",
-      "delivery_format": "in_person",
-      "session_status": "scheduled"
-    },
-    {
-      "course_session_id": "lng-value-chain-s2",
-      "course_id": "lng-value-chain",
-      "course_start_date": "2026-09-09",
-      "course_end_date": "2026-09-11",
-      "course_location": "Bangkok",
-      "course_country": "Thailand",
-      "delivery_format": "in_person",
-      "session_status": "scheduled"
-    },
-    {
-      "course_session_id": "lng-value-chain-s3",
-      "course_id": "lng-value-chain",
-      "course_start_date": "2026-10-13",
-      "course_end_date": "2026-10-15",
-      "course_location": "Rio de Janeiro",
-      "course_country": "Brazil",
-      "delivery_format": "in_person",
-      "session_status": "scheduled"
-    },
-    {
-      "course_session_id": "lng-value-chain-s4",
-      "course_id": "lng-value-chain",
-      "course_start_date": "2026-11-16",
-      "course_end_date": "2026-11-18",
+      "course_start_date": "2027-03-15",
+      "course_end_date": "2027-03-17",
       "course_location": "London",
       "course_country": "United Kingdom",
       "delivery_format": "in_person",
