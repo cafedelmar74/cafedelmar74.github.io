@@ -79,6 +79,7 @@
       "course_name": "Crude Oil Evaluation, Economics & Pricing",
       "course_category": "trading_markets",
       "calendar_category": "downstream",
+      "calendar_label": "Trading",
       "page_path": "/course-crude-oil-evaluation-economics-pricing.html",
       "status": "active"
     },
@@ -168,6 +169,7 @@
       "course_name": "International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging",
       "course_category": "trading_markets",
       "calendar_category": "downstream",
+      "calendar_label": "Trading",
       "page_path": "/course-international-crude-oil-markets.html",
       "status": "active"
     },
@@ -176,6 +178,7 @@
       "course_name": "International Oil Supply, Trading & Market Dynamics",
       "course_category": "trading_markets",
       "calendar_category": "downstream",
+      "calendar_label": "Trading",
       "page_path": "/course-international-oil-supply-trading.html",
       "status": "active"
     },
@@ -1110,6 +1113,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "advanced-petroleum-economics-decision-analysis-s4",
+      "course_id": "advanced-petroleum-economics-decision-analysis",
+      "course_start_date": "2027-06-07",
+      "course_end_date": "2027-06-11",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "advanced-petroleum-economics-decision-analysis-s5",
+      "course_id": "advanced-petroleum-economics-decision-analysis",
+      "course_start_date": "2027-07-12",
+      "course_end_date": "2027-07-16",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "advanced-petroleum-economics-decision-analysis-s6",
+      "course_id": "advanced-petroleum-economics-decision-analysis",
+      "course_start_date": "2027-09-27",
+      "course_end_date": "2027-10-01",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "advanced-petroleum-economics-decision-analysis-s7",
+      "course_id": "advanced-petroleum-economics-decision-analysis",
+      "course_start_date": "2027-11-22",
+      "course_end_date": "2027-11-26",
+      "course_location": "Abu Dhabi",
+      "course_country": "United Arab Emirates",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "petroleum-exploration-economics-decision-s1",
       "course_id": "petroleum-exploration-economics-decision",
       "course_start_date": "2026-08-18",
@@ -1150,6 +1193,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "petroleum-exploration-economics-decision-s5",
+      "course_id": "petroleum-exploration-economics-decision",
+      "course_start_date": "2027-03-15",
+      "course_end_date": "2027-03-19",
+      "course_location": "Windhoek",
+      "course_country": "Namibia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-exploration-economics-decision-s6",
+      "course_id": "petroleum-exploration-economics-decision",
+      "course_start_date": "2027-06-21",
+      "course_end_date": "2027-06-25",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-exploration-economics-decision-s7",
+      "course_id": "petroleum-exploration-economics-decision",
+      "course_start_date": "2027-09-20",
+      "course_end_date": "2027-09-24",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-exploration-economics-decision-s8",
+      "course_id": "petroleum-exploration-economics-decision",
+      "course_start_date": "2027-12-06",
+      "course_end_date": "2027-12-10",
+      "course_location": "Kuala Lumpur",
+      "course_country": "Malaysia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "petroleum-project-economics-risk-s1",
       "course_id": "petroleum-project-economics-risk",
       "course_start_date": "2026-08-17",
@@ -1176,6 +1259,36 @@
       "course_end_date": "2027-06-18",
       "course_location": "Kuala Lumpur",
       "course_country": "Malaysia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-project-economics-risk-s4",
+      "course_id": "petroleum-project-economics-risk",
+      "course_start_date": "2027-01-11",
+      "course_end_date": "2027-01-15",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-project-economics-risk-s5",
+      "course_id": "petroleum-project-economics-risk",
+      "course_start_date": "2027-08-16",
+      "course_end_date": "2027-08-20",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "petroleum-project-economics-risk-s6",
+      "course_id": "petroleum-project-economics-risk",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-08",
+      "course_location": "Houston",
+      "course_country": "United States",
       "delivery_format": "in_person",
       "session_status": "scheduled"
     },
@@ -1210,12 +1323,92 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "mini-mba-oil-gas-energy-business-s4",
+      "course_id": "mini-mba-oil-gas-energy-business",
+      "course_start_date": "2027-04-12",
+      "course_end_date": "2027-04-16",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-oil-gas-energy-business-s5",
+      "course_id": "mini-mba-oil-gas-energy-business",
+      "course_start_date": "2027-05-10",
+      "course_end_date": "2027-05-14",
+      "course_location": "Dubai",
+      "course_country": "United Arab Emirates",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-oil-gas-energy-business-s6",
+      "course_id": "mini-mba-oil-gas-energy-business",
+      "course_start_date": "2027-10-18",
+      "course_end_date": "2027-10-22",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-oil-gas-energy-business-s7",
+      "course_id": "mini-mba-oil-gas-energy-business",
+      "course_start_date": "2027-11-08",
+      "course_end_date": "2027-11-12",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "oil-gas-fundamentals-s1",
       "course_id": "oil-gas-fundamentals",
       "course_start_date": "2026-10-19",
       "course_end_date": "2026-10-21",
       "course_location": "Kuala Lumpur",
       "course_country": "Malaysia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "oil-gas-fundamentals-s2",
+      "course_id": "oil-gas-fundamentals",
+      "course_start_date": "2027-02-01",
+      "course_end_date": "2027-02-03",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "oil-gas-fundamentals-s3",
+      "course_id": "oil-gas-fundamentals",
+      "course_start_date": "2027-05-10",
+      "course_end_date": "2027-05-12",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "oil-gas-fundamentals-s4",
+      "course_id": "oil-gas-fundamentals",
+      "course_start_date": "2027-08-16",
+      "course_end_date": "2027-08-18",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "oil-gas-fundamentals-s5",
+      "course_id": "oil-gas-fundamentals",
+      "course_start_date": "2027-11-08",
+      "course_end_date": "2027-11-10",
+      "course_location": "Lagos",
+      "course_country": "Nigeria",
       "delivery_format": "in_person",
       "session_status": "scheduled"
     },
@@ -1260,6 +1453,56 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "gas-lng-contracts-negotiations-s5",
+      "course_id": "gas-lng-contracts-negotiations",
+      "course_start_date": "2027-04-12",
+      "course_end_date": "2027-04-14",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "gas-lng-contracts-negotiations-s6",
+      "course_id": "gas-lng-contracts-negotiations",
+      "course_start_date": "2027-04-19",
+      "course_end_date": "2027-04-21",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "gas-lng-contracts-negotiations-s7",
+      "course_id": "gas-lng-contracts-negotiations",
+      "course_start_date": "2027-08-02",
+      "course_end_date": "2027-08-04",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "gas-lng-contracts-negotiations-s8",
+      "course_id": "gas-lng-contracts-negotiations",
+      "course_start_date": "2027-09-27",
+      "course_end_date": "2027-09-29",
+      "course_location": "Cairo",
+      "course_country": "Egypt",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "gas-lng-contracts-negotiations-s9",
+      "course_id": "gas-lng-contracts-negotiations",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-06",
+      "course_location": "Doha",
+      "course_country": "Qatar",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "lng-value-chain-s5",
       "course_id": "lng-value-chain",
       "course_start_date": "2027-03-15",
@@ -1276,6 +1519,36 @@
       "course_end_date": "2027-05-12",
       "course_location": "Singapore",
       "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "lng-value-chain-s7",
+      "course_id": "lng-value-chain",
+      "course_start_date": "2027-06-14",
+      "course_end_date": "2027-06-16",
+      "course_location": "Bangkok",
+      "course_country": "Thailand",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "lng-value-chain-s8",
+      "course_id": "lng-value-chain",
+      "course_start_date": "2027-08-23",
+      "course_end_date": "2027-08-25",
+      "course_location": "Buenos Aires",
+      "course_country": "Argentina",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "lng-value-chain-s9",
+      "course_id": "lng-value-chain",
+      "course_start_date": "2027-10-25",
+      "course_end_date": "2027-10-27",
+      "course_location": "Doha",
+      "course_country": "Qatar",
       "delivery_format": "in_person",
       "session_status": "scheduled"
     },
@@ -1310,6 +1583,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "international-crude-oil-markets-s4",
+      "course_id": "international-crude-oil-markets",
+      "course_start_date": "2027-01-25",
+      "course_end_date": "2027-01-29",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-crude-oil-markets-s5",
+      "course_id": "international-crude-oil-markets",
+      "course_start_date": "2027-04-26",
+      "course_end_date": "2027-04-30",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-crude-oil-markets-s6",
+      "course_id": "international-crude-oil-markets",
+      "course_start_date": "2027-09-27",
+      "course_end_date": "2027-10-01",
+      "course_location": "Dubai",
+      "course_country": "United Arab Emirates",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-crude-oil-markets-s7",
+      "course_id": "international-crude-oil-markets",
+      "course_start_date": "2027-11-15",
+      "course_end_date": "2027-11-19",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "international-oil-supply-trading-s1",
       "course_id": "international-oil-supply-trading",
       "course_start_date": "2026-09-14",
@@ -1340,6 +1653,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "international-oil-supply-trading-s4",
+      "course_id": "international-oil-supply-trading",
+      "course_start_date": "2027-04-19",
+      "course_end_date": "2027-04-21",
+      "course_location": "Dubai",
+      "course_country": "United Arab Emirates",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-oil-supply-trading-s5",
+      "course_id": "international-oil-supply-trading",
+      "course_start_date": "2027-05-10",
+      "course_end_date": "2027-05-12",
+      "course_location": "Lagos",
+      "course_country": "Nigeria",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-oil-supply-trading-s6",
+      "course_id": "international-oil-supply-trading",
+      "course_start_date": "2027-09-13",
+      "course_end_date": "2027-09-15",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "international-oil-supply-trading-s7",
+      "course_id": "international-oil-supply-trading",
+      "course_start_date": "2027-10-18",
+      "course_end_date": "2027-10-20",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "production-sharing-contracts-brazil-s1",
       "course_id": "production-sharing-contracts-brazil",
       "course_start_date": "2026-11-23",
@@ -1350,10 +1703,70 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "production-sharing-contracts-brazil-s2",
+      "course_id": "production-sharing-contracts-brazil",
+      "course_start_date": "2027-03-15",
+      "course_end_date": "2027-03-18",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "production-sharing-contracts-brazil-s3",
+      "course_id": "production-sharing-contracts-brazil",
+      "course_start_date": "2027-08-09",
+      "course_end_date": "2027-08-12",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "production-sharing-contracts-brazil-s4",
+      "course_id": "production-sharing-contracts-brazil",
+      "course_start_date": "2027-11-29",
+      "course_end_date": "2027-12-02",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "brazil-jv-s1",
       "course_id": "brazil-jv",
       "course_start_date": "2026-10-13",
       "course_end_date": "2026-10-16",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "brazil-jv-s2",
+      "course_id": "brazil-jv",
+      "course_start_date": "2027-04-12",
+      "course_end_date": "2027-04-15",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "brazil-jv-s3",
+      "course_id": "brazil-jv",
+      "course_start_date": "2027-07-05",
+      "course_end_date": "2027-07-08",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "brazil-jv-s4",
+      "course_id": "brazil-jv",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-07",
       "course_location": "Rio de Janeiro",
       "course_country": "Brazil",
       "delivery_format": "in_person",
@@ -1410,6 +1823,36 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "financial-fiscal-aspects-oil-gas-projects-brazil-s3",
+      "course_id": "financial-fiscal-aspects-oil-gas-projects-brazil",
+      "course_start_date": "2027-05-10",
+      "course_end_date": "2027-05-12",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "financial-fiscal-aspects-oil-gas-projects-brazil-s4",
+      "course_id": "financial-fiscal-aspects-oil-gas-projects-brazil",
+      "course_start_date": "2027-07-19",
+      "course_end_date": "2027-07-21",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "financial-fiscal-aspects-oil-gas-projects-brazil-s5",
+      "course_id": "financial-fiscal-aspects-oil-gas-projects-brazil",
+      "course_start_date": "2027-10-18",
+      "course_end_date": "2027-10-20",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "energy-transition-fiscal-systems-s1",
       "course_id": "energy-transition-fiscal-systems",
       "course_start_date": "2026-11-09",
@@ -1436,6 +1879,36 @@
       "course_end_date": "2027-05-14",
       "course_location": "Amsterdam",
       "course_country": "Netherlands",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "energy-transition-fiscal-systems-s4",
+      "course_id": "energy-transition-fiscal-systems",
+      "course_start_date": "2027-06-07",
+      "course_end_date": "2027-06-11",
+      "course_location": "Cape Town",
+      "course_country": "South Africa",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "energy-transition-fiscal-systems-s5",
+      "course_id": "energy-transition-fiscal-systems",
+      "course_start_date": "2027-11-08",
+      "course_end_date": "2027-11-12",
+      "course_location": "Istanbul",
+      "course_country": "Turkey",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "energy-transition-fiscal-systems-s6",
+      "course_id": "energy-transition-fiscal-systems",
+      "course_start_date": "2027-11-22",
+      "course_end_date": "2027-11-26",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
       "delivery_format": "in_person",
       "session_status": "scheduled"
     },
@@ -1470,6 +1943,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "offshore-deepwater-drilling-s4",
+      "course_id": "offshore-deepwater-drilling",
+      "course_start_date": "2027-02-22",
+      "course_end_date": "2027-02-24",
+      "course_location": "Windhoek",
+      "course_country": "Namibia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "offshore-deepwater-drilling-s5",
+      "course_id": "offshore-deepwater-drilling",
+      "course_start_date": "2027-06-07",
+      "course_end_date": "2027-06-09",
+      "course_location": "Rio de Janeiro",
+      "course_country": "Brazil",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "offshore-deepwater-drilling-s6",
+      "course_id": "offshore-deepwater-drilling",
+      "course_start_date": "2027-09-20",
+      "course_end_date": "2027-09-22",
+      "course_location": "Aberdeen",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "offshore-deepwater-drilling-s7",
+      "course_id": "offshore-deepwater-drilling",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-06",
+      "course_location": "Kuala Lumpur",
+      "course_country": "Malaysia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "corporate-power-purchase-agreements-s1",
       "course_id": "corporate-power-purchase-agreements",
       "course_start_date": "2026-10-12",
@@ -1478,6 +1991,46 @@
       "course_country": "South Africa",
       "delivery_format": "virtual",
       "virtual_timezone": "SAST",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "corporate-power-purchase-agreements-s2",
+      "course_id": "corporate-power-purchase-agreements",
+      "course_start_date": "2027-02-22",
+      "course_end_date": "2027-02-24",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "corporate-power-purchase-agreements-s3",
+      "course_id": "corporate-power-purchase-agreements",
+      "course_start_date": "2027-05-17",
+      "course_end_date": "2027-05-19",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "corporate-power-purchase-agreements-s4",
+      "course_id": "corporate-power-purchase-agreements",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-06",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "corporate-power-purchase-agreements-s5",
+      "course_id": "corporate-power-purchase-agreements",
+      "course_start_date": "2027-12-13",
+      "course_end_date": "2027-12-15",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
       "session_status": "scheduled"
     },
     {
@@ -1511,6 +2064,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "grid-scale-bess-technology-markets-project-finance-s4",
+      "course_id": "grid-scale-bess-technology-markets-project-finance",
+      "course_start_date": "2027-05-03",
+      "course_end_date": "2027-05-04",
+      "course_location": "Santiago",
+      "course_country": "Chile",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "grid-scale-bess-technology-markets-project-finance-s5",
+      "course_id": "grid-scale-bess-technology-markets-project-finance",
+      "course_start_date": "2027-06-21",
+      "course_end_date": "2027-06-22",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "grid-scale-bess-technology-markets-project-finance-s6",
+      "course_id": "grid-scale-bess-technology-markets-project-finance",
+      "course_start_date": "2027-09-20",
+      "course_end_date": "2027-09-21",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "grid-scale-bess-technology-markets-project-finance-s7",
+      "course_id": "grid-scale-bess-technology-markets-project-finance",
+      "course_start_date": "2027-10-25",
+      "course_end_date": "2027-10-26",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "hydrogen-economics-business-models-s1",
       "course_id": "hydrogen-economics-business-models",
       "course_start_date": "2026-08-10",
@@ -1519,6 +2112,46 @@
       "course_country": "South Korea",
       "delivery_format": "virtual",
       "virtual_timezone": "KST",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "hydrogen-economics-business-models-s2",
+      "course_id": "hydrogen-economics-business-models",
+      "course_start_date": "2027-04-05",
+      "course_end_date": "2027-04-08",
+      "course_location": "Rotterdam",
+      "course_country": "Netherlands",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "hydrogen-economics-business-models-s3",
+      "course_id": "hydrogen-economics-business-models",
+      "course_start_date": "2027-06-07",
+      "course_end_date": "2027-06-10",
+      "course_location": "Tokyo",
+      "course_country": "Japan",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "hydrogen-economics-business-models-s4",
+      "course_id": "hydrogen-economics-business-models",
+      "course_start_date": "2027-08-16",
+      "course_end_date": "2027-08-19",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "hydrogen-economics-business-models-s5",
+      "course_id": "hydrogen-economics-business-models",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-07",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
       "session_status": "scheduled"
     },
     {
@@ -1544,6 +2177,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "ipps-power-project-contracts-s3",
+      "course_id": "ipps-power-project-contracts",
+      "course_start_date": "2027-03-01",
+      "course_end_date": "2027-03-04",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-contracts-s4",
+      "course_id": "ipps-power-project-contracts",
+      "course_start_date": "2027-06-21",
+      "course_end_date": "2027-06-24",
+      "course_location": "Cairo",
+      "course_country": "Egypt",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-contracts-s5",
+      "course_id": "ipps-power-project-contracts",
+      "course_start_date": "2027-08-16",
+      "course_end_date": "2027-08-19",
+      "course_location": "Bangkok",
+      "course_country": "Thailand",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-contracts-s6",
+      "course_id": "ipps-power-project-contracts",
+      "course_start_date": "2027-11-15",
+      "course_end_date": "2027-11-18",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "ipps-power-project-finance-s1",
       "course_id": "ipps-power-project-finance",
       "course_start_date": "2026-10-19",
@@ -1552,6 +2225,46 @@
       "course_country": "South Africa",
       "delivery_format": "virtual",
       "virtual_timezone": "SAST",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-finance-s2",
+      "course_id": "ipps-power-project-finance",
+      "course_start_date": "2027-04-26",
+      "course_end_date": "2027-04-28",
+      "course_location": "Nairobi",
+      "course_country": "Kenya",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-finance-s3",
+      "course_id": "ipps-power-project-finance",
+      "course_start_date": "2027-07-19",
+      "course_end_date": "2027-07-21",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-finance-s4",
+      "course_id": "ipps-power-project-finance",
+      "course_start_date": "2027-09-20",
+      "course_end_date": "2027-09-22",
+      "course_location": "Jakarta",
+      "course_country": "Indonesia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-project-finance-s5",
+      "course_id": "ipps-power-project-finance",
+      "course_start_date": "2027-10-18",
+      "course_end_date": "2027-10-20",
+      "course_location": "Dubai",
+      "course_country": "United Arab Emirates",
+      "delivery_format": "in_person",
       "session_status": "scheduled"
     },
     {
@@ -1577,6 +2290,46 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "ipps-power-purchase-agreements-s3",
+      "course_id": "ipps-power-purchase-agreements",
+      "course_start_date": "2027-03-01",
+      "course_end_date": "2027-03-04",
+      "course_location": "Johannesburg",
+      "course_country": "South Africa",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-purchase-agreements-s4",
+      "course_id": "ipps-power-purchase-agreements",
+      "course_start_date": "2027-06-14",
+      "course_end_date": "2027-06-17",
+      "course_location": "Manila",
+      "course_country": "Philippines",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-purchase-agreements-s5",
+      "course_id": "ipps-power-purchase-agreements",
+      "course_start_date": "2027-09-06",
+      "course_end_date": "2027-09-09",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "ipps-power-purchase-agreements-s6",
+      "course_id": "ipps-power-purchase-agreements",
+      "course_start_date": "2027-10-11",
+      "course_end_date": "2027-10-14",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "mini-mba-renewable-energy-auctions-s1",
       "course_id": "mini-mba-renewable-energy-auctions",
       "course_start_date": "2026-06-29",
@@ -1585,6 +2338,46 @@
       "course_country": "United Kingdom",
       "delivery_format": "virtual",
       "virtual_timezone": "BST",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-renewable-energy-auctions-s2",
+      "course_id": "mini-mba-renewable-energy-auctions",
+      "course_start_date": "2027-01-24",
+      "course_end_date": "2027-01-28",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-renewable-energy-auctions-s3",
+      "course_id": "mini-mba-renewable-energy-auctions",
+      "course_start_date": "2027-05-24",
+      "course_end_date": "2027-05-28",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-renewable-energy-auctions-s4",
+      "course_id": "mini-mba-renewable-energy-auctions",
+      "course_start_date": "2027-08-02",
+      "course_end_date": "2027-08-06",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "mini-mba-renewable-energy-auctions-s5",
+      "course_id": "mini-mba-renewable-energy-auctions",
+      "course_start_date": "2027-10-04",
+      "course_end_date": "2027-10-08",
+      "course_location": "Santiago",
+      "course_country": "Chile",
+      "delivery_format": "in_person",
       "session_status": "scheduled"
     },
     {
@@ -1606,12 +2399,142 @@
       "session_status": "scheduled"
     },
     {
+      "course_session_id": "renewable-energy-economics-finance-s3",
+      "course_id": "renewable-energy-economics-finance",
+      "course_start_date": "2027-01-18",
+      "course_end_date": "2027-01-20",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "renewable-energy-economics-finance-s4",
+      "course_id": "renewable-energy-economics-finance",
+      "course_start_date": "2027-04-12",
+      "course_end_date": "2027-04-14",
+      "course_location": "Cape Town",
+      "course_country": "South Africa",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "renewable-energy-economics-finance-s5",
+      "course_id": "renewable-energy-economics-finance",
+      "course_start_date": "2027-07-19",
+      "course_end_date": "2027-07-21",
+      "course_location": "Singapore",
+      "course_country": "Singapore",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "renewable-energy-economics-finance-s6",
+      "course_id": "renewable-energy-economics-finance",
+      "course_start_date": "2027-10-11",
+      "course_end_date": "2027-10-13",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
       "course_session_id": "solar-power-finance-s1",
       "course_id": "solar-power-finance",
       "course_start_date": "2026-11-23",
       "course_end_date": "2026-11-25",
       "delivery_format": "virtual",
       "virtual_timezone": "CET",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "solar-power-finance-s2",
+      "course_id": "solar-power-finance",
+      "course_start_date": "2027-02-01",
+      "course_end_date": "2027-02-03",
+      "course_location": "Riyadh",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "solar-power-finance-s3",
+      "course_id": "solar-power-finance",
+      "course_start_date": "2027-07-12",
+      "course_end_date": "2027-07-14",
+      "course_location": "Mumbai",
+      "course_country": "India",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "solar-power-finance-s4",
+      "course_id": "solar-power-finance",
+      "course_start_date": "2027-09-27",
+      "course_end_date": "2027-09-29",
+      "course_location": "Madrid",
+      "course_country": "Spain",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "solar-power-finance-s5",
+      "course_id": "solar-power-finance",
+      "course_start_date": "2027-11-22",
+      "course_end_date": "2027-11-24",
+      "course_location": "Santiago",
+      "course_country": "Chile",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "world-fiscal-systems-unconventional-s1",
+      "course_id": "world-fiscal-systems-unconventional",
+      "course_start_date": "2027-02-08",
+      "course_end_date": "2027-02-10",
+      "course_location": "Houston",
+      "course_country": "United States",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "world-fiscal-systems-unconventional-s2",
+      "course_id": "world-fiscal-systems-unconventional",
+      "course_start_date": "2027-04-26",
+      "course_end_date": "2027-04-28",
+      "course_location": "Al Khobar",
+      "course_country": "Saudi Arabia",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "world-fiscal-systems-unconventional-s3",
+      "course_id": "world-fiscal-systems-unconventional",
+      "course_start_date": "2027-05-17",
+      "course_end_date": "2027-05-19",
+      "course_location": "Calgary",
+      "course_country": "Canada",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "world-fiscal-systems-unconventional-s4",
+      "course_id": "world-fiscal-systems-unconventional",
+      "course_start_date": "2027-07-05",
+      "course_end_date": "2027-07-07",
+      "course_location": "London",
+      "course_country": "United Kingdom",
+      "delivery_format": "in_person",
+      "session_status": "scheduled"
+    },
+    {
+      "course_session_id": "world-fiscal-systems-unconventional-s5",
+      "course_id": "world-fiscal-systems-unconventional",
+      "course_start_date": "2027-10-18",
+      "course_end_date": "2027-10-20",
+      "course_location": "Buenos Aires",
+      "course_country": "Argentina",
+      "delivery_format": "in_person",
       "session_status": "scheduled"
     }
   ]

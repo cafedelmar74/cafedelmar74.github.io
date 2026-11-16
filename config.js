@@ -623,6 +623,7 @@ function LPA_legacyCalendarRowsForCourse(courseId, year) {
     if (!fmt) { return; }
     var monthIndex = parseInt(s.course_start_date.split('-')[1], 10) - 1;
     rows.push({
+      start: s.course_start_date, // ISO, used only to sort cards; never displayed
       month: monthAbbr[monthIndex],
       cat: course.calendar_category,
       fmt: fmt,
