@@ -315,16 +315,235 @@ function LPA_formatSessionDateRange(startISO, endISO) {
   return sD + ' ' + LPA_MONTH_ABBR[sM-1] + ' ' + sY + '–' + eD + ' ' + LPA_MONTH_ABBR[eM-1] + ' ' + eY;
 }
 
-// Renders #bkSes entirely from LPA_SESSIONS, filtered to this course and to
-// session_status === 'scheduled', sorted chronologically by
-// course_start_date. course_session_id is the option's authoritative
+// ── Past-session DISPLAY filter ───────────────────────────────────────────
+// One shared rule for every visitor-facing booking surface (#bkSes dropdown,
+// the booking-card session blocks, the "Sessions & Fees" table):
+//
+//     session.course_start_date >= today        (ISO YYYY-MM-DD, string compare)
+//
+// A session starting today is still current/upcoming. This is display and
+// booking filtering ONLY — LPA_SESSIONS / course-data.js are never mutated,
+// session records are never deleted, and the archived calendar builder
+// (LPA_legacyCalendarRowsForCourse) deliberately does NOT use this filter so
+// calendar-2026 / calendar-2027 keep the full historical schedule.
+//
+// "Today" is never hard-coded: it is read from the clock at call time, as a
+// calendar date in Europe/London (the business's timezone) so every visitor
+// sees the same cut-off regardless of where they browse from. Falls back to
+// the browser's local date if Intl time zones are unavailable.
+function LPA_todayISO() {
+  var now = new Date();
+  try {
+    var iso = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(now);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) { return iso; }
+  } catch (e) { /* fall through to local date */ }
+  function p(n) { return (n < 10 ? '0' : '') + n; }
+  return now.getFullYear() + '-' + p(now.getMonth() + 1) + '-' + p(now.getDate());
+}
+
+// The single rule. todayISO is optional (defaults to LPA_todayISO()); it
+// exists so the rule can be exercised against any date in tests.
+function LPA_isUpcomingSession(session, todayISO) {
+  return !!session && session.course_start_date >= (todayISO || LPA_todayISO());
+}
+
+// Scheduled, not-yet-started sessions for one course, chronological.
+function LPA_upcomingSessionsForCourse(courseId, todayISO) {
+  if (typeof LPA_SESSIONS === 'undefined') { return []; }
+  var today = todayISO || LPA_todayISO();
+  return LPA_SESSIONS.filter(function(s) {
+    return s.course_id === courseId && s.session_status === 'scheduled' && LPA_isUpcomingSession(s, today);
+  }).sort(function(a, b) {
+    return a.course_start_date < b.course_start_date ? -1 : (a.course_start_date > b.course_start_date ? 1 : 0);
+  });
+}
+
+// Reads the START date out of a hand-authored card/table date label such as
+// "24-26 Aug 2026", "9–11 Sep 2026", "28 Sep – 2 Oct 2026" or
+// "28 Dec 2026 – 1 Jan 2027" and returns ISO YYYY-MM-DD, or null when the
+// text is not a date (e.g. "In-House", "Available Upon Request"). Callers
+// must treat null as "leave visible" so nothing unparseable is ever hidden.
+function LPA_parseDisplayedStartISO(text) {
+  var t = String(text || '').replace(/\s+/g, ' ').trim();
+  var months = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
+  var m, d, mo, y;
+  function mon(s) { return months[s.slice(0, 3).toLowerCase()] || 0; }
+  function iso(yy, mm, dd) {
+    if (!mm || !dd) { return null; }
+    return yy + '-' + (mm < 10 ? '0' : '') + mm + '-' + (dd < 10 ? '0' : '') + dd;
+  }
+  // "28 Dec 2026 – 1 Jan 2027" (or a single "5 Oct 2026"): full start date
+  m = /^(\d{1,2}) ([A-Za-z]{3,9}) (\d{4})(?: ?[-–—]|$)/.exec(t);
+  if (m) { return iso(+m[3], mon(m[2]), +m[1]); }
+  // "28 Sep – 2 Oct 2026": start month differs from end month, year is the end year
+  m = /^(\d{1,2}) ([A-Za-z]{3,9}) ?[-–—] ?\d{1,2} ([A-Za-z]{3,9}) (\d{4})/.exec(t);
+  if (m) {
+    mo = mon(m[2]); y = +m[4];
+    if (mo > mon(m[3])) { y -= 1; }            // e.g. 28 Dec – 2 Jan 2027 starts in 2026
+    return iso(y, mo, +m[1]);
+  }
+  // "24-26 Aug 2026": same month
+  m = /^(\d{1,2}) ?[-–—] ?\d{1,2} ([A-Za-z]{3,9}) (\d{4})/.exec(t);
+  if (m) { return iso(+m[3], mon(m[2]), +m[1]); }
+  return null;
+}
+
+// Hides past sessions in the hand-authored booking-card blocks and the
+// "Sessions & Fees" table, in place. Nothing is removed from the DOM — hidden
+// elements are marked data-lpa-past="1" — and nothing unparseable is hidden.
+// Relabels the first remaining dated block as the "NEXT ... SESSION" card.
+//
+// The hand-authored cards are a point-in-time snapshot and can lag behind
+// LPA_SESSIONS. So when EVERY authored dated block has passed:
+//   - if the registry still has upcoming sessions for this course, the card is
+//     rebuilt from them (same markup, same number of slots), so it never
+//     contradicts the #bkSes dropdown;
+//   - only if the registry has none either is the contact-us fallback shown.
+// Safe to call repeatedly (generated elements are replaced, not stacked).
+// course/todayISO are optional; they default to the current page / clock.
+function LPA_applyUpcomingSessionFilter(todayISO, course) {
+  var today = todayISO || LPA_todayISO();
+  if (course === undefined) { course = LPA_courseForPath(window.location.pathname); }
+  var upcoming = course ? LPA_upcomingSessionsForCourse(course.course_id, today) : [];
+  var result = { today: today, cards_hidden: 0, cards_kept: 0, cards_generated: 0, rows_hidden: 0, rows_kept: 0, fallback_shown: false };
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lpa-generated]'), function(el) {
+    el.parentNode.removeChild(el);
+  });
+
+  // --- booking card blocks ---
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.bc-sessions-wrap .bc-session-block'));
+  if (blocks.length) {
+    var firstLabel = '';
+    var visibleDated = [];
+    blocks.forEach(function(b, i) {
+      var labelEl = b.querySelector('.bc-session-label');
+      var dateEl = b.querySelector('.bc-session-date-lg');
+      if (i === 0 && labelEl && /^NEXT /i.test(labelEl.getAttribute('data-lpa-orig-label') || labelEl.textContent.trim())) {
+        firstLabel = labelEl.getAttribute('data-lpa-orig-label') || labelEl.textContent.trim();
+      }
+      var startISO = dateEl ? LPA_parseDisplayedStartISO(dateEl.textContent) : null;
+      if (startISO === null) { return; }                       // not a dated block: leave alone
+      if (labelEl) {                                           // remember / restore authored label so re-runs are idempotent
+        if (!labelEl.hasAttribute('data-lpa-orig-label')) { labelEl.setAttribute('data-lpa-orig-label', labelEl.textContent.trim()); }
+        labelEl.textContent = labelEl.getAttribute('data-lpa-orig-label');
+      }
+      if (startISO < today) {
+        b.style.display = 'none';
+        b.setAttribute('data-lpa-past', '1');
+        result.cards_hidden++;
+      } else {
+        b.style.display = '';
+        b.removeAttribute('data-lpa-past');
+        visibleDated.push(b);
+        result.cards_kept++;
+      }
+    });
+    if (result.cards_hidden > 0) {
+      if (visibleDated.length && firstLabel) {
+        var firstLbl = visibleDated[0].querySelector('.bc-session-label');
+        if (firstLbl) { firstLbl.textContent = firstLabel; }
+      }
+      if (!visibleDated.length) {
+        var wrap = blocks[0].parentNode;
+        if (upcoming.length) {
+          upcoming.slice(0, Math.max(1, result.cards_hidden)).forEach(function(s, idx) {
+            var nb = document.createElement('div');
+            nb.className = 'bc-session-block';
+            nb.setAttribute('data-lpa-generated', '1');
+            var lab = document.createElement('div');
+            lab.className = 'bc-session-label';
+            lab.textContent = idx === 0 ? (firstLabel || 'NEXT CLASSROOM SESSION') : 'ALSO AVAILABLE';
+            var dt = document.createElement('div');
+            dt.className = 'bc-session-date-lg';
+            dt.textContent = LPA_formatSessionDateRange(s.course_start_date, s.course_end_date);
+            var lc = document.createElement('div');
+            lc.className = 'bc-session-loc-row';
+            lc.innerHTML = '<svg viewBox="0 0 16 16"><use href="#ico-pin"/></svg> ';
+            lc.appendChild(document.createTextNode(LPA_sessionLocationLabel(s)));
+            nb.appendChild(lab); nb.appendChild(dt); nb.appendChild(lc);
+            wrap.insertBefore(nb, blocks[0]);
+            result.cards_generated++;
+          });
+        } else {
+          var fb = document.createElement('div');
+          fb.className = 'bc-session-block';
+          fb.setAttribute('data-lpa-generated', '1');
+          fb.setAttribute('data-lpa-fallback', '1');
+          fb.innerHTML = '<div class="bc-session-label">CLASSROOM SESSION</div>' +
+            '<div class="bc-session-date-lg" style="font-size:22px;">Contact us for upcoming dates</div>';
+          wrap.insertBefore(fb, blocks[0]);
+          result.fallback_shown = true;
+        }
+      }
+    }
+    // dividers: no rule under the last visible block (CSS :last-of-type can't see display:none)
+    var shown = Array.prototype.slice.call(document.querySelectorAll('.bc-sessions-wrap .bc-session-block')).filter(function(b) { return b.style.display !== 'none'; });
+    shown.forEach(function(b, i) {
+      var last = i === shown.length - 1 && result.cards_hidden > 0;
+      b.style.borderBottom = last ? 'none' : '';
+      b.style.paddingBottom = last ? '0' : '';
+      b.style.marginBottom = last ? '0' : '';
+    });
+  }
+
+  // --- Sessions & Fees table ---
+  // Rows carry per-session fee/VAT wording that the registry doesn't hold, so
+  // they are only ever hidden, never regenerated.
+  Array.prototype.forEach.call(document.querySelectorAll('table.sessions-table'), function(table) {
+    var keptDated = 0, hidden = 0;
+    Array.prototype.forEach.call(table.querySelectorAll('tbody tr:not([data-lpa-generated])'), function(tr) {
+      var dEl = tr.querySelector('.session-date');
+      var startISO = dEl ? LPA_parseDisplayedStartISO(dEl.textContent) : null;
+      if (startISO === null) { return; }
+      if (startISO < today) {
+        tr.style.display = 'none';
+        tr.setAttribute('data-lpa-past', '1');
+        hidden++; result.rows_hidden++;
+      } else {
+        tr.style.display = '';
+        tr.removeAttribute('data-lpa-past');
+        keptDated++; result.rows_kept++;
+      }
+    });
+    if (hidden > 0 && keptDated === 0) {
+      var tb = table.tBodies[0] || table;
+      var cols = table.querySelectorAll('thead th').length || 4;
+      var fr = document.createElement('tr');
+      fr.setAttribute('data-lpa-generated', '1');
+      fr.setAttribute('data-lpa-fallback', '1');
+      var td = document.createElement('td');
+      td.setAttribute('colspan', String(cols));
+      td.textContent = upcoming.length
+        ? 'Further sessions are scheduled — please choose a date in the booking form, or contact us.'
+        : 'Classroom Session — Contact us for upcoming dates';
+      fr.appendChild(td);
+      tb.insertBefore(fr, tb.firstChild);
+    }
+  });
+  return result;
+}
+
+(function() {
+  function run() { try { LPA_applyUpcomingSessionFilter(); } catch (e) { /* display-only; never break the page */ } }
+  if (typeof document === 'undefined') { return; }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+
+// Renders #bkSes entirely from LPA_SESSIONS, filtered to this course, to
+// session_status === 'scheduled' and to sessions that have not yet started
+// (course_start_date >= today — see LPA_isUpcomingSession; past sessions stay
+// in LPA_SESSIONS but are never offered for booking), sorted chronologically
+// by course_start_date. course_session_id is the option's authoritative
 // identifier (data-session-id) — nothing is recovered by parsing the
 // generated text. Leaves only the placeholder option and disables the
 // select — with a distinct message — for both failure states (central data
 // unavailable) and the legitimate zero-sessions state, so the existing
 // required-field validation in submitBk() blocks submission naturally,
 // without needing to fire form_error for a normal business state.
-function LPA_renderSessionOptions(course) {
+function LPA_renderSessionOptions(course, todayISO) {
   var sel = document.getElementById('bkSes');
   if (!sel) { return; }
   while (sel.options.length > 1) { sel.remove(1); }
@@ -334,13 +553,16 @@ function LPA_renderSessionOptions(course) {
     sel.disabled = true;
     return;
   }
-  var sessions = LPA_SESSIONS.filter(function(s) {
-    return s.course_id === course.course_id && s.session_status === 'scheduled';
-  }).sort(function(a, b) {
-    return a.course_start_date < b.course_start_date ? -1 : (a.course_start_date > b.course_start_date ? 1 : 0);
-  });
+  var sessions = LPA_upcomingSessionsForCourse(course.course_id, todayISO);
   if (!sessions.length && !course.offers_on_request && !course.offers_in_house) {
-    if (placeholder) { placeholder.textContent = 'No sessions currently scheduled — please contact us'; }
+    var hadAnyScheduled = LPA_SESSIONS.some(function(s) {
+      return s.course_id === course.course_id && s.session_status === 'scheduled';
+    });
+    if (placeholder) {
+      placeholder.textContent = hadAnyScheduled
+        ? 'Classroom Session — Contact us for upcoming dates'
+        : 'No sessions currently scheduled — please contact us';
+    }
     sel.disabled = true;
     return;
   }
