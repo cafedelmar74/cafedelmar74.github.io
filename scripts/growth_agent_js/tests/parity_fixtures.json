@@ -1,0 +1,4021 @@
+[
+  {
+    "name": "empty_minimal_input",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "insufficient_ga4_sample",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-a"
+            },
+            {
+              "value": "Test Course A"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "1"
+            },
+            {
+              "value": "0"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "early_signal",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-b"
+            },
+            {
+              "value": "Test Course B"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "6"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "5"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "directional_signal",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-c"
+            },
+            {
+              "value": "Test Course C"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "cutover_suppression",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-10",
+    "current_period_end": "2026-08-16",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-d"
+            },
+            {
+              "value": "Test Course D"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "20"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "high_concentration_suspected_test_activity",
+    "kind": "direct_call",
+    "expect_error": false,
+    "python_func": "classify_ga4_confidence",
+    "js_func": "classifyGa4Confidence",
+    "args": {
+      "unique_users": 50,
+      "distinct_sessions": 20,
+      "concentration_ratio": 0.85,
+      "cutover": {
+        "affected": false,
+        "cutover_id": null
+      }
+    }
+  },
+  {
+    "name": "multiple_suppression_reasons",
+    "kind": "direct_call",
+    "expect_error": false,
+    "python_func": "route_opportunity",
+    "js_func": "routeOpportunity",
+    "opportunity": {
+      "opportunity_id": "course_momentum:test-course-multi",
+      "opportunity_type": "course_momentum",
+      "scope": {
+        "type": "course",
+        "key": "test-course-multi",
+        "label": "Test Course Multi"
+      },
+      "raw_score": 2,
+      "confidence_tier": "insufficient",
+      "confidence_multiplier": 0.0,
+      "final_score": 0.0,
+      "primary_metric": {
+        "name": "commercial_event_count",
+        "current_value": 8
+      },
+      "evidence": [
+        {
+          "metric": "commercial_event_count",
+          "value": 8,
+          "period": "current",
+          "source": "GA4"
+        }
+      ],
+      "sample_size": {
+        "unique_users": 1,
+        "distinct_sessions": 1,
+        "impressions": null,
+        "clicks": null,
+        "concentration_ratio": 0.95,
+        "repetition_ratio": null
+      },
+      "cutover_affected": {
+        "affected": true,
+        "cutover_id": "course_identity_migration"
+      },
+      "business_context_required": true,
+      "business_context_note": null,
+      "recommendation": "",
+      "rationale": "",
+      "course_id": "test-course-multi",
+      "course_name": "Test Course Multi"
+    }
+  },
+  {
+    "name": "traffic_without_conversion",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "test-course-e"
+            },
+            {
+              "value": "Test Course E"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "15"
+            },
+            {
+              "value": "12"
+            },
+            {
+              "value": "10"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "test-course-f"
+            },
+            {
+              "value": "Test Course F"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "5"
+            }
+          ]
+        }
+      ],
+      "row_count": 2
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "conversion_without_much_traffic",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-g"
+            },
+            {
+              "value": "Test Course G"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-h"
+            },
+            {
+              "value": "Test Course H"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "2"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "row_count": 2
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "test-course-h"
+            },
+            {
+              "value": "Test Course H Marketing Page"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "5"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "corporate_lead_intent_opportunity",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "corporate_training"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "team_lead_intent_opportunity",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "team_training"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "6"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "12"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "not_set_course_id",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "5"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "4"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "not_set_lead_intent",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "10"
+            },
+            {
+              "value": "4"
+            },
+            {
+              "value": "8"
+            },
+            {
+              "value": "7"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "decimal_string_conversions",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "10"
+            },
+            {
+              "value": "24.5"
+            },
+            {
+              "value": "8"
+            },
+            {
+              "value": "6"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "enquiry_submitted"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "25.5"
+            },
+            {
+              "value": "7"
+            },
+            {
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "brochure_download"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "6"
+            },
+            {
+              "value": "3.5"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "4"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "calendar_download"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "4"
+            },
+            {
+              "value": "2.5"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "row_count": 4
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "missing_commercial_event_zero_synthesis",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "2"
+            },
+            {
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "attribution_expected",
+    "kind": "attribution",
+    "expect_error": false,
+    "rows_raw": {
+      "dimension_headers": [
+        {
+          "name": "date"
+        },
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:form_location"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "20260810"
+            },
+            {
+              "value": "calendar_download"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "20260812"
+            },
+            {
+              "value": "enquiry_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "homepage"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "20260812"
+            },
+            {
+              "value": "enquiry_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "contact_page"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "10"
+            }
+          ]
+        }
+      ],
+      "row_count": 3
+    }
+  },
+  {
+    "name": "attribution_cutover",
+    "kind": "attribution",
+    "expect_error": false,
+    "rows_raw": {
+      "dimension_headers": [
+        {
+          "name": "date"
+        },
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:form_location"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "20260810"
+            },
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "7"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "20260801"
+            },
+            {
+              "value": "brochure_download"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            }
+          ]
+        }
+      ],
+      "row_count": 2
+    }
+  },
+  {
+    "name": "attribution_unexpected",
+    "kind": "attribution",
+    "expect_error": false,
+    "rows_raw": {
+      "dimension_headers": [
+        {
+          "name": "date"
+        },
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:form_location"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "20260812"
+            },
+            {
+              "value": "enquiry_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "course_page"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "20260812"
+            },
+            {
+              "value": "enquiry_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "20260825"
+            },
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "4"
+            }
+          ]
+        }
+      ],
+      "row_count": 3
+    }
+  },
+  {
+    "name": "unknown_scoring_event_rejection",
+    "kind": "intelligence",
+    "expect_error": true,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "mystery_event"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "1"
+            },
+            {
+              "value": "0"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "unknown_attribution_event",
+    "kind": "attribution",
+    "expect_error": false,
+    "rows_raw": {
+      "dimension_headers": [
+        {
+          "name": "date"
+        },
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:form_location"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "20260810"
+            },
+            {
+              "value": "some_future_event"
+            },
+            {
+              "value": "(not set)"
+            },
+            {
+              "value": "(not set)"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "6"
+            }
+          ]
+        }
+      ],
+      "row_count": 1
+    }
+  },
+  {
+    "name": "tied_score_stable_ordering",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-x"
+            },
+            {
+              "value": "Test Course X"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-y"
+            },
+            {
+              "value": "Test Course Y"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "test-course-z"
+            },
+            {
+              "value": "Test Course Z"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        }
+      ],
+      "row_count": 3
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "more_than_five_eligible_top_actions",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-1"
+            },
+            {
+              "value": "Course 1"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-2"
+            },
+            {
+              "value": "Course 2"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-3"
+            },
+            {
+              "value": "Course 3"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "12"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-4"
+            },
+            {
+              "value": "Course 4"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "12"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-5"
+            },
+            {
+              "value": "Course 5"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-6"
+            },
+            {
+              "value": "Course 6"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "3"
+            },
+            {
+              "value": "1"
+            },
+            {
+              "value": "5"
+            },
+            {
+              "value": "12"
+            }
+          ]
+        }
+      ],
+      "row_count": 6
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  },
+  {
+    "name": "fewer_than_five_eligible_actions",
+    "kind": "intelligence",
+    "expect_error": false,
+    "current_period_start": "2026-08-25",
+    "current_period_end": "2026-08-29",
+    "previous_period_start": "2025-08-25",
+    "previous_period_end": "2025-08-29",
+    "generated_at": "2026-08-30T00:00:00Z",
+    "totals_current_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "totals_previous_raw": {
+      "dimension_headers": [],
+      "metric_headers": [
+        {
+          "name": "totalUsers"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_current_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_previous_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "commercial_events_by_course_raw": {
+      "dimension_headers": [
+        {
+          "name": "eventName"
+        },
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        },
+        {
+          "name": "customEvent:course_category"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-p"
+            },
+            {
+              "value": "Course P"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        },
+        {
+          "dimension_values": [
+            {
+              "value": "booking_submitted"
+            },
+            {
+              "value": "course-q"
+            },
+            {
+              "value": "Course Q"
+            },
+            {
+              "value": "general"
+            }
+          ],
+          "metric_values": [
+            {
+              "value": "8"
+            },
+            {
+              "value": "3"
+            },
+            {
+              "value": "6"
+            },
+            {
+              "value": "15"
+            }
+          ]
+        }
+      ],
+      "row_count": 2
+    },
+    "lead_intent_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:lead_intent"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "conversions"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "course_page_views_raw": {
+      "dimension_headers": [
+        {
+          "name": "customEvent:course_id"
+        },
+        {
+          "name": "customEvent:course_name"
+        }
+      ],
+      "metric_headers": [
+        {
+          "name": "eventCount"
+        },
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "totalUsers"
+        }
+      ],
+      "rows": [],
+      "row_count": 0
+    },
+    "gsc_queries": []
+  }
+]

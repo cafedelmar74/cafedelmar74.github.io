@@ -1,0 +1,2634 @@
+{
+  "fixtures": [
+    {
+      "name": "real_lpa_snapshot_intelligence",
+      "kind": "intelligence",
+      "expect_error": false,
+      "current_period_start": "2026-08-02",
+      "current_period_end": "2026-08-29",
+      "previous_period_start": "2026-07-05",
+      "previous_period_end": "2026-08-01",
+      "generated_at": "2026-08-30T08:00:00Z",
+      "totals_current_raw": {
+        "dimension_headers": [],
+        "metric_headers": [
+          {
+            "name": "totalUsers"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "engagedSessions"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [],
+            "metric_values": [
+              {
+                "value": "1648"
+              },
+              {
+                "value": "1826"
+              },
+              {
+                "value": "746"
+              }
+            ]
+          }
+        ],
+        "row_count": 1
+      },
+      "totals_previous_raw": {
+        "dimension_headers": [],
+        "metric_headers": [
+          {
+            "name": "totalUsers"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "engagedSessions"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [],
+            "metric_values": [
+              {
+                "value": "16"
+              },
+              {
+                "value": "19"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          }
+        ],
+        "row_count": 1
+      },
+      "commercial_events_current_raw": {
+        "dimension_headers": [
+          {
+            "name": "eventName"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          },
+          {
+            "name": "conversions"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "totalUsers"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "calendar_download"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "35"
+              },
+              {
+                "value": "24"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "31"
+              },
+              {
+                "value": "30"
+              },
+              {
+                "value": "22"
+              },
+              {
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "26"
+              },
+              {
+                "value": "25"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "21"
+              },
+              {
+                "value": "12"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          }
+        ],
+        "row_count": 4
+      },
+      "commercial_events_previous_raw": {
+        "dimension_headers": [
+          {
+            "name": "eventName"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          },
+          {
+            "name": "conversions"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "totalUsers"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "row_count": 2
+      },
+      "commercial_events_by_course_raw": {
+        "dimension_headers": [
+          {
+            "name": "eventName"
+          },
+          {
+            "name": "customEvent:course_id"
+          },
+          {
+            "name": "customEvent:course_name"
+          },
+          {
+            "name": "customEvent:course_category"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          },
+          {
+            "name": "conversions"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "totalUsers"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "calendar_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "33"
+              },
+              {
+                "value": "24"
+              },
+              {
+                "value": "21"
+              },
+              {
+                "value": "12"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "16"
+              },
+              {
+                "value": "15"
+              },
+              {
+                "value": "8"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "14"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "7"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "7"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "7"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Hydrogen Technology, Economics & Business Models"
+              },
+              {
+                "value": "renewable_energy_power"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "gas_lng"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "IFRS Accounting for JVs in Upstream Oil & Gas"
+              },
+              {
+                "value": "accounting_finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "LNG Value Chain: Markets, Trading, Operations & Energy Transition"
+              },
+              {
+                "value": "gas_lng"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Production Sharing Contracts \u2014 Brazil: Legal, Fiscal & Financial Aspects"
+              },
+              {
+                "value": "legal_fiscal_contracts"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "International Oil Supply, Trading & Market Dynamics"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "commercial-economic-jv-oil-gas"
+              },
+              {
+                "value": "Indonesia Oil & Gas Fiscal and Joint Venture Training"
+              },
+              {
+                "value": "legal_fiscal_contracts"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "renewable-energy-economics-finance"
+              },
+              {
+                "value": "Renewable Energy Economics and Finance"
+              },
+              {
+                "value": "power_renewables"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "gas-lng-contracts-negotiations"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "gas_lng"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "ipps-power-purchase-agreements"
+              },
+              {
+                "value": "Independent Power Producers (IPPs): Bankable Power Purchase Agreements"
+              },
+              {
+                "value": "power_renewables"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "International Oil Supply, Trading & Market Dynamics"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Mini MBA: Oil & Gas and Energy Business"
+              },
+              {
+                "value": "petroleum_economics_fundamentals"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Solar Power Finance"
+              },
+              {
+                "value": "renewable_energy_power"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "crude-oil-evaluation-economics-pricing"
+              },
+              {
+                "value": "Crude Oil Evaluation, Economics & Pricing"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "gas-lng-contracts-negotiations"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "gas_lng"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "solar-power-finance"
+              },
+              {
+                "value": "Solar Power Finance"
+              },
+              {
+                "value": "power_renewables"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Gas & LNG Contract Negotiations"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "accounting-jvs-pscs-upstream-oil-gas"
+              },
+              {
+                "value": "Accounting for JVs & PSCs in Upstream Oil & Gas"
+              },
+              {
+                "value": "accounting_finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "brazil-jv"
+              },
+              {
+                "value": "Petroleum Agreements & Joint Ventures in Brazil"
+              },
+              {
+                "value": "legal_fiscal_contracts"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "crude-oil-evaluation-economics-pricing"
+              },
+              {
+                "value": "Crude Oil Evaluation, Economics & Pricing"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "gas-lng-contracts-negotiations"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "gas_lng"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "grid-scale-bess-technology-markets-project-finance"
+              },
+              {
+                "value": "Grid-Scale BESS: Technology, Markets, and Project Finance"
+              },
+              {
+                "value": "power_renewables"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "international-crude-oil-markets"
+              },
+              {
+                "value": "International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "international-oil-supply-trading"
+              },
+              {
+                "value": "International Oil Supply, Trading & Market Dynamics"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "calendar_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Accounting for Oil & Gas"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "calendar_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "0"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "crude-oil-evaluation-economics-pricing"
+              },
+              {
+                "value": "Crude Oil Evaluation, Economics & Pricing"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "grid-scale-bess-technology-markets-project-finance"
+              },
+              {
+                "value": "Grid-Scale BESS: Technology, Markets, and Project Finance"
+              },
+              {
+                "value": "power_renewables"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "international-crude-oil-markets"
+              },
+              {
+                "value": "International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging"
+              },
+              {
+                "value": "trading_markets"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "row_count": 35
+      },
+      "lead_intent_raw": {
+        "dimension_headers": [
+          {
+            "name": "customEvent:lead_intent"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          },
+          {
+            "name": "conversions"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "totalUsers"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "15"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "corporate_training"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "team_training"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "individual_training"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "row_count": 4
+      },
+      "course_page_views_raw": {
+        "dimension_headers": [
+          {
+            "name": "customEvent:course_id"
+          },
+          {
+            "name": "customEvent:course_name"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          },
+          {
+            "name": "sessions"
+          },
+          {
+            "name": "totalUsers"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "gas-lng-contracts-negotiations"
+              },
+              {
+                "value": "Gas & LNG Contracts Negotiations Masterclass"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "39"
+              },
+              {
+                "value": "10"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "Legal Aspects of Production Sharing Contracts"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "12"
+              },
+              {
+                "value": "7"
+              },
+              {
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "international-gas-markets"
+              },
+              {
+                "value": "International Gas Markets & Economic Evaluation of Gas Projects"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "12"
+              },
+              {
+                "value": "7"
+              },
+              {
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "lng-value-chain"
+              },
+              {
+                "value": "LNG Value Chain: Markets, Trading, Operations & Energy Transition"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "12"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "IFRS Accounting for JVs in Upstream Oil & Gas"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "11"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "renewable-energy-economics-finance"
+              },
+              {
+                "value": "Renewable Energy Economics and Finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "11"
+              },
+              {
+                "value": "9"
+              },
+              {
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "LNG Value Chain: Markets, Trading, Operations & Energy Transition"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "9"
+              },
+              {
+                "value": "7"
+              },
+              {
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "accounting-jvs-pscs-upstream-oil-gas"
+              },
+              {
+                "value": "Accounting for JVs & PSCs in Upstream Oil & Gas"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "8"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "accounting-for-oil-gas"
+              },
+              {
+                "value": "Accounting for Oil & Gas"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "7"
+              },
+              {
+                "value": "6"
+              },
+              {
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "commercial-economic-jv-oil-gas"
+              },
+              {
+                "value": "Indonesia Oil & Gas Fiscal and Joint Venture Training"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "7"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "grid-scale-bess-technology-markets-project-finance"
+              },
+              {
+                "value": "Grid-Scale BESS: Technology, Markets, and Project Finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "6"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "petroleum-exploration-economics-decision"
+              },
+              {
+                "value": "Petroleum Exploration Economics & Decision Strategies"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "6"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "International Oil Supply, Trading & Market Dynamics"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "5"
+              },
+              {
+                "value": "4"
+              },
+              {
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "crude-oil-evaluation-economics-pricing"
+              },
+              {
+                "value": "Crude Oil Evaluation, Economics & Pricing"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "5"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "international-oil-supply-trading"
+              },
+              {
+                "value": "International Oil Supply, Trading & Market Dynamics"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "5"
+              },
+              {
+                "value": "5"
+              },
+              {
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "oil-gas-fundamentals"
+              },
+              {
+                "value": "Oil & Gas Fundamentals"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "5"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "brazil-jv"
+              },
+              {
+                "value": "Petroleum Agreements & Joint Ventures in Brazil"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "corporate-power-purchase-agreements"
+              },
+              {
+                "value": "Corporate Power Purchase Agreements"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "ifrs-fundamentals-upstream-oil-gas"
+              },
+              {
+                "value": "IFRS Fundamentals for Upstream Oil & Gas"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "mini-mba-oil-gas-energy-business"
+              },
+              {
+                "value": "Mini MBA: Oil & Gas and Energy Business"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "mini-mba-renewable-energy-auctions"
+              },
+              {
+                "value": "Mini MBA: Renewable Energy Markets, Auctions & Project Finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "solar-power-finance"
+              },
+              {
+                "value": "Solar Power Finance"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "3"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "commercial-aspects-oil-refining"
+              },
+              {
+                "value": "Commercial Aspects of Oil Refining"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "energy-transition-fiscal-systems"
+              },
+              {
+                "value": "Energy Transition & Petroleum Fiscal Systems"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "financial-fiscal-aspects-oil-gas-projects-brazil"
+              },
+              {
+                "value": "Financial & Fiscal Aspects of Oil & Gas Projects in Brazil"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "international-crude-oil-markets"
+              },
+              {
+                "value": "International Crude Oil Markets: Benchmarks, Logistics, Refining Margins & Hedging"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "offshore-deepwater-drilling"
+              },
+              {
+                "value": "Offshore & Deepwater Drilling"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "petroleum-project-economics-risk"
+              },
+              {
+                "value": "Petroleum Project Economics & Risk Decision Analysis"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              },
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "drilling-for-non-drilling-personnel"
+              },
+              {
+                "value": "Drilling for Non-Drilling Personnel"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "advanced-petroleum-economics-decision-analysis"
+              },
+              {
+                "value": "Advanced Petroleum Economics & Decision Analysis"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "4"
+              },
+              {
+                "value": "3"
+              },
+              {
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "ipps-power-purchase-agreements"
+              },
+              {
+                "value": "Independent Power Producers (IPPs): Bankable Power Purchase Agreements"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "4"
+              },
+              {
+                "value": "1"
+              },
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "row_count": 31
+      },
+      "gsc_queries": []
+    },
+    {
+      "name": "real_lpa_snapshot_attribution",
+      "kind": "attribution",
+      "expect_error": false,
+      "rows_raw": {
+        "dimension_headers": [
+          {
+            "name": "date"
+          },
+          {
+            "name": "eventName"
+          },
+          {
+            "name": "customEvent:course_id"
+          },
+          {
+            "name": "customEvent:form_location"
+          }
+        ],
+        "metric_headers": [
+          {
+            "name": "eventCount"
+          }
+        ],
+        "rows": [
+          {
+            "dimension_values": [
+              {
+                "value": "20260815"
+              },
+              {
+                "value": "calendar_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "35"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260815"
+              },
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "contact_page"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "10"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260815"
+              },
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "homepage"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260815"
+              },
+              {
+                "value": "enquiry_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260802"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260802"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260803"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260805"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260805"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260806"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260806"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260808"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260810"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260812"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "11"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260812"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260813"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260818"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260819"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260819"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260820"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260821"
+              },
+              {
+                "value": "brochure_download"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "dimension_values": [
+              {
+                "value": "20260822"
+              },
+              {
+                "value": "booking_submitted"
+              },
+              {
+                "value": "(not set)"
+              },
+              {
+                "value": "(not set)"
+              }
+            ],
+            "metric_values": [
+              {
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "row_count": 22
+      }
+    }
+  ],
+  "known_truth": {
+    "totals_current": {
+      "users": 1648,
+      "sessions": 1826,
+      "engaged_sessions": 746
+    },
+    "totals_previous": {
+      "users": 16,
+      "sessions": 19,
+      "engaged_sessions": 2
+    },
+    "commercial_events_row_count": 8,
+    "commercial_events_by_course_row_count": 35,
+    "commercial_events_by_intent_row_count": 4,
+    "course_page_views_by_course_row_count": 31,
+    "opportunities_count": 0,
+    "early_signals_count": 0,
+    "suppressed_signals_count": 13,
+    "top_actions_count": 0,
+    "diagnostics_traffic_without_conversion_count": 2,
+    "diagnostics_conversion_without_much_traffic_count": 6,
+    "attribution_expected": 47,
+    "attribution_cutover": 43,
+    "attribution_unexpected": 2,
+    "attribution_total": 92
+  }
+}
