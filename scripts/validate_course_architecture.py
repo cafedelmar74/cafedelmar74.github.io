@@ -301,9 +301,16 @@ def validate_course_pages(r, courses, sessions):
             bad_order.append(page)
             r.fail(cat, f"{where(file=page, course_id=cid)}script order wrong")
 
-        if "LPA_track('booking_submitted', Object.assign(" not in content:
+        # Since Step 13-C the booking transport, session resolution and the
+        # booking_submitted event live in the shared lpa-booking-v2.js. A page must
+        # use it via lpaSubmitBooking and must not carry its own copy of the event.
+        bk_idx = content.find('src="lpa-booking-v2.js"')
+        if bk_idx == -1 or cfg_idx == -1 or bk_idx < cfg_idx or "lpaSubmitBooking(" not in content:
             no_ga4.append(page)
-            r.fail(cat, f"{where(file=page, course_id=cid)}booking_submitted not using Object.assign")
+            r.fail(cat, f"{where(file=page, course_id=cid)}booking form not wired to shared lpa-booking-v2.js (script after config.js + lpaSubmitBooking call)")
+        elif "booking_submitted" in content:
+            no_ga4.append(page)
+            r.fail(cat, f"{where(file=page, course_id=cid)}inline booking_submitted on page; must live only in lpa-booking-v2.js")
 
         sel_m = re.search(r'<select class="bkfi" id="bkSes">(.*?)</select>', content, re.S)
         if sel_m:
@@ -317,12 +324,16 @@ def validate_course_pages(r, courses, sessions):
         has_sessions = sessions_by_cid.get(cid, 0) > 0
         course_obj = course_by_id.get(cid, "")
         is_nonsession = bool_field(course_obj, "offers_on_request") or bool_field(course_obj, "offers_in_house")
-        has_session_refs = "LPA_sessionById" in content and "LPA_sessionSnapshot" in content
+        # Pages render the booking dropdown from central data via
+        # LPA_renderSessionOptions and submit through the shared booking script;
+        # LPA_sessionById / LPA_sessionSnapshot are used inside lpa-booking-v2.js.
+        has_session_refs = ("LPA_renderSessionOptions(" in content
+                            and 'src="lpa-booking-v2.js"' in content)
 
         if has_sessions:
             if not has_session_refs:
                 arch_bad.append(page)
-                r.fail(cat, f"{where(file=page, course_id=cid)}missing central session functions")
+                r.fail(cat, f"{where(file=page, course_id=cid)}missing central session rendering (LPA_renderSessionOptions + lpa-booking-v2.js)")
         elif is_nonsession:
             has_request_type = "request_type" in content
             if not has_request_type and not has_session_refs:
@@ -334,12 +345,34 @@ def validate_course_pages(r, courses, sessions):
             arch_bad.append(page)
             r.fail(cat, f"{where(file=page, course_id=cid)}zero sessions with no offers_on_request/offers_in_house")
 
+    # The shared booking script owns the booking_submitted event and session
+    # resolution; verify it still does what the per-page checks above rely on.
+    try:
+        shared = read("lpa-booking-v2.js")
+    except OSError:
+        shared = None
+        r.fail(cat, f"{where(file='lpa-booking-v2.js')}shared booking script missing")
+    if shared is not None:
+        shared_missing = [
+            label for label, needle in (
+                ("window.lpaSubmitBooking", "window.lpaSubmitBooking"),
+                ("LPA_sessionById", "LPA_sessionById"),
+                ("LPA_sessionSnapshot", "LPA_sessionSnapshot"),
+                ("booking_submitted with Object.assign", "LPA_track('booking_submitted', Object.assign("),
+            ) if needle not in shared
+        ]
+        if shared_missing:
+            for label in shared_missing:
+                r.fail(cat, f"{where(file='lpa-booking-v2.js')}shared booking script missing {label}")
+        else:
+            r.ok(cat, "lpa-booking-v2.js owns booking_submitted (Object.assign + LPA_sessionSnapshot) and session resolution")
+
     if not no_cc:
         r.ok(cat, f"all {len(real_pages)} pages declare LPA_CURRENT_COURSE")
     if not bad_order:
         r.ok(cat, "course-data.js loads before config.js everywhere")
     if not no_ga4:
-        r.ok(cat, "all pages use central Object.assign booking_submitted")
+        r.ok(cat, "all pages submit bookings via shared lpa-booking-v2.js with no inline booking_submitted")
     if not bad_opts:
         r.ok(cat, "no static booking options beyond placeholder")
     if not arch_bad:
