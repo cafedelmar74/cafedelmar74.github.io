@@ -1394,20 +1394,30 @@ var LPA_SESSIONS = [
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-economic-jv-oil-gas-s1',
+    course_session_id: 'commercial-economic-jv-oil-gas-s3',
     course_id:          'commercial-economic-jv-oil-gas',
-    course_start_date:  '2026-09-07',
-    course_end_date:    '2026-09-11',
+    course_start_date:  '2027-04-26',
+    course_end_date:    '2027-04-30',
     course_location:    'Bali',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
     session_status:     'scheduled'
   },
   {
-    course_session_id: 'commercial-economic-jv-oil-gas-s2',
+    course_session_id: 'commercial-economic-jv-oil-gas-s4',
     course_id:          'commercial-economic-jv-oil-gas',
-    course_start_date:  '2027-04-19',
-    course_end_date:    '2027-04-23',
+    course_start_date:  '2027-09-27',
+    course_end_date:    '2027-10-01',
+    course_location:    'Bali',
+    course_country:     'Indonesia',
+    delivery_format:    'in_person',
+    session_status:     'scheduled'
+  },
+  {
+    course_session_id: 'commercial-economic-jv-oil-gas-s5',
+    course_id:          'commercial-economic-jv-oil-gas',
+    course_start_date:  '2027-12-06',
+    course_end_date:    '2027-12-10',
     course_location:    'Bali',
     course_country:     'Indonesia',
     delivery_format:    'in_person',
