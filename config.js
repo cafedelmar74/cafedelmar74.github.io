@@ -604,10 +604,14 @@ var LPA_ENQUIRY_MODAL_INJECTED = false;
 var LPA_ENQ_TURNSTILE_ID = null;
 var LPA_ENQ_RENDERED_AT = null;
 
-// Explicit render, not implicit auto-scan: the modal (and its .cf-turnstile
-// div) is injected into the DOM after page load, so it may not exist yet
-// when the Turnstile script performs its one-time implicit scan. Retries
-// until window.turnstile is available.
+// Explicit render ONLY. The slot div below deliberately does NOT carry the
+// `cf-turnstile` class: api.js implicitly renders every `.cf-turnstile`
+// element it finds (including ones injected before it finishes loading),
+// reads `data-sitekey` from it, and — with no attribute — throws
+// 'Invalid or missing type for parameter "sitekey", expected "string",
+// got "object"' (null). Without the class the only render is the explicit
+// one below, which passes a real string sitekey. Retries until
+// window.turnstile is available.
 function LPA_renderEnquiryTurnstile() {
   var el = document.getElementById('enqTurnstile');
   if (!el || el.getAttribute('data-rendered') === '1') { return; }
@@ -680,7 +684,7 @@ function LPA_renderEnquiryModal(course) {
   htmlParts.push('</select></div>');
   htmlParts.push('<div class="br-field"><label class="brfl">Message</label><textarea class="brfi" id="enqMessage" rows="3" placeholder="Tell us what you need..."></textarea></div>');
   htmlParts.push('<div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"><label for="enqFax">Fax</label><input type="text" id="enqFax" name="fax" tabindex="-1" autocomplete="off"></div>');
-  htmlParts.push('<div class="cf-turnstile" id="enqTurnstile" style="margin:12px 0;"></div>');
+  htmlParts.push('<div id="enqTurnstile" style="margin:12px 0;"></div>');
   htmlParts.push('<button class="btn-book" id="enqSB" onclick="submitEnquiry()" type="button">Send Enquiry &rarr;</button>');
   htmlParts.push('</div><div id="enqOK" style="display:none;text-align:center;padding:20px 0;"><p>Thank you &mdash; your enquiry has been received. Our team will contact you shortly.</p></div></div>');
   htmlParts.push('</div>');
